@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>
         @section('title')
-            | Josh Admin Template
+            | Human & Law
         @show
     </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -28,7 +28,7 @@
 <body class="skin-josh">
 <header class="header">
     <a href="{{ route('dashboard') }}" class="logo">
-        <img src="{{ asset('assets/img/logo.png') }}" alt="logo">
+        <img width="214px" src="{{ asset('assets/img/idllogo.png') }}" alt="logo">
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
