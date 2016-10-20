@@ -516,14 +516,14 @@ Home
         </div>
         <!-- //Features End -->
         <!-- Our Skills Start -->
-        
-        <div class="text-center marbtm10">
+
+        {{--<div class="text-center marbtm10">
             <h3 class="border-danger"><span class="heading_border bg-danger">Our Skills</span></h3>
         </div>
             </div>
         <div class="sliders">
             <!-- Our skill Section start -->
-            {{--<div class="container">
+            <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 text-center wow zoomIn" data-wow-duration="3.5s">
                 <div class="text-center center-block">
