@@ -34,15 +34,6 @@ Home
 {{-- content --}}
 @section('content')
     <div class="container">
-        <section class="purchas-main">
-            <div class="container bg-border wow pulse" data-wow-duration="2.5s">
-                <div class="row">
-                    <div class="col-md-7 col-sm-7 col-xs-12">
-                        <h1 class="purchae-hed">Excellent admin template for laravel</h1></div>
-                    <div class="col-md-5 col-sm-5 col-xs-12"><a href="#" class="btn btn-primary purchase-styl pull-right">Purchase now</a></div>
-                </div>
-            </div>
-        </section>
         <!-- Service Section Start-->
         <div class="row">
             <!-- Responsive Section Start -->
