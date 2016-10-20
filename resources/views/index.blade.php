@@ -523,7 +523,7 @@ Home
             </div>
         <div class="sliders">
             <!-- Our skill Section start -->
-            <div class="container">
+            {{--<div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 text-center wow zoomIn" data-wow-duration="3.5s">
                 <div class="text-center center-block">
@@ -555,7 +555,7 @@ Home
             </div>
         </div>
             <!-- Our skills Section End -->
-        </div>
+        </div>--}}
         <!-- //Our Skills End -->
     </div>
     <!-- //Container End -->

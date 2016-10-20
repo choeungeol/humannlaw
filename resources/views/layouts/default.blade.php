@@ -211,7 +211,7 @@
                         admin@idealize.co.kr</span>
                     </li>
                     <li><i class="livicon icon4 icon3" data-name="skype" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Skype:
-                        <span class="text-success"  style="cursor: pointer;">Joshadmin</span>
+                        <span class="text-success"  style="cursor: pointer;">Idealize</span>
                     </li>
                 </ul>
                 <hr id="hr_border">
