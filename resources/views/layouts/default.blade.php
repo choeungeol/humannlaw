@@ -74,7 +74,7 @@
                     <span><a href="#">_<i class="livicon" data-name="responsive-menu" data-size="25" data-loop="true" data-c="#757b87" data-hc="#ccc"></i>
                     </a></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('assets/images/idllogo.png') }}" alt="logo" class="logo_position">
+                <a class="navbar-brand" href="{{ route('home') }}"><img width="100px" src="{{ asset('assets/images/idllogo.png') }}" alt="logo" class="logo_position">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="collapse">
