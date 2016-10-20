@@ -208,7 +208,7 @@
                     <li><i class="livicon icon4 icon3" data-name="cellphone" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i>Phone:9140 123 4588</li>
                     <li><i class="livicon icon4 icon3" data-name="printer" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Fax:400 423 1456</li>
                     <li><i class="livicon icon3" data-name="mail-alt" data-size="20" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Email:<span class="text-success" style="cursor: pointer;">
-                        info@joshadmin.com</span>
+                        admin@idealize.co.kr</span>
                     </li>
                     <li><i class="livicon icon4 icon3" data-name="skype" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Skype:
                         <span class="text-success"  style="cursor: pointer;">Joshadmin</span>
@@ -283,7 +283,7 @@
     <!-- //Footer Section End -->
     <div class="copyright">
         <div class="container">
-        <p>Copyright &copy; Josh Admin Template, 2015</p>
+        <p>Copyright &copy; Idealize Consulting, 2015</p>
         </div>
     </div>
     <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Return to top" data-toggle="tooltip" data-placement="left">
