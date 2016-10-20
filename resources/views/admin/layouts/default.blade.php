@@ -28,7 +28,7 @@
 <body class="skin-josh">
 <header class="header">
     <a href="{{ route('dashboard') }}" class="logo">
-        <img width="214px" src="{{ asset('assets/img/idllogo.png') }}" alt="logo">
+        <img src="{{ asset('assets/img/idllogo.png') }}" alt="logo">
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
