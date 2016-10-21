@@ -22,6 +22,7 @@ Home
     <!--Carousel Start -->
     <div id="owl-demo" class="owl-carousel owl-theme">
         <div class="item"><img src="{{ asset('assets/images/slide_1.jpg') }}" alt="slider-image">
+
         </div>
         <div class="item"><img src="{{ asset('assets/images/slide_2.jpg') }}" alt="slider-image">
         </div>
@@ -33,7 +34,7 @@ Home
 
 {{-- content --}}
 @section('content')
-    <div class="container">
+    {{--<div class="container">
         <!-- Service Section Start-->
         <div class="row">
             <!-- Responsive Section Start -->
@@ -102,9 +103,9 @@ Home
             <!-- //20+ Page Section End -->
         </div>
         <!-- //Services Section End -->
-    </div>
+    </div>--}}
     <!-- Layout Section Start -->
-    <section class="feature-main">
+{{--    <section class="feature-main">
         <div class="container">
             <div class="row">
 
@@ -126,10 +127,10 @@ Home
                 </div>
             </div>
         </div>
-    </section>
+    </section>--}}
     <!-- //Layout Section Start -->
     <!-- Accordions Section End -->
-    <div class="container">
+    {{--<div class="container">
         <div class="row">
             <!-- Accordions Start -->
             <div class="text-center wow flash" data-wow-duration="3s">
@@ -279,10 +280,10 @@ Home
                 </div>
                 <!-- //Panle-group End -->
             </div>
-        </div>
+        </div>--}}
         <!-- //Accordions Section End -->
         <!-- Our Team Start -->
-        <div class="row text-center">
+        {{--<div class="row text-center">
             <h3 class=" border-danger"><span class="heading_border bg-danger">Our Team</span></h3>
             <div class="col-md-3 col-sm-5 profile wow fadeInLeft" data-wow-duration="3s">
                 <div class="thumbnail bg-white">
@@ -364,15 +365,15 @@ Home
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--}}
         <!-- //Our Team End -->
         <!-- What we are section Start -->
         <div class="row">
             <!-- What we are Start -->
-            <div class="col-md-6 col-sm-6 wow zoomInLeft" data-wow-duration="3s">
+            <div class="col-md-4 col-sm-4 wow zoomInLeft" data-wow-duration="3s">
                 <div class="text-left">
                     <div>
-                        <h4 class="border-warning"><span class="heading_border bg-warning">What We Are</span></h4>
+                        <h4 class="border-warning"><span class="heading_border bg-warning">WELCOME TO US</span></h4>
                     </div>
                 </div>
                 <img src="{{ asset('assets/images/image_12.jpg') }}" alt="image_12" class="img-responsive">
@@ -385,10 +386,10 @@ Home
             </div>
             <!-- //What we are End -->
             <!-- About Us Start -->
-            <div class="col-md-6 col-sm-6 wow zoomInRight" data-wow-duration="3s">
+            <div class="col-md-4 col-sm-4 wow zoomInTop" data-wow-duration="3s">
                 <div class="text-left">
                     <div>
-                        <h4 class="border-success"><span class="heading_border bg-success">About Us</span></h4>
+                        <h4 class="border-success"><span class="heading_border bg-success">ABOUT US</span></h4>
                     </div>
                 </div>
                 <img src="{{ asset('assets/images/image_11.jpg') }}" alt="image_11" class="img-responsive">
@@ -396,15 +397,32 @@ Home
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                 </p>
                 <p>
-                    <div class="text-right primary"><a href="#">Read more</a>
+                <div class="text-right primary"><a href="#">Read more</a>
+                </div>
+                </p>
+            </div>
+            <!-- //About Us End -->
+            <!-- About Us Start -->
+            <div class="col-md-4 col-sm-4 wow zoomInRight" data-wow-duration="3s">
+                <div class="text-left">
+                    <div>
+                        <h4 class="border-success"><span class="heading_border bg-primary">ABOUT PROGRAM</span></h4>
                     </div>
+                </div>
+                <img src="{{ asset('assets/images/image_11.jpg') }}" alt="image_11" class="img-responsive">
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+                <p>
+                <div class="text-right primary"><a href="#">Read more</a>
+                </div>
                 </p>
             </div>
             <!-- //About Us End -->
         </div>
         <!-- //What we are section End -->
         <!-- Testimonial Start -->
-        <div class="row">
+       {{-- <div class="row">
             <!-- Testimonial Section -->
             <div class="text-center">
                 <h3 class="border-primary"><span class="heading_border bg-primary">Testimonials</span></h3>
@@ -449,10 +467,10 @@ Home
                 </div>
             </div>
             <!-- Testimonial Section End -->
-        </div>
+        </div>--}}
         <!-- Testimonial End -->
         <!-- Features Start -->
-        <div class="row features">
+ {{--       <div class="row features">
             <div class="text-center">
                 <div class="text-center">
                     <h3 class=" border-warning"><span class="heading_border bg-warning">Features</span></h3>
@@ -513,7 +531,7 @@ Home
                     </p>
                 </div>
             </div>
-        </div>
+        </div>--}}
         <!-- //Features End -->
         <!-- Our Skills Start -->
 

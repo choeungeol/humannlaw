@@ -79,9 +79,14 @@
             </div>
             <div class="collapse navbar-collapse" id="collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li {!! (Request::is('/') ? 'class="active"' : '') !!}><a href="{{ route('home') }}"> Home</a>
-                    </li>
-                    <li class="dropdown {!! (Request::is('typography') || Request::is('advancedfeatures') || Request::is('grid') ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Features</a>
+                    {{--<li {!! (Request::is('/') ? 'class="active"' : '') !!}><a href="{{ route('home') }}"> Home</a></li>--}}
+                    <li><a href="/">회사 소개</a></li>
+                    <li><a href="/">프로그램 소개</a></li>
+                    <li><a href="/">파트너스</a></li>
+                    <li><a href="/">사업 영역</a></li>
+                    <li><a href="/">고객 센터</a></li>
+
+                    {{--<li class="dropdown {!! (Request::is('typography') || Request::is('advancedfeatures') || Request::is('grid') ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Features</a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ URL::to('typography') }}">Typography</a>
                             </li>
@@ -138,7 +143,7 @@
                     <li {!! (Request::is('blog') || Request::is('blogitem/*') ? 'class="active"' : '') !!}><a href="{{ URL::to('blog') }}"> Blog</a>
                     </li>
                     <li {!! (Request::is('contact') ? 'class="active"' : '') !!}><a href="{{ URL::to('contact') }}">Contact</a>
-                    </li>
+                    </li>--}}
                     {{--based on anyone login or not display menu items--}}
                     @if(Sentinel::guest())
                         <li><a href="{{ URL::to('login') }}">Login</a>
