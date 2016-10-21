@@ -21,16 +21,15 @@ Route::model('task', 'App\Task');
 Route::model('users', 'App\User');
 
 Route::pattern('slug', '[a-z0-9- _]+');
-
 Route::group(array('prefix' => 'admin'), function () {
 
-	# Error pages should be shown without requiring login
-	Route::get('404', function () {
-		return View('admin/404');
-	});
-	Route::get('500', function () {
-		return View::make('admin/500');
-	});
+    # Error pages should be shown without requiring login
+    Route::get('404', function () {
+        return View('admin/404');
+    });
+    Route::get('500', function () {
+        return View::make('admin/500');
+    });
 
     Route::post('secureImage', array('as' => 'secureImage','uses' => 'JoshController@secureImage'));
 
@@ -38,30 +37,35 @@ Route::group(array('prefix' => 'admin'), function () {
     Route::get('{id}/lockscreen', array('as' => 'lockscreen', 'uses' =>'UsersController@lockscreen'));
     Route::post('{id}/lockscreen', array('as' => 'lockscreen', 'uses' =>'UsersController@postLockscreen'));
 
-	# All basic routes defined here
-	Route::get('signin', array('as' => 'signin', 'uses' => 'AuthController@getSignin'));
-	Route::post('signin', 'AuthController@postSignin');
-	Route::post('signup', array('as' => 'signup', 'uses' => 'AuthController@postSignup'));
-	Route::post('forgot-password', array('as' => 'forgot-password', 'uses' => 'AuthController@postForgotPassword'));
-	Route::get('login2', function () {
-		return View::make('admin/login2');
-	});
+    # All basic routes defined here
+    Route::get('signin', array('as' => 'signin', 'uses' => 'AuthController@getSignin'));
+    Route::post('signin', 'AuthController@postSignin');
+    Route::post('signup', array('as' => 'signup', 'uses' => 'AuthController@postSignup'));
+    Route::post('forgot-password', array('as' => 'forgot-password', 'uses' => 'AuthController@postForgotPassword'));
+    Route::get('login2', function () {
+        return View::make('admin/login2');
+    });
 
-	# Register2
-	Route::get('register2', function () {
-		return View::make('admin/register2');
-	});
-	Route::post('register2', array('as' => 'register2', 'uses' => 'AuthController@postRegister2'));
+    # Register2
+    Route::get('register2', function () {
+        return View::make('admin/register2');
+    });
+    Route::post('register2', array('as' => 'register2', 'uses' => 'AuthController@postRegister2'));
 
-	# Forgot Password Confirmation
-	Route::get('forgot-password/{userId}/{passwordResetCode}', array('as' => 'forgot-password-confirm', 'uses' => 'AuthController@getForgotPasswordConfirm'));
-	Route::post('forgot-password/{userId}/{passwordResetCode}', 'AuthController@postForgotPasswordConfirm');
+    # Forgot Password Confirmation
+    Route::get('forgot-password/{userId}/{passwordResetCode}', array('as' => 'forgot-password-confirm', 'uses' => 'AuthController@getForgotPasswordConfirm'));
+    Route::post('forgot-password/{userId}/{passwordResetCode}', 'AuthController@postForgotPasswordConfirm');
 
-	# Logout
-	Route::get('logout', array('as' => 'logout', 'uses' => 'AuthController@getLogout'));
+    # Logout
+    Route::get('logout', array('as' => 'logout', 'uses' => 'AuthController@getLogout'));
 
-	# Account Activation
-	Route::get('activate/{userId}/{activationCode}', array('as' => 'activate', 'uses' => 'AuthController@getActivate'));
+    # Account Activation
+    Route::get('activate/{userId}/{activationCode}', array('as' => 'activate', 'uses' => 'AuthController@getActivate'));
+});
+
+Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function () {
+    # hnl / Index
+    Route::get('/', array('as' => 'hnl','uses' => 'HnlController@showHnl'));
 });
 
 Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), function () {
