@@ -1,12 +1,230 @@
 <ul id="menu" class="page-sidebar-menu">
     <li {!! (Request::is('admin') ? 'class="active"' : '') !!}>
-        <a href="{{ route('dashboard') }}">
+        <a href="/hnl">
             <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA"
                data-loop="true"></i>
-            <span class="title">Dashboard</span>
+            <span class="title">Main</span>
         </a>
     </li>
-    <li {!! (Request::is('admin/datatables') || Request::is('admin/editable_datatables') || Request::is('admin/dropzone') || Request::is('admin/multiple_upload')? 'class="active"' : '') !!}>
+    <li {!! (Request::is('hnl/basicinfo') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+               data-loop="true"></i>
+            <span class="title">기본정보 등록</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('hnl/basicinfo') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/basicinfo') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    사업장 정보
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    직위 부서
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    급여 항목
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    급여 유형
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    근무 유형
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="users-add" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+               data-loop="true"></i>
+            <span class="title">인사정보 등록</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    사원 정보
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    급여 정보
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    인사기록카드
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="inbox" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+               data-loop="true"></i>
+            <span class="title">근태관리 등록</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    연봉/월급제
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    일용직
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    시급제
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    연차 사용
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="money" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+               data-loop="true"></i>
+            <span class="title">급여 관리</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    급여 기준표
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    변동사항 입력
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    급여 대장
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    급여 명세서
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="user-remove" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+               data-loop="true"></i>
+            <span class="title">퇴직 관리</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    퇴직금 계산
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    퇴직금 연황
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    퇴직금 내역서
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="notebook" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+               data-loop="true"></i>
+            <span class="title">노무 관리</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    근로계약서
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    취업 규칙
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    노사 협의회
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    안전 보건위원회
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    안전 보건 규정
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-angle-double-right"></i>
+                    노무 관리서식
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+               data-loop="true"></i>
+            <span class="title">상담 센터</span>
+            <span class="fa arrow"></span>
+        </a>
+    </li>
+    {{--<li {!! (Request::is('admin/datatables') || Request::is('admin/editable_datatables') || Request::is('admin/dropzone') || Request::is('admin/multiple_upload')? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
@@ -704,7 +922,7 @@
                 </a>
             </li>
         </ul>
-    </li>
+    </li>--}}
     <!-- Menus generated by CRUD generator -->
-    @include('admin/layouts/menu')
+    @include('hnl/layouts/menu')
 </ul>

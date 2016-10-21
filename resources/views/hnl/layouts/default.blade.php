@@ -39,8 +39,8 @@
         </div>
         <div class="navbar-right">
             <ul class="nav navbar-nav">
-                @include('admin.layouts._messages')
-                @include('admin.layouts._notifications')
+                @include('hnl.layouts._messages')
+                @include('hnl.layouts._notifications')
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         @if(Sentinel::getUser()->pic)
@@ -114,25 +114,25 @@
                 <div class="nav_icons">
                     <ul class="sidebar_threeicons">
                         <li>
-                            <a href="{{ URL::to('admin/advanced_tables') }}">
+                            <a href="{{ URL::to('hnl/advanced_tables') }}">
                                 <i class="livicon" data-name="table" title="Advanced tables" data-loop="true"
                                    data-color="#418BCA" data-hc="#418BCA" data-s="25"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ URL::to('admin/tasks') }}">
+                            <a href="{{ URL::to('hnl/tasks') }}">
                                 <i class="livicon" data-name="list-ul" title="Tasks" data-loop="true"
                                    data-color="#e9573f" data-hc="#e9573f" data-s="25"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ URL::to('admin/gallery') }}">
+                            <a href="{{ URL::to('hnl/gallery') }}">
                                 <i class="livicon" data-name="image" title="Gallery" data-loop="true"
                                    data-color="#F89A14" data-hc="#F89A14" data-s="25"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ URL::to('admin/users') }}">
+                            <a href="{{ URL::to('hnl/users') }}">
                                 <i class="livicon" data-name="user" title="Users" data-loop="true"
                                    data-color="#6CC66C" data-hc="#6CC66C" data-s="25"></i>
                             </a>
@@ -141,7 +141,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <!-- BEGIN SIDEBAR MENU -->
-                @include('admin.layouts._left_menu')
+                @include('hnl.layouts._left_menu')
                 <!-- END SIDEBAR MENU -->
             </div>
         </section>
