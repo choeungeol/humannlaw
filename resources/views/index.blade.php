@@ -34,6 +34,11 @@ Home
 
 {{-- content --}}
 @section('content')
+        <div class="container" style="margin-bottom:30px;margin-top:30px;padding:10px;">
+            <div class="row">
+            <button class="btn btn-primary btn_sizes text-center" style="width:100%; font-size:20px;">프로그램 시작</button>
+            </div>
+        </div>
     {{--<div class="container">
         <!-- Service Section Start-->
         <div class="row">
