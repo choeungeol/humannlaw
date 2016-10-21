@@ -36,7 +36,11 @@ Home
 @section('content')
         <div class="container" style="margin-bottom:30px;margin-top:30px;padding:10px;">
             <div class="row">
-            <button class="btn btn-primary btn_sizes text-center" style="width:100%; font-size:20px;" onclick="location.href='{{ URL::to('hnl') }}'">프로그램 시작</button>
+                @if(Sentinel::guest())
+                    <button class="btn btn-primary btn_sizes text-center" style="width:100%; font-size:20px;" onclick="location.href='{{ URL::to('hnl') }}'" disabled>프로그램 시작</button>
+                @else
+                    <button class="btn btn-primary btn_sizes text-center" style="width:100%; font-size:20px;" onclick="location.href='{{ URL::to('hnl') }}'">프로그램 시작</button>
+                @endif
             </div>
         </div>
     {{--<div class="container">
