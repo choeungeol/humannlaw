@@ -56,4 +56,5 @@ class HnlController extends Controller
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }
+
 }

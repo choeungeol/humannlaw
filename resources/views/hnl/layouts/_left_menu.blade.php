@@ -54,8 +54,8 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-            <li>
-                <a href="#">
+            <li {!! (Request::is('hnl/pinfo/pinfo') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/pinfo/pinfo') }}">
                     <i class="fa fa-angle-double-right"></i>
                     사원 정보
                 </a>

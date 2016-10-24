@@ -76,6 +76,9 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
     Route::get('basicinfo/paytype', array('as' => 'hnl', 'uses' => 'HnlController@showPaytype'));
 
     Route::get('basicinfo/worktype', array('as' => 'hnl', 'uses' => 'HnlController@showWorktype'));
+
+    #인사정보 등록
+    Route::get('pinfo/pinfo', array('as' => 'hnl', 'uses' => 'PinfoController@showPinfo'));
 });
 
 Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), function () {
