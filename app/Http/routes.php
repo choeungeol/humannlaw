@@ -67,7 +67,15 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
     # hnl / Index
     Route::get('/', array('as' => 'hnl','uses' => 'HnlController@showHnl'));
     # 기본정보 등록
-    Route::get('/basicinfo', array('as' => 'hnl', 'uses' => 'HnlController@showBasicInfo'));
+    Route::get('basicinfo/basicinfo', array('as' => 'hnl', 'uses' => 'HnlController@showBasicInfo'));
+
+    Route::get('basicinfo/jobtitle', array('as' => 'hnl', 'uses' => 'HnlController@showJobtitle'));
+
+    Route::get('basicinfo/payitem', array('as' => 'hnl', 'uses' => 'HnlController@showPayitem'));
+
+    Route::get('basicinfo/paytype', array('as' => 'hnl', 'uses' => 'HnlController@showPaytype'));
+
+    Route::get('basicinfo/worktype', array('as' => 'hnl', 'uses' => 'HnlController@showWorktype'));
 });
 
 Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), function () {

@@ -59,9 +59,9 @@ X-Editable
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <div class="checkbox col-md-12 txt-align">
-                            <label>
+                                    <div class="table-responsive">
+                                        <div class="checkbox col-md-12 txt-align">
+                                            <label>
                                 <input class="custom-checkbox" type="checkbox" id="autoopen">&nbsp; auto-open next field
                             </label>
                             <button id="enable" class="btn btn-success btn-raised btn-sm enable-btn">Enable / Disable</button>

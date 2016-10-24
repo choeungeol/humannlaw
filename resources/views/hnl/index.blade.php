@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Human & Law Program
+    GOOD LABOR Program
     @parent
 @stop
 
@@ -30,7 +30,7 @@
 @section('content')
 
     <section class="content-header">
-        <h1>Welcome to Human & Law</h1>
+        <h1>Welcome to GOOD LABOR</h1>
         <ol class="breadcrumb">
             <li class="active">
                 <a href="#">
