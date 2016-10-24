@@ -65,7 +65,7 @@ Calendar
                         </div>
                         <div class="col-md-9">
                             <div class="box">
-                                <div class="box-body">
+                                <div class="box-b   ody">
                                     <div id="calendar"></div>
                                 </div>
                             </div>

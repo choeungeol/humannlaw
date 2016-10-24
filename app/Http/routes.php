@@ -66,6 +66,8 @@ Route::group(array('prefix' => 'admin'), function () {
 Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function () {
     # hnl / Index
     Route::get('/', array('as' => 'hnl','uses' => 'HnlController@showHnl'));
+
+    Route::get('/test', array('as' => 'hnl','uses' => 'HnlController@showTest'));
     # 기본정보 등록
     Route::get('basicinfo/basicinfo', array('as' => 'hnl', 'uses' => 'HnlController@showBasicInfo'));
 

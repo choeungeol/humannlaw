@@ -6,6 +6,13 @@
             <span class="title">Main</span>
         </a>
     </li>
+    <li>
+        <a href="/hnl/test">
+            <i class="livicon" data-name="asterisk" data-size="18" data-c="#418BCA" data-hc="#418BCA"
+               data-loop="true"></i>
+            <span class="title">UI Example</span>
+        </a>
+    </li>
     <li {!! (Request::is('hnl/basicinfo/basicinfo') || Request::is('hnl/basicinfo/jobtitle') || Request::is('hnl/basicinfo/payitem') || Request::is('hnl/basicinfo/paytype') || Request::is('hnl/basicinfo/worktype') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"

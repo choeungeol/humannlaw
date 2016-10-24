@@ -155,5 +155,5 @@ Animation Charts
     <script src="{{ asset('assets/vendors/animationcharts/jquery.circliful.min.js') }}" ></script>
     <script src="{{ asset('assets/vendors/flotchart/js/jquery.flot.resize.js') }}"  language="javascript" type="text/javascript" ></script>
     <script src="{{ asset('assets/js/pages/animation-chart.js') }}" ></script>
-    
+
 @stop

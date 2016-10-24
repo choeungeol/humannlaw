@@ -208,10 +208,10 @@
             <div class="col-sm-4">
                 <h4>Contact Us</h4>
                 <ul class="list-unstyled">
-                    <li>35,Lorem Lis Street, Park Ave</li>
-                    <li>Lis Street, India.</li>
-                    <li><i class="livicon icon4 icon3" data-name="cellphone" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i>Phone:9140 123 4588</li>
-                    <li><i class="livicon icon4 icon3" data-name="printer" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Fax:400 423 1456</li>
+                    <li>서울특별시 영등포구 국회대로 72길 4</li>
+                    <li>아이비피아빌딩 5층</li>
+                    <li><i class="livicon icon4 icon3" data-name="cellphone" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i>Phone:070.4645.9877</li>
+{{--                    <li><i class="livicon icon4 icon3" data-name="printer" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Fax:400 423 1456</li>--}}
                     <li><i class="livicon icon3" data-name="mail-alt" data-size="20" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Email:<span class="text-success" style="cursor: pointer;">
                         admin@idealize.co.kr</span>
                     </li>
