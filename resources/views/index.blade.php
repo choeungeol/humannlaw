@@ -414,7 +414,7 @@ Home
             <!-- About Us Start -->
             <div class="col-md-4 col-sm-4 wow zoomInRight" data-wow-duration="3s">
                 <div class="text-left">
-                    <div>
+                      <div>
                         <h4 class="border-success"><span class="heading_border bg-primary">ABOUT PROGRAM</span></h4>
                     </div>
                 </div>
