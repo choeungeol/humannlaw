@@ -226,7 +226,13 @@
                 </div>
             </div>
         </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <a href="#" class="button button-block button-rounded button-primary button-large">저장</a>
+                </div>
+            </div>
         </form>
+
     </section>
 
 @stop

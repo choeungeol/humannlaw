@@ -8,7 +8,7 @@ html, body {
     -webkit-transition: all .25s ease-out;
     -moz-transition: all .25s ease-out;
     transition: all .25s ease-out;
-    font-family: Lato, sans-serif !important;
+    font-family: 'Nanum Barun Gothic',Lato, sans-serif !important;
 }
 
 /* Layouts */
@@ -87,7 +87,7 @@ body > .header {
 
 /* H1 - H6 font */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'Noto Sans', serif;
+    font-family: 'Nanum Barun Gothic','Noto Sans', serif;
 }
 
 a, a:hover, li.active a {
@@ -160,7 +160,7 @@ body > .header .navbar .sidebar-toggle {
 }
 
 .left-side li a {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Nanum Barun Gothic','Noto Sans', sans-serif;
     letter-spacing: 0.1em;
     font-size: 14px;
 }
@@ -286,7 +286,7 @@ body > .header .logo .icon {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 12px;
-    font-family: Lato, sans-serif;
+    font-family:'Nanum Barun Gothic', Lato, sans-serif;
     padding: 7px 5px;
     position: absolute;
     top: 15px;
@@ -941,7 +941,7 @@ body > .header .logo .icon {
 }
 
 .mesages li .samp {
-    font-family: Lato, sans-serif;
+    font-family: 'Nanum Barun Gothic',Lato, sans-serif;
     font-size: 11px;
     clear: both;
     margin-top: -3px;
