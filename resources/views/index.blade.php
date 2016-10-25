@@ -21,12 +21,11 @@ Home
 @section('top')
     <!--Carousel Start -->
     <div id="owl-demo" class="owl-carousel owl-theme">
-        <div class="item"><img src="{{ asset('assets/images/slide_1.png') }}" alt="slider-image">
-
+        <div class="item"><img src="{{ asset('assets/images/slide_4.jpg') }}" alt="slider-image">
         </div>
-        <div class="item"><img src="{{ asset('assets/images/slide_2.png') }}" alt="slider-image">
+        <div class="item"><img src="{{ asset('assets/images/slide_5.jpg') }}" alt="slider-image">
         </div>
-        <div class="item"><img src="{{ asset('assets/images/slide_3.png') }}" alt="slider-image">
+        <div class="item"><img src="{{ asset('assets/images/slide_6.jpg') }}" alt="slider-image">
         </div>
     </div>
     <!-- //Carousel End -->
