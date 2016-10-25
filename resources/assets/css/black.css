@@ -1375,7 +1375,7 @@ li.dropdown-footer {
 
 .skin-josh .sidebar a {
     color: #fff;
-    font-family: Lato, sans-serif;
+    font-family: 'Nanum Barun Gothic',Lato, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-decoration: none;
 }
@@ -1444,28 +1444,28 @@ li.dropdown-footer {
 .lightbluebg {
     background: #418bca;
     color: #FFF;
-    font-family: Lato, sans-serif;
+    font-family: 'Nanum Barun Gothic',Lato, sans-serif;
     margin: 10px 0;
 }
 
 .redbg {
     background: #EF6F6C;
     color: #FFF;
-    font-family: Lato, sans-serif;
+    font-family: 'Nanum Barun Gothic',Lato, sans-serif;
     margin: 10px 0;
 }
 
 .goldbg {
     background: #F89A14;
     color: #FFF;
-    font-family: Lato, sans-serif;
+    font-family: 'Nanum Barun Gothic',Lato, sans-serif;
     margin: 10px 0;
 }
 
 .palebluecolorbg {
     background: #00bc8c;
     color: #FFF;
-    font-family: Lato, sans-serif;
+    font-family: 'Nanum Barun Gothic',Lato, sans-serif;
     margin: 10px 0;
 }
 
