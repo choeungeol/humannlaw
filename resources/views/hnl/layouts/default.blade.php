@@ -32,7 +32,7 @@
 
 <body class="skin-josh">
 <header class="header">
-    <a href="{{ route('dashboard') }}" class="logo">
+    <a href="{{ route('hnl') }}" class="logo">
         <img src="{{ asset('assets/img/idllogo.png') }}" alt="logo">
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
