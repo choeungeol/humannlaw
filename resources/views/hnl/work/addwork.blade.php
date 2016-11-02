@@ -50,6 +50,7 @@
                         </span>
                     </div>
                     <div class="panel-body">
+                        <div class="col-lg-8">
                         <table class="table table-bordered table-condensed">
                             <thead>
                             <tr>
@@ -143,7 +144,7 @@
                                 </td>
                                 <th class="success">적용일자</th>
                                 <td>범위로 정할 수</td>
-                            </tr>
+                            </tr>   
                             <tr>
                                 <th class="success">급여반영</th>
                                 <td>여,부</td>
@@ -155,6 +156,7 @@
                             </tr>
                             </thead>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>
