@@ -68,7 +68,7 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
     Route::get('/', array('as' => 'hnl','uses' => 'HnlController@showHnl'));
 
     Route::get('/test', array('as' => 'hnl','uses' => 'HnlController@showTest'));
-    # 기본정보 등록
+    # 기본정보
     Route::get('basicinfo/basicinfo', array('as' => 'hnl', 'uses' => 'HnlController@showBasicInfo'));
 
     Route::get('basicinfo/jobtitle', array('as' => 'hnl', 'uses' => 'HnlController@showJobtitle'));
@@ -79,8 +79,24 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
     Route::get('basicinfo/worktype', array('as' => 'hnl', 'uses' => 'HnlController@showWorktype'));
 
-    #인사정보 등록
+    #인사정보
     Route::get('pinfo/pinfo', array('as' => 'hnl', 'uses' => 'PinfoController@showPinfo'));
+
+    Route::get('pinfo/payinfo', array('as' => 'hnl', 'uses' => 'PinfoController@showPayinfo'));
+
+    #근태관리
+    Route::get('work/addwork', array('as' => 'hnl', 'uses' => 'WorkController@showAddwork'));
+
+    Route::get('work/workaday', array('as' => 'hnl', 'uses' => 'WorkController@showWorkADay'));
+
+    Route::get('work/workatime', array('as' => 'hnl', 'uses' => 'WorkController@showWorkATime'));
+
+    Route::get('work/yearoff', array('as' => 'hnl', 'uses' => 'WorkController@showYearOff'));
+
+    #급여관리
+    Route::get('pay/pmanage', array('as' => 'hnl', 'uses' => 'PayController@showPayManager'));
+
+
 });
 
 Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), function () {

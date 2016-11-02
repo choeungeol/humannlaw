@@ -16,4 +16,12 @@ class PinfoController extends Controller
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }
+
+    public function showPayinfo()
+    {
+        if(Sentinel::check())
+            return view('hnl.pinfo.payinfo');
+        else
+            return Redirect::to('admin/signin')->with('error','You must be logged in!');
+    }
 }
