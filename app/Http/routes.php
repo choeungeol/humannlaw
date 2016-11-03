@@ -96,6 +96,14 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
     #급여관리
     Route::get('pay/pmanage', array('as' => 'hnl', 'uses' => 'PayController@showPayManager'));
 
+    Route::get('pay/pchange', array('as' => 'hnl','uses' => 'PayController@showPayChange'));
+
+    Route::get('pay/plist', array('as' => 'hnl','uses' => 'PayController@showPayList'));
+
+    Route::get('pay/preceipt', array('as' => 'hnl','uses' => 'PayController@showPayReceipt'));
+
+    Route::get('pay/pchangec', array('as' => 'hnl','uses' => 'PayController@showPayChangeConfirm'));
+
 
 });
 
