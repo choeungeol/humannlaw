@@ -167,7 +167,7 @@
             <li {!! (Request::is('hnl/retire/rinfo') ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to('hnl/retire/rinfo') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    퇴직금 연황
+                    퇴직금 현황
                 </a>
             </li>
             <li {!! (Request::is('hnl/retire/rreceipt') ? 'class="active"' : '') !!}>
