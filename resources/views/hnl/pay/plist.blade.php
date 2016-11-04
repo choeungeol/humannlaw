@@ -58,6 +58,7 @@
                                         <caption>
                                             <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 기본총괄표
                                         </caption>
+
                                         <thead>
                                         <tr>
                                             <th rowspan="2">순번</th>

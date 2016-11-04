@@ -104,6 +104,13 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
     Route::get('pay/pchangec', array('as' => 'hnl','uses' => 'PayController@showPayChangeConfirm'));
 
+    #퇴직관리
+    Route::get('retire/rcalc', array('as' => 'hnl', 'uses' => 'RetireController@showRetireCalc'));
+
+    Route::get('retire/rinfo', array('as' => 'hnl','uses' => 'RetireController@showRetireinfo'));
+
+    Route::get('retire/rreceipt', array('as' => 'hnl','uses' => 'RetireController@showRetireReceipt'));
+
 
 });
 

@@ -150,7 +150,7 @@
             </li>
         </ul>
     </li>
-    <li>
+    <li {!! (Request::is('hnl/retire/rcalc') || Request::is('hnl/retire/rinfo') || Request::is('hnl/retire/rreceipt')  ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="user-remove" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
@@ -158,20 +158,20 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-            <li>
-                <a href="#">
+            <li {!! (Request::is('hnl/retire/rcalc') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/retire/rcalc') }}">
                     <i class="fa fa-angle-double-right"></i>
                     퇴직금 계산
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li {!! (Request::is('hnl/retire/rinfo') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/retire/rinfo') }}">
                     <i class="fa fa-angle-double-right"></i>
                     퇴직금 연황
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li {!! (Request::is('hnl/retire/rreceipt') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/retire/rreceipt') }}">
                     <i class="fa fa-angle-double-right"></i>
                     퇴직금 내역서
                 </a>
