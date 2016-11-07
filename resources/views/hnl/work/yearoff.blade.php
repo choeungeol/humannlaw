@@ -17,7 +17,7 @@
 @section('content')
 
     <section class="content-header">
-        <h1>Welcome to GOOD LABOR</h1>
+        <h1>연차 사용</h1>
         <ol class="breadcrumb">
             <li class="active">
                 <a href="#">

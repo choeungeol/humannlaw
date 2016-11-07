@@ -16,7 +16,7 @@
 {{-- Page content --}}
 @section('content')
     <section class="content-header">
-        <h1>Welcome to GOOD LABOR</h1>
+        <h1>변동사항 입력</h1>
         <ol class="breadcrumb">
             <li class="active">
                 <a href="#">

@@ -16,7 +16,7 @@
 {{-- Page content --}}
 @section('content')
     <section class="content-header">
-        <h1>Welcome to GOOD LABOR</h1>
+        <h1>변동사항 입력</h1>
         <ol class="breadcrumb">
             <li class="active">
                 <a href="#">
@@ -33,7 +33,7 @@
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
                             <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
-                               data-l="true"></i> 변동사항입력
+                               data-l="true"></i> 변동사항확인
                         </h4>
                             <span class="pull-right">
                                 <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
