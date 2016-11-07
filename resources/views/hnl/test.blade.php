@@ -28,7 +28,7 @@ UI Example
 {{-- Page content --}}
 @section('content')
     <section class="content-header">
-        <h1>Welcome to GOOD LABOR (UI example)</h1>
+        <h1>UI example</h1>
         <ol class="breadcrumb">
             <li class="active">
                 <a href="#">
