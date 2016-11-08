@@ -24,4 +24,12 @@ class PinfoController extends Controller
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }
+
+    public function showPcard()
+    {
+        if(Sentinel::check())
+            return view('hnl.pinfo.pcard');
+        else
+            return Redirect::to('admin/signin')->with('error','You must be logged in!');
+    }
 }

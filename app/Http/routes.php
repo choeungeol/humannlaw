@@ -84,6 +84,9 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
     Route::get('pinfo/payinfo', array('as' => 'hnl', 'uses' => 'PinfoController@showPayinfo'));
 
+    Route::get('pinfo/pcard', array('as' => 'hnl', 'uses' => 'PinfoController@showPcard'));
+
+
     #근태관리
     Route::get('work/addwork', array('as' => 'hnl', 'uses' => 'WorkController@showAddwork'));
 

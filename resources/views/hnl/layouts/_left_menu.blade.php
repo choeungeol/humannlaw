@@ -73,8 +73,8 @@
                     급여 정보
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li {!! (Request::is('hnl/pinfo/pcard') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/pinfo/pcard') }}">
                     <i class="fa fa-angle-double-right"></i>
                     인사기록카드
                 </a>
