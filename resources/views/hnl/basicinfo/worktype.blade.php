@@ -26,7 +26,7 @@
             </li>
         </ol>
     </section>
-    <section class="content">
+    <section class="content" ng-app="worktype" ng-controller="worktypeCtrl">
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-danger">
@@ -60,11 +60,6 @@
                                         <option>B형</option>
                                         <option>C형</option>
                                     </select>
-                                    </div>
-                                </li>
-                                <li class="">
-                                    <div class="form-inline">
-                                    <a class="btn btn-primary" style="margin-left:10px;">휴게시간 추가</a>
                                     </div>
                                 </li>
                             </ul>
@@ -144,247 +139,168 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td rowspan="2" style="vertical-align: middle;">근무시간</td>
-                                                    <td>시작</td>
+                                                    <td style="vertical-align: middle;">근무시간</td>
+                                                    <td>시작<br><br>종료</td>
                                                     <td>
+                                                        <input class="form-control input-sm" type="time">
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>종료</td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td rowspan="2" style="vertical-align: middle;">휴게시간</td>
-                                                    <td>시작</td>
+                                                    <td style="vertical-align: middle;">휴게시간<br>
+                                                        <a class="btn btn-sm btn-primary" ng-click="addRow()">추가</a>
+                                                    </td>
+                                                    <td>시작<br><br>종료</td>
                                                     <td>
+                                                        <input class="form-control input-sm" type="time">
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
+                                                        <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
+                                                        <input class="form-control input-sm" type="time">
+                                                        <input class="form-control input-sm" type="time">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control input-sm" type="time">
+                                                        <input class="form-control input-sm" type="time">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control input-sm" type="time">
+                                                        <input class="form-control input-sm" type="time">
+                                                    </td>
+                                                </tr>
+                                                <tr ng-repeat="bt in breaktimes">
+                                                    <td style="vertical-align: middle;">
+                                                        <% bt.name %> <% bt.num %>
+                                                        <br>
+                                                        <button type="button" class="btn btn-sm btn-warning" ng-click="removeRow(bt.name)">삭제</button>
+                                                    </td>
+                                                    <td>시작<br><br>종료</td>
+                                                    <td>
+                                                        <input class="form-control input-sm" type="time">
+                                                        <input class="form-control input-sm" type="time">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control input-sm" type="time">
+                                                        <input class="form-control input-sm" type="time">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control input-sm" type="time">
+                                                        <input class="form-control input-sm" type="time">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control input-sm" type="time">
+                                                        <input class="form-control input-sm" type="time">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control input-sm" type="time">
+                                                        <input class="form-control input-sm" type="time">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control input-sm" type="time">
+                                                        <input class="form-control input-sm" type="time">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control input-sm" type="time">
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>종료</td>
+                                                    <td style="vertical-align: middle;">연장근무</td>
+                                                    <td>시작<br><br>종료</td>
                                                     <td>
+                                                        <input class="form-control input-sm" type="time">
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td rowspan="2" style="vertical-align: middle;">휴게시간2</td>
-                                                    <td>시작</td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>종료</td>
+                                                    <td style="vertical-align: middle;">야간근무</td>
+                                                    <td>시작<br><br>종료</td>
                                                     <td>
+                                                        <input class="form-control input-sm" type="time">
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td rowspan="2" style="vertical-align: middle;">연장근무</td>
-                                                    <td>시작</td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>종료</td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td rowspan="2" style="vertical-align: middle;">야간근무</td>
-                                                    <td>시작</td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>종료</td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control input-sm" type="time">
-                                                    </td>
-                                                    <td>
                                                         <input class="form-control input-sm" type="time">
                                                     </td>
                                                 </tr>
@@ -466,198 +382,168 @@
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td rowspan="2" style="vertical-align: middle;">근무시간</td>
-                                                <td>시작</td>
+                                                <td style="vertical-align: middle;">근무시간</td>
+                                                <td>시작<br><br>종료</td>
                                                 <td>
+                                                    <input class="form-control input-sm" type="time">
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>종료</td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td rowspan="2" style="vertical-align: middle;">휴게시간</td>
-                                                <td>시작</td>
+                                                <td style="vertical-align: middle;">휴게시간<br>
+                                                    <a class="btn btn-sm btn-primary" ng-click="addRowb()">추가</a>
+                                                </td>
+                                                <td>시작<br><br>종료</td>
                                                 <td>
+                                                    <input class="form-control input-sm" type="time">
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                            </tr>
+                                            <tr ng-repeat="bt in breaktimesb">
+                                                <td style="vertical-align: middle;">
+                                                    <% bt.name %> <% bt.num %>
+                                                    <br>
+                                                    <button type="button" class="btn btn-sm btn-warning" ng-click="removeRowb(bt.name)">삭제</button>
+                                                </td>
+                                                <td>시작<br><br>종료</td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>종료</td>
+                                                <td style="vertical-align: middle;">연장근무</td>
+                                                <td>시작<br><br>종료</td>
                                                 <td>
+                                                    <input class="form-control input-sm" type="time">
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td rowspan="2" style="vertical-align: middle;">연장근무</td>
-                                                <td>시작</td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>종료</td>
+                                                <td style="vertical-align: middle;">야간근무</td>
+                                                <td>시작<br><br>종료</td>
                                                 <td>
+                                                    <input class="form-control input-sm" type="time">
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td rowspan="2" style="vertical-align: middle;">야간근무</td>
-                                                <td>시작</td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>종료</td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                             </tr>
@@ -739,198 +625,168 @@
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td rowspan="2" style="vertical-align: middle;">근무시간</td>
-                                                <td>시작</td>
+                                                <td style="vertical-align: middle;">근무시간</td>
+                                                <td>시작<br><br>종료</td>
                                                 <td>
+                                                    <input class="form-control input-sm" type="time">
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>종료</td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td rowspan="2" style="vertical-align: middle;">휴게시간</td>
-                                                <td>시작</td>
+                                                <td style="vertical-align: middle;">휴게시간<br>
+                                                    <a class="btn btn-sm btn-primary" ng-click="addRowc()">추가</a>
+                                                </td>
+                                                <td>시작<br><br>종료</td>
                                                 <td>
+                                                    <input class="form-control input-sm" type="time">
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                            </tr>
+                                            <tr ng-repeat="bt in breaktimesc">
+                                                <td style="vertical-align: middle;">
+                                                    <% bt.name %> <% bt.num %>
+                                                    <br>
+                                                    <button type="button" class="btn btn-sm btn-warning" ng-click="removeRowc(bt.name)">삭제</button>
+                                                </td>
+                                                <td>시작<br><br>종료</td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
+                                                    <input class="form-control input-sm" type="time">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control input-sm" type="time">
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>종료</td>
+                                                <td style="vertical-align: middle;">연장근무</td>
+                                                <td>시작<br><br>종료</td>
                                                 <td>
+                                                    <input class="form-control input-sm" type="time">
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td rowspan="2" style="vertical-align: middle;">연장근무</td>
-                                                <td>시작</td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>종료</td>
+                                                <td style="vertical-align: middle;">야간근무</td>
+                                                <td>시작<br><br>종료</td>
                                                 <td>
+                                                    <input class="form-control input-sm" type="time">
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td rowspan="2" style="vertical-align: middle;">야간근무</td>
-                                                <td>시작</td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                                 <td>
                                                     <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>종료</td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control input-sm" type="time">
-                                                </td>
-                                                <td>
                                                     <input class="form-control input-sm" type="time">
                                                 </td>
                                             </tr>
@@ -955,6 +811,6 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
 
-
+    <script src="{{ asset('assets/js/hnl/worktype.js') }}" type="text/javascript"></script>
 
 @stop

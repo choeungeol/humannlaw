@@ -40,7 +40,7 @@
             </li>
         </ol>
     </section>
-    <section class="content">
+    <section class="content" ng-app="hnl" ng-controller="hnlCtrl">
         <!--/row-->
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-8 margin_10">
@@ -110,7 +110,7 @@
                     <div class="panel-body no-padding">
                         <div class="compose row">
                             <label class="col-md-3 hidden-xs" style="padding: 0">To:</label>
-                            <input type="text" class="col-md-9 col-xs-9" placeholder="name@email.com " tabindex="1"/>
+                            <input type="text" class="col-md-9 col-xs-9" placeholder="name@email.com " tabindex="1" ng-model="test"/>
 
                             <div class="clear"></div>
                             <label class="col-md-3 hidden-xs" style="padding: 0">Subject:</label>
@@ -443,5 +443,6 @@
     <script src="{{ asset('assets/vendors/flotchart/js/jquery.flot.resize.js') }}"  language="javascript" type="text/javascript" ></script>
     <script src="{{ asset('assets/js/pages/animation-chart.js') }}" ></script>
 
+    <script src="{{ asset('assets/js/hnl/app.js') }}" type="text/javascript"></script>
 
 @stop
