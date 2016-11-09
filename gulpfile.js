@@ -190,6 +190,11 @@ elixir(function (mix) {
     //delete all files first
     mix.task('delete');
 
+    //angularjs
+    mix.copy(vendors + 'angular', destVendors + 'angular');
+
+    //angularjs app
+    mix.copy(srcJs + 'hnl', destJs + 'hnl');
 
     //copy frontend skins to public
     mix.copy(srcCss + 'frontend/skins', destCss + 'frontend/skins');
