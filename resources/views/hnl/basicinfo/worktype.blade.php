@@ -794,7 +794,9 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="slimScrollBar" style="background: rgb(216, 74, 56); width: 3px; position: absolute; top: 0px; opacity: 1; display: none; border-radius: 0px; z-index: 99; right: 1px; height: 130px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                                <div class="slimScrollBar" style="background: rgb(216, 74, 56); width: 3px; position: absolute; top: 0px; opacity: 1; display: none; border-radius: 0px; z-index: 99; right: 1px; height: 130px;"></div>
+                            <div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -811,6 +813,6 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
 
-    <script src="{{ asset('assets/js/hnl/worktype.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/hnl/addwork.js') }}" type="text/javascript"></script>
 
 @stop

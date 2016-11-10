@@ -176,6 +176,8 @@ return [
         \InfyOm\CoreTemplates\CoreTemplatesServiceProvider::class,
         \InfyOm\GeneratorBuilder\GeneratorBuilderServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+
+        Visualplus\Board\ServiceProvider::class,
     ],
 
     /*

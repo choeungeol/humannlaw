@@ -45,7 +45,7 @@
     <section class="content">
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-white">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             급여명세서 (월급제/연봉제)
@@ -65,7 +65,7 @@
                                     <label class="sr-only" for="inputPassword">급여년도/월</label>
                                     <input type="date" class="form-control" id="inlinePassword" placeholder="급여년도">
                                 </div>
-                                <button type="button" class="btn btn-primary mar-top">검색</button>
+                                <a type="button" class="btn btn-primary mar-top" data-toggle="modal" data-href="#full-width" href="#full-width">검색</a>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -416,7 +416,46 @@
             </div>
         </div>
     </section>
-
+    <div class="modal fade modal-fade-in-scale-up" tabindex="-1" id="full-width" role="dialog" aria-labelledby="modalLabelfade" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title" id="modalLabelfade">검색</h4>
+                </div>
+                <div class="modal-body">
+                  <table class="table table-bordered">
+                      <tr>
+                          <th>연도</th>
+                          <th>월</th>
+                          <th>총등록자</th>
+                          <th colspan="2">정규직</th>
+                          <th colspan="2">기간제</th>
+                          <th colspan="2">단시간 근로자</th>
+                          <th colspan="2">일용직</th>
+                          <th></th>
+                      </tr>
+                      <tr>
+                          <td>2016년</td>
+                          <td>7월</td>
+                          <td></td>
+                          <td>48명</td>
+                          <td>명세서출력</td>
+                          <td>12명</td>
+                          <td>명세서출력</td>
+                          <td>2명</td>
+                          <td>명세서출력</td>
+                          <td>8명</td>
+                          <td>명세서출력</td>
+                          <td>전체 출력</td>
+                      </tr>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 
 {{-- page level scripts --}}

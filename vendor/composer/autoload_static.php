@@ -20,6 +20,7 @@ class ComposerStaticInit92740592b586a568c1c6f8194a9f5714
         '0ccdf99b8f62f02c52cba55802e0c2e7' => __DIR__ . '/..' . '/zircote/swagger-php/src/functions.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '752af1c2bdb339e8474c3c31b22b7d54' => __DIR__ . '/..' . '/illuminate/html/helpers.php',
         'a28599dc506da421718fad75955a4b9d' => __DIR__ . '/..' . '/infyomlabs/laravel-generator/src/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
     );
@@ -40,6 +41,10 @@ class ComposerStaticInit92740592b586a568c1c6f8194a9f5714
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
+        ),
+        'V' => 
+        array (
+            'Visualplus\\Board\\' => 17,
         ),
         'T' => 
         array (
@@ -91,6 +96,7 @@ class ComposerStaticInit92740592b586a568c1c6f8194a9f5714
             'InfyOm\\Generator\\' => 17,
             'InfyOm\\GeneratorBuilder\\' => 24,
             'InfyOm\\CoreTemplates\\' => 21,
+            'Illuminate\\Html\\' => 16,
             'Illuminate\\' => 11,
         ),
         'G' => 
@@ -151,6 +157,10 @@ class ComposerStaticInit92740592b586a568c1c6f8194a9f5714
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Visualplus\\Board\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/visualplus/board/src',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -283,6 +293,10 @@ class ComposerStaticInit92740592b586a568c1c6f8194a9f5714
         'InfyOm\\CoreTemplates\\' => 
         array (
             0 => __DIR__ . '/..' . '/infyomlabs/core-templates/src',
+        ),
+        'Illuminate\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/html',
         ),
         'Illuminate\\' => 
         array (
@@ -498,9 +512,12 @@ class ComposerStaticInit92740592b586a568c1c6f8194a9f5714
         'App\\Http\\Controllers\\GroupsController' => __DIR__ . '/../..' . '/app/Http/Controllers/GroupsController.php',
         'App\\Http\\Controllers\\HnlController' => __DIR__ . '/../..' . '/app/Http/Controllers/HnlController.php',
         'App\\Http\\Controllers\\JoshController' => __DIR__ . '/../..' . '/app/Http/Controllers/JoshController.php',
+        'App\\Http\\Controllers\\PayController' => __DIR__ . '/../..' . '/app/Http/Controllers/PayController.php',
         'App\\Http\\Controllers\\PinfoController' => __DIR__ . '/../..' . '/app/Http/Controllers/PinfoController.php',
+        'App\\Http\\Controllers\\RetireController' => __DIR__ . '/../..' . '/app/Http/Controllers/RetireController.php',
         'App\\Http\\Controllers\\TaskController' => __DIR__ . '/../..' . '/app/Http/Controllers/TaskController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
+        'App\\Http\\Controllers\\WorkController' => __DIR__ . '/../..' . '/app/Http/Controllers/WorkController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -2087,6 +2104,11 @@ class ComposerStaticInit92740592b586a568c1c6f8194a9f5714
         'Illuminate\\Foundation\\Validation\\ValidationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Validation/ValidationException.php',
         'Illuminate\\Hashing\\BcryptHasher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/BcryptHasher.php',
         'Illuminate\\Hashing\\HashServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/HashServiceProvider.php',
+        'Illuminate\\Html\\FormBuilder' => __DIR__ . '/..' . '/illuminate/html/FormBuilder.php',
+        'Illuminate\\Html\\FormFacade' => __DIR__ . '/..' . '/illuminate/html/FormFacade.php',
+        'Illuminate\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/illuminate/html/HtmlBuilder.php',
+        'Illuminate\\Html\\HtmlFacade' => __DIR__ . '/..' . '/illuminate/html/HtmlFacade.php',
+        'Illuminate\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/illuminate/html/HtmlServiceProvider.php',
         'Illuminate\\Http\\Exception\\HttpResponseException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Exception/HttpResponseException.php',
         'Illuminate\\Http\\Exception\\PostTooLargeException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Exception/PostTooLargeException.php',
         'Illuminate\\Http\\JsonResponse' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/JsonResponse.php',
@@ -4398,6 +4420,12 @@ class ComposerStaticInit92740592b586a568c1c6f8194a9f5714
         'TijsVerkoyen\\CssToInlineStyles\\Exception' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Exception.php',
         'TijsVerkoyen\\CssToInlineStyles\\Selector' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Selector.php',
         'TijsVerkoyen\\CssToInlineStyles\\Specificity' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Specificity.php',
+        'Visualplus\\Board\\AdminController' => __DIR__ . '/..' . '/visualplus/board/src/AdminController.php',
+        'Visualplus\\Board\\ArticleFiles' => __DIR__ . '/..' . '/visualplus/board/src/ArticleFiles.php',
+        'Visualplus\\Board\\Articles' => __DIR__ . '/..' . '/visualplus/board/src/Articles.php',
+        'Visualplus\\Board\\BoardController' => __DIR__ . '/..' . '/visualplus/board/src/BoardController.php',
+        'Visualplus\\Board\\PluginsController' => __DIR__ . '/..' . '/visualplus/board/src/PluginsController.php',
+        'Visualplus\\Board\\ServiceProvider' => __DIR__ . '/..' . '/visualplus/board/src/ServiceProvider.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
         'Yajra\\Datatables\\Contracts\\DataTableButtonsContract' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/DataTableButtonsContract.php',

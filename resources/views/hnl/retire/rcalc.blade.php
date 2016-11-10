@@ -72,7 +72,14 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3" for="last_Name">퇴직금 대상월:</label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" id="last_Name" placeholder="Last Name">
+                                                <div class="form-inline">
+                                                <select class="form-control">
+                                                    <option></option>
+                                                    <option>2016-11-01</option>
+                                                    <option></option>
+                                                </select>
+                                                    <button class="btn btn-sm btn-default">초기화</button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group has-warning">
@@ -255,7 +262,12 @@
                                 <th>지급년월일</th>
                                 <td><input type="text" class="form-control input-sm"></td>
                                 <th>세액공제 대상여부</th>
-                                <td><input type="text" class="form-control input-sm"></td>
+                                <td>
+                                    <div class="form-inline">
+                                        <input type="text" class="form-control input-sm" disabled>
+                                        <button type="button" class="btn btn-sm btn-default"> + 처 리</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <th>퇴직사유</th>

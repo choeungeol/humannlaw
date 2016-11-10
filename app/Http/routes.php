@@ -249,3 +249,6 @@ Route::post('blogitem/{blog}/comment', 'FrontendBlogController@storeComment');
 
 Route::get('{name?}', 'JoshController@showFrontEndView');
 # End of frontend views
+
+Route::resource('board/admin', 'BoardAdminController');
+Route::resource('board/{bo_id}/board', 'FreeBoardController');

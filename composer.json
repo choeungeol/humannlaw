@@ -18,7 +18,8 @@
         "jlapp/swaggervel": "dev-master",
         "doctrine/dbal": "~2.3",
         "infyomlabs/generator-builder": "dev-master",
-        "intervention/image" :"dev-master"
+        "intervention/image" :"dev-master",
+        "visualplus/board": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

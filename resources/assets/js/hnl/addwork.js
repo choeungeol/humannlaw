@@ -1,38 +1,42 @@
-var app = angular.module('worktype',[]);
+/**
+ * Created by aqua on 2016-11-10.
+ */
+var app = angular.module('addwork',[]);
 
-app.controller('worktypeCtrl', function($scope, $http, $element, $compile) {
+app.controller('addworkCtrl', function($scope, $http, $element, $compile) {
 
-    $scope.breaktimes = [];
-    $scope.breaktimesb = [];
-    $scope.breaktimesc = [];
+    $scope.work = [];
+    $scope.workb = [];
+    $scope.workc = [];
+
     $scope.counter = 1;
     $scope.counterb = 1;
     $scope.counterc = 1;
 
     $scope.addRow = function(){
 
-        $scope.breaktimes.push({'name':'휴게시간 ' ,'num': $scope.counter});
+        $scope.work.push({'name':'공제근태 ' ,'num': $scope.counter});
 
-            $scope.counter++
+        $scope.counter++
     };
 
     $scope.addRowb = function(){
 
-        $scope.breaktimesb.push({'name':'휴게시간 ' ,'num': $scope.counterb});
+        $scope.workb.push({'name':'추가근무 ' ,'num': $scope.counterb});
 
         $scope.counterb++
     };
 
     $scope.addRowc = function(){
 
-        $scope.breaktimesc.push({'name':'휴게시간 ' ,'num': $scope.counterc});
+        $scope.workc.push({'name':'휴가휴직 ' ,'num': $scope.counterc});
 
         $scope.counterc++
     };
 
     $scope.removeRow = function(name){
         var index = -1;
-        var comArr = eval( $scope.breaktimes );
+        var comArr = eval( $scope.work );
         for( var i = 0; i < comArr.length; i++ ) {
             if( comArr[i].name === name ) {
                 index = i;
@@ -42,7 +46,7 @@ app.controller('worktypeCtrl', function($scope, $http, $element, $compile) {
         if( index === -1 ) {
             alert( "Something gone wrong" );
         }
-        $scope.breaktimes.splice( index, 1 );
+        $scope.work.splice( index, 1 );
 
         $scope.counter--
 
@@ -51,7 +55,7 @@ app.controller('worktypeCtrl', function($scope, $http, $element, $compile) {
 
     $scope.removeRowb = function(name){
         var index = -1;
-        var comArr = eval( $scope.breaktimesb );
+        var comArr = eval( $scope.workb );
         for( var i = 0; i < comArr.length; i++ ) {
             if( comArr[i].name === name ) {
                 index = i;
@@ -61,7 +65,7 @@ app.controller('worktypeCtrl', function($scope, $http, $element, $compile) {
         if( index === -1 ) {
             alert( "Something gone wrong" );
         }
-        $scope.breaktimesb.splice( index, 1 );
+        $scope.workb.splice( index, 1 );
 
         $scope.counterb--
 
@@ -70,7 +74,7 @@ app.controller('worktypeCtrl', function($scope, $http, $element, $compile) {
 
     $scope.removeRowc = function(name){
         var index = -1;
-        var comArr = eval( $scope.breaktimesc );
+        var comArr = eval( $scope.workc );
         for( var i = 0; i < comArr.length; i++ ) {
             if( comArr[i].name === name ) {
                 index = i;
@@ -80,11 +84,17 @@ app.controller('worktypeCtrl', function($scope, $http, $element, $compile) {
         if( index === -1 ) {
             alert( "Something gone wrong" );
         }
-        $scope.breaktimesc.splice( index, 1 );
+        $scope.workc.splice( index, 1 );
 
         $scope.counterc--
 
 
     };
+});
 
+app.directive('myExample', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'assets/js/hnl/addworktable.html',
+    };
 });
