@@ -36,7 +36,7 @@
             </li>
         </ol>
     </section>
-    <section class="content">
+    <section class="content" ng-app="workaday" ng-controller="workadayCtrl">
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-primary">
@@ -50,111 +50,234 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-bordered table-condensed">
-                            <thead>
-                            <tr>
-                                <th class="success" rowspan="2">공제근태</th>
-                                <th class="success">공제유형</th>
-                                <td colspan="5">
-                                    <div class="form-group" style="margin-bottom:0px;">
-                                        <label>
-                                            <input type="checkbox" class="square" checked/> 지각
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" class="square"/> 조퇴
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" class="square"/> 외출
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" class="square"/> 결근
-                                        </label>
-                                    </div>
-                                </td>
-                                <th class="success">적용일자</th>
-                                <td><button type="button" class="btn btn-primary btn-sm">달력</button></td>
-                            </tr>
-                            <tr>
-                                <th class="success">급여반영</th>
-                                <td>여,부</td>
-                                <th class="success">공제시급</th>
-                                <td>자동</td>
-                                <th class="success">공제시간</th>
-                                <td>__시간</td>
-                                <th class="success">공제금액</th>
-                                <td>__원</td>
-                            </tr>
-                            </thead>
-                        </table>
-                        <table class="table table-bordered table-condensed">
-                            <thead>
-                            <tr>
-                                <th class="success" rowspan="2">추가근무</th>
-                                <th class="success">추가유형</th>
-                                <td colspan="4">
-                                    <div class="form-group" style="margin-bottom:0px;">
-                                        <label>
-                                            <input type="checkbox" class="square" checked/> 추가연장
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" class="square"/> 추가야간
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" class="square"/> 휴일근로
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" class="square"/> 특별근로
-                                        </label>
-                                    </div>
-                                </td>
-                                <th class="success">적용일자</th>
-                                <td><button type="button" class="btn btn-primary btn-sm">달력</button></td>
-                            </tr>
-                            <tr>
-                                <th class="success">급여반영</th>
-                                <td>여,부</td>
-                                <th class="success">추가 근무시간</th>
-                                <td>___시간</td>
-                                <th class="success">추가 근무수당</th>
-                                <td colspan="2">__원</td>
-                            </tr>
-                            </thead>
-                        </table>
-                        <table class="table table-bordered table-condensed">
-                            <thead>
-                            <tr>
-                                <th class="success" rowspan="2">휴가 휴직</th>
-                                <th class="success">휴가·휴직 유형</th>
-                                <td colspan="5">
-                                    <div class="form-group" style="margin-bottom:0px;">
-                                        <label>
-                                            <input type="checkbox" class="square" checked/> 병가
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" class="square"/> 육아휴직
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" class="square"/> 출산휴가
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" class="square"/> 일반휴직
-                                        </label>
-                                    </div>
-                                </td>
-                                <th class="success">적용일자</th>
-                                <td>범위로 정할 수</td>
-                            </tr>
-                            <tr>
-                                <th class="success">급여반영</th>
-                                <td>여,부</td>
-                                <th class="success"> ㅡ </th>
-                                <td></td>
-                                <th class="success"> ㅡ </th>
-                                <td>반영일수</td>
-                                <td colspan="2">__원</td>
-                            </tr>
-                            </thead>
-                        </table>
+                        <div class="col-lg-8">
+                            <table class="table table-bordered table-condensed">
+                                <thead>
+                                <tr>
+                                    <th class="success" rowspan="2">공제근태<br>
+                                        <button type="button" class="btn btn-primary btn-sm" ng-click="addRow()">추가</button>
+                                    </th>
+                                    <th class="success">공제유형</th>
+                                    <td colspan="5">
+                                        <div class="form-group" style="margin-bottom:0px;">
+                                            <label>
+                                                <input type="checkbox" class="square" checked/> 지각
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 조퇴
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 외출
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 결근
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <th class="success">적용일자</th>
+                                    <td>
+                                        <input type="date" class="form-control input-sm" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="success">급여반영</th>
+                                    <td>여,부</td>
+                                    <th class="success">공제시급</th>
+                                    <td>자동</td>
+                                    <th class="success">공제시간</th>
+                                    <td>__시간</td>
+                                    <th class="success">공제금액</th>
+                                    <td>__원</td>
+                                </tr>
+                                </thead>
+                            </table>
+                            <table class="table table-bordered table-condensed" ng-repeat="wa in work">
+                                <thead>
+                                <tr>
+                                    <th class="success" rowspan="2"><% wa.name %> <% wa.num %><br>
+                                        <button type="button" class="btn btn-warning btn-sm" ng-click="removeRow(wa.name)">삭제</button>
+                                    </th>
+                                    <th class="success">공제유형</th>
+                                    <td colspan="5">
+                                        <div class="form-group" style="margin-bottom:0px;">
+                                            <label>
+                                                <input type="checkbox" class="square" checked/> 지각
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 조퇴
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 외출
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 결근
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <th class="success">적용일자</th>
+                                    <td><input type="date" class="form-control input-sm" /></td>
+                                </tr>
+                                <tr>
+                                    <th class="success">급여반영</th>
+                                    <td>여,부</td>
+                                    <th class="success">공제시급</th>
+                                    <td>자동</td>
+                                    <th class="success">공제시간</th>
+                                    <td>__시간</td>
+                                    <th class="success">공제금액</th>
+                                    <td>__원</td>
+                                </tr>
+                                </thead>
+                            </table>
+                            <table class="table table-bordered table-condensed">
+                                <thead>
+                                <tr>
+                                    <th class="success" rowspan="2">추가근무<br>
+                                        <button type="button" class="btn btn-primary btn-sm" ng-click="addRowb()">추가</button>
+                                    </th>
+                                    <th class="success">추가유형</th>
+                                    <td colspan="4">
+                                        <div class="form-group" style="margin-bottom:0px;">
+                                            <label>
+                                                <input type="checkbox" class="square" checked/> 추가연장
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 추가야간
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 휴일근로
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 특별근로
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <th class="success">적용일자</th>
+                                    <td>
+                                        <input type="date" class="form-control input-sm" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="success">급여반영</th>
+                                    <td>여,부</td>
+                                    <th class="success">추가 근무시간</th>
+                                    <td>___시간</td>
+                                    <th class="success">추가 근무수당</th>
+                                    <td colspan="2">__원</td>
+                                </tr>
+                                </thead>
+                            </table>
+                            <table class="table table-bordered table-condensed" ng-repeat="wb in workb">
+                                <thead>
+                                <tr>
+                                    <th class="success" rowspan="2"><% wb.name %> <% wb.num %><br>
+                                        <button type="button" class="btn btn-warning btn-sm" ng-click="removeRowb(wb.name)">삭제</button>
+                                    </th>
+                                    <th class="success">추가유형</th>
+                                    <td colspan="4">
+                                        <div class="form-group" style="margin-bottom:0px;">
+                                            <label>
+                                                <input type="checkbox" class="square" checked/> 추가연장
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 추가야간
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 휴일근로
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 특별근로
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <th class="success">적용일자</th>
+                                    <td><input type="date" class="form-control input-sm" /></td>
+                                </tr>
+                                <tr>
+                                    <th class="success">급여반영</th>
+                                    <td>여,부</td>
+                                    <th class="success">추가 근무시간</th>
+                                    <td>___시간</td>
+                                    <th class="success">추가 근무수당</th>
+                                    <td colspan="2">__원</td>
+                                </tr>
+                                </thead>
+                            </table>
+                            <table class="table table-bordered table-condensed">
+                                <thead>
+                                <tr>
+                                    <th class="success" rowspan="2">휴가 휴직<br>
+                                        <button type="button" class="btn btn-primary btn-sm" ng-click="addRowc()">추가</button>
+                                    </th>
+                                    <th class="success">휴가·휴직 유형</th>
+                                    <td colspan="5">
+                                        <div class="form-group" style="margin-bottom:0px;">
+                                            <label>
+                                                <input type="checkbox" class="square" checked/> 병가
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 육아휴직
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 출산휴가
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 일반휴직
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <th class="success">적용일자</th>
+                                    <td>범위로 정할 수</td>
+                                </tr>
+                                <tr>
+                                    <th class="success">급여반영</th>
+                                    <td>여,부</td>
+                                    <th class="success"> ㅡ </th>
+                                    <td></td>
+                                    <th class="success"> ㅡ </th>
+                                    <td>반영일수</td>
+                                    <td colspan="2">__원</td>
+                                </tr>
+                                </thead>
+                            </table>
+                            <table class="table table-bordered table-condensed" ng-repeat="wc in workc">
+                                <thead>
+                                <tr>
+                                    <th class="success" rowspan="2"><% wc.name %> <% wc.num %><br>
+                                        <button type="button" class="btn btn-warning btn-sm" ng-click="removeRowc(wc.name)">삭제</button>
+                                    </th>
+                                    <th class="success">휴가·휴직 유형</th>
+                                    <td colspan="5">
+                                        <div class="form-group" style="margin-bottom:0px;">
+                                            <label>
+                                                <input type="checkbox" class="square" checked/> 병가
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 육아휴직
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 출산휴가
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="square"/> 일반휴직
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <th class="success">적용일자</th>
+                                    <td>범위로 정할 수</td>
+                                </tr>
+                                <tr>
+                                    <th class="success">급여반영</th>
+                                    <td>여,부</td>
+                                    <th class="success"> ㅡ </th>
+                                    <td></td>
+                                    <th class="success"> ㅡ </th>
+                                    <td>반영일수</td>
+                                    <td colspan="2">__원</td>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -218,5 +341,8 @@
     <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"></script>
     <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/card/lib/js/jquery.card.js') }}"></script>
     <script language="javascript" type="text/javascript" src="{{ asset('assets/js/pages/radio_checkbox.js') }}"></script>
+
+    <script src="{{ asset('assets/js/hnl/workaday.js') }}" type="text/javascript"></script>
+
 
 @stop
