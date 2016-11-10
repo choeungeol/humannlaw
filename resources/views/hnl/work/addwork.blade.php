@@ -20,6 +20,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/switchery/css/switchery.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/awesomeBootstrapCheckbox/awesome-bootstrap-checkbox.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/formelements.css') }}"/>
+
+
+    <link href="{{ asset('assets/vendors/daterangepicker/css/daterangepicker.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet" type="text/css" />
+
 @stop
 
 {{-- Page content --}}
@@ -75,7 +81,7 @@
                                     </div>
                                 </td>
                                 <th class="success">적용일자</th>
-                                <td><button type="button" class="btn btn-primary btn-sm">달력</button></td>
+                                <td><input type="date" class="form-control input-sm" /></td>
                             </tr>
                             <tr>
                                 <th class="success">급여반영</th>
@@ -113,7 +119,7 @@
                                         </div>
                                     </td>
                                     <th class="success">적용일자</th>
-                                    <td><button type="button" class="btn btn-primary btn-sm">달력</button></td>
+                                    <td><input type="date" class="form-control input-sm" /></td>
                                 </tr>
                                 <tr>
                                     <th class="success">급여반영</th>
@@ -151,7 +157,9 @@
                                     </div>
                                 </td>
                                 <th class="success">적용일자</th>
-                                <td><button type="button" class="btn btn-primary btn-sm">달력</button></td>
+                                <td>
+                                    <input type="date" class="form-control input-sm" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="success">급여반영</th>
@@ -187,7 +195,7 @@
                                         </div>
                                     </td>
                                     <th class="success">적용일자</th>
-                                    <td><button type="button" class="btn btn-primary btn-sm">달력</button></td>
+                                    <td><input type="date" class="form-control input-sm" /></td>
                                 </tr>
                                 <tr>
                                     <th class="success">급여반영</th>
@@ -319,6 +327,7 @@
     <script language="javascript" type="text/javascript" src="{{ asset('assets/js/pages/radio_checkbox.js') }}"></script>
 
     <script src="{{ asset('assets/js/hnl/addwork.js') }}" type="text/javascript"></script>
+
 
 
 @stop
