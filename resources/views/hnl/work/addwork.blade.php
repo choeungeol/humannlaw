@@ -81,7 +81,9 @@
                                     </div>
                                 </td>
                                 <th class="success">적용일자</th>
-                                <td><input type="date" class="form-control input-sm" /></td>
+                                <td>
+                                    <input type="date" class="form-control input-sm" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="success">급여반영</th>
