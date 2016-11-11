@@ -813,6 +813,6 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
 
-    <script src="{{ asset('assets/js/hnl/addwork.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/hnl/worktype.js') }}" type="text/javascript"></script>
 
 @stop
