@@ -52,7 +52,7 @@ class HnlUsersController extends JoshController
 
             })
             ->add_column('actions',function($user) {
-                $actions = '<a href="users/'. $user->id .'/edit"><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view user"></i></a>
+                $actions = '<a href="users/'. $user->id .'/show"><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view user"></i></a>
                             <a href="users/'. $user->id .'/edit"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="update user"></i></a>';
 
                 if ((Sentinel::getUser()->id != $user->id) && ($user->id != 1)) {
