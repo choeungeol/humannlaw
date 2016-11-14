@@ -487,6 +487,8 @@ class ComposerStaticInit92740592b586a568c1c6f8194a9f5714
         'CreateBoard' => __DIR__ . '/../..' . '/database/migrations/2015_10_02_005418_create_board.php',
         'CreateDatatablesTable' => __DIR__ . '/../..' . '/database/migrations/2016_04_26_054601_create_datatables_table.php',
         'CreateFilesTable' => __DIR__ . '/../..' . '/database/migrations/2015_11_10_140011_create_files_table.php',
+        'CreateJobTitleTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_14_092802_create_job_title_table.php',
+        'CreatePosTitleTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_14_093804_create_pos_title_table.php',
         'CreateTaggableTable' => __DIR__ . '/../..' . '/database/migrations/2015_08_19_073929_create_taggable_table.php',
         'CreateTasksTable' => __DIR__ . '/../..' . '/database/migrations/2016_01_02_062647_create_tasks_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',

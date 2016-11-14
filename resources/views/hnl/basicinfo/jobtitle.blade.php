@@ -44,33 +44,25 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>실부서 코드</th><th>입력 코드</th><th>명칭</th><th>사용여부</th><th>출력순서</th>
+                                    <th>ID</th><th>실부서 코드</th><th>입력 코드</th><th>명칭</th><th>사용여부</th><th>출력순서</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($jobtitles as $jt)
                                 <tr>
-                                    <td>0001</td>
-                                    <td>01</td>
-                                    <td>본사</td>
-                                    <td><input class="custom-checkbox" type="checkbox"></td>
-                                    <td>1</td>
+                                    <td>{{ $jt->id }}</td>
+                                    <td>{{ $jt->jobcode }}</td>
+                                    <td>{{ $jt->code }}</td>
+                                    <td>{{ $jt->name }}</td>
+                                    <td><input class="custom-checkbox" type="checkbox" value="{{ $jt->use }}"></td>
+                                    <td>{{ $jt->id }}</td>
                                 </tr>
-                                <tr>
-                                    <td>0002</td>
-                                    <td>02</td>
-                                    <td>총무</td>
-                                    <td><input class="custom-checkbox" type="checkbox"></td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>0003</td>
-                                    <td>03</td>
-                                    <td>경영지원</td>
-                                    <td><input class="custom-checkbox" type="checkbox"></td>
-                                    <td>3</td>
-                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
+                            <div>
+                                <a class="btn btn-raised btn-info btn-large" data-toggle="modal" data-href="#jobcreate" href="#jobcreate">등록</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -126,6 +118,52 @@
                 </div>
             </div>
         </div>
+        <!-- fullwidth modal-->
+        <div class="modal fade in" id="jobcreate" tabindex="-1" role="dialog" aria-hidden="false">
+            <form class="modal-dialog modal-lg" action="./create"  method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">부서등록</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="jobcode">실부서코드</label>
+                            <div class="col-md-9">
+                                <input id="jobcode" name="jobcode" type="text" class="form-control" required></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="code" required>구분코드</label>
+                            <div class="col-md-9">
+                                <input id="code" name="code" type="text" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="name" required>명칭</label>
+                            <div class="col-md-9">
+                                <input id="name" name="name" type="text" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="memo" required>비고</label>
+                            <div class="col-md-9">
+                                <input id="memo" name="memo" type="text" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>사용여부</label>
+                            <label class="radio-inline">
+                                <input type="radio" class="custom-radio" name="use" value="true" >예</label>
+                            <label class="radio-inline">
+                                <input type="radio" class="custom-radio" name="use" value="false">아니오</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                        <button class="btn btn-primary">등록</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- END modal-->
     </section>
 
 @stop

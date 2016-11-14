@@ -25,9 +25,9 @@
         <h1>Add New User</h1>
         <ol class="breadcrumb">
             <li>
-                <a href="#">
+                <a href="{{ route('dashboard') }}">
                     <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
-                    메인으로
+                    Dashboard
                 </a>
             </li>
             <li><a href="#"> Users</a></li>

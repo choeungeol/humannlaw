@@ -68,30 +68,30 @@ Users List
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
 
-<script>
-    $(function() {
-        var table = $('#table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: '{!! route('users.data') !!}',
-            columns: [
-                { data: 'id', name: 'id' },
-                { data: 'first_name', name: 'first_name' },
-                { data: 'last_name', name: 'last_name' },
-                { data: 'email', name: 'email' },
-                { data: 'status', name: 'status'},
-                { data: 'created_at', name:'created_at'},
-                { data: 'actions', name: 'actions', orderable: false, searchable: false }
-            ]
-        });
-        table.on( 'draw', function () {
-            $('.livicon').each(function(){
-                $(this).updateLivicon();
+    <script>
+        $(function() {
+            var table = $('#table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{!! route('users.data') !!}',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'first_name', name: 'first_name' },
+                    { data: 'last_name', name: 'last_name' },
+                    { data: 'email', name: 'email' },
+                    { data: 'status', name: 'status'},
+                    { data: 'created_at', name:'created_at'},
+                    { data: 'actions', name: 'actions', orderable: false, searchable: false }
+                ]
             });
-        } );
-    });
+            table.on( 'draw', function () {
+                $('.livicon').each(function(){
+                    $(this).updateLivicon();
+                });
+            } );
+        });
 
-</script>
+    </script>
 
 <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="user_delete_confirm_title" aria-hidden="true">
 	<div class="modal-dialog">

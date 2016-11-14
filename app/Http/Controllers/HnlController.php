@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobtitle;
 use Sentinel;
 use Illuminate\Http\Request;
 
@@ -27,10 +28,17 @@ class HnlController extends Controller
 
     public function showJobtitle()
     {
-        if(Sentinel::check())
-            return view('hnl.basicinfo.jobtitle');
-        else
+        if(Sentinel::check()){
+
+            $jobtitles = Jobtitle::All();
+
+            // Show the page
+            return view('hnl.basicinfo.jobtitle', compact('jobtitles'));
+
+        }else{
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
+        }
+
     }
 
     public function showPayitem()
