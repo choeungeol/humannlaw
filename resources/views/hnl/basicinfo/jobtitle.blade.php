@@ -56,7 +56,7 @@
                                     <td>
                                         <a href="{{ route('update/jobtitle', $jt->id) }}" data-toggle="modal" data-target="#edit_modal">{{ $jt->name }}</a>
                                     </td>
-                                    <td>
+                                    <td>{{ $jt->use }}
                                         @if($jt->use === 'true')
                                         사용
                                         @else
