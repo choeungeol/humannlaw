@@ -32,14 +32,14 @@
             <label>사용여부</label>
             @if($job->use === 'true')
             <label class="radio-inline">
-                <input type="radio" class="custom-radio" name="use" value="true" checked>예</label>
+                <input type="radio" class="custom-radio" name="use" value="true" checked required>예</label>
             <label class="radio-inline">
-                <input type="radio" class="custom-radio" name="use" value="false">아니오</label>
+                <input type="radio" class="custom-radio" name="use" value="false" required>아니오</label>
             @elseif($job->use === 'false')
                 <label class="radio-inline">
-                    <input type="radio" class="custom-radio" name="use" value="true">예</label>
+                    <input type="radio" class="custom-radio" name="use" value="true" required>예</label>
                 <label class="radio-inline">
-                    <input type="radio" class="custom-radio" name="use" value="false" checked>아니오</label>
+                    <input type="radio" class="custom-radio" name="use" value="false" checked required>아니오</label>
             @endif
         </div>
     @endif
