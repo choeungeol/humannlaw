@@ -14,9 +14,9 @@
     </h1>
     <ol class="breadcrumb">
         <li>
-            <a href="{{ route('dashboard') }}">
+            <a href="#">
                 <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
-                @lang('general.dashboard')
+                메인으로
             </a>
         </li>
         <li>@lang('groups/title.groups')</li>

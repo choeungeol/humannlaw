@@ -20,9 +20,9 @@
         <h1>File Drop Zone</h1>
         <ol class="breadcrumb">
             <li>
-                <a href="{{ route('dashboard') }}">
+                <a href="#">
                     <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
-                    Dashboard
+                    메인으로
                 </a>
             </li>
             <li><a href="#">Laravel Examples</a></li>

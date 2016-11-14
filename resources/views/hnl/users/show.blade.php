@@ -21,9 +21,9 @@
         <h1>User Profile</h1>
         <ol class="breadcrumb">
             <li>
-                <a href="{{ route('dashboard') }}">
-                    <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
-                    Dashboard
+                <a href="#">
+                    <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
+                    메인으로
                 </a>
             </li>
             <li>
