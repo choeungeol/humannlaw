@@ -55,7 +55,7 @@
                                     <td>{{ $jt->code }}</td>
                                     <td>{{ $jt->name }}</td>
                                     <td><input class="custom-checkbox" type="checkbox" value="{{ $jt->use }}"></td>
-                                    <td>{{ $jt->id }}</td>
+                                    <td>{{ $jt->id }} </td>
                                 </tr>
                                 @endforeach
                                 </tbody>

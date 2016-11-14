@@ -25,7 +25,7 @@ class HnlJobtitleController extends Controller
                 'use' => $request->get('use'),
                 'memo' => $request->get('memo'),
             ]);
-
+            //test
             $jobtitles->save();
 
             return Redirect::to('hnl/basicinfo/jobtitle')->with('success', Lang::get('users/message.success.create'));
