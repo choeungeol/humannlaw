@@ -57,7 +57,7 @@
                                         <a href="{{ route('update/jobtitle', $jt->id) }}" data-toggle="modal" data-target="#edit_modal">{{ $jt->name }}</a>
                                     </td>
                                     <td>{{ $jt->use }}
-                                        @if($jt->use === '1')
+                                        @if($jt->use === 1)
                                         사용
                                         @else
                                         미사용
@@ -160,9 +160,9 @@
                         <div class="form-group">
                             <label>사용여부</label>
                             <label class="radio-inline">
-                                <input type="radio" class="custom-radio" name="use" value="true" required>예</label>
+                                <input type="radio" class="custom-radio" name="use" value="1" required>예</label>
                             <label class="radio-inline">
-                                <input type="radio" class="custom-radio" name="use" value="false" required>아니오</label>
+                                <input type="radio" class="custom-radio" name="use" value="0" required>아니오</label>
                         </div>
                     </div>
                     <div class="modal-footer">

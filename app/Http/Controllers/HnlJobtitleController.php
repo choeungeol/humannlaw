@@ -122,10 +122,10 @@ class HnlJobtitleController extends Controller
             $job->delete();
 
             // Redirect to the group management page
-            return Redirect::route('jobtitles')->with('success', Lang::get('groups/message.success.delete'));
+            return Redirect::route('jobtitle')->with('success', Lang::get('groups/message.success.delete'));
         } catch (GroupNotFoundException $e) {
             // Redirect to the group management page
-            return Redirect::route('jobtitles')->with('error', Lang::get('groups/message.group_not_found', compact('id')));
+            return Redirect::route('jobtitle')->with('error', Lang::get('groups/message.group_not_found', compact('id')));
         }
     }
 

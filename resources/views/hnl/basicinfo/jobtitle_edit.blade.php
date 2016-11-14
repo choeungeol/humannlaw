@@ -30,16 +30,16 @@
         </div>
         <div class="form-group">
             <label>사용여부</label>
-            @if($job->use === '1')
+            @if($job->use === 1)
             <label class="radio-inline">
-                <input type="radio" class="custom-radio" name="use" value="true" checked required>예</label>
+                <input type="radio" class="custom-radio" name="use" value="1" checked required>예</label>
             <label class="radio-inline">
-                <input type="radio" class="custom-radio" name="use" value="false" required>아니오</label>
-            @elseif($job->use === '0')
+                <input type="radio" class="custom-radio" name="use" value="0" required>아니오</label>
+            @elseif($job->use === 0)
                 <label class="radio-inline">
-                    <input type="radio" class="custom-radio" name="use" value="true" required>예</label>
+                    <input type="radio" class="custom-radio" name="use" value="1" required>예</label>
                 <label class="radio-inline">
-                    <input type="radio" class="custom-radio" name="use" value="false" checked required>아니오</label>
+                    <input type="radio" class="custom-radio" name="use" value="0" checked required>아니오</label>
             @endif
         </div>
     @endif
