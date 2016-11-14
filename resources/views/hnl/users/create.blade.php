@@ -1,4 +1,4 @@
-@extends('admin/layouts/default')
+@extends('hnl/layouts/default')
 
 {{-- Page title --}}
 @section('title')
@@ -49,7 +49,7 @@
                     </div>
                     <div class="panel-body">
                         <!--main content-->
-                        <form id="commentForm" action="{{ route('admin.users.create') }}"
+                        <form id="commentForm" action="{{ route('hnl.users.create') }}"
                               method="POST" enctype="multipart/form-data" class="form-horizontal">
                             <!-- CSRF Token -->
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />

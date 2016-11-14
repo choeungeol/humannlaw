@@ -1,4 +1,4 @@
-@extends('admin/layouts/default')
+@extends('hnl/layouts/default')
 
 {{-- Page title --}}
 @section('title')
@@ -51,7 +51,7 @@
                         <div class="row">
 
                             <div class="col-md-12">
-                                <form id="commentForm" action="{{ route('admin.users.update', $user) }}"
+                                <form id="commentForm" action="{{ route('hnl.users.update', $user) }}"
                                       method="POST" id="wizard-validation" enctype="multipart/form-data" class="form-horizontal">
                                     <!-- CSRF Token -->
                                     <input type="hidden" name="_method" value="PATCH"/>

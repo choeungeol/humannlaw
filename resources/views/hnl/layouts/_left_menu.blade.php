@@ -1,5 +1,5 @@
 <ul id="menu" class="page-sidebar-menu">
-    <li {!! (Request::is('admin') ? 'class="active"' : '') !!}>
+    <li {!! (Request::is('hnl') ? 'class="active"' : '') !!}>
         <a href="/hnl">
             <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA"
                data-loop="true"></i>
@@ -12,6 +12,62 @@
                data-loop="true"></i>
             <span class="title">UI Example</span>
         </a>
+    </li>
+    <li {!! (Request::is('hnl/users') || Request::is('hnl/users/create') || Request::is('hnl/user_profile') || Request::is('hnl/users/*') || Request::is('hnl/deleted_users') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+               data-loop="true"></i>
+            <span class="title">회원 관리</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('hnl/users') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/users') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Users
+                </a>
+            </li>
+            <li {!! (Request::is('hnl/users/create') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/users/create') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Add New User
+                </a>
+            </li>
+            <li {!! ((Request::is('hnl/users/*')) && !(Request::is('hnl/users/create')) ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::route('hnl.users.show',Sentinel::getUser()->id) }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    View Profile
+                </a>
+            </li>
+            <li {!! (Request::is('hnl/deleted_users') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/deleted_users') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Deleted Users
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li {!! (Request::is('hnl/groups') || Request::is('hnl/groups/create') || Request::is('hnl/groups/*') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-name="users" data-size="18" data-c="#418BCA" data-hc="#418BCA"
+               data-loop="true"></i>
+            <span class="title">그룹 관리</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('hnl/groups') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/groups') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Groups
+                </a>
+            </li>
+            <li {!! (Request::is('hnl/groups/create') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('hnl/groups/create') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Add New Group
+                </a>
+            </li>
+        </ul>
     </li>
     <li {!! (Request::is('hnl/basicinfo/basicinfo') || Request::is('hnl/basicinfo/jobtitle') || Request::is('hnl/basicinfo/payitem') || Request::is('hnl/basicinfo/paytype') || Request::is('hnl/basicinfo/worktype') ? 'class="active"' : '') !!}>
         <a href="#">

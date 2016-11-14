@@ -64,6 +64,35 @@ Route::group(array('prefix' => 'admin'), function () {
 });
 
 Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function () {
+
+    # User Management
+    Route::group(array('prefix' => 'users'), function () {
+        Route::get('/', array('as' => 'users', 'uses' => 'HnlUsersController@index'));
+        Route::get('data',['as' => 'users.data', 'uses' =>'HnlUsersController@data']);
+        Route::get('create', 'HnlUsersController@create');
+        Route::post('create', 'HnlUsersController@store');
+        Route::get('{userId}/delete', array('as' => 'delete/user', 'uses' => 'HnlUsersController@destroy'));
+        Route::get('{userId}/confirm-delete', array('as' => 'confirm-delete/user', 'uses' => 'HnlUsersController@getModalDelete'));
+        Route::get('{userId}/restore', array('as' => 'restore/user', 'uses' => 'HnlUsersController@getRestore'));
+        Route::get('{userId}', array('as' => 'users.show', 'uses' => 'HnlUsersController@show'));
+        Route::post('{userId}/passwordreset', array('as' => 'passwordreset', 'uses' => 'HnlUsersController@passwordreset'));
+    });
+    Route::resource('users', 'HnlUsersController');
+
+    Route::get('deleted_users',array('as' => 'deleted_users','before' => 'Sentinel', 'uses' => 'HnlUsersController@getDeletedUsers'));
+
+    # Group Management
+    Route::group(array('prefix' => 'groups'), function () {
+        Route::get('/', array('as' => 'groups', 'uses' => 'HnlGroupsController@index'));
+        Route::get('create', array('as' => 'create/group', 'uses' => 'HnlGroupsController@create'));
+        Route::post('create', 'HnlGroupsController@store');
+        Route::get('{groupId}/edit', array('as' => 'update/group', 'uses' => 'HnlGroupsController@edit'));
+        Route::post('{groupId}/edit', 'HnlGroupsController@update');
+        Route::get('{groupId}/delete', array('as' => 'delete/group', 'uses' => 'HnlGroupsController@destroy'));
+        Route::get('{groupId}/confirm-delete', array('as' => 'confirm-delete/group', 'uses' => 'HnlGroupsController@getModalDelete'));
+        Route::get('{groupId}/restore', array('as' => 'restore/group', 'uses' => 'HnlGroupsController@getRestore'));
+    });
+
     # hnl / Index
     Route::get('/', array('as' => 'hnl','uses' => 'HnlController@showHnl'));
 
