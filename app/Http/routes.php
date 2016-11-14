@@ -98,10 +98,22 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
         Route::post('create', 'HnlJobtitleController@store');
 
-        Route::get('{groupId}/confirm-delete', array('as' => 'confirm-delete/group', 'uses' => 'GroupsController@getModalDelete'));
+
+
         Route::get('basicinfo', array('as' => 'hnl', 'uses' => 'HnlController@showBasicInfo'));
 
-        Route::get('jobtitle', array('as' => 'hnl', 'uses' => 'HnlController@showJobtitle'));
+        Route::group(array('prefix' => 'jobtitle'), function () {
+
+            Route::get('/', array('as' => 'jobtitle', 'uses' => 'HnlJobtitleController@index'));
+
+            Route::get('{groupId}/confirm-delete', array('as' => 'confirm-delete/jobtitle', 'uses' => 'HnlJobtitleController@getModalDelete'));
+            Route::get('{groupId}/delete', array('as' => 'delete/jobtitle', 'uses' => 'HnlJobtitleController@destroy'));
+            Route::get('{groupId}/edit', array('as' => 'edit/jobtitle', 'uses' => 'HnlJobtitleController@edit'));
+            Route::post('{groupId}/edit', array('as' => 'update/jobtitle' , 'uses' => 'HnlJobtitleController@update'));
+
+        });
+
+
 
         Route::get('payitem', array('as' => 'hnl', 'uses' => 'HnlController@showPayitem'));
 

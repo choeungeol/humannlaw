@@ -44,7 +44,7 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>ID</th><th>실부서 코드</th><th>입력 코드</th><th>명칭</th><th>사용여부</th><th>출력순서</th>
+                                    <th>ID</th><th>실부서 코드</th><th>입력 코드</th><th>명칭</th><th>사용여부</th><th>출력순서</th><th>삭제</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -53,9 +53,18 @@
                                     <td>{{ $jt->id }}</td>
                                     <td>{{ $jt->jobcode }}</td>
                                     <td>{{ $jt->code }}</td>
-                                    <td>{{ $jt->name }}</td>
-                                    <td><input class="custom-checkbox" type="checkbox" value="{{ $jt->use }}"></td>
+                                    <td>
+                                        <a href="{{ route('update/jobtitle', $jt->id) }}" data-toggle="modal" data-target="#edit_modal">{{ $jt->name }}</a>
+                                    </td>
+                                    <td>
+                                        @if($jt->use === 'true')
+                                        사용
+                                        @else
+                                        미사용
+                                        @endif
+                                    </td>
                                     <td>{{ $jt->id }} </td>
+                                    <td><a href="{{ route('confirm-delete/jobtitle', $jt->id) }}" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#delete_confirm">지우기</a></td>
                                 </tr>
                                 @endforeach
                                 </tbody>
@@ -164,8 +173,24 @@
             </form>
         </div>
         <!-- END modal-->
+
+        <!-- confirm modal -->
+        <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- edit modal -->
+    <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    </section>
 @stop
 
 {{-- page level scripts --}}

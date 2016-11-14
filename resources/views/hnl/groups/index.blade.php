@@ -12,9 +12,9 @@
     <h1>@lang('groups/title.management')</h1>
     <ol class="breadcrumb">
         <li>
-            <a href="#">
+            <a href="{{ route('dashboard') }}">
                 <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
-                메인으로
+                @lang('general.dashboard')
             </a>
         </li>
         <li><a href="#"> @lang('groups/title.groups')</a></li>
@@ -58,7 +58,7 @@
                                     <td>{!! $role->users()->count() !!}</td>
                                     <td>{!! $role->created_at->diffForHumans() !!}</td>
                                     <td>
-                                        <a href="groups/{!! $role->id !!}/edit">
+                                        <a href="{{ route('update/group', $role->id) }}">
                                                 <i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="edit group"></i>
                                             </a>
                                             <!-- let's not delete 'Admin' group by accident -->

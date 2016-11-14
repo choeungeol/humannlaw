@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobtitle;
+use Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
@@ -13,7 +14,16 @@ class HnlJobtitleController extends Controller
 {
     public function index()
     {
+        if(Sentinel::check()){
 
+            $jobtitles = Jobtitle::All();
+
+            // Show the page
+            return view('hnl.basicinfo.jobtitle', compact('jobtitles'));
+
+        }else{
+            return Redirect::to('admin/signin')->with('error','You must be logged in!');
+        }
     }
 
     public function store(Request $request)
@@ -32,5 +42,92 @@ class HnlJobtitleController extends Controller
 
 
     }
+
+    public function edit($id = null)
+    {
+        $model = '부서';
+
+        $confirm_route = $error = null;
+
+        try {
+            // Get group information
+            $job = Jobtitle::findOrFail($id);
+
+            $confirm_route = route('update/jobtitle', ['id' => $job->id]);
+            return view('hnl.basicinfo.jobtitle_edit', compact('error', 'model', 'job', 'confirm_route'));
+        } catch (GroupNotFoundException $e) {
+
+            $error = '오류입니다.';
+            return view('hnl.basicinfo.jobtitle_edit', compact('error', 'model', 'job', 'confirm_route'));
+        }
+    }
+
+    public function update($id = null, Request $request)
+    {
+        try {
+            // Get the jobtitle information
+            $job = Jobtitle::findOrFail($id);
+
+        } catch (GroupNotFoundException $e) {
+            // Redirect to the groups management page
+            return Rediret::route('jobtitle')->with('error', compact('id'));
+        }
+
+        // Update the group data
+        $job->jobcode = $request->get('jobcode');
+        $job->code = $request->get('code');
+        $job->name = $request->get('name');
+        $job->use = $request->get('use');
+        $job->memo = $request->get('memo');
+
+        // Was the group updated?
+        if ($job->save()) {
+            // Redirect to the group page
+            return Redirect::route('jobtitle')->with('success', Lang::get('groups/message.success.update'));
+        } else {
+            // Redirect to the group page
+            return Redirect::route('update/jobtitle', $id)->with('error', Lang::get('groups/message.error.update'));
+        }
+
+    }
+
+
+    public function getModalDelete($id = null)
+    {
+        $model = '부서';
+
+        $confirm_route = $error = null;
+
+        try {
+            // Get group information
+            $job = Jobtitle::findOrFail($id);
+
+            $name = $job->name;
+            $confirm_route = route('delete/jobtitle', ['id' => $job->id]);
+            return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'name', 'confirm_route'));
+        } catch (GroupNotFoundException $e) {
+
+            $error = Lang::get('admin/groups/message.group_not_found', compact('id'));
+            return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'name', 'confirm_route'));
+        }
+    }
+
+    public function destroy($id = null)
+    {
+        try {
+            // Get group information
+            $job = Jobtitle::findOrFail($id);
+
+            // Delete the group
+            $job->delete();
+
+            // Redirect to the group management page
+            return Redirect::route('jobtitles')->with('success', Lang::get('groups/message.success.delete'));
+        } catch (GroupNotFoundException $e) {
+            // Redirect to the group management page
+            return Redirect::route('jobtitles')->with('error', Lang::get('groups/message.group_not_found', compact('id')));
+        }
+    }
+
 
 }
