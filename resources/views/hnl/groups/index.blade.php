@@ -58,7 +58,7 @@
                                     <td>{!! $role->users()->count() !!}</td>
                                     <td>{!! $role->created_at->diffForHumans() !!}</td>
                                     <td>
-                                        <a href="{{ route('update/group', $role->id) }}">
+                                        <a href="groups/{!! $role->id !!}/edit">
                                                 <i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="edit group"></i>
                                             </a>
                                             <!-- let's not delete 'Admin' group by accident -->
