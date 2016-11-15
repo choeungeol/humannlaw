@@ -24,25 +24,25 @@
             <li {!! (Request::is('hnl/users') ? 'class="active" id="active"' : '') !!}>
                 <a href="{{ URL::to('hnl/users') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    Users
+                    사용자 목록
                 </a>
             </li>
             <li {!! (Request::is('hnl/users/create') ? 'class="active" id="active"' : '') !!}>
                 <a href="{{ URL::to('hnl/users/create') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    Add New User
+                    사용자 추가
                 </a>
             </li>
             <li {!! ((Request::is('hnl/users/*')) && !(Request::is('hnl/users/create')) ? 'class="active" id="active"' : '') !!}>
                 <a href="{{ URL::route('hnl.users.show',Sentinel::getUser()->id) }}">
                     <i class="fa fa-angle-double-right"></i>
-                    View Profile
+                    사용자 프로필
                 </a>
             </li>
             <li {!! (Request::is('hnl/deleted_users') ? 'class="active" id="active"' : '') !!}>
                 <a href="{{ URL::to('hnl/deleted_users') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    Deleted Users
+                    사용자 삭제
                 </a>
             </li>
         </ul>
@@ -58,13 +58,13 @@
             <li {!! (Request::is('hnl/groups') ? 'class="active" id="active"' : '') !!}>
                 <a href="{{ URL::to('hnl/groups') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    Groups
+                    그룹 목록
                 </a>
             </li>
             <li {!! (Request::is('hnl/groups/create') ? 'class="active" id="active"' : '') !!}>
                 <a href="{{ URL::to('hnl/groups/create') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    Add New Group
+                    그룹 추가
                 </a>
             </li>
         </ul>
