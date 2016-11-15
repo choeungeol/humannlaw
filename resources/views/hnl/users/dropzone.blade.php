@@ -50,7 +50,7 @@
                             {!! Form::open(array('url' => URL::to('admin/file/create'), 'method' => 'post', 'id'=>'myDropzone','class' => 'dropzone', 'files'=> true)) !!}
                             <div class="fallback">
                                 <input name="file" type="file" multiple />
-                            </div>
+                            </div>ㅇ
                             {!! Form::close() !!}
                         </div>
                     </div>

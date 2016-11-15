@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-User Profile
+사용자 정보
 @parent
 @stop
 

@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Deleted users
+사용자 삭제
 @parent
 @stop
 
@@ -18,16 +18,16 @@ Deleted users
 @section('content')
 
 <section class="content-header">
-                <h1>Deleted users</h1>
+                <h1>사용자 삭제</h1>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="{{ route('dashboard') }}">
+                        <a href="#">
                             <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
-                            Dashboard
+                            메인
                         </a>
                     </li>
-                    <li><a href="#"> Users</a></li>
-                    <li class="active">Deleted users</li>
+{{--                    <li><a href="#"> Users</a></li>
+                    <li class="active">Deleted users</li>--}}
                 </ol>
             </section>
             <!-- Main content -->
@@ -37,18 +37,18 @@ Deleted users
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <i class="livicon" data-name="users-remove" data-size="18" data-c="#ffffff" data-hc="#ffffff"></i>
-                    Deleted Users List
+                    삭제 사용자 목록
                 </h4>
             </div>
             <div class="panel-body">
                 <table class="table table-bordered" id="table">
                     <thead>
                     <tr class="filters">
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>User E-mail</th>
-                        <th>Created At</th>
-                        <th>Actions</th>
+                        <th>성</th>
+                        <th>이름</th>
+                        <th>이메일</th>
+                        <th>생성일</th>
+                        <th>설정</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -67,15 +67,15 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
     # User Management
     Route::group(array('prefix' => 'users'), function () {
-        Route::get('/', array('as' => 'users', 'uses' => 'HnlUsersController@index'));
-        Route::get('data',['as' => 'users.data', 'uses' =>'HnlUsersController@data']);
+        Route::get('/', array('as' => 'hnl_users', 'uses' => 'HnlUsersController@index'));
+        Route::get('data',['as' => 'hnl_users.data', 'uses' =>'HnlUsersController@data']);
         Route::get('create', 'HnlUsersController@create');
         Route::post('create', 'HnlUsersController@store');
-        Route::get('{userId}/delete', array('as' => 'delete/user', 'uses' => 'HnlUsersController@destroy'));
-        Route::get('{userId}/confirm-delete', array('as' => 'confirm-delete/user', 'uses' => 'HnlUsersController@getModalDelete'));
-        Route::get('{userId}/restore', array('as' => 'restore/user', 'uses' => 'HnlUsersController@getRestore'));
-        Route::get('{userId}', array('as' => 'users.show', 'uses' => 'HnlUsersController@show'));
-        Route::post('{userId}/passwordreset', array('as' => 'passwordreset', 'uses' => 'HnlUsersController@passwordreset'));
+        Route::get('{userId}/delete', array('as' => 'delete/hnl_user', 'uses' => 'HnlUsersController@destroy'));
+        Route::get('{userId}/confirm-delete', array('as' => 'confirm-delete/hnl_user', 'uses' => 'HnlUsersController@getModalDelete'));
+        Route::get('{userId}/restore', array('as' => 'restore/hnl_user', 'uses' => 'HnlUsersController@getRestore'));
+        Route::get('{userId}', array('as' => 'hnl_users.show', 'uses' => 'HnlUsersController@show'));
+        Route::post('{userId}/passwordreset', array('as' => 'hnl_passwordreset', 'uses' => 'HnlUsersController@passwordreset'));
     });
     Route::resource('users', 'HnlUsersController');
 
@@ -83,14 +83,14 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
     # Group Management
     Route::group(array('prefix' => 'groups'), function () {
-        Route::get('/', array('as' => 'groups', 'uses' => 'HnlGroupsController@index'));
-        Route::get('create', array('as' => 'create/group', 'uses' => 'HnlGroupsController@create'));
+        Route::get('/', array('as' => 'hnl_groups', 'uses' => 'HnlGroupsController@index'));
+        Route::get('create', array('as' => 'create/hnl_group', 'uses' => 'HnlGroupsController@create'));
         Route::post('create', 'HnlGroupsController@store');
-        Route::get('{groupId}/edit', array('as' => 'update/group', 'uses' => 'HnlGroupsController@edit'));
-        Route::post('{groupId}/edit', 'HnlGroupsController@update');
-        Route::get('{groupId}/delete', array('as' => 'delete/group', 'uses' => 'HnlGroupsController@destroy'));
-        Route::get('{groupId}/confirm-delete', array('as' => 'confirm-delete/group', 'uses' => 'HnlGroupsController@getModalDelete'));
-        Route::get('{groupId}/restore', array('as' => 'restore/group', 'uses' => 'HnlGroupsController@getRestore'));
+        Route::get('{groupId}/hnl_edit', array('as' => 'update/hnl_group', 'uses' => 'HnlGroupsController@edit'));
+        Route::post('{groupId}/hnl_edit', 'HnlGroupsController@update');
+        Route::get('{groupId}/hnl_group_delete', array('as' => 'delete/hnl_group', 'uses' => 'HnlGroupsController@destroy'));
+        Route::get('{groupId}/hnl_group_confirm-delete', array('as' => 'confirm-delete/hnl_group', 'uses' => 'HnlGroupsController@getModalDelete'));
+        Route::get('{groupId}hnl_group_restore', array('as' => 'restore/hnl_group', 'uses' => 'HnlGroupsController@getRestore'));
     });
 
     # Job Code Management
@@ -113,7 +113,8 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
 
             // 부서 라우트
-
+            Route::get('{postitleId}/pos_confirm-delete', array('as' => 'confirm-delete/postitle', 'uses' => 'HnlPosController@getModalDelete'));
+            Route::get('{postitleId}/pos_delete', array('as' => 'delete/postitle', 'uses' => 'HnlPosController@destroy'));
             Route::post('pos_create', array('as' => 'create/postitle', 'uses' => 'HnlPosController@store'));
             Route::get('{postitleId}/pos_edit', array('as' => 'edit/postitle', 'uses' => 'HnlPosController@edit'));
             Route::post('{postitleId}/pos_edit', array('as' => 'update/postitle' , 'uses' => 'HnlPosController@update'));

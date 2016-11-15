@@ -52,11 +52,11 @@ class HnlUsersController extends JoshController
 
             })
             ->add_column('actions',function($user) {
-                $actions = '<a href="users/'. $user->id .'/show"><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view user"></i></a>
-                            <a href="users/'. $user->id .'/edit"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="update user"></i></a>';
+                $actions = '<a href='. route('hnl.users.show', $user->id) .'><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view user"></i></a>
+                            <a href='. route('hnl.users.edit', $user->id) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="update user"></i></a>';
 
                 if ((Sentinel::getUser()->id != $user->id) && ($user->id != 1)) {
-                    $actions .= '<a href="users/'. $user->id .'/confirm-delete" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete user"></i></a>';
+                    $actions .= '<a href='. route('confirm-delete/hnl_user', $user->id) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete user"></i></a>';
                 }
                 return $actions;
             }
@@ -331,26 +331,27 @@ class HnlUsersController extends JoshController
      */
     public function getModalDelete($id = null)
     {
-        $model = 'users';
+        $model = '사용자';
         $confirm_route = $error = null;
         try {
             // Get user information
             $user = Sentinel::findById($id);
+            $name = $user->first_name. $user->last_name;
 
             // Check if we are not trying to delete ourselves
             if ($user->id === Sentinel::getUser()->id) {
                 // Prepare the error message
                 $error = Lang::get('users/message.error.delete');
 
-                return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+                return view('hnl.layouts.modal_confirmation', compact('error', 'model','name', 'confirm_route'));
             }
         } catch (UserNotFoundException $e) {
             // Prepare the error message
             $error = Lang::get('users/message.user_not_found', compact('id'));
-            return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+            return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'name','confirm_route'));
         }
-        $confirm_route = route('delete/user', ['id' => $user->id]);
-        return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+        $confirm_route = route('delete/hnl_user', ['id' => $user->id]);
+        return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'name','confirm_route'));
     }
 
     /**

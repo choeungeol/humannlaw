@@ -44,16 +44,15 @@ class HnlPosController extends Controller
 
         try {
             // Get postitle information
-            /*$pos = Postitle::findOrFail($id);*/
+            $pos = Postitle::findOrFail($id);
 
-            $pos = Postitle::where('id',$id)->get();
+            /*$pos = Postitle::where('job_id',$id)->get();*/
             $jobtitles = Jobtitle::all();
-           /* $posjobid = $pos->job_id;
-            $jobtitles = Jobtitle::where('id','=',$posjobid)->get();
-            $jcount = Jobtitle::get(['name'])->count();*/
+            /* $posjobid = $pos->job_id;
+             $jobtitles = Jobtitle::where('id','=',$posjobid)->get();
+             $jcount = Jobtitle::get(['name'])->count();*/
 
-
-            $confirm_route = route('update/postitle', ['id' => $id]);
+            $confirm_route = route('update/postitle', ['id' => $pos->id]);
             return view('hnl.basicinfo.postitle_edit', compact('error', 'model', 'pos',  'jobtitles', 'confirm_route'));
         } catch (GroupNotFoundException $e) {
 
@@ -95,16 +94,16 @@ class HnlPosController extends Controller
 
     public function getModalDelete($id = null)
     {
-        $model = '부서';
+        $model = '직위';
 
         $confirm_route = $error = null;
 
         try {
-            // Get group information
-            $job = Jobtitle::findOrFail($id);
+            // Get postitle information
+            $pos = Postitle::findOrFail($id);
 
-            $name = $job->name;
-            $confirm_route = route('delete/jobtitle', ['id' => $job->id]);
+            $name = $pos->pos_name;
+            $confirm_route = route('delete/postitle', ['id' => $pos->id]);
             return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'name', 'confirm_route'));
         } catch (GroupNotFoundException $e) {
 
@@ -116,11 +115,11 @@ class HnlPosController extends Controller
     public function destroy($id = null)
     {
         try {
-            // Get group information
-            $job = Jobtitle::findOrFail($id);
+            // Get postitle information
+            $pos = Postitle::findOrFail($id);
 
             // Delete the group
-            $job->delete();
+            $pos->delete();
 
             // Redirect to the group management page
             return Redirect::route('jobtitle')->with('success', Lang::get('groups/message.success.delete'));

@@ -48,7 +48,7 @@ class HnlGroupsController extends Controller
         ])
         ) {
             // Redirect to the new group page
-            return Redirect::route('groups')->with('success', Lang::get('groups/message.success.create'));
+            return Redirect::route('hnl_groups')->with('success', Lang::get('groups/message.success.create'));
         }
 
         // Redirect to the group create page
@@ -69,7 +69,7 @@ class HnlGroupsController extends Controller
 
         } catch (GroupNotFoundException $e) {
             // Redirect to the groups management page
-            return Redirect::route('groups')->with('error', Lang::get('groups/message.group_not_found', compact('id')));
+            return Redirect::route('hnl_groups')->with('error', Lang::get('groups/message.group_not_found', compact('id')));
         }
 
         // Show the page
@@ -89,7 +89,7 @@ class HnlGroupsController extends Controller
             $group = Sentinel::findRoleById($id);
         } catch (GroupNotFoundException $e) {
             // Redirect to the groups management page
-            return Rediret::route('groups')->with('error', Lang::get('groups/message.group_not_found', compact('id')));
+            return Rediret::route('hnl_groups')->with('error', Lang::get('groups/message.group_not_found', compact('id')));
         }
 
         // Update the group data
@@ -98,7 +98,7 @@ class HnlGroupsController extends Controller
         // Was the group updated?
         if ($group->save()) {
             // Redirect to the group page
-            return Redirect::route('groups')->with('success', Lang::get('groups/message.success.update'));
+            return Redirect::route('hnl_groups')->with('success', Lang::get('groups/message.success.update'));
         } else {
             // Redirect to the group page
             return Redirect::route('update/group', $id)->with('error', Lang::get('groups/message.error.update'));
@@ -120,13 +120,15 @@ class HnlGroupsController extends Controller
             // Get group information
             $role = Sentinel::findRoleById($id);
 
+            $name = $role->name;
 
-            $confirm_route = route('delete/group', ['id' => $role->id]);
-            return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+
+            $confirm_route = route('delete/hnl_group', ['id' => $role->id]);
+            return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'name','confirm_route'));
         } catch (GroupNotFoundException $e) {
 
             $error = Lang::get('hnl/groups/message.group_not_found', compact('id'));
-            return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+            return view('hnl.layouts.modal_confirmation', compact('error', 'model', 'name', 'confirm_route'));
         }
     }
 
@@ -146,10 +148,10 @@ class HnlGroupsController extends Controller
             $role->delete();
 
             // Redirect to the group management page
-            return Redirect::route('groups')->with('success', Lang::get('groups/message.success.delete'));
+            return Redirect::route('hnl_groups')->with('success', Lang::get('groups/message.success.delete'));
         } catch (GroupNotFoundException $e) {
             // Redirect to the group management page
-            return Redirect::route('groups')->with('error', Lang::get('groups/message.group_not_found', compact('id')));
+            return Redirect::route('hnl_groups')->with('error', Lang::get('groups/message.group_not_found', compact('id')));
         }
     }
 

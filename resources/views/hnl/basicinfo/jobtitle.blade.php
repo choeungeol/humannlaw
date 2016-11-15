@@ -93,7 +93,7 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>ID</th><th>직위코드</th><th>직위구분코드</th><th>직위명</th><th>사용여부</th><th>부서명</th><th>출력순서</th>
+                                    <th>ID</th><th>직위코드</th><th>직위구분코드</th><th>직위명</th><th>사용여부</th><th>부서명</th><th>출력순서</th><th>삭제</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -103,7 +103,7 @@
                                     <td>{{ $pt->pos_code }}</td>
                                     <td>{{ $pt->pos_div_code }}</td>
                                     <td>
-                                        <a href="{{ route('update/postitle', $pt->id) }}" data-toggle="modal" data-target="#pos_edit_modal">{{ $pt->pos_name }}</a>
+                                        <a href="{{ route('edit/postitle', $pt->id) }}" data-toggle="modal" data-target="#pos_edit_modal">{{ $pt->pos_name }}</a>
                                     </td>
                                     <td>
                                         @if($pt->pos_use == 1)
@@ -115,6 +115,7 @@
                                     <td>
                                         {{ $pt->id }}
                                     </td>
+                                    <td><a href="{{ route('confirm-delete/postitle', $pt->id) }}" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#pos_delete_confirm">지우기</a></td>
                                 </tr>
                                 @endforeach
                                 </tbody>
@@ -241,6 +242,14 @@
                 </div>
             </div>
         </div>
+    </section>
+    <!-- pos confirm modal -->
+    <div class="modal fade" id="pos_delete_confirm" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
     </section>
 
     <!-- edit modal -->

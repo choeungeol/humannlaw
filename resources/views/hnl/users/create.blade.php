@@ -22,16 +22,16 @@
 {{-- Page content --}}
 @section('content')
     <section class="content-header">
-        <h1>Add New User</h1>
+        <h1>사용자 추가</h1>
         <ol class="breadcrumb">
             <li>
-                <a href="{{ route('dashboard') }}">
+                <a href="#}">
                     <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
-                    Dashboard
+                   메인
                 </a>
             </li>
-            <li><a href="#"> Users</a></li>
-            <li class="active">Add New User</li>
+{{--            <li><a href="#"> Users</a></li>
+            <li class="active">Add New User</li>--}}
         </ol>
     </section>
     <section class="content">
@@ -41,7 +41,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i>
-                            Add New User
+                            사용자 추가
                         </h3>
                                 <span class="pull-right clickable">
                                     <i class="glyphicon glyphicon-chevron-up"></i>
@@ -56,16 +56,16 @@
 
                             <div id="rootwizard">
                                 <ul>
-                                    <li><a href="#tab1" data-toggle="tab">User Profile</a></li>
-                                    <li><a href="#tab2" data-toggle="tab">Bio</a></li>
-                                    <li><a href="#tab3" data-toggle="tab">Address</a></li>
-                                    <li><a href="#tab4" data-toggle="tab">User Group</a></li>
+                                    <li><a href="#tab1" data-toggle="tab">사용자 정보</a></li>
+                                        <li><a href="#tab2" data-toggle="tab">기본</a></li>
+                                    <li><a href="#tab3" data-toggle="tab">주소</a></li>
+                                    <li><a href="#tab4" data-toggle="tab">사용자그룹</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane" id="tab1">
                                         <h2 class="hidden">&nbsp;</h2>
                                         <div class="form-group {{ $errors->first('first_name', 'has-error') }}">
-                                            <label for="first_name" class="col-sm-2 control-label">First Name *</label>
+                                            <label for="first_name" class="col-sm-2 control-label">성 *</label>
                                             <div class="col-sm-10">
                                                 <input id="first_name" name="first_name" type="text"
                                                        placeholder="First Name" class="form-control required"
@@ -76,7 +76,7 @@
                                         </div>
 
                                         <div class="form-group {{ $errors->first('last_name', 'has-error') }}">
-                                            <label for="last_name" class="col-sm-2 control-label">Last Name *</label>
+                                            <label for="last_name" class="col-sm-2 control-label">이름 *</label>
                                             <div class="col-sm-10">
                                                 <input id="last_name" name="last_name" type="text" placeholder="Last Name"
                                                        class="form-control required" value="{!! old('last_name') !!}"/>
@@ -86,7 +86,7 @@
                                         </div>
 
                                         <div class="form-group {{ $errors->first('email', 'has-error') }}">
-                                            <label for="email" class="col-sm-2 control-label">Email *</label>
+                                            <label for="email" class="col-sm-2 control-label">이메일 *</label>
                                             <div class="col-sm-10">
                                                 <input id="email" name="email" placeholder="E-mail" type="text"
                                                        class="form-control required email" value="{!! old('email') !!}"/>
@@ -95,7 +95,7 @@
                                         </div>
 
                                         <div class="form-group {{ $errors->first('password', 'has-error') }}">
-                                            <label for="password" class="col-sm-2 control-label">Password *</label>
+                                            <label for="password" class="col-sm-2 control-label">비밀번호 *</label>
                                             <div class="col-sm-10">
                                                 <input id="password" name="password" type="password" placeholder="Password"
                                                        class="form-control required" value="{!! old('password') !!}"/>
@@ -104,7 +104,7 @@
                                         </div>
 
                                         <div class="form-group {{ $errors->first('password_confirm', 'has-error') }}">
-                                            <label for="password_confirm" class="col-sm-2 control-label">Confirm Password *</label>
+                                            <label for="password_confirm" class="col-sm-2 control-label">비밀번호 확인 *</label>
                                             <div class="col-sm-10">
                                                 <input id="password_confirm" name="password_confirm" type="password"
                                                        placeholder="Confirm Password " class="form-control required"
@@ -115,7 +115,7 @@
                                     </div>
                                     <div class="tab-pane" id="tab2" disabled="disabled">
                                         <h2 class="hidden">&nbsp;</h2> <div class="form-group required">
-                                            <label for="dob" class="col-sm-2 control-label">Date of Birth</label>
+                                            <label for="dob" class="col-sm-2 control-label">생년월일</label>
                                             <div class="col-sm-10">
                                                 <input id="dob" name="dob" type="text" class="form-control"
                                                        data-date-format="YYYY-MM-DD"
@@ -125,7 +125,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="pic" class="col-sm-2 control-label">Profile picture</label>
+                                            <label for="pic" class="col-sm-2 control-label">사진</label>
                                             <div class="col-sm-10">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="fileinput-new thumbnail" style="width: 200px; height: 200px;">
@@ -134,12 +134,12 @@
                                                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 200px;"></div>
                                                     <div>
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileinput-new">Select image</span>
-                                    <span class="fileinput-exists">Change</span>
+                                    <span class="fileinput-new">이미지 선택</span>
+                                    <span class="fileinput-exists">변경</span>
                                     <input id="pic" name="pic_file" type="file" class="form-control"/>
                                 </span>
                                                         <a href="#" class="btn btn-danger fileinput-exists"
-                                                           data-dismiss="fileinput">Remove</a>
+                                                           data-dismiss="fileinput">삭제</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -147,7 +147,7 @@
 
 
                                         <div class="form-group">
-                                            <label for="bio" class="col-sm-2 control-label">Bio <small>(brief intro) *</small></label>
+                                            <label for="bio" class="col-sm-2 control-label">기초 <small>(기초 정보) *</small></label>
                                             <div class="col-sm-10">
                         <textarea name="bio" id="bio" class="form-control resize_vertical"
                                   rows="4">{!! old('bio') !!}</textarea>
@@ -157,19 +157,19 @@
                                     </div>
                                     <div class="tab-pane" id="tab3" disabled="disabled">
                                         <div class="form-group {{ $errors->first('gender', 'has-error') }}">
-                                            <label for="email" class="col-sm-2 control-label">Gender *</label>
+                                            <label for="email" class="col-sm-2 control-label">성별 *</label>
                                             <div class="col-sm-10">
                                                 <select class="form-control" title="Select Gender..." name="gender">
                                                     <option value="">Select</option>
                                                     <option value="male"
-                                                            @if(old('gender') === 'male') selected="selected" @endif >MALE
+                                                            @if(old('gender') === 'male') selected="selected" @endif >남
                                                     </option>
                                                     <option value="female"
                                                             @if(old('gender') === 'female') selected="selected" @endif >
-                                                        FEMALE
+                                                        여
                                                     </option>
                                                     <option value="other"
-                                                            @if(old('gender') === 'other') selected="selected" @endif >OTHER
+                                                            @if(old('gender') === 'other') selected="selected" @endif >그 외
                                                     </option>
 
                                                 </select>
@@ -178,7 +178,7 @@
                                         </div>
 
                                         <div class="form-group {{ $errors->first('country', 'has-error') }}">
-                                            <label for="country" class="col-sm-2 control-label">Country</label>
+                                            <label for="country" class="col-sm-2 control-label">나라</label>
                                             <div class="col-sm-10">
                                                 {!! Form::select('country', $countries, null,['class' => 'form-control select2', 'id' => 'countries']) !!}
                                             </div>
@@ -186,7 +186,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="state" class="col-sm-2 control-label">State</label>
+                                            <label for="state" class="col-sm-2 control-label">지역</label>
                                             <div class="col-sm-10">
                                                 <input id="state" name="state" type="text" class="form-control"
                                                        value="{!! old('state') !!}"/>
@@ -195,7 +195,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="city" class="col-sm-2 control-label">City</label>
+                                            <label for="city" class="col-sm-2 control-label">도시</label>
                                             <div class="col-sm-10">
                                                 <input id="city" name="city" type="text" class="form-control"
                                                        value="{!! old('city') !!}"/>
@@ -204,7 +204,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="address" class="col-sm-2 control-label">Address</label>
+                                            <label for="address" class="col-sm-2 control-label">주소</label>
                                             <div class="col-sm-10">
                                                 <input id="address" name="address" type="text" class="form-control"
                                                        value="{!! old('address') !!}"/>
@@ -213,7 +213,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="postal" class="col-sm-2 control-label">Postal/zip</label>
+                                            <label for="postal" class="col-sm-2 control-label">국가코드</label>
                                             <div class="col-sm-10">
                                                 <input id="postal" name="postal" type="text" class="form-control"
                                                        value="{!! old('postal') !!}"/>
@@ -225,11 +225,11 @@
                                         <p class="text-danger"><strong>Be careful with group selection, if you give admin access.. they can access admin section</strong></p>
 
                                         <div class="form-group required">
-                                            <label for="group" class="col-sm-2 control-label">Group *</label>
+                                            <label for="group" class="col-sm-2 control-label">그룹 *</label>
                                             <div class="col-sm-10">
                                                 <select class="form-control required" title="Select group..." name="group"
                                                         id="group">
-                                                    <option value="">Select</option>
+                                                    <option value="">선택</option>
                                                     @foreach($groups as $group)
                                                         <option value="{{ $group->id }}"
                                                                 @if($group->id == old('group')) selected="selected" @endif >{{ $group->name}}</option>
@@ -240,19 +240,19 @@
                                             <span class="help-block">{{ $errors->first('group', ':message') }}</span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="activate" class="col-sm-2 control-label"> Activate User *</label>
+                                            <label for="activate" class="col-sm-2 control-label"> 인증 사용자 *</label>
                                             <div class="col-sm-10">
                                                 <input id="activate" name="activate" type="checkbox"
                                                        class="pos-rel p-l-30 custom-checkbox"
                                                        value="1" @if(old('activate')) checked="checked" @endif >
-                                                <span>To activate your account click the check box</span></div>
+                                                <span>사용자 인증하려면 체크박스를 클릭하세요</span></div>
 
                                         </div>
                                     </div>
                                     <ul class="pager wizard">
-                                        <li class="previous"><a href="#">Previous</a></li>
-                                        <li class="next"><a href="#">Next</a></li>
-                                        <li class="next finish" style="display:none;"><a href="javascript:;">Finish</a></li>
+                                        <li class="previous"><a href="#">앞으로</a></li>
+                                        <li class="next"><a href="#">다음</a></li>
+                                        <li class="next finish" style="display:none;"><a href="javascript:;">완료</a></li>
                                     </ul>
                                 </div>
                             </div>

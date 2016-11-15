@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Users List
+사용자 목록
 @parent
 @stop
 
@@ -16,7 +16,7 @@ Users List
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>Users</h1>
+    <h1>사용자</h1>
     <ol class="breadcrumb">
         <li>
             <a href="#">
@@ -24,8 +24,8 @@ Users List
                 메인으로
             </a>
         </li>
-        <li><a href="#"> Users</a></li>
-        <li class="active">Users List</li>
+{{--        <li><a href="#"> Users</a></li>
+        <li class="active">Users List</li>--}}
     </ol>
 </section>
 
@@ -35,7 +35,7 @@ Users List
         <div class="panel panel-primary ">
             <div class="panel-heading">
                 <h4 class="panel-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                    Users List
+                    사용자 목록
                 </h4>
             </div>
             <br />
@@ -44,12 +44,12 @@ Users List
                     <thead>
                         <tr class="filters">
                             <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>User E-mail</th>
-                            <th>Status</th>
-                            <th>Created At</th>
-                            <th>Actions</th>
+                            <th>성</th>
+                            <th>이름</th>
+                            <th>사용자 Email</th>
+                            <th>상태</th>
+                            <th>생성일</th>
+                            <th>설정</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,7 +73,7 @@ Users List
             var table = $('#table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('users.data') !!}',
+                ajax: '{!! route('hnl_users.data') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'first_name', name: 'first_name' },

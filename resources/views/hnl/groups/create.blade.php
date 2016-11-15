@@ -2,7 +2,7 @@
 
 {{-- Web site Title --}}
 @section('title')
-    @lang('admin/groups/title.create')
+    {{--@lang('admin/groups/title.create')--}}새그룹 만들기
     @parent
 @stop
 
@@ -10,7 +10,7 @@
 @section('content')
 <section class="content-header">
     <h1>
-        @lang('groups/title.create')
+        {{--@lang('groups/title.create')--}}새그룹 만들기
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -19,10 +19,10 @@
                 메인으로
             </a>
         </li>
-        <li>@lang('groups/title.groups')</li>
+{{--        <li>@lang('groups/title.groups')</li>
         <li class="active">
             @lang('groups/title.create')
-        </li>
+        </li>--}}
     </ol>
 </section>
 
@@ -33,7 +33,7 @@
             <div class="panel panel-primary ">
                 <div class="panel-heading">
                     <h4 class="panel-title"> <i class="livicon" data-name="users-add" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        @lang('groups/title.create')
+                       {{-- @lang('groups/title.create')--}}그룹 관리
                     </h4>
                 </div>
                 <div class="panel-body">
@@ -54,10 +54,10 @@
                         <div class="form-group {{ $errors->
                             first('name', 'has-error') }}">
                             <label for="title" class="col-sm-2 control-label">
-                                @lang('groups/form.name')
+                                {{--@lang('groups/form.name')--}}그룹 이름
                             </label>
                             <div class="col-sm-5">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Group Name"
+                                <input type="text" id="name" name="name" class="form-control" placeholder="그룹 이름"
                                        value="{!! old('name') !!}">
                             </div>
                             <div class="col-sm-4">
