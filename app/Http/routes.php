@@ -96,9 +96,6 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
     # Job Code Management
     Route::group(array('prefix' => 'basicinfo'), function () {
 
-        Route::post('create', 'HnlJobtitleController@store');
-
-
 
         Route::get('basicinfo', array('as' => 'hnl', 'uses' => 'HnlController@showBasicInfo'));
 
@@ -106,10 +103,21 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
             Route::get('/', array('as' => 'jobtitle', 'uses' => 'HnlJobtitleController@index'));
 
-            Route::get('{groupId}/confirm-delete', array('as' => 'confirm-delete/jobtitle', 'uses' => 'HnlJobtitleController@getModalDelete'));
-            Route::get('{groupId}/delete', array('as' => 'delete/jobtitle', 'uses' => 'HnlJobtitleController@destroy'));
-            Route::get('{groupId}/edit', array('as' => 'edit/jobtitle', 'uses' => 'HnlJobtitleController@edit'));
-            Route::post('{groupId}/edit', array('as' => 'update/jobtitle' , 'uses' => 'HnlJobtitleController@update'));
+            //직위 라우터
+            Route::post('create', array('as'=> 'create/jobtitle', 'uses' => 'HnlJobtitleController@store'));
+
+            Route::get('{jobtitleId}/confirm-delete', array('as' => 'confirm-delete/jobtitle', 'uses' => 'HnlJobtitleController@getModalDelete'));
+            Route::get('{jobtitleId}/delete', array('as' => 'delete/jobtitle', 'uses' => 'HnlJobtitleController@destroy'));
+            Route::get('{jobtitleId}/edit', array('as' => 'edit/jobtitle', 'uses' => 'HnlJobtitleController@edit'));
+            Route::post('{jobtitleId}/edit', array('as' => 'update/jobtitle' , 'uses' => 'HnlJobtitleController@update'));
+
+
+            // 부서 라우트
+
+            Route::post('pos_create', array('as' => 'create/postitle', 'uses' => 'HnlPosController@store'));
+            Route::get('{postitleId}/pos_edit', array('as' => 'edit/postitle', 'uses' => 'HnlPosController@edit'));
+            Route::post('{postitleId}/pos_edit', array('as' => 'update/postitle' , 'uses' => 'HnlPosController@update'));
+
 
         });
 

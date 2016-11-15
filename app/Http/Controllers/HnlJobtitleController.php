@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobtitle;
+use App\Postitle;
 use Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
@@ -18,8 +19,15 @@ class HnlJobtitleController extends Controller
 
             $jobtitles = Jobtitle::All();
 
+            $postitles = Jobtitle::join('postitles', 'postitles.job_id', '=', 'jobtitles.id')
+                ->get();
+
+          /*  $postitles = Postitle::All();*/
+
             // Show the page
-            return view('hnl.basicinfo.jobtitle', compact('jobtitles'));
+            return view('hnl.basicinfo.jobtitle')
+                ->with('jobtitles', $jobtitles)
+                ->with('postitles', $postitles);
 
         }else{
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
@@ -116,10 +124,20 @@ class HnlJobtitleController extends Controller
     {
         try {
             // Get group information
-            $job = Jobtitle::findOrFail($id);
 
-            // Delete the group
-            $job->delete();
+            $job = Jobtitle::findOrFail($id);
+            /*$pos = Postitle::findJobidById($id);*/
+            /*$pos = Jobtitle::join('postitles', 'postitles.job_id', '=', 'jobtitles.id')
+                ->where('job_id', $id)->get();*/
+            $pos = Postitle::where('job_id', $id)->count();
+
+            if($pos > 0) {
+                return Redirect::route('jobtitle')->with('error', '직위 정보를 삭제후 다시 시도해주세요.');
+
+            }else {
+                // Delete the group
+                $job->delete();
+            }
 
             // Redirect to the group management page
             return Redirect::route('jobtitle')->with('success', Lang::get('groups/message.success.delete'));
