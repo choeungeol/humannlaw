@@ -1311,8 +1311,7 @@
     <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/pages/datepicker.js') }}" type="text/javascript"></script>
 
-    <script type="text/javascript" src="{{ asset('assets/vendors/jquerytimepicker/jquery.timepicker.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/jquerytimepicker/lib/bootstrap-datepicker.js') }}"></script>
+
     <!-- begining of page level js -->
     <script src="{{ asset('assets/vendors/pickadate/js/picker.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/pickadate/js/picker.date.js') }}" type="text/javascript"></script>
