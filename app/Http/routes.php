@@ -128,7 +128,11 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
         Route::get('paytype', array('as' => 'hnl', 'uses' => 'HnlController@showPaytype'));
 
-        Route::get('worktype', array('as' => 'hnl', 'uses' => 'HnlController@showWorktype'));
+        Route::group(array('prefix' => 'worktype'), function () {
+
+            Route::get('/', array('as' => 'hnl', 'uses' => 'HnlWorktypeController@index'));
+
+        });
 
     });
 

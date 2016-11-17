@@ -193,6 +193,7 @@ elixir(function (mix) {
     //angularjs
     mix.copy(vendors + 'angular', destVendors + 'angular');
 
+    mix.copy(vendors + 'jquerytimepicker', destVendors + 'jquerytimepicker');
     //angularjs app
     mix.copy(srcJs + 'hnl', destJs + 'hnl');
 

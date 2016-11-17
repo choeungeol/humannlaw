@@ -169,7 +169,6 @@
 <!-- global js -->
 <script src="{{ asset('assets/js/app.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/vendors/angular/angular.js') }}" type="text/javascript"></script>
-
 <!-- end of global js -->
 
 <!-- begin page level js -->

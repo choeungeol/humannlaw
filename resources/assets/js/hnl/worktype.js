@@ -12,6 +12,7 @@
         $scope.counterb = 1;
         $scope.counterc = 1;
 
+<<<<<<< Updated upstream
         var awst = [];
 
         var amondays = awst.a_work_start_time1;
@@ -65,6 +66,18 @@
                 {'week': '토', 'time': $scope.a_work_end_time6},
                 {'week': '일', 'time': $scope.a_work_end_time7});
         };
+=======
+        $scope.aworkadd = function() {
+
+            var awst = {}
+
+            for (var i =1 ; i < 8; i++){
+                awst.awst + i = $scope.a_work_start_time + i;
+            }
+
+
+        }
+>>>>>>> Stashed changes
 
 
 
@@ -97,10 +110,17 @@
                     index = i;
                     break;
                 }
+<<<<<<< Updated upstream
             }
             if (index === -1) {
                 alert("Something gone wrong");
             }
+=======
+            }
+            if (index === -1) {
+                alert("Something gone wrong");
+            }
+>>>>>>> Stashed changes
             $scope.breaktimes.splice(index, 1);
 
             $scope.counter--
@@ -135,10 +155,17 @@
                     index = i;
                     break;
                 }
+<<<<<<< Updated upstream
             }
             if (index === -1) {
                 alert("Something gone wrong");
             }
+=======
+            }
+            if (index === -1) {
+                alert("Something gone wrong");
+            }
+>>>>>>> Stashed changes
             $scope.breaktimesc.splice(index, 1);
 
             $scope.counterc--
