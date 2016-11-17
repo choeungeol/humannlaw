@@ -11,10 +11,10 @@ class PostitleSeeder extends Seeder
      */
     public function run()
     {
-        // Auto Increments 초기화
-        DB::table('postitles')->truncate();
+        /*// Auto Increments 초기화
+        DB::table('postitles')->truncate();*/
 
-        for ($i=0; $i < 7; $i++){
+        for ($i=1; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '001',
@@ -25,9 +25,7 @@ class PostitleSeeder extends Seeder
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
-        }
 
-        for ($i=0; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '002',
@@ -38,9 +36,7 @@ class PostitleSeeder extends Seeder
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
-        }
 
-        for ($i=0; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '003',
@@ -51,9 +47,7 @@ class PostitleSeeder extends Seeder
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
-        }
 
-        for ($i=0; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '004',
@@ -64,9 +58,7 @@ class PostitleSeeder extends Seeder
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
-        }
 
-        for ($i=0; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '005',
@@ -77,9 +69,7 @@ class PostitleSeeder extends Seeder
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
-        }
 
-        for ($i=0; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '006',
@@ -90,9 +80,7 @@ class PostitleSeeder extends Seeder
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
-        }
 
-        for ($i=0; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '007',
@@ -103,9 +91,7 @@ class PostitleSeeder extends Seeder
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
-        }
 
-        for ($i=0; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '008',
@@ -116,9 +102,7 @@ class PostitleSeeder extends Seeder
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
-        }
 
-        for ($i=0; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '009',
@@ -129,9 +113,7 @@ class PostitleSeeder extends Seeder
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
-        }
 
-        for ($i=0; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '010',
@@ -142,9 +124,7 @@ class PostitleSeeder extends Seeder
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
-        }
 
-        for ($i=0; $i < 7; $i++){
             DB::table('postitles')->insert([
                 'job_id'      => $i,
                 'pos_code'    => '011',
