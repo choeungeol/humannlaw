@@ -28,9 +28,9 @@ $('#daterange3').daterangepicker({
 }, cb);
 
 $("#rangepicker4").daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true
-    });
+    singleDatePicker: true,
+    showDropdowns: true
+});
 
 
 //datetimepicker
@@ -61,3 +61,312 @@ $("#clockface3").clockface({
     format: 'H:mm'
 }).clockface('show', '14:30');
 //clockface picker end
+
+
+$("#time1").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time2").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time3").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time4").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time5").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time6").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time7").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time11").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time12").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time13").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time14").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time15").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time16").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time17").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time21").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time22").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time23").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time24").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time25").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time26").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time27").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time31").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time32").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time33").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time34").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time35").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time36").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time37").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time41").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time32").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time33").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time34").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time35").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time36").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time37").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time41").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time42").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time43").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time44").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time45").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time46").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time47").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time51").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time52").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time53").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time54").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time55").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time56").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time57").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time61").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time62").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time63").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time64").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time65").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time66").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time67").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time71").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time72").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time73").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time74").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time75").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time76").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time77").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time81").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time82").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time83").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time84").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time85").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time86").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time87").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time91").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time92").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time93").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time94").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time95").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time96").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");
+
+$("#time97").datetimepicker({
+    format: 'LT'
+}).parent().css("position :relative");

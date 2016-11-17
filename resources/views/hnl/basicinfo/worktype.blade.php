@@ -140,7 +140,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="vertical-align: middle;">근무시간</td>
-                                                    <td>시작<br><br>종료</td>
+                                                    <td>시작<br><br>종료 </td>
                                                     <td>
                                                         <input class="form-control input-sm" type="time">
                                                         <input class="form-control input-sm" type="time">
