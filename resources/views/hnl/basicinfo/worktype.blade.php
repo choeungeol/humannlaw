@@ -138,7 +138,7 @@
                                         <table class="table table-condensed" style="margin-bottom:1px;">
                                             <tr>
                                                 <th style="vertical-align: middle;" rowspan="2">휴게시간<br>
-                                                    <a class="btn btn-sm btn-primary" ng-click="addRow()">추가</a><% a_break_start_time1 %>
+                                                    <a class="btn btn-sm btn-primary" ng-click="addRow()">추가</a>
                                                 </th>
                                                 <td>시작</td>
                                                 @for($i=1 ; $i < 8; $i++)
@@ -157,7 +157,11 @@
                                                 @endfor
                                             </tr>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="aworkadd()"> 휴게시간 임시저장</button>
+                                        <div class="form-inline">
+                                        <button type="button" class="btn btn-default btn-sm" ng-click="abreakadd()"> 휴게시간 임시저장</button>
+                                            총 휴게시간 : <% cbt %>  총 실 근무시간 : <% cwt %>
+                                        </div>
+
                                         <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:1px;">
                                             <form class="<% bt.num %>">
                                             <tr>

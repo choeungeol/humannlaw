@@ -12,60 +12,191 @@
         $scope.counterb = 1;
         $scope.counterc = 1;
 
-        var awst = [];
 
-        var amondays = awst.a_work_start_time1;
-        var aTuesdays = awst.a_work_start_time2;
+        for (var i = 1; i < 8; i++) {
 
+        }
 
-        var awet = [];
-        var amondaye = awet.a_work_end_time1;
+        // A형 시간 임시 저장
+        var awst = {};          // A형 근무 시작시간
+        var awet = {};          // A형 근무 종료시간
+        var abst = {};          // A형 휴게 시작시간
+        var abet = {};          // A형 휴게 종료시간
 
+        var lastcalcw = [];
+        var lastcalcb = [];
 
         $scope.calc = function() {
             //월요일 시작시간
-            var amondays = awst[0]['time'];
-            var times = amondays.substring(0, 5)
-            var tis = times.split(':');
-            var ts = tis[0]+tis[1];
-            var ts = Number(ts);
+
+            if(abst == null){
+                alert('휴게시작시간과 종료시간을 입력해주세요');
+                return;
+
+            }else{
+                var calcatypewst = [];
+                var calcatypewet = [];
+                var calcatypebst = [];
+                var calcatypebet = [];
+
+                var isEmptylastcalcw = function(lastcalcw){
+                    if( lastcalcw == "" || lastcalcw == null || lastcalcw == undefined || ( lastcalcw != null && typeof lastcalcw == "object" && !Object.keys(lastcalcw).length ) ){
+                        return true
+                    }else{
+                        return false
+                    }
+                };
+
+                var isEmptylastcalcb = function(lastcalcb){
+                    if( lastcalcb == "" || lastcalcb == null || lastcalcb == undefined || ( lastcalcb != null && typeof lastcalcb == "object" && !Object.keys(lastcalcb).length ) ){
+                        return true
+                    }else{
+                        return false
+                    }
+                };
+
+                for (var i in awst) {
+                    var amondayws = awst[i];
+                    var timews = amondayws.substring(0, 5)
+                    var tiws = timews.split(':');
+                    var tws = tiws[0] + tiws[1];
+                    var tws = Number(tws);
+
+                    if(calcatypewst.length < 8){
+                        calcatypewst.push(tws);
+                    }else{
+                        var calcatypewst = [];
+                        calcatypewst.push(tws);
+                    }
+                }
+
+                for (var i in awet) {
+                    var amondaywe = awet[i];
+                    var timee = amondaywe.substring(0, 5)
+                    var tiwe = timee.split(':');
+                    var twe = tiwe[0] + tiwe[1];
+                    var twe = Number(twe);
+
+                    if(calcatypewet.length < 8){
+                        calcatypewet.push(twe);
+                    }else{
+                        var calcatypewet = [];
+                        calcatypewet.push(twe);
+                    }
+                }
+
+                for (var i in abst) {
+                    var amondaybs = abst[i];
+                    var timebs = amondaybs.substring(0, 5)
+                    var tibs = timebs.split(':');
+                    var tbs = tibs[0] + tibs[1];
+                    var tbs = Number(tbs);
+
+                    if(calcatypebst.length < 8){
+                        calcatypebst.push(tbs);
+                    }else{
+                        var calcatypebst = [];
+                        calcatypebst.push(tbs);
+                    }
+                }
+
+                for (var i in abet) {
+                    var amondaybe = abet[i];
+                    var timebe = amondaybe.substring(0, 5)
+                    var tibe = timebe.split(':');
+                    var tbe = tibe[0] + tibe[1];
+                    var tbe = Number(tbe);
+
+                    if(calcatypebet.length < 8){
+                        calcatypebet.push(tbe);
+                    }else{
+                        var calcatypebet = [];
+                        calcatypebet.push(tbe);
+                    }
+                }
+
+                for (var i =0; i < 8; i++){
+                    var calcw = Number(calcatypewet[i])-Number(calcatypewst[i]);
+                    var calcb = Number(calcatypebet[i])-Number(calcatypebst[i]);
+                    var test = '';
+
+                    /*                    if(!lastcalcw){*/
+                    lastcalcw.push(calcw);
+                    /*                    }else{
+                     var lastcalcw =[];
+                     lastcalcw.push(calcw);
+                     }*/
+                    /*                    if(!lastcalcb){*/
+                    lastcalcb.push(calcb);
+                    /*                    }else{
+                     var lastcalcb =[];
+                     lastcalcb.push(calcb);
+                     }*/
+                }
 
 
-            //월요일 종료시간
-            var amondaye = awet[0]['time'];
-            var timee = amondaye.substring(0, 5)
-            var tie = timee.split(':');
-            var te = tie[0]+tie[1];
-            var te = Number(te);
+
+                var cbt = 0 ;
+                var cwt = 0 ;
+                for(var i=0; i<8 ; i++)
+                {
+                    cbt = Number(cbt) + Number(calcw[i]);
+                    cwt = Number(cwt) + Number(calcb[i]);
+                }
+                $scope.cwt = cwt;
+                $scope.cbt = cbt;
+            }
+        };
+
+        $scope.aworkadd = function () {
+
+            awst = [
+                $scope.a_work_start_time1,
+                $scope.a_work_start_time2,
+                $scope.a_work_start_time3,
+                $scope.a_work_start_time4,
+                $scope.a_work_start_time5,
+                $scope.a_work_start_time6,
+                $scope.a_work_start_time7
+            ];
+
+            awet = [
+                $scope.a_work_end_time1,
+                $scope.a_work_end_time2,
+                $scope.a_work_end_time3,
+                $scope.a_work_end_time4,
+                $scope.a_work_end_time5,
+                $scope.a_work_end_time6,
+                $scope.a_work_end_time7
+            ];
 
             var test = '';
-            var test1 = '';
-
-
-
         };
 
-        $scope.aworkadd = function() {
+        $scope.abreakadd = function () {
 
-            awst.push(
-                {'week': '월', 'time': $scope.a_work_start_time1},
-                {'week': '화', 'time': $scope.a_work_start_time2},
-                {'week': '수', 'time': $scope.a_work_start_time3},
-                {'week': '목', 'time': $scope.a_work_start_time4},
-                {'week': '금', 'time': $scope.a_work_start_time5},
-                {'week': '토', 'time': $scope.a_work_start_time6},
-                {'week': '일', 'time': $scope.a_work_start_time7});
+            abst = [
+                $scope.a_break_start_time1,
+                $scope.a_break_start_time2,
+                $scope.a_break_start_time3,
+                $scope.a_break_start_time4,
+                $scope.a_break_start_time5,
+                $scope.a_break_start_time6,
+                $scope.a_break_start_time7
+            ];
 
-            awet.push(
-                {'week': '월', 'time': $scope.a_work_end_time1},
-                {'week': '화', 'time': $scope.a_work_end_time2},
-                {'week': '수', 'time': $scope.a_work_end_time3},
-                {'week': '목', 'time': $scope.a_work_end_time4},
-                {'week': '금', 'time': $scope.a_work_end_time5},
-                {'week': '토', 'time': $scope.a_work_end_time6},
-                {'week': '일', 'time': $scope.a_work_end_time7});
+            abet = [
+                $scope.a_break_end_time1,
+                $scope.a_break_end_time2,
+                $scope.a_break_end_time3,
+                $scope.a_break_end_time4,
+                $scope.a_break_end_time5,
+                $scope.a_break_end_time6,
+                $scope.a_break_end_time7
+            ];
+
+            var test = '';
         };
-
 
 
         $scope.addRow = function () {
