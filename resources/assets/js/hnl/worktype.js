@@ -23,8 +23,6 @@
         var abst = {};          // A형 휴게 시작시간
         var abet = {};          // A형 휴게 종료시간
 
-        var lastcalcw = [];
-        var lastcalcb = [];
 
         $scope.calc = function() {
             //월요일 시작시간
@@ -38,6 +36,7 @@
                 var calcatypewet = [];
                 var calcatypebst = [];
                 var calcatypebet = [];
+
 
                 for (var i in awst) {
                     var amondayws = awst[i];
@@ -116,6 +115,10 @@
                 var calcw = 0.0;
                 var calcb = 0.0;
 
+                var lastcalcw = [];
+                var lastcalcb = [];
+
+
                 for (var i = 0; i < 7; i++) {
 
                     var wst = calcatypewst[i];
@@ -123,7 +126,13 @@
 
                     calcw = Number(wet) - Number(wst);
 
-                    lastcalcw.push(calcw);
+                    if(lastcalcw.length < 8){
+
+                        lastcalcw.push(calcw);
+                    }else{
+                        var lastcalcw = [];
+                        lastcalcw.push(calcw);
+                    }
 
                 }
 
@@ -134,28 +143,61 @@
 
                     calcb = Number(calcatypebet[i])-Number(calcatypebst[i]);
 
-                    lastcalcb.push(calcb);
+                    if(lastcalcb.length < 8){
+                        lastcalcb.push(calcb);
+                    }else{
+                        var lastcalcb = [];
+                        lastcalcb.push(calcb);
+                    }
 
                 }
 
 
-                var cbt = 0.0 ;
-                var cwt = 0.0 ;
+                var cbt = 0 ;
+                var cwt = 0 ;
                 for(var i = 0; i< lastcalcb.length; i++)
                 {
                     cbt += Number(lastcalcb[i]);
-
                 }
 
                 for(var i = 0; i< lastcalcw.length; i++)
                 {
                     cwt += Number(lastcalcw[i]);
                 }
-                $scope.cwt = cwt;
-                $scope.cbt = cbt;
 
-                $scope.cwtmonth = $scope.cwt * 4;
-                $scope.cbtmonth = $scope.cbt * 4;
+                if(cwt.toString().length == 4){
+                    $scope.cwt = [ cwt.toString().substr(-2,2), cwt.toString().substr(0,2) ];
+                }else{
+                    $scope.cwt = [ cwt.toString().substr(-2,2), cwt.toString().substr(-3,1) ];
+                }
+
+                if(cbt.toString().length == 4) {
+                    $scope.cbt = [ cbt.toString().substr(-2, 2), cbt.toString().substr(0, 2)];
+                }else{
+                    $scope.cbt = [ cbt.toString().substr(-2,2), cbt.toString().substr(-3,1) ];
+                }
+
+                var cwtmonth = cwt * 4;
+                var cbtmonth = cbt * 4;
+
+                if(cwtmonth.toString().length == 4){
+                    $scope.cwtmonth = [cwtmonth.toString().substr(-2,2), cwtmonth.toString().substr(0,2)];
+                }else if(cwtmonth.toString().length == 5){
+                    $scope.cwtmonth = [cwtmonth.toString().substr(-2,2), cwtmonth.toString().substr(0,3)];
+                }else{
+                    $scope.cwtmonth = [cwtmonth.toString().substr(-2,2), cwtmonth.toString().substr(-3,1)];
+                }
+
+                if(cbtmonth.toString().length == 4) {
+                    $scope.cbtmonth = [cbtmonth.toString().substr(-2, 2), cbtmonth.toString().substr(0, 2)];
+                }else if(cbtmonth.toString().length == 5){
+                    $scope.cbtmonth = [cbtmonth.toString().substr(-2, 2), cbtmonth.toString().substr(0, 3)];
+                }else{
+                    $scope.cbtmonth = [cbtmonth.toString().substr(-2,2), cbtmonth.toString().substr(-3,1)];
+                }
+
+
+
             }
         };
 

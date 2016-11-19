@@ -159,7 +159,7 @@
                                         </table>
                                         <div class="form-inline">
                                         <button type="button" class="btn btn-default btn-sm" ng-click="abreakadd()"> 휴게시간 임시저장</button>
-                                            총 휴게시간 : <% cbt %>  총 실 근무시간 : <% cwt %>
+                                            총 휴게시간 : <% cbt[1] %>시간 <% cwt[0] %>분 / 총 실 근무시간 : <% cwt[1] %>시간 <% cwt[0] %>분
                                         </div>
 
                                         <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:1px;">
@@ -199,8 +199,8 @@
                                                 <th>총 근로시간</th>
                                             </tr>
                                             <tr>
-                                                <td><% cwtmonth %></td>
-                                                <td><% cbtmonth %></td>
+                                                <td><% cwtmonth[1] %>시간 <% cwtmonth[0] %>분</td>
+                                                <td><% cbtmonth[1] %>시간 <% cbtmonth[0] %>분</td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
