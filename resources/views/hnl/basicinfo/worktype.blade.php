@@ -134,7 +134,7 @@
                                             </tbody>
                                         </table>
                                         <button type="button" class="btn btn-default btn-sm" ng-click="aworkadd()"> 근무시간 임시저장</button>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="calc()"> 월요일 계산</button>
+                                        <button type="button" class="btn btn-default btn-sm" ng-click="calc()"> 계산</button>
                                         <table class="table table-condensed" style="margin-bottom:1px;">
                                             <tr>
                                                 <th style="vertical-align: middle;" rowspan="2">휴게시간<br>
@@ -199,8 +199,8 @@
                                                 <th>총 근로시간</th>
                                             </tr>
                                             <tr>
-                                                <td></td>
-                                                <td></td>
+                                                <td><% cwtmonth %></td>
+                                                <td><% cbtmonth %></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>

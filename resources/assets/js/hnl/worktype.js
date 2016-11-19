@@ -39,28 +39,16 @@
                 var calcatypebst = [];
                 var calcatypebet = [];
 
-                var isEmptylastcalcw = function(lastcalcw){
-                    if( lastcalcw == "" || lastcalcw == null || lastcalcw == undefined || ( lastcalcw != null && typeof lastcalcw == "object" && !Object.keys(lastcalcw).length ) ){
-                        return true
-                    }else{
-                        return false
-                    }
-                };
-
-                var isEmptylastcalcb = function(lastcalcb){
-                    if( lastcalcb == "" || lastcalcb == null || lastcalcb == undefined || ( lastcalcb != null && typeof lastcalcb == "object" && !Object.keys(lastcalcb).length ) ){
-                        return true
-                    }else{
-                        return false
-                    }
-                };
-
                 for (var i in awst) {
                     var amondayws = awst[i];
-                    var timews = amondayws.substring(0, 5)
-                    var tiws = timews.split(':');
-                    var tws = tiws[0] + tiws[1];
-                    var tws = Number(tws);
+                    if(awst[i] != 0){
+                        var timews = amondayws.substring(0, 5)
+                        var tiws = timews.split(':');
+                        var tws = tiws[0] + tiws[1];
+                        var tws = Number(tws);
+                    }else{
+                        var tws = Number(amondayws);
+                    }
 
                     if(calcatypewst.length < 8){
                         calcatypewst.push(tws);
@@ -72,11 +60,14 @@
 
                 for (var i in awet) {
                     var amondaywe = awet[i];
-                    var timee = amondaywe.substring(0, 5)
-                    var tiwe = timee.split(':');
-                    var twe = tiwe[0] + tiwe[1];
-                    var twe = Number(twe);
-
+                    if (awet[i] != 0) {
+                        var timee = amondaywe.substring(0, 5)
+                        var tiwe = timee.split(':');
+                        var twe = tiwe[0] + tiwe[1];
+                        var twe = Number(twe);
+                    } else {
+                        var twe = Number(amondaywe);
+                    }
                     if(calcatypewet.length < 8){
                         calcatypewet.push(twe);
                     }else{
@@ -87,10 +78,14 @@
 
                 for (var i in abst) {
                     var amondaybs = abst[i];
-                    var timebs = amondaybs.substring(0, 5)
-                    var tibs = timebs.split(':');
-                    var tbs = tibs[0] + tibs[1];
-                    var tbs = Number(tbs);
+                    if (abst[i] != 0) {
+                        var timebs = amondaybs.substring(0, 5)
+                        var tibs = timebs.split(':');
+                        var tbs = tibs[0] + tibs[1];
+                        var tbs = Number(tbs);
+                    } else {
+                        var tbs = Number(amondaybs);
+                    }
 
                     if(calcatypebst.length < 8){
                         calcatypebst.push(tbs);
@@ -102,10 +97,14 @@
 
                 for (var i in abet) {
                     var amondaybe = abet[i];
-                    var timebe = amondaybe.substring(0, 5)
-                    var tibe = timebe.split(':');
-                    var tbe = tibe[0] + tibe[1];
-                    var tbe = Number(tbe);
+                    if (abet[i] != 0) {
+                        var timebe = amondaybe.substring(0, 5)
+                        var tibe = timebe.split(':');
+                        var tbe = tibe[0] + tibe[1];
+                        var tbe = Number(tbe);
+                    }else{
+                        var tbe = Number(amondaybe);
+                    }
 
                     if(calcatypebet.length < 8){
                         calcatypebet.push(tbe);
@@ -114,41 +113,55 @@
                         calcatypebet.push(tbe);
                     }
                 }
+                var calcw = 0.0;
+                var calcb = 0.0;
 
-                for (var i =0; i < 8; i++){
-                    var calcw = Number(calcatypewet[i])-Number(calcatypewst[i]);
-                    var calcb = Number(calcatypebet[i])-Number(calcatypebst[i]);
-                    var test = '';
+                for (var i = 0; i < 7; i++) {
 
-                    /*                    if(!lastcalcw){*/
+                    var wst = calcatypewst[i];
+                    var wet = calcatypewet[i];
+
+                    calcw = Number(wet) - Number(wst);
+
                     lastcalcw.push(calcw);
-                    /*                    }else{
-                     var lastcalcw =[];
-                     lastcalcw.push(calcw);
-                     }*/
-                    /*                    if(!lastcalcb){*/
+
+                }
+
+                for (var i = 0; i < 7; i++){
+
+                    var bst = calcatypebst[i];
+                    var wet = calcatypebet[i];
+
+                    calcb = Number(calcatypebet[i])-Number(calcatypebst[i]);
+
                     lastcalcb.push(calcb);
-                    /*                    }else{
-                     var lastcalcb =[];
-                     lastcalcb.push(calcb);
-                     }*/
+
                 }
 
 
-
-                var cbt = 0 ;
-                var cwt = 0 ;
-                for(var i=0; i<8 ; i++)
+                var cbt = 0.0 ;
+                var cwt = 0.0 ;
+                for(var i = 0; i< lastcalcb.length; i++)
                 {
-                    cbt = Number(cbt) + Number(calcw[i]);
-                    cwt = Number(cwt) + Number(calcb[i]);
+                    cbt += Number(lastcalcb[i]);
+
+                }
+
+                for(var i = 0; i< lastcalcw.length; i++)
+                {
+                    cwt += Number(lastcalcw[i]);
                 }
                 $scope.cwt = cwt;
                 $scope.cbt = cbt;
+
+                $scope.cwtmonth = $scope.cwt * 4;
+                $scope.cbtmonth = $scope.cbt * 4;
             }
         };
 
         $scope.aworkadd = function () {
+
+
 
             awst = [
                 $scope.a_work_start_time1,
@@ -160,6 +173,10 @@
                 $scope.a_work_start_time7
             ];
 
+            while(awst.indexOf(undefined) != -1){
+                awst.splice(awst.indexOf(undefined),1,0);
+            }
+
             awet = [
                 $scope.a_work_end_time1,
                 $scope.a_work_end_time2,
@@ -169,6 +186,10 @@
                 $scope.a_work_end_time6,
                 $scope.a_work_end_time7
             ];
+
+            while(awet.indexOf(undefined) != -1){
+                awet.splice(awet.indexOf(undefined),1,0);
+            }
 
             var test = '';
         };
@@ -185,6 +206,10 @@
                 $scope.a_break_start_time7
             ];
 
+            while(abst.indexOf(undefined) != -1){
+                abst.splice(abst.indexOf(undefined),1,0);
+            }
+
             abet = [
                 $scope.a_break_end_time1,
                 $scope.a_break_end_time2,
@@ -194,6 +219,10 @@
                 $scope.a_break_end_time6,
                 $scope.a_break_end_time7
             ];
+
+            while(abet.indexOf(undefined) != -1){
+                abet.splice(abet.indexOf(undefined),1,0);
+            }
 
             var test = '';
         };
