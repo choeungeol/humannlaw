@@ -264,8 +264,14 @@
                 //휴일 근로시간
 
 
-
-
+                var allc = cwtmonth + cbtmonth + cwwt ;
+                if(allc.toString().length == 4) {
+                    $scope.allc = [allc.toString().substr(-2, 2), allc.toString().substr(0, 2)];
+                }else if(allc.toString().length == 5){
+                    $scope.allc = [allc.toString().substr(-2, 2), allc.toString().substr(0, 3)];
+                }else{
+                    $scope.allc = [allc.toString().substr(-2,2), allc.toString().substr(-3,1)];
+                }
 
             }
         };
