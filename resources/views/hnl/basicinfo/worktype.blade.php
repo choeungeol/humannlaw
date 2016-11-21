@@ -83,18 +83,18 @@
                                                     <th colspan="2">주 근무횟수</th>
                                                     @for($i= 0; $i <= 4; $i++)
                                                     <th>
-                                                        <select class="form-control input-sm">
+                                                        <select class="form-control input-sm" ng-model="now_{{ $i }}">
                                                             @foreach($worknum as $wn)
-                                                                <option value="{{ $wn }}"{!! ($wn === '매주' ? 'selected' : '') !!}>{{ $wn }}</option>
+                                                                <option value="{{ $wn }}"{!! ($wn  === '매주' ? 'selected' : '') !!} name="now">{{ $wn }}</option>
                                                             @endforeach
                                                         </select>
                                                     </th>
                                                     @endfor
                                                     @for($a= 0; $a <= 1; $a++)
                                                         <th>
-                                                            <select class="form-control input-sm">
+                                                            <select class="form-control input-sm" ng-model="weeknow_{{ $a }}" >
                                                                 @foreach($worknum as $wn)
-                                                                    <option value="{{ $wn }}"{!! ($wn === '없음' ? 'selected' : '') !!}>{{ $wn }}</option>
+                                                                    <option value="{{ $wn }}"{!! ($wn === '없음' ? 'selected' : '') !!} name="weeknow">{{ $wn }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </th>
@@ -104,7 +104,7 @@
                                                     <th colspan="2">근무유형</th>
                                                     @for($i= 0; $i <= 6; $i++)
                                                     <th>
-                                                        <select class="form-control input-sm">
+                                                        <select class="form-control input-sm" ng-model="worktype_{{ $i }}">
                                                             @foreach($worktype as $wt)
                                                                 <option value="{{ $wt }}"{!! ($wt === '근무일' ? 'selected' : '') !!}>{{ $wt }}</option>
                                                             @endforeach
@@ -135,6 +135,7 @@
                                         </table>
                                         <button type="button" class="btn btn-default btn-sm" ng-click="aworkadd()"> 근무시간 임시저장</button>
                                         <button type="button" class="btn btn-default btn-sm" ng-click="calc()"> 계산</button>
+
                                         <table class="table table-condensed" style="margin-bottom:1px;">
                                             <tr>
                                                 <th style="vertical-align: middle;" rowspan="2">휴게시간<br>
@@ -159,7 +160,6 @@
                                         </table>
                                         <div class="form-inline">
                                         <button type="button" class="btn btn-default btn-sm" ng-click="abreakadd()"> 휴게시간 임시저장</button>
-                                            총 휴게시간 : <% cbt[1] %>시간 <% cwt[0] %>분 / 총 실 근무시간 : <% cwt[1] %>시간 <% cwt[0] %>분
                                         </div>
 
                                         <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:1px;">
@@ -203,11 +203,11 @@
                                                 <td><% cbtmonth[1] %>시간 <% cbtmonth[0] %>분</td>
                                                 <td></td>
                                                 <td></td>
+                                                <td><% cwwt[1]%>시간 <% cwwt[0]%>분</td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>시간 분</td>
                                             </tr>
                                             <tr>
                                                 <td></td>

@@ -13,30 +13,47 @@
         $scope.counterc = 1;
 
 
-        for (var i = 1; i < 8; i++) {
+        $scope.now_0 = '매주';  // 월 근무횟수
+        $scope.now_1 = '매주';  // 화 근무횟수
+        $scope.now_2 = '매주';  // 수 근무횟수
+        $scope.now_3 = '매주';  // 목 근무횟수
+        $scope.now_4 = '매주';  // 금 근무횟수
 
-        }
+        $scope.weeknow_0 = '없음';  // 토 근무횟수
+        $scope.weeknow_1 = '없음';  // 일 근무횟수
 
-        // A형 시간 임시 저장
+        $scope.worktype_0 = '근무일';
+        $scope.worktype_1 = '근무일';
+        $scope.worktype_2 = '근무일';
+        $scope.worktype_3 = '근무일';
+        $scope.worktype_4 = '근무일';
+        $scope.worktype_5 = '근무일';
+        $scope.worktype_6 = '근무일';
+
         var awst = {};          // A형 근무 시작시간
         var awet = {};          // A형 근무 종료시간
         var abst = {};          // A형 휴게 시작시간
         var abet = {};          // A형 휴게 종료시간
 
+        var anow = {};
+        var aworktype = {};
+
+
+
 
         $scope.calc = function() {
-            //월요일 시작시간
 
             if(abst == null){
                 alert('휴게시작시간과 종료시간을 입력해주세요');
                 return;
 
             }else{
-                var calcatypewst = [];
-                var calcatypewet = [];
-                var calcatypebst = [];
-                var calcatypebet = [];
 
+
+                var calcatypewst = [];      // A형 근무 시작시간 계산
+                var calcatypewet = [];      // A형 근무 종료시간 계산
+                var calcatypebst = [];      // A형 휴게 시작시간 계산
+                var calcatypebet = [];      // A형 휴게 시작종료 시간
 
                 for (var i in awst) {
                     var amondayws = awst[i];
@@ -45,6 +62,7 @@
                         var tiws = timews.split(':');
                         var tws = tiws[0] + tiws[1];
                         var tws = Number(tws);
+
                     }else{
                         var tws = Number(amondayws);
                     }
@@ -55,6 +73,7 @@
                         var calcatypewst = [];
                         calcatypewst.push(tws);
                     }
+
                 }
 
                 for (var i in awet) {
@@ -64,6 +83,7 @@
                         var tiwe = timee.split(':');
                         var twe = tiwe[0] + tiwe[1];
                         var twe = Number(twe);
+
                     } else {
                         var twe = Number(amondaywe);
                     }
@@ -73,6 +93,7 @@
                         var calcatypewet = [];
                         calcatypewet.push(twe);
                     }
+
                 }
 
                 for (var i in abst) {
@@ -111,12 +132,21 @@
                         var calcatypebet = [];
                         calcatypebet.push(tbe);
                     }
-                }
-                var calcw = 0.0;
-                var calcb = 0.0;
 
-                var lastcalcw = [];
-                var lastcalcb = [];
+                }
+
+
+
+
+
+                var calcw = 0.0;        // A형 근무 시작시간 - A형 휴게 종료시간
+                var calcb = 0.0;        // A형 휴게 시작시간 - A형 휴게 종료시간.
+
+                var calcweekw = [];     // A형 1달 휴일근로시간
+                var lastcalcweek = [];  // A형 1달 총 휴일근로시간
+
+                var lastcalcw = [];     // A형 1주 근무 시작시간 - A형 휴게 종료시간
+                var lastcalcb = [];     // A형 1주 휴게 시작시간 - A형 휴게 종료시간
 
 
                 for (var i = 0; i < 7; i++) {
@@ -126,8 +156,25 @@
 
                     calcw = Number(wet) - Number(wst);
 
-                    if(lastcalcw.length < 8){
+                    if(anow[i] === '없음'){
+                        calcw = calcw * 0;
+                    }else if(anow[i] === '격주'){
+                        calcw = calcw / 2;
+                    }else if(anow[i] === '매주'){
+                        calcw = calcw * 4;
+                    }else if(anow[i] === '월1회'){
+                        calcw = calcw * 1 / 4.345;
+                    }else if(anow[i] === '월2회'){
+                        calcw = calcw * 2 / 4.345;
+                    }else if(anow[i] === '월3회'){
+                        calcw = calcw * 3 / 4.345;
+                    }else if(anow[i] === '월4회'){
+                        calcw = calcw * 4 / 4.345;
+                    }else if(anow[i] === '월5회'){
+                        calcw = calcw * 5 / 4.345;
+                    }
 
+                    if(lastcalcw.length < 8){
                         lastcalcw.push(calcw);
                     }else{
                         var lastcalcw = [];
@@ -153,8 +200,9 @@
                 }
 
 
-                var cbt = 0 ;
-                var cwt = 0 ;
+                var cbt = 0 ;   // 1주 휴게시간 최종계산 총합
+                var cwt = 0 ;   // 1주 근무시간 최종계산 총합
+                var cwwt = 0;
                 for(var i = 0; i< lastcalcb.length; i++)
                 {
                     cbt += Number(lastcalcb[i]);
@@ -164,23 +212,40 @@
                 {
                     cwt += Number(lastcalcw[i]);
                 }
+                cwwt = lastcalcw[5]+ lastcalcw[6];
 
+
+
+
+
+
+                //총 근무시간 시간 분 나눔
                 if(cwt.toString().length == 4){
                     $scope.cwt = [ cwt.toString().substr(-2,2), cwt.toString().substr(0,2) ];
                 }else{
                     $scope.cwt = [ cwt.toString().substr(-2,2), cwt.toString().substr(-3,1) ];
                 }
 
+                //총 휴게시간 시간 분 나눔
                 if(cbt.toString().length == 4) {
                     $scope.cbt = [ cbt.toString().substr(-2, 2), cbt.toString().substr(0, 2)];
                 }else{
                     $scope.cbt = [ cbt.toString().substr(-2,2), cbt.toString().substr(-3,1) ];
                 }
 
-                var cwtmonth = cwt * 4;
-                var cbtmonth = cbt * 4;
+                //총 휴일 근무시간 시간 분 나눔
+                if(cwwt.toString().length == 4){
+                    $scope.cwwt = [ cwwt.toString().substr(-2,2), cwwt.toString().substr(0,2) ];
+                }else{
+                    $scope.cwwt = [ cwwt.toString().substr(-2,2), cwwt.toString().substr(-3,1) ];
+                }
 
-                if(cwtmonth.toString().length == 4){
+
+
+                var cwtmonth = cwt;     // 월 근무시간 총합 계산
+                var cbtmonth = cbt * 4;     // 월 휴게시간 총합 계산.
+
+                if(cwtmonth.toString().length == 4){        //
                     $scope.cwtmonth = [cwtmonth.toString().substr(-2,2), cwtmonth.toString().substr(0,2)];
                 }else if(cwtmonth.toString().length == 5){
                     $scope.cwtmonth = [cwtmonth.toString().substr(-2,2), cwtmonth.toString().substr(0,3)];
@@ -196,6 +261,10 @@
                     $scope.cbtmonth = [cbtmonth.toString().substr(-2,2), cbtmonth.toString().substr(-3,1)];
                 }
 
+                //휴일 근로시간
+
+
+
 
 
             }
@@ -203,7 +272,25 @@
 
         $scope.aworkadd = function () {
 
+            anow = [
+                $scope.now_0,
+                $scope.now_1,
+                $scope.now_2,
+                $scope.now_3,
+                $scope.now_4,
+                $scope.weeknow_0,
+                $scope.weeknow_1,
+            ];
 
+            aworktype = [
+                $scope.worktype_0,
+                $scope.worktype_1,
+                $scope.worktype_2,
+                $scope.worktype_3,
+                $scope.worktype_4,
+                $scope.worktype_5,
+                $scope.worktype_6,
+            ];
 
             awst = [
                 $scope.a_work_start_time1,
