@@ -261,8 +261,7 @@
                     $scope.cbtmonth = [cbtmonth.toString().substr(-2,2), cbtmonth.toString().substr(-3,1)];
                 }
 
-                //휴일 근로시간
-
+                //총 근로시간
 
                 var allc = cwtmonth + cbtmonth + cwwt ;
                 if(allc.toString().length == 4) {

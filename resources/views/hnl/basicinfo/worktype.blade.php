@@ -205,8 +205,8 @@
                                                 <td></td>
                                                 <td><% cwwt[1] %>시간 <% cwwt[0]%>분</td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td> </td>
+                                                <td> </td>
                                                 <td><% allc[1] %>시간 <% allc[0] %>분</td>
                                             </tr>
                                             <tr>
