@@ -80,7 +80,7 @@
                                                     @endforeach
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="2">주 근무횟수</th>
+                                                    <th colspan="2">주 근무횟수 </th>
                                                     @for($i= 0; $i <= 4; $i++)
                                                     <th>
                                                         <select class="form-control input-sm" ng-model="now_{{ $i }}">
