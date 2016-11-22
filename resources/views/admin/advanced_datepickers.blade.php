@@ -298,9 +298,9 @@
                     <h3 class="panel-title">
                         <i class="livicon" data-name="calendar" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i> Date And Time Picker
                     </h3>
-                                <span class="pull-right clickable">
-                                    <i class="glyphicon glyphicon-chevron-up"></i>
-                                </span>
+                        <span class="pull-right clickable">
+                            <i class="glyphicon glyphicon-chevron-up"></i>
+                        </span>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">

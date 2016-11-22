@@ -99,6 +99,7 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
         Route::get('basicinfo', array('as' => 'hnl', 'uses' => 'HnlController@showBasicInfo'));
 
+
         Route::group(array('prefix' => 'jobtitle'), function () {
 
             Route::get('/', array('as' => 'jobtitle', 'uses' => 'HnlJobtitleController@index'));
@@ -131,6 +132,7 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
         Route::group(array('prefix' => 'worktype'), function () {
 
             Route::get('/', array('as' => 'hnl', 'uses' => 'HnlWorktypeController@index'));
+
 
         });
 
