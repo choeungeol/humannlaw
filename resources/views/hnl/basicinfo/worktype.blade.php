@@ -118,9 +118,10 @@
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input type="text" class="form-control input-sm" id="a_times{{ $i }}" ng-model="$parent.a_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input type="text" class="form-control input-sm" id="a_times{{ $i }}" ng-model="a_work_start_time{{ $i }}" placeholder="09:00">
                                                     </td>
                                                     @endfor
+                                                    <button type="button" ng-click="add()">Go </button>
                                                 </tr>
                                                 <tr>
                                                     <td>종료</td>

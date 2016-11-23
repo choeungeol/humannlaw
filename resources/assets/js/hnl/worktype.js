@@ -5,6 +5,18 @@
 
     app.controller('worktypeCtrl', function($scope, $http, $element, $compile) {
 
+
+        $scope.array = [];
+
+        $scope.add = function(){
+
+            $scope.array = [];
+            var obj = {
+                name : angular.copy($scope.a_work_start_time1)
+            };
+            $scope.array.push(obj);
+
+        };
         //A ~ B휴게시간 초기화
         $scope.breaktimes = [];
         $scope.breaktimesb = [];
@@ -326,8 +338,8 @@
                 var calcatypewet = [];      // A형 근무 종료시간 계산
                 var calcatypebst = [];      // A형 휴게 시작시간 계산
                 var calcatypebet = [];      // A형 휴게 시작종료 시간
-                var calcaatypebet = [];      // A형 휴게 시작종료 시간
-                var calcaatypebet = [];      // A형 휴게 시작종료 시간
+                var calcaatypebst = [];      // A형 휴게1 시작종료 시간
+                var calcaatypebet = [];      // A형 휴게1 시작종료 시간
 
                 for (var i in awst) {
                     var amondayws = awst[i];

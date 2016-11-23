@@ -63,6 +63,7 @@ $("#clockface3").clockface({
 //clockface picker end
 
 
+/*
 $("#a_times1").datetimepicker({
     format: 'HH:mm'
 }).parent().css("position :relative");
@@ -1793,3 +1794,4 @@ $("#jj_timee6").datetimepicker({
 $("#j_timee7").datetimepicker({
     format: 'HH:mm'
 }).parent().css("position :relative");
+*/
