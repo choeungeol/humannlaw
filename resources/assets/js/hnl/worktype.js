@@ -3318,6 +3318,34 @@
                 bbet.splice(bbet.indexOf(undefined),1,0);
             }
 
+            bbbst = [
+                $scope.bb_break_start_time1,
+                $scope.bb_break_start_time2,
+                $scope.bb_break_start_time3,
+                $scope.bb_break_start_time4,
+                $scope.bb_break_start_time5,
+                $scope.bb_break_start_time6,
+                $scope.bb_break_start_time7
+            ];
+
+            while(bbbst.indexOf(undefined) != -1){
+                bbbst.splice(bbbst.indexOf(undefined),1,0);
+            }
+
+            bbbet = [
+                $scope.bb_break_end_time1,
+                $scope.bb_break_end_time2,
+                $scope.bb_break_end_time3,
+                $scope.bb_break_end_time4,
+                $scope.bb_break_end_time5,
+                $scope.bb_break_end_time6,
+                $scope.bb_break_end_time7
+            ];
+
+            while(bbbet.indexOf(undefined) != -1){
+                bbbet.splice(bbbet.indexOf(undefined),1,0);
+            }
+
             var test = '';
         };
         $scope.cbreakadd = function () {
@@ -3350,6 +3378,33 @@
                 cbet.splice(cbet.indexOf(undefined),1,0);
             }
 
+            ccbst = [
+                $scope.cc_break_start_time1,
+                $scope.cc_break_start_time2,
+                $scope.cc_break_start_time3,
+                $scope.cc_break_start_time4,
+                $scope.cc_break_start_time5,
+                $scope.cc_break_start_time6,
+                $scope.cc_break_start_time7
+            ];
+
+            while(ccbst.indexOf(undefined) != -1){
+                ccbst.splice(ccbst.indexOf(undefined),1,0);
+            }
+
+            ccbet = [
+                $scope.cc_break_end_time1,
+                $scope.cc_break_end_time2,
+                $scope.cc_break_end_time3,
+                $scope.cc_break_end_time4,
+                $scope.cc_break_end_time5,
+                $scope.cc_break_end_time6,
+                $scope.cc_break_end_time7
+            ];
+
+            while(ccbet.indexOf(undefined) != -1){
+                ccbet.splice(ccbet.indexOf(undefined),1,0);
+            }
             var test = '';
         };
         $scope.dbreakadd = function () {
@@ -3382,6 +3437,33 @@
                 dbet.splice(dbet.indexOf(undefined),1,0);
             }
 
+            ddbst = [
+                $scope.dd_break_start_time1,
+                $scope.dd_break_start_time2,
+                $scope.dd_break_start_time3,
+                $scope.dd_break_start_time4,
+                $scope.dd_break_start_time5,
+                $scope.dd_break_start_time6,
+                $scope.dd_break_start_time7
+            ];
+
+            while(ddbst.indexOf(undefined) != -1){
+                ddbst.splice(ddbst.indexOf(undefined),1,0);
+            }
+
+            ddbet = [
+                $scope.dd_break_end_time1,
+                $scope.dd_break_end_time2,
+                $scope.dd_break_end_time3,
+                $scope.dd_break_end_time4,
+                $scope.dd_break_end_time5,
+                $scope.dd_break_end_time6,
+                $scope.dd_break_end_time7
+            ];
+
+            while(ddbet.indexOf(undefined) != -1){
+                ddbet.splice(ddbet.indexOf(undefined),1,0);
+            }
             var test = '';
         };
         $scope.ebreakadd = function () {
@@ -3412,6 +3494,34 @@
 
             while(ebet.indexOf(undefined) != -1){
                 ebet.splice(ebet.indexOf(undefined),1,0);
+            }
+
+            eebst = [
+                $scope.ee_break_start_time1,
+                $scope.ee_break_start_time2,
+                $scope.ee_break_start_time3,
+                $scope.ee_break_start_time4,
+                $scope.ee_break_start_time5,
+                $scope.ee_break_start_time6,
+                $scope.ee_break_start_time7
+            ];
+
+            while(eebst.indexOf(undefined) != -1){
+                eebst.splice(eebst.indexOf(undefined),1,0);
+            }
+
+            eebet = [
+                $scope.ee_break_end_time1,
+                $scope.ee_break_end_time2,
+                $scope.ee_break_end_time3,
+                $scope.ee_break_end_time4,
+                $scope.ee_break_end_time5,
+                $scope.ee_break_end_time6,
+                $scope.ee_break_end_time7
+            ];
+
+            while(eebet.indexOf(undefined) != -1){
+                eebet.splice(eebet.indexOf(undefined),1,0);
             }
 
             var test = '';
@@ -3446,6 +3556,35 @@
                 fbet.splice(fbet.indexOf(undefined),1,0);
             }
 
+            ffbst = [
+                $scope.ff_break_start_time1,
+                $scope.ff_break_start_time2,
+                $scope.ff_break_start_time3,
+                $scope.ff_break_start_time4,
+                $scope.ff_break_start_time5,
+                $scope.ff_break_start_time6,
+                $scope.ff_break_start_time7
+            ];
+
+            while(ffbst.indexOf(undefined) != -1){
+                ffbst.splice(ffbst.indexOf(undefined),1,0);
+            }
+
+            ffbet = [
+                $scope.ff_break_end_time1,
+                $scope.ff_break_end_time2,
+                $scope.ff_break_end_time3,
+                $scope.ff_break_end_time4,
+                $scope.ff_break_end_time5,
+                $scope.ff_break_end_time6,
+                $scope.ff_break_end_time7
+            ];
+
+            while(ffbet.indexOf(undefined) != -1){
+                ffbet.splice(ffbet.indexOf(undefined),1,0);
+            }
+
+
             var test = '';
         };
         $scope.gbreakadd = function () {
@@ -3478,6 +3617,34 @@
                 gbet.splice(gbet.indexOf(undefined),1,0);
             }
 
+            ggbst = [
+                $scope.gg_break_start_time1,
+                $scope.gg_break_start_time2,
+                $scope.gg_break_start_time3,
+                $scope.gg_break_start_time4,
+                $scope.gg_break_start_time5,
+                $scope.gg_break_start_time6,
+                $scope.gg_break_start_time7
+            ];
+
+            while(ggbst.indexOf(undefined) != -1){
+                ggbst.splice(ggbst.indexOf(undefined),1,0);
+            }
+
+            ggbet = [
+                $scope.gg_break_end_time1,
+                $scope.gg_break_end_time2,
+                $scope.gg_break_end_time3,
+                $scope.gg_break_end_time4,
+                $scope.gg_break_end_time5,
+                $scope.gg_break_end_time6,
+                $scope.gg_break_end_time7
+            ];
+
+
+            while(ggbet.indexOf(undefined) != -1){
+                ggbet.splice(ggbet.indexOf(undefined),1,0);
+            }
             var test = '';
         };
         $scope.hbreakadd = function () {
@@ -3510,7 +3677,38 @@
                 hbet.splice(hbet.indexOf(undefined),1,0);
             }
 
+            hhbst = [
+                $scope.hh_break_start_time1,
+                $scope.hh_break_start_time2,
+                $scope.hh_break_start_time3,
+                $scope.hh_break_start_time4,
+                $scope.hh_break_start_time5,
+                $scope.hh_break_start_time6,
+                $scope.hh_break_start_time7
+            ];
+
+            while(hhbst.indexOf(undefined) != -1){
+                hhbst.splice(hhbst.indexOf(undefined),1,0);
+            }
+
+            hhbet = [
+                $scope.hh_break_end_time1,
+                $scope.hh_break_end_time2,
+                $scope.hh_break_end_time3,
+                $scope.hh_break_end_time4,
+                $scope.hh_break_end_time5,
+                $scope.hh_break_end_time6,
+                $scope.hh_break_end_time7
+            ];
+
+            while(hhbet.indexOf(undefined) != -1){
+                hhbet.splice(hhbet.indexOf(undefined),1,0);
+            }
+
+
             var test = '';
+
+
         };
         $scope.ibreakadd = function () {
 
@@ -3542,6 +3740,33 @@
                 ibet.splice(ibet.indexOf(undefined),1,0);
             }
 
+            iibst = [
+                $scope.ii_break_start_time1,
+                $scope.ii_break_start_time2,
+                $scope.ii_break_start_time3,
+                $scope.ii_break_start_time4,
+                $scope.ii_break_start_time5,
+                $scope.ii_break_start_time6,
+                $scope.ii_break_start_time7
+            ];
+
+            while(iibst.indexOf(undefined) != -1){
+                iibst.splice(iibst.indexOf(undefined),1,0);
+            }
+
+            iibet = [
+                $scope.ii_break_end_time1,
+                $scope.ii_break_end_time2,
+                $scope.ii_break_end_time3,
+                $scope.ii_break_end_time4,
+                $scope.ii_break_end_time5,
+                $scope.ii_break_end_time6,
+                $scope.ii_break_end_time7
+            ];
+
+            while(iibet.indexOf(undefined) != -1){
+                iibet.splice(iibet.indexOf(undefined),1,0);
+            }
             var test = '';
         };
         $scope.jbreakadd = function () {
@@ -3572,6 +3797,34 @@
 
             while(jbet.indexOf(undefined) != -1){
                 jbet.splice(jbet.indexOf(undefined),1,0);
+            }
+
+            jjbst = [
+                $scope.jj_break_start_time1,
+                $scope.jj_break_start_time2,
+                $scope.jj_break_start_time3,
+                $scope.jj_break_start_time4,
+                $scope.jj_break_start_time5,
+                $scope.jj_break_start_time6,
+                $scope.jj_break_start_time7
+            ];
+
+            while(jjbst.indexOf(undefined) != -1){
+                jjbst.splice(jjbst.indexOf(undefined),1,0);
+            }
+
+            jjbet = [
+                $scope.jj_break_end_time1,
+                $scope.jj_break_end_time2,
+                $scope.jj_break_end_time3,
+                $scope.jj_break_end_time4,
+                $scope.jj_break_end_time5,
+                $scope.jj_break_end_time6,
+                $scope.jj_break_end_time7
+            ];
+
+            while(jjbet.indexOf(undefined) != -1){
+                jjbet.splice(jjbet.indexOf(undefined),1,0);
             }
 
             var test = '';
@@ -3794,6 +4047,7 @@
                 $scope.gg_break_end_time6,
                 $scope.gg_break_end_time7
             ];
+
 
             while(ggbet.indexOf(undefined) != -1){
                 ggbet.splice(ggbet.indexOf(undefined),1,0);

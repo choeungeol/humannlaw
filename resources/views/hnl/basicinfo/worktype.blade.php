@@ -200,7 +200,7 @@
                                                 <td><% cbtmonth[1] %>시간 <% cbtmonth[0] %>분</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><% cwwt[1] %>시간 <% cwwt[0]%>분</td>
+                                                <td><% cwwtmonth[1] %>시간 <% cwwtmonth[0]%>분</td>
                                                 <td></td>
                                                 <td> </td>
                                                 <td> </td>
@@ -345,7 +345,6 @@
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="bbbreakadd()"> 휴게시간 임시저장</button>
 
                                         <table class="table table-condensed">
                                             <tr>
@@ -510,7 +509,6 @@
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="ccbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -673,7 +671,6 @@
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="ddbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -836,7 +833,6 @@
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="eebreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -1000,7 +996,6 @@
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="ffbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -1164,7 +1159,6 @@
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="ggbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -1328,7 +1322,6 @@
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="hhbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -1492,7 +1485,6 @@
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="iibreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -1656,7 +1648,6 @@
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="jjbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
