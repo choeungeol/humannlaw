@@ -6,17 +6,8 @@
     app.controller('worktypeCtrl', function($scope, $http, $element, $compile) {
 
 
-        $scope.array = [];
 
-        $scope.add = function(){
 
-            $scope.array = [];
-            var obj = {
-                name : angular.copy($scope.a_work_start_time1)
-            };
-            $scope.array.push(obj);
-
-        };
         //A ~ B휴게시간 초기화
         $scope.breaktimes = [];
         $scope.breaktimesb = [];
@@ -516,10 +507,10 @@
                     calcb = Number(calcaatypebet[i])-Number(calcaatypebst[i]);
 
                     if(lastcalcab.length < 8){
-                        lastcaalcb.push(calcb);
+                        lastcalcab.push(calcb);
                     }else{
-                        var lastcaalcb = [];
-                        lastcaalcb.push(calcb);
+                        var lastcalcab = [];
+                        lastcalcab.push(calcb);
                     }
 
                 }
@@ -3577,6 +3568,10 @@
                 aabst.splice(aabst.indexOf(undefined),1,0);
             }
 
+            while(aabst.indexOf(undefined) != -1){
+                aabst.splice(aabst.indexOf(undefined),1,0);
+            }
+
             aabet = [
                 $scope.aa_break_end_time1,
                 $scope.aa_break_end_time2,
@@ -3884,7 +3879,7 @@
 
         $scope.addRow = function () {
 
-            $scope.breaktimes.push({'name': '휴게시간 ', 'num': $scope.counter});
+            $scope.breaktimes.push({'name': '휴게시간 ', 'num': $scope.counter, 'cc': $scope.counter });
 
             $scope.counter++
         };
