@@ -768,7 +768,7 @@
                     calcw = Number(wet) - Number(wst);
 
                     if(bnow[i] === '없음'){
-                        calcw = calcw * 0;  
+                        calcw = calcw * 0;
                     }else if(bnow[i] === '격주'){
                         calcw = calcw / 2;
                     }else if(bnow[i] === '매주'){

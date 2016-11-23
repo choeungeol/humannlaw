@@ -121,7 +121,6 @@
                                                         <input type="text" class="form-control input-sm" id="a_times{{ $i }}" ng-model="a_work_start_time{{ $i }}" placeholder="09:00">
                                                     </td>
                                                     @endfor
-                                                    <button type="button" ng-click="add()">Go </button>
                                                 </tr>
                                                 <tr>
                                                     <td>종료</td>
