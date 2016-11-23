@@ -82,7 +82,7 @@
                                                     <th colspan="2">주 근무횟수 </th>
                                                     @for($i= 0; $i <= 4; $i++)
                                                     <th>
-                                                        <select class="form-control input-sm" ng-model="now_{{ $i }}" placeholder="09:00">
+                                                        <select class="form-control input-sm" ng-model="now_{{ $i }}">
                                                             @foreach($worknum as $wn)
                                                                 <option value="{{ $wn }}"{!! ($wn  === '매주' ? 'selected' : '') !!} name="now">{{ $wn }}</option>
                                                             @endforeach
@@ -103,7 +103,7 @@
                                                     <th colspan="2">근무유형</th>
                                                     @for($i= 0; $i <= 6; $i++)
                                                     <th>
-                                                        <select class="form-control input-sm" ng-model="worktype_{{ $i }}" placeholder="09:00">
+                                                        <select class="form-control input-sm" ng-model="worktype_{{ $i }}">
                                                             @foreach($worktype as $wt)
                                                                 <option value="{{ $wt }}"{!! ($wt === '근무일' ? 'selected' : '') !!}>{{ $wt }}</option>
                                                             @endforeach
@@ -118,7 +118,7 @@
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input type="text" class="form-control input-sm" id="a_times{{ $i }}" ng-model="$parent.a_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input type="text" class="form-control input-sm" id="a_times{{ $i }}" ng-model="$parent.a_work_start_time{{ $i }}">
                                                     </td>
                                                     @endfor
                                                 </tr>
@@ -126,7 +126,7 @@
                                                     <td>종료</td>
                                                     @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="a_timee{{ $i }}" ng-model="a_work_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="a_timee{{ $i }}" ng-model="a_work_end_time{{ $i }}">
                                                     </td>
                                                     @endfor
                                                 </tr>
@@ -143,7 +143,7 @@
                                                 <td>시작</td>
                                                 @for($i=1 ; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="a_timese{{ $i }}" ng-model="a_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="a_timese{{ $i }}" ng-model="a_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -151,7 +151,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="a_timeee{{ $i }}" ng-model="a_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="a_timeee{{ $i }}" ng-model="a_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -161,6 +161,7 @@
                                         </div>
 
                                         <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:1px;">
+                                            <form class="<% bt.num %>">
                                             <tr>
                                                 <th style="vertical-align: middle;" rowspan="2">
                                                     <% bt.name %> <% bt.num %>
@@ -170,7 +171,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="aa_time{{ $i }}" ng-model="aa_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="aa_time{{ $i }}" ng-model="aa_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -178,12 +179,12 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="aa_time{{ $i }}" ng-model="aa_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="aa_time{{ $i }}" ng-model="aa_break_end_time{{ $i }}">
                                                     </td>
                                             @endfor
                                             </tr>
+                                        </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="aabreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -280,7 +281,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="b_times{{ $i }}" ng-model="b_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="b_times{{ $i }}" ng-model="b_work_start_time{{ $i }}" value="19:11:11">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -288,7 +289,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="b_timee{{ $i }}"ng-model="b_work_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="b_timee{{ $i }}"ng-model="b_work_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -306,7 +307,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="b_timese{{ $i }}" ng-model="b_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="b_timese{{ $i }}" ng-model="b_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -314,25 +315,25 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="b_timeee{{ $i }}" ng-model="b_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="b_timeee{{ $i }}" ng-model="b_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
                                         </table>
 
                                         <button type="button" class="btn btn-default btn-sm" ng-click="bbreakadd()"> 휴게시간 임시저장</button>
-                                        <table class="table table-condensed" ng-repeat="bt in breaktimesb" style="margin-bottom:1px;">
+                                        <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:1px;">
                                             <form class="<% bt.num %>">
                                                 <tr>
                                                     <th style="vertical-align: middle;" rowspan="2">
                                                         <% bt.name %> <% bt.num %>
                                                         <br>
-                                                        <button type="button" class="btn btn-sm btn-warning" ng-click="removeRowb(bt.name)">삭제</button>
+                                                        <button type="button" class="btn btn-sm btn-warning" ng-click="removeRow(bt.name)">삭제</button>
                                                     </th>
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="bb_times{{ $i }}" ng-model="bb_break_start_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="bb_times{{ $i }}" ng-model="bb_break_start_time{{ $i }}">
                                                         </td>
                                                     @endfor
                                                 </tr>
@@ -340,13 +341,12 @@
                                                     <td>종료</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="bb_timee{{ $i }}" ng-model="bb_break_end_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="bb_timee{{ $i }}" ng-model="bb_break_end_time{{ $i }}">
                                                         </td>
                                                 @endfor
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="bbbreakadd()"> 휴게시간 임시저장</button>
 
                                         <table class="table table-condensed">
                                             <tr>
@@ -444,7 +444,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="c_times{{ $i }}" ng-model="c_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="c_times{{ $i }}" ng-model="c_work_start_time{{ $i }}" value="09:00:00">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -452,7 +452,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="c_timee{{ $i }}"  ng-model="c_work_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="c_timee{{ $i }}"  ng-model="c_work_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -470,7 +470,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="c_timese{{ $i }}" ng-model="c_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="c_timese{{ $i }}" ng-model="c_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -478,7 +478,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="c_timeee{{ $i }}" ng-model="c_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="c_timeee{{ $i }}" ng-model="c_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -486,7 +486,7 @@
 
                                         <button type="button" class="btn btn-default btn-sm" ng-click="cbreakadd()"> 휴게시간 임시저장</button>
 
-                                        <table class="table table-condensed" ng-repeat="bt in breaktimesc" style="margin-bottom:0px;">
+                                        <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:0px;">
                                             <form class="<% bt.num %>">
                                                 <tr>
                                                     <th style="vertical-align: middle;" rowspan="2">
@@ -497,7 +497,7 @@
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="cc_times{{ $i }}" ng-model="cc_break_start_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="cc_times{{ $i }}" ng-model="cc_break_start_time{{ $i }}">
                                                         </td>
                                                     @endfor
                                                 </tr>
@@ -505,13 +505,12 @@
                                                     <td>종료</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="cc_timee{{ $i }}" ng-model="cc_break_end_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="cc_timee{{ $i }}" ng-model="cc_break_end_time{{ $i }}">
                                                         </td>
                                                 @endfor
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="ccbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -608,7 +607,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="d_times{{ $i }}" ng-model="d_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="d_times{{ $i }}" ng-model="d_work_start_time{{ $i }}" value="19:11:11">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -616,7 +615,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="d_timee{{ $i }}"  ng-model="d_work_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="d_timee{{ $i }}"  ng-model="d_work_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -633,7 +632,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="d_timese{{ $i }}" ng-model="d_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="d_timese{{ $i }}" ng-model="d_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -641,7 +640,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="d_timeee{{ $i }}" ng-model="d_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="d_timeee{{ $i }}" ng-model="d_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -649,7 +648,7 @@
 
                                         <button type="button" class="btn btn-default btn-sm" ng-click="dbreakadd()"> 휴게시간 임시저장</button>
 
-                                        <table class="table table-condensed" ng-repeat="bt in breaktimesd" style="margin-bottom:1px;">
+                                        <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:1px;">
                                             <form class="<% bt.num %>">
                                                 <tr>
                                                     <th style="vertical-align: middle;" rowspan="2">
@@ -660,7 +659,7 @@
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="dd_times{{ $i }}" ng-model="dd_break_start_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="dd_times{{ $i }}" ng-model="dd_break_start_time{{ $i }}">
                                                         </td>
                                                     @endfor
                                                 </tr>
@@ -668,13 +667,12 @@
                                                     <td>종료</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="dd_timee{{ $i }}" ng-model="dd_break_end_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="dd_timee{{ $i }}" ng-model="dd_break_end_time{{ $i }}">
                                                         </td>
                                                 @endfor
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="ddbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -771,7 +769,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="e_times{{ $i }}" ng-model="e_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="e_times{{ $i }}" ng-model="e_work_start_time{{ $i }}" value="19:11:11">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -779,7 +777,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="e_timee{{ $i }}" ng-model="e_work_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="e_timee{{ $i }}" ng-model="e_work_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -797,7 +795,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="e_timese{{ $i }}" ng-model="e_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="e_timese{{ $i }}" ng-model="e_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -805,25 +803,25 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="e_timeee{{ $i }}" ng-model="e_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="e_timeee{{ $i }}" ng-model="e_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
                                         </table>
                                         <button type="button" class="btn btn-default btn-sm" ng-click="ebreakadd()"> 휴게시간 임시저장</button>
 
-                                        <table class="table table-condensed" ng-repeat="bt in breaktimese" style="margin-bottom:1px;">
+                                        <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:1px;">
                                             <form class="<% bt.num %>">
                                                 <tr>
                                                     <th style="vertical-align: middle;" rowspan="2">
                                                         <% bt.name %> <% bt.num %>
                                                         <br>
-                                                        <button type="button" class="btn btn-sm btn-warning" ng-click="removeRowee(bt.name)">삭제</button>
+                                                        <button type="button" class="btn btn-sm btn-warning" ng-click="removeRowe(bt.name)">삭제</button>
                                                     </th>
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="ee_times{{ $i }}" ng-model="ee_break_start_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="ee_times{{ $i }}" ng-model="ee_break_start_time{{ $i }}">
                                                         </td>
                                                     @endfor
                                                 </tr>
@@ -831,13 +829,12 @@
                                                     <td>종료</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="ee_timee{{ $i }}" ng-model="ee_break_end_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="ee_timee{{ $i }}" ng-model="ee_break_end_time{{ $i }}">
                                                         </td>
                                                 @endfor
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="eebreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -934,7 +931,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="f_times{{ $i }}" ng-model="f_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="f_times{{ $i }}" ng-model="f_work_start_time{{ $i }}" value="19:11:11">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -942,7 +939,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="f_timee{{ $i }}" ng-model="f_work_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="f_timee{{ $i }}" ng-model="f_work_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -960,7 +957,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="f_timese{{ $i }}" ng-model="f_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="f_timese{{ $i }}" ng-model="f_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -968,7 +965,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="f_timeee{{ $i }}" ng-model="f_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="f_timeee{{ $i }}" ng-model="f_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -976,7 +973,7 @@
 
                                         <button type="button" class="btn btn-default btn-sm" ng-click="fbreakadd()"> 휴게시간 임시저장</button>
 
-                                        <table class="table table-condensed" ng-repeat="bt in breaktimesf" style="margin-bottom:1px;">
+                                        <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:1px;">
                                             <form class="<% bt.num %>">
                                                 <tr>
                                                     <th style="vertical-align: middle;" rowspan="2">
@@ -987,7 +984,7 @@
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="ff_times{{ $i }}" ng-model="ff_break_start_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="ff_times{{ $i }}" ng-model="ff_break_start_time{{ $i }}">
                                                         </td>
                                                     @endfor
                                                 </tr>
@@ -995,13 +992,12 @@
                                                     <td>종료</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="ff_timee{{ $i }}" ng-model="ff_break_end_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="ff_timee{{ $i }}" ng-model="ff_break_end_time{{ $i }}">
                                                         </td>
                                                 @endfor
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="ffbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -1098,7 +1094,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="g_times{{ $i }}" ng-model="g_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="g_times{{ $i }}" ng-model="g_work_start_time{{ $i }}" value="19:11:11">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1106,7 +1102,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="g_timee{{ $i }}" ng-model="g_work_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="g_timee{{ $i }}" ng-model="g_work_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1124,7 +1120,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="g_timese{{ $i }}" ng-model="g_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="g_timese{{ $i }}" ng-model="g_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1132,7 +1128,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="g_timeee{{ $i }}" ng-model="g_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="g_timeee{{ $i }}" ng-model="g_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1140,7 +1136,7 @@
 
                                         <button type="button" class="btn btn-default btn-sm" ng-click="gbreakadd()"> 휴게시간 임시저장</button>
 
-                                        <table class="table table-condensed" ng-repeat="bt in breaktimesg" style="margin-bottom:0px;">
+                                        <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:0px;">
                                             <form class="<% bt.num %>">
                                                 <tr>
                                                     <th style="vertical-align: middle;" rowspan="2">
@@ -1151,7 +1147,7 @@
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="gg_times{{ $i }}" ng-model="gg_break_start_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="gg_times{{ $i }}" ng-model="gg_break_start_time{{ $i }}">
                                                         </td>
                                                     @endfor
                                                 </tr>
@@ -1159,13 +1155,12 @@
                                                     <td>종료</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="gg_timee{{ $i }}" ng-model="gg_break_end_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="gg_timee{{ $i }}" ng-model="gg_break_end_time{{ $i }}">
                                                         </td>
                                                 @endfor
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="ggbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -1262,7 +1257,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="h_times{{ $i }}" ng-model="h_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="h_times{{ $i }}" ng-model="h_work_start_time{{ $i }}" value="19:11:11">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1270,7 +1265,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="h_timee{{ $i }}" ng-model="h_work_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="h_timee{{ $i }}" ng-model="h_work_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1288,7 +1283,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text"id="h_timese{{ $i }}" ng-model="h_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text"id="h_timese{{ $i }}" ng-model="h_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1296,7 +1291,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="h_timeee{{ $i }}" ng-model="h_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="h_timeee{{ $i }}" ng-model="h_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1304,7 +1299,7 @@
 
                                         <button type="button" class="btn btn-default btn-sm" ng-click="hbreakadd()"> 휴게시간 임시저장</button>
 
-                                        <table class="table table-condensed" ng-repeat="bt in breaktimesh" style="margin-bottom:1px;">
+                                        <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:1px;">
                                             <form class="<% bt.num %>">
                                                 <tr>
                                                     <th style="vertical-align: middle;" rowspan="2">
@@ -1315,7 +1310,7 @@
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="hh_times{{ $i }}" ng-model="hh_break_start_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="hh_times{{ $i }}" ng-model="hh_break_start_time{{ $i }}">
                                                         </td>
                                                     @endfor
                                                 </tr>
@@ -1323,13 +1318,12 @@
                                                     <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="hh_timee{{ $i }}" ng-model="hh_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="hh_timee{{ $i }}" ng-model="hh_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="hhbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -1426,7 +1420,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="i_times{{ $i }}" ng-model="i_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="i_times{{ $i }}" ng-model="i_work_start_time{{ $i }}" value="19:11:11">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1434,7 +1428,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="i_timee{{ $i }}" ng-model="i_work_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="i_timee{{ $i }}" ng-model="i_work_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1452,7 +1446,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="i_timese{{ $i }}" ng-model="i_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="i_timese{{ $i }}" ng-model="i_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1460,7 +1454,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="i_timeee{{ $i }}" ng-model="i_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="i_timeee{{ $i }}" ng-model="i_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1468,7 +1462,7 @@
 
                                         <button type="button" class="btn btn-default btn-sm" ng-click="ibreakadd()"> 휴게시간 임시저장</button>
 
-                                        <table class="table table-condensed" ng-repeat="bt in breaktimesi" style="margin-bottom:0px;">
+                                        <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:0px;">
                                             <form class="<% bt.num %>">
                                                 <tr>
                                                     <th style="vertical-align: middle;" rowspan="2">
@@ -1479,7 +1473,7 @@
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="ii_times{{ $i }}" ng-model="ii_break_start_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="ii_times{{ $i }}" ng-model="ii_break_start_time{{ $i }}">
                                                         </td>
                                                     @endfor
                                                 </tr>
@@ -1487,13 +1481,12 @@
                                                     <td>종료</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="ii_timee{{ $i }}" ng-model="ii_break_end_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="ii_timee{{ $i }}" ng-model="ii_break_end_time{{ $i }}">
                                                         </td>
                                                 @endfor
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="iibreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
@@ -1590,7 +1583,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="j_times{{ $i }}" ng-model="j_work_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="j_times{{ $i }}" ng-model="j_work_start_time{{ $i }}" value="19:11:11">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1598,7 +1591,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="j_timee{{ $i }}" ng-model="j_work_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="j_timee{{ $i }}" ng-model="j_work_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1616,7 +1609,7 @@
                                                 <td>시작</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="j_timese{{ $i }}" ng-model="j_break_start_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="j_timese{{ $i }}" ng-model="j_break_start_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1624,7 +1617,7 @@
                                                 <td>종료</td>
                                                 @for($i=1; $i < 8; $i++)
                                                     <td>
-                                                        <input class="form-control input-sm" type="text" id="j_timeee{{ $i }}" ng-model="j_break_end_time{{ $i }}" placeholder="09:00">
+                                                        <input class="form-control input-sm" type="text" id="j_timeee{{ $i }}" ng-model="j_break_end_time{{ $i }}">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -1632,7 +1625,7 @@
 
                                         <button type="button" class="btn btn-default btn-sm" ng-click="jbreakadd()"> 휴게시간 임시저장</button>
 
-                                        <table class="table table-condensed" ng-repeat="bt in breaktimesj" style="margin-bottom:0px;">
+                                        <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:0px;">
                                             <form class="<% bt.num %>">
                                                 <tr>
                                                     <th style="vertical-align: middle;" rowspan="2">
@@ -1643,7 +1636,7 @@
                                                     <td>시작</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="jj_times{{ $i }}" ng-model="jj_break_start_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="jj_times{{ $i }}" ng-model="jj_break_start_time{{ $i }}">
                                                         </td>
                                                     @endfor
                                                 </tr>
@@ -1651,13 +1644,12 @@
                                                     <td>종료</td>
                                                     @for($i=1; $i < 8; $i++)
                                                         <td>
-                                                            <input class="form-control input-sm" type="text" id="jj_timee{{ $i }}" ng-model="jj_break_end_time{{ $i }}" placeholder="09:00">
+                                                            <input class="form-control input-sm" type="text" id="jj_timee{{ $i }}" ng-model="jj_break_end_time{{ $i }}">
                                                         </td>
                                                     @endfor
                                                 </tr>
                                             </form>
                                         </table>
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="jjbreakadd()"> 휴게시간 임시저장</button>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>

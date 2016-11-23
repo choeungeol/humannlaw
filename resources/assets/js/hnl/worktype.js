@@ -5,12 +5,29 @@
 
     app.controller('worktypeCtrl', function($scope, $http, $element, $compile) {
 
+        //A ~ B휴게시간 초기화
         $scope.breaktimes = [];
         $scope.breaktimesb = [];
         $scope.breaktimesc = [];
+        $scope.breaktimesd = [];
+        $scope.breaktimese = [];
+        $scope.breaktimesf = [];
+        $scope.breaktimesg = [];
+        $scope.breaktimesh = [];
+        $scope.breaktimesi = [];
+        $scope.breaktimesj = [];
+
+        //A ~ B 휴게시간 카운터
         $scope.counter = 1;
         $scope.counterb = 1;
         $scope.counterc = 1;
+        $scope.counterd = 1;
+        $scope.countere = 1;
+        $scope.counterf = 1;
+        $scope.counterg = 1;
+        $scope.counterh = 1;
+        $scope.counteri = 1;
+        $scope.counterj = 1;
 
         //a 형 선택
         $scope.now_0 = '매주';  // 월 근무횟수
@@ -244,6 +261,28 @@
         var jbst = {};          // J형 휴게 시작시간
         var jbet = {};          // J형 휴게 종료시간
 
+        // A~J형  휴게시간1
+        var aabst = {};
+        var bbbst = {};
+        var ccbst = {};
+        var ddbst = {};
+        var eebst = {};
+        var ffbst = {};
+        var ggbst = {};
+        var hhbst = {};
+        var iibst = {};
+        var jjbst = {};
+
+        var aabet = {};
+        var bbbet = {};
+        var ccbet = {};
+        var ddbet = {};
+        var eebet = {};
+        var ffbet = {};
+        var ggbet = {};
+        var hhbet = {};
+        var iibet = {};
+        var jjbet = {};
 
         var anow = {};
         var aworktype = {};
@@ -287,6 +326,8 @@
                 var calcatypewet = [];      // A형 근무 종료시간 계산
                 var calcatypebst = [];      // A형 휴게 시작시간 계산
                 var calcatypebet = [];      // A형 휴게 시작종료 시간
+                var calcaatypebet = [];      // A형 휴게 시작종료 시간
+                var calcaatypebet = [];      // A형 휴게 시작종료 시간
 
                 for (var i in awst) {
                     var amondayws = awst[i];
@@ -368,18 +409,57 @@
 
                 }
 
+                for (var i in aabst) {
+                    var amondaybs = aabst[i];
+                    if (aabst[i] != 0) {
+                        var timebs = amondaybs.substring(0, 5)
+                        var tibs = timebs.split(':');
+                        var tbs = tibs[0] + tibs[1];
+                        var tbs = Number(tbs);
+                    } else {
+                        var tbs = Number(amondaybs);
+                    }
 
+                    if(calcaatypebst.length < 8){
+                        calcaatypebst.push(tbs);
+                    }else{
+                        var calcaatypebst = [];
+                        calcaatypebst.push(tbs);
+                    }
+                }
+
+                for (var i in aabet) {
+                    var amondaybe = aabet[i];
+                    if (aabet[i] != 0) {
+                        var timebe = amondaybe.substring(0, 5)
+                        var tibe = timebe.split(':');
+                        var tbe = tibe[0] + tibe[1];
+                        var tbe = Number(tbe);
+                    }else{
+                        var tbe = Number(amondaybe);
+                    }
+
+                    if(calcaatypebet.length < 8){
+                        calcatypebet.push(tbe);
+                    }else{
+                        var calcatypebet = [];
+                        calcaatypebet.push(tbe);
+                    }
+
+                }
 
 
 
                 var calcw = 0.0;        // A형 근무 시작시간 - A형 휴게 종료시간
                 var calcb = 0.0;        // A형 휴게 시작시간 - A형 휴게 종료시간.
+                var calcab = 0.0;        // A형 추가 휴게 시작시간 - A형 추가 휴게 종료시간.
 
                 var calcweekw = [];     // A형 1달 휴일근로시간
                 var lastcalcweek = [];  // A형 1달 총 휴일근로시간
 
                 var lastcalcw = [];     // A형 1주 근무 시작시간 - A형 휴게 종료시간
                 var lastcalcb = [];     // A형 1주 휴게 시작시간 - A형 휴게 종료시간
+                var lastcalcab = [];     // A형 1주 휴게 시작시간 - A형 휴게 종료시간
 
 
                 for (var i = 0; i < 7; i++) {
@@ -421,34 +501,51 @@
                     var bst = calcatypebst[i];
                     var wet = calcatypebet[i];
 
-                    calcb = Number(calcatypebet[i])-Number(calcatypebst[i]);
+                    calcb = Number(calcaatypebet[i])-Number(calcaatypebst[i]);
 
-                    if(lastcalcb.length < 8){
-                        lastcalcb.push(calcb);
+                    if(lastcalcab.length < 8){
+                        lastcaalcb.push(calcb);
                     }else{
-                        var lastcalcb = [];
-                        lastcalcb.push(calcb);
+                        var lastcaalcb = [];
+                        lastcaalcb.push(calcb);
+                    }
+
+                }
+
+                for (var i = 0; i < 7; i++){
+
+                    var bst = calcaatypebst[i];
+                    var wet = calcaatypebet[i];
+
+                    calcb = Number(calcaatypebet[i])-Number(calcaatypebst[i]);
+
+                    if(lastcalcab.length < 8){
+                        lastcalcab.push(calcab);
+                    }else{
+                        var lastcalcab = [];
+                        lastcalcab.push(calcab);
                     }
 
                 }
 
 
                 var cbt = 0 ;   // 1주 휴게시간 최종계산 총합
+                var cabt = 0 ;   // 1주 추가 휴게시간 최종계산 총합
                 var cwt = 0 ;   // 1주 근무시간 최종계산 총합
-                var cwwt = 0;
+                var cwwt = 0;  //1주 주말 근무시간 최종계산.
                 for(var i = 0; i< lastcalcb.length; i++)
                 {
                     cbt += Number(lastcalcb[i]);
+                    cabt += Number(lastcalcab[i]);
                 }
+
+                cbt = cbt+cabt;
 
                 for(var i = 0; i< lastcalcw.length; i++)
                 {
                     cwt += Number(lastcalcw[i]);
                 }
                 cwwt = lastcalcw[5]+ lastcalcw[6];
-
-
-
 
 
 
@@ -466,6 +563,13 @@
                     $scope.cbt = [ cbt.toString().substr(-2,2), cbt.toString().substr(-3,1) ];
                 }
 
+                //총 추가 휴게시간 시간 분 나눔
+                if(cabt.toString().length == 4) {
+                    $scope.cabt = [ cabt.toString().substr(-2, 2), cabt.toString().substr(0, 2)];
+                }else{
+                    $scope.cabt = [ cabt.toString().substr(-2,2), cabt.toString().substr(-3,1) ];
+                }
+
                 //총 휴일 근무시간 시간 분 나눔
                 if(cwwt.toString().length == 4){
                     $scope.cwwt = [ cwwt.toString().substr(-2,2), cwwt.toString().substr(0,2) ];
@@ -476,7 +580,7 @@
 
 
                 var cwtmonth = cwt;     // 월 근무시간 총합 계산
-                var cbtmonth = cbt * 4;     // 월 휴게시간 총합 계산.
+                var cbtmonth = (cbt * 4) + (cabt * 4);     // 월 휴게시간 총합 계산.
 
                 if(cwtmonth.toString().length == 4){        //
                     $scope.cwtmonth = [cwtmonth.toString().substr(-2,2), cwtmonth.toString().substr(0,2)];
@@ -2603,7 +2707,6 @@
             }
         };
 
-
         $scope.aworkadd = function () {
 
             anow = [
@@ -3446,6 +3549,326 @@
             var test = '';
         };
 
+        $scope.aabreakadd = function () {
+
+            aabst = [
+                $scope.aa_break_start_time1,
+                $scope.aa_break_start_time2,
+                $scope.aa_break_start_time3,
+                $scope.aa_break_start_time4,
+                $scope.aa_break_start_time5,
+                $scope.aa_break_start_time6,
+                $scope.aa_break_start_time7
+            ];
+
+            while(aabst.indexOf(undefined) != -1){
+                aabst.splice(aabst.indexOf(undefined),1,0);
+            }
+
+            aabet = [
+                $scope.aa_break_end_time1,
+                $scope.aa_break_end_time2,
+                $scope.aa_break_end_time3,
+                $scope.aa_break_end_time4,
+                $scope.aa_break_end_time5,
+                $scope.aa_break_end_time6,
+                $scope.aa_break_end_time7
+            ];
+
+            while(aabet.indexOf(undefined) != -1){
+                aabet.splice(aabet.indexOf(undefined),1,0);
+            }
+
+            var test = '';
+        };
+        $scope.bbbreakadd = function () {
+
+            bbbst = [
+                $scope.bb_break_start_time1,
+                $scope.bb_break_start_time2,
+                $scope.bb_break_start_time3,
+                $scope.bb_break_start_time4,
+                $scope.bb_break_start_time5,
+                $scope.bb_break_start_time6,
+                $scope.bb_break_start_time7
+            ];
+
+            while(bbbst.indexOf(undefined) != -1){
+                bbbst.splice(bbbst.indexOf(undefined),1,0);
+            }
+
+            bbbet = [
+                $scope.bb_break_end_time1,
+                $scope.bb_break_end_time2,
+                $scope.bb_break_end_time3,
+                $scope.bb_break_end_time4,
+                $scope.bb_break_end_time5,
+                $scope.bb_break_end_time6,
+                $scope.bb_break_end_time7
+            ];
+
+            while(bbbet.indexOf(undefined) != -1){
+                bbbet.splice(bbbet.indexOf(undefined),1,0);
+            }
+
+            var test = '';
+        };
+        $scope.ccbreakadd = function () {
+
+            ccbst = [
+                $scope.cc_break_start_time1,
+                $scope.cc_break_start_time2,
+                $scope.cc_break_start_time3,
+                $scope.cc_break_start_time4,
+                $scope.cc_break_start_time5,
+                $scope.cc_break_start_time6,
+                $scope.cc_break_start_time7
+            ];
+
+            while(ccbst.indexOf(undefined) != -1){
+                ccbst.splice(ccbst.indexOf(undefined),1,0);
+            }
+
+            ccbet = [
+                $scope.cc_break_end_time1,
+                $scope.cc_break_end_time2,
+                $scope.cc_break_end_time3,
+                $scope.cc_break_end_time4,
+                $scope.cc_break_end_time5,
+                $scope.cc_break_end_time6,
+                $scope.cc_break_end_time7
+            ];
+
+            while(ccbet.indexOf(undefined) != -1){
+                ccbet.splice(ccbet.indexOf(undefined),1,0);
+            }
+
+            var test = '';
+        };
+        $scope.ddbreakadd = function () {
+
+            ddbst = [
+                $scope.dd_break_start_time1,
+                $scope.dd_break_start_time2,
+                $scope.dd_break_start_time3,
+                $scope.dd_break_start_time4,
+                $scope.dd_break_start_time5,
+                $scope.dd_break_start_time6,
+                $scope.dd_break_start_time7
+            ];
+
+            while(ddbst.indexOf(undefined) != -1){
+                ddbst.splice(ddbst.indexOf(undefined),1,0);
+            }
+
+            ddbet = [
+                $scope.dd_break_end_time1,
+                $scope.dd_break_end_time2,
+                $scope.dd_break_end_time3,
+                $scope.dd_break_end_time4,
+                $scope.dd_break_end_time5,
+                $scope.dd_break_end_time6,
+                $scope.dd_break_end_time7
+            ];
+
+            while(ddbet.indexOf(undefined) != -1){
+                ddbet.splice(ddbet.indexOf(undefined),1,0);
+            }
+
+            var test = '';
+        };
+        $scope.eebreakadd = function () {
+
+            eebst = [
+                $scope.ee_break_start_time1,
+                $scope.ee_break_start_time2,
+                $scope.ee_break_start_time3,
+                $scope.ee_break_start_time4,
+                $scope.ee_break_start_time5,
+                $scope.ee_break_start_time6,
+                $scope.ee_break_start_time7
+            ];
+
+            while(eebst.indexOf(undefined) != -1){
+                eebst.splice(eebst.indexOf(undefined),1,0);
+            }
+
+            eebet = [
+                $scope.ee_break_end_time1,
+                $scope.ee_break_end_time2,
+                $scope.ee_break_end_time3,
+                $scope.ee_break_end_time4,
+                $scope.ee_break_end_time5,
+                $scope.ee_break_end_time6,
+                $scope.ee_break_end_time7
+            ];
+
+            while(eebet.indexOf(undefined) != -1){
+                eebet.splice(eebet.indexOf(undefined),1,0);
+            }
+
+            var test = '';
+        };
+        $scope.ffbreakadd = function () {
+
+            ffbst = [
+                $scope.ff_break_start_time1,
+                $scope.ff_break_start_time2,
+                $scope.ff_break_start_time3,
+                $scope.ff_break_start_time4,
+                $scope.ff_break_start_time5,
+                $scope.ff_break_start_time6,
+                $scope.ff_break_start_time7
+            ];
+
+            while(ffbst.indexOf(undefined) != -1){
+                ffbst.splice(ffbst.indexOf(undefined),1,0);
+            }
+
+            ffbet = [
+                $scope.ff_break_end_time1,
+                $scope.ff_break_end_time2,
+                $scope.ff_break_end_time3,
+                $scope.ff_break_end_time4,
+                $scope.ff_break_end_time5,
+                $scope.ff_break_end_time6,
+                $scope.ff_break_end_time7
+            ];
+
+            while(ffbet.indexOf(undefined) != -1){
+                ffbet.splice(ffbet.indexOf(undefined),1,0);
+            }
+
+            var test = '';
+        };
+        $scope.ggbreakadd = function () {
+
+            ggbst = [
+                $scope.gg_break_start_time1,
+                $scope.gg_break_start_time2,
+                $scope.gg_break_start_time3,
+                $scope.gg_break_start_time4,
+                $scope.gg_break_start_time5,
+                $scope.gg_break_start_time6,
+                $scope.gg_break_start_time7
+            ];
+
+            while(ggbst.indexOf(undefined) != -1){
+                ggbst.splice(ggbst.indexOf(undefined),1,0);
+            }
+
+            ggbet = [
+                $scope.gg_break_end_time1,
+                $scope.gg_break_end_time2,
+                $scope.gg_break_end_time3,
+                $scope.gg_break_end_time4,
+                $scope.gg_break_end_time5,
+                $scope.gg_break_end_time6,
+                $scope.gg_break_end_time7
+            ];
+
+            while(ggbet.indexOf(undefined) != -1){
+                ggbet.splice(ggbet.indexOf(undefined),1,0);
+            }
+
+            var test = '';
+        };
+        $scope.hhbreakadd = function () {
+
+            hhbst = [
+                $scope.hh_break_start_time1,
+                $scope.hh_break_start_time2,
+                $scope.hh_break_start_time3,
+                $scope.hh_break_start_time4,
+                $scope.hh_break_start_time5,
+                $scope.hh_break_start_time6,
+                $scope.hh_break_start_time7
+            ];
+
+            while(hhbst.indexOf(undefined) != -1){
+                hhbst.splice(hhbst.indexOf(undefined),1,0);
+            }
+
+            hhbet = [
+                $scope.hh_break_end_time1,
+                $scope.hh_break_end_time2,
+                $scope.hh_break_end_time3,
+                $scope.hh_break_end_time4,
+                $scope.hh_break_end_time5,
+                $scope.hh_break_end_time6,
+                $scope.hh_break_end_time7
+            ];
+
+            while(hhbet.indexOf(undefined) != -1){
+                hhbet.splice(hhbet.indexOf(undefined),1,0);
+            }
+
+            var test = '';
+        };
+        $scope.iibreakadd = function () {
+
+            iibst = [
+                $scope.ii_break_start_time1,
+                $scope.ii_break_start_time2,
+                $scope.ii_break_start_time3,
+                $scope.ii_break_start_time4,
+                $scope.ii_break_start_time5,
+                $scope.ii_break_start_time6,
+                $scope.ii_break_start_time7
+            ];
+
+            while(iibst.indexOf(undefined) != -1){
+                iibst.splice(iibst.indexOf(undefined),1,0);
+            }
+
+            iibet = [
+                $scope.ii_break_end_time1,
+                $scope.ii_break_end_time2,
+                $scope.ii_break_end_time3,
+                $scope.ii_break_end_time4,
+                $scope.ii_break_end_time5,
+                $scope.ii_break_end_time6,
+                $scope.ii_break_end_time7
+            ];
+
+            while(iibet.indexOf(undefined) != -1){
+                iibet.splice(iibet.indexOf(undefined),1,0);
+            }
+
+            var test = '';
+        };
+        $scope.jjbreakadd = function () {
+
+            jjbst = [
+                $scope.jj_break_start_time1,
+                $scope.jj_break_start_time2,
+                $scope.jj_break_start_time3,
+                $scope.jj_break_start_time4,
+                $scope.jj_break_start_time5,
+                $scope.jj_break_start_time6,
+                $scope.jj_break_start_time7
+            ];
+
+            while(jjbst.indexOf(undefined) != -1){
+                jjbst.splice(jjbst.indexOf(undefined),1,0);
+            }
+
+            jjbet = [
+                $scope.jj_break_end_time1,
+                $scope.jj_break_end_time2,
+                $scope.jj_break_end_time3,
+                $scope.jj_break_end_time4,
+                $scope.jj_break_end_time5,
+                $scope.jj_break_end_time6,
+                $scope.jj_break_end_time7
+            ];
+
+            while(jjbet.indexOf(undefined) != -1){
+                jjbet.splice(jjbet.indexOf(undefined),1,0);
+            }
+
+            var test = '';
+        };
 
         $scope.addRow = function () {
 
@@ -3453,19 +3876,59 @@
 
             $scope.counter++
         };
-
         $scope.addRowb = function () {
 
             $scope.breaktimesb.push({'name': '휴게시간 ', 'num': $scope.counterb});
 
             $scope.counterb++
         };
-
         $scope.addRowc = function () {
 
             $scope.breaktimesc.push({'name': '휴게시간 ', 'num': $scope.counterc});
 
             $scope.counterc++
+        };
+        $scope.addRowd = function () {
+
+            $scope.breaktimesd.push({'name': '휴게시간 ', 'num': $scope.counterd});
+
+            $scope.counterd++
+        };
+        $scope.addRowe = function () {
+
+            $scope.breaktimese.push({'name': '휴게시간 ', 'num': $scope.countere});
+
+            $scope.countere++
+        };
+        $scope.addRowf = function () {
+
+            $scope.breaktimef.push({'name': '휴게시간 ', 'num': $scope.counterf});
+
+            $scope.counterf++
+        };
+        $scope.addRowg = function () {
+
+            $scope.breaktimesg.push({'name': '휴게시간 ', 'num': $scope.counterg});
+
+            $scope.counterg++
+        };
+        $scope.addRowh = function () {
+
+            $scope.breaktimesh.push({'name': '휴게시간 ', 'num': $scope.counterh});
+
+            $scope.counterh++
+        };
+        $scope.addRowi = function () {
+
+            $scope.breaktimesi.push({'name': '휴게시간 ', 'num': $scope.counteri});
+
+            $scope.counteri++
+        };
+        $scope.addRowj = function () {
+
+            $scope.breaktimesj.push({'name': '휴게시간 ', 'num': $scope.counterj});
+
+            $scope.counterj++
         };
 
         $scope.removeRow = function (name) {
@@ -3486,7 +3949,6 @@
 
 
         };
-
         $scope.removeRowb = function (name) {
             var index = -1;
             var comArr = eval($scope.breaktimesb);
@@ -3505,7 +3967,6 @@
 
 
         };
-
         $scope.removeRowc = function (name) {
             var index = -1;
             var comArr = eval($scope.breaktimesc);
@@ -3524,6 +3985,132 @@
 
 
         };
+        $scope.removeRowd = function (name) {
+            var index = -1;
+            var comArr = eval($scope.breaktimesd);
+            for (var i = 0; i < comArr.length; i++) {
+                if (comArr[i].name === name) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index === -1) {
+                alert("Something gone wrong");
+            }
+            $scope.breaktimesd.splice(index, 1);
+
+            $scope.counterd--
+
+
+        };
+        $scope.removeRowe = function (name) {
+            var index = -1;
+            var comArr = eval($scope.breaktimese);
+            for (var i = 0; i < comArr.length; i++) {
+                if (comArr[i].name === name) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index === -1) {
+                alert("Something gone wrong");
+            }
+            $scope.breaktimese.splice(index, 1);
+
+            $scope.countere--
+
+
+        };
+        $scope.removeRowf = function (name) {
+            var index = -1;
+            var comArr = eval($scope.breaktimesf);
+            for (var i = 0; i < comArr.length; i++) {
+                if (comArr[i].name === name) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index === -1) {
+                alert("Something gone wrong");
+            }
+            $scope.breaktimesf.splice(index, 1);
+
+            $scope.counterf--
+
+
+        };
+        $scope.removeRowg = function (name) {
+            var index = -1;
+            var comArr = eval($scope.breaktimesg);
+            for (var i = 0; i < comArr.length; i++) {
+                if (comArr[i].name === name) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index === -1) {
+                alert("Something gone wrong");
+            }
+            $scope.breaktimesg.splice(index, 1);
+
+            $scope.counterg--
+
+
+        };
+        $scope.removeRowh = function (name) {
+            var index = -1;
+            var comArr = eval($scope.breaktimesh);
+            for (var i = 0; i < comArr.length; i++) {
+                if (comArr[i].name === name) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index === -1) {
+                alert("Something gone wrong");
+            }
+            $scope.breaktimesh.splice(index, 1);
+
+            $scope.counterh--
+
+
+        };
+        $scope.removeRowi = function (name) {
+            var index = -1;
+            var comArr = eval($scope.breaktimesi);
+            for (var i = 0; i < comArr.length; i++) {
+                if (comArr[i].name === name) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index === -1) {
+                alert("Something gone wrong");
+            }
+            $scope.breaktimesi.splice(index, 1);
+
+            $scope.counteri--
+
+
+        };
+        $scope.removeRowj = function (name) {
+            var index = -1;
+            var comArr = eval($scope.breaktimesj);
+            for (var i = 0; i < comArr.length; i++) {
+                if (comArr[i].name === name) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index === -1) {
+                alert("Something gone wrong");
+            }
+            $scope.breaktimesj.splice(index, 1);
+
+            $scope.counterj--
+
+
+        };
 
         var tabs = [
             { title:'A', href:'A'},
@@ -3534,13 +4121,12 @@
 
         ];
 
-
-
         var alphabet = ['F','G','H','I','J'];
         var al = alphabet.splice(0,5);
 
         var lastal = [];
         var last = '';
+
         $scope.tabs = tabs;
 
         $scope.addTab = function () {
