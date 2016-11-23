@@ -199,7 +199,7 @@
                                                 <td><% cbtmonth[1] %>시간 <% cbtmonth[0] %>분</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><% cwwtmonth[1] %>시간 <% cwwtmonth[0]%>분</td>
+                                                <td><% cwwt[1] %>시간 <% cwwt[0]%>분</td>
                                                 <td></td>
                                                 <td> </td>
                                                 <td> </td>
