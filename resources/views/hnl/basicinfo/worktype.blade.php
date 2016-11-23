@@ -157,9 +157,6 @@
                                                 @endfor
                                             </tr>
                                         </table>
-                                        <div class="form-inline">
-                                        <button type="button" class="btn btn-default btn-sm" ng-click="abreakadd()"> 휴게시간 임시저장</button>
-                                        </div>
                                         <table class="table table-condensed" ng-repeat="bt in breaktimes" style="margin-bottom:1px;">
                                             <tr>
                                                 <th style="vertical-align: middle;" rowspan="2">
@@ -183,7 +180,9 @@
                                             @endfor
                                             </tr>
                                         </table>
-
+                                        <div class="form-inline">
+                                            <button type="button" class="btn btn-default btn-sm" ng-click="abreakadd()"> 휴게시간 임시저장</button>
+                                        </div>
                                         <table class="table table-condensed">
                                             <tr>
                                                 <th>1달 소정근로시간</th>

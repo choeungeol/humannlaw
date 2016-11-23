@@ -443,9 +443,9 @@
                     }
 
                     if(calcaatypebet.length < 8){
-                        calcatypebet.push(tbe);
+                        calcaatypebet.push(tbe);
                     }else{
-                        var calcatypebet = [];
+                        var calcaatypebet = [];
                         calcaatypebet.push(tbe);
                     }
 
@@ -504,13 +504,13 @@
                     var bst = calcatypebst[i];
                     var wet = calcatypebet[i];
 
-                    calcb = Number(calcaatypebet[i])-Number(calcaatypebst[i]);
+                    calcb = Number(calcatypebet[i])-Number(calcatypebst[i]);
 
-                    if(lastcalcab.length < 8){
-                        lastcalcab.push(calcb);
+                    if(lastcalcb.length < 8){
+                        lastcalcb.push(calcb);
                     }else{
-                        var lastcalcab = [];
-                        lastcalcab.push(calcb);
+                        var lastcalcb = [];
+                        lastcalcb.push(calcb);
                     }
 
                 }
@@ -520,7 +520,7 @@
                     var bst = calcaatypebst[i];
                     var wet = calcaatypebet[i];
 
-                    calcb = Number(calcaatypebet[i])-Number(calcaatypebst[i]);
+                    calcab = Number(calcaatypebet[i])-Number(calcaatypebst[i]);
 
                     if(lastcalcab.length < 8){
                         lastcalcab.push(calcab);
@@ -539,10 +539,13 @@
                 for(var i = 0; i< lastcalcb.length; i++)
                 {
                     cbt += Number(lastcalcb[i]);
+                }
+
+                for(var i = 0; i< lastcalcab.length; i++)
+                {
                     cabt += Number(lastcalcab[i]);
                 }
 
-                cbt = cbt+cabt;
 
                 for(var i = 0; i< lastcalcw.length; i++)
                 {
@@ -566,12 +569,6 @@
                     $scope.cbt = [ cbt.toString().substr(-2,2), cbt.toString().substr(-3,1) ];
                 }
 
-                //총 추가 휴게시간 시간 분 나눔
-                if(cabt.toString().length == 4) {
-                    $scope.cabt = [ cabt.toString().substr(-2, 2), cabt.toString().substr(0, 2)];
-                }else{
-                    $scope.cabt = [ cabt.toString().substr(-2,2), cabt.toString().substr(-3,1) ];
-                }
 
                 //총 휴일 근무시간 시간 분 나눔
                 if(cwwt.toString().length == 4){
@@ -583,7 +580,7 @@
 
 
                 var cwtmonth = cwt;     // 월 근무시간 총합 계산
-                var cbtmonth = (cbt * 4) + (cabt * 4);     // 월 휴게시간 총합 계산.
+                var cbtmonth = cbt * 4 + cabt * 4;     // 월 휴게시간 총합 계산.
 
                 if(cwtmonth.toString().length == 4){        //
                     $scope.cwtmonth = [cwtmonth.toString().substr(-2,2), cwtmonth.toString().substr(0,2)];
@@ -3261,6 +3258,34 @@
                 abet.splice(abet.indexOf(undefined),1,0);
             }
 
+
+            aabst = [
+                $scope.aa_break_start_time1,
+                $scope.aa_break_start_time2,
+                $scope.aa_break_start_time3,
+                $scope.aa_break_start_time4,
+                $scope.aa_break_start_time5,
+                $scope.aa_break_start_time6,
+                $scope.aa_break_start_time7
+            ];
+
+            while(aabst.indexOf(undefined) != -1){
+                aabst.splice(aabst.indexOf(undefined),1,0);
+            }
+
+            aabet = [
+                $scope.aa_break_end_time1,
+                $scope.aa_break_end_time2,
+                $scope.aa_break_end_time3,
+                $scope.aa_break_end_time4,
+                $scope.aa_break_end_time5,
+                $scope.aa_break_end_time6,
+                $scope.aa_break_end_time7
+            ];
+
+            while(aabet.indexOf(undefined) != -1){
+                aabet.splice(aabet.indexOf(undefined),1,0);
+            }
             var test = '';
         };
         $scope.bbreakadd = function () {
@@ -3563,10 +3588,6 @@
                 $scope.aa_break_start_time6,
                 $scope.aa_break_start_time7
             ];
-
-            while(aabst.indexOf(undefined) != -1){
-                aabst.splice(aabst.indexOf(undefined),1,0);
-            }
 
             while(aabst.indexOf(undefined) != -1){
                 aabst.splice(aabst.indexOf(undefined),1,0);
