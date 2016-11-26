@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
 /*       $this->call('DatatablesSeeder');*/
        $this->call('JobtitleSeeder');
        $this->call('PostitleSeeder');
+       $this->call('WorktypeSeeder');
 
         Model::reguard();
     }

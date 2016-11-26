@@ -133,6 +133,8 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
             Route::get('/', array('as' => 'hnl', 'uses' => 'HnlWorktypeController@index'));
 
+            Route::post('insert' , array('as' => 'insert/worktype', 'uses' => 'HnlWorktypeController@typeInsert'));
+
 
         });
 
