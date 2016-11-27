@@ -117,14 +117,68 @@ class HnlWorktypeController extends Controller
         }
         //계산
         for($i=0; $i < 7; $i++){
-            $weekwork[] = (integer)$workend[$i] - (integer)$workstart[$i];
-            $totalwork[] = $weekwork[$i] - (integer)$breaktime[$i];
+            if($worktype[$i] == '무급휴무일'){
 
-            if($totalwork[$i] > 800){
+                $weekwork[] = (integer)$workend[$i] - (integer)$workstart[$i];
+                //실근로시간
+                $totalwork[] = $weekwork[$i] - (integer)$breaktime[$i];
 
-                $overwork[] = $totalwork[$i] - 800 * 1.5;
+            }else{
+                $weekwork[] = (integer)$workend[$i] - (integer)$workstart[$i];
+
+                if($worknum[$i] == '매주'){
+                    //실근로시간
+                    $totalwork[] = $weekwork[$i] - (integer)$breaktime[$i];
+
+                    //8시간 초과시 연장근로 시간
+                    if($totalwork[$i] > 800){
+
+                        $extendwork[] = $totalwork[$i] - 800 * 1.5;
+
+                    }else{
+
+                        $extendwork[] = $totalwork[$i];
+                    }
+
+                    //야간 근로시간
+                    $night = 2200;
+                    if($workend[$i] > $night){
+
+                        $nightwork[] = (integer)$workend[$i] - $night * 24 ;
+
+                    }else{
+
+                        $nightwork[] = (integer)$workend[$i];
+
+                    }
+
+
+
+                }
+                elseif($worknum[$i] == '격주'){
+                    //실근로시간
+                    $totalwork[] = $weekwork[$i] - (integer)$breaktime[$i] / 2;
+
+                    //8시간 초과시 연장근로 시간
+                    if($totalwork[$i] > 800){
+                        $extendwork[] = $totalwork[$i] - 800 * 1.5 / 2;
+                    }else{
+                        $extendwork[] = $totalwork[$i] / 2;
+                    }
+
+                    //야간 근로시간
+                    $night = 2200;
+                    if($workend[$i] > $night){
+                        $nightwork[] = (integer)$workend[$i] - $night * 24 / 2;
+                    }else{
+                        $nightwork[] = (integer)$workend[$i];
+                    }
+                }elseif($worknum[$i] == ''){
+
+                }
 
             }
+
         }
 
 
