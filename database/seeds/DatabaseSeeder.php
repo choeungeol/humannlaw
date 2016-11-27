@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
        $this->call('JobtitleSeeder');
        $this->call('PostitleSeeder');
        $this->call('WorktypeSeeder');
+       $this->call('CalctableSeeder');
 
         Model::reguard();
     }

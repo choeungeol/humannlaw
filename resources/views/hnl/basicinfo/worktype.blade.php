@@ -112,7 +112,11 @@
                                                     <td>시작</td>
                                                     @foreach($v as $va)
                                                     <td>
+                                                        @if($va->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm" name="work_start_time{{ $va->sortnum }}" placeholder="09:00">
+                                                        @else
                                                         <input type="text" class="form-control input-sm" name="work_start_time{{ $va->sortnum }}" placeholder="09:00" value="{{ $va->sworktime }}">
+                                                        @endif
                                                     </td>
                                                     @endforeach
                                                 </tr>
@@ -120,7 +124,11 @@
                                                     <td>종료</td>
                                                     @foreach($v as $va)
                                                     <td>
+                                                        @if($va->eworktime == 0)
+                                                        <input class="form-control input-sm" type="text" name="work_end_time{{ $va->sortnum }}" placeholder="09:00">
+                                                        @else
                                                         <input class="form-control input-sm" type="text" name="work_end_time{{ $va->sortnum }}" placeholder="09:00" value="{{ $va->eworktime }}">
+                                                        @endif
                                                     </td>
                                                     @endforeach
                                                 </tr>
@@ -132,7 +140,11 @@
                                                 <td>시간</td>
                                                 @foreach($v as $va)
                                                     <td>
+                                                        @if($va->breaktime == 0)
+                                                        <input class="form-control input-sm" type="text" name="break_time{{ $va->sortnum }}" placeholder="09:00">
+                                                        @else
                                                         <input class="form-control input-sm" type="text" name="break_time{{ $va->sortnum }}" placeholder="09:00" value="{{ $va->breaktime }}">
+                                                        @endif
                                                     </td>
                                                 @endforeach
                                             </tr>
@@ -150,40 +162,19 @@
                                                 <th>총 근로시간</th>
                                             </tr>
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                @foreach($v as $va)
+                                                <td>{{ $va->mtotal }}</td>
+                                                <td>{{ $va->mbreak }}</td>
+                                                <td>{{ $va->mover }}</td>
+                                                <td>{{ $va->mnight }}</td>
+                                                <td>{{ $va->mwwork }}</td>
+                                                <td>{{ $va->mwover }}</td>
+                                                <td>{{ $va->mwnight }}</td>
+                                                <td>{{ $va->mwbt }}</td>
+                                                @endforeach
                                             </tr>
                                         </table>
-                                        <button class="btn btn-default btn-sm"> 저장하기 </button>
+                                        <button class="btn btn-primary btn-sm"> 저장하기 </button>
                                     </form>
                                     @endforeach
                                 <div class="slimScrollBar" style="background: rgb(216, 74, 56); width: 3px; position: absolute; top: 0px; opacity: 1; display: none; border-radius: 0px; z-index: 99; right: 1px; height: 130px;"></div>
