@@ -285,6 +285,8 @@ class HnlWorktypeController extends Controller
 
                 }elseif($worknum[$i] == '월5회'){
 
+                }elseif($worknum[$i] == '없음'){
+                    $breaktime[$i] = 0;
                 }//근무횟수 if 끝
 
                 //1주 소정 근로시간
@@ -298,7 +300,7 @@ class HnlWorktypeController extends Controller
                 $totalBreakTime = $weekbreaktime * 4;
 
                 //1주 연장시간
-                $weekExtend = array_sum($extend);
+                $weekExtend = array_sum($extendwork);
                 //1달 연장시간
                 $totalWeekExtend = $weekExtend * 4;
 
