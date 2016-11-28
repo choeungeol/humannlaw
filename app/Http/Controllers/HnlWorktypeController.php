@@ -24,6 +24,28 @@ class HnlWorktypeController extends Controller
 
         $alpha = array('A','B','C','D','E','F','G','H','I','J');
 
+        for($i=0; $i < count($alpha); $i++){
+            $calc[] =  Calctable::where('type', '=', $alpha[$i])->get();
+        }
+
+        for($i=0; $i < count($alpha); $i++){
+            $typename[$alpha[$i]] = Worktype::where('type', '=', $alpha[$i])->get();
+        }
+
+        for($i=0; $i < count($alpha); $i++){
+            $typename[$alpha[$i]][] = $calc[$i];
+        }
+/*        $acalc = Calctable::where('type', '=', 'A')->get();
+        $bcalc = Calctable::where('type', '=', 'B')->get();
+        $ccalc = Calctable::where('type', '=', 'C')->get();
+        $dcalc = Calctable::where('type', '=', 'D')->get();
+        $ecalc = Calctable::where('type', '=', 'E')->get();
+        $fcalc = Calctable::where('type', '=', 'F')->get();
+        $gcalc = Calctable::where('type', '=', 'G')->get();
+        $hcalc = Calctable::where('type', '=', 'H')->get();
+        $icalc = Calctable::where('type', '=', 'I')->get();
+        $jcalc = Calctable::where('type', '=', 'J')->get();
+
         $atypes = Worktype::where('type', '=', 'A')->get();
         $btypes = Worktype::where('type', '=', 'B')->get();
         $ctypes = Worktype::where('type', '=', 'C')->get();
@@ -44,7 +66,17 @@ class HnlWorktypeController extends Controller
         $typename['G'] = $gtypes;
         $typename['H'] = $htypes;
         $typename['I'] = $itypes;
-        $typename['J'] = $jtypes;
+        $typename['J'] = $jtypes;*/
+/*        $typename['A']['7'] = $acalc;
+        $typename['B']['7'] = $bcalc;
+        $typename['C']['7'] = $ccalc;
+        $typename['D']['7'] = $dcalc;
+        $typename['E']['7'] = $ecalc;
+        $typename['F']['7'] = $fcalc;
+        $typename['G']['7'] = $gcalc;
+        $typename['H']['7'] = $hcalc;
+        $typename['I']['7'] = $icalc;
+        $typename['J']['7'] = $jcalc;*/
 
 
         if(Sentinel::check())
@@ -62,6 +94,7 @@ class HnlWorktypeController extends Controller
 
         $type = $request->type;
         $workstart = array(
+
             0 => $request->work_start_time0,
             1 => $request->work_start_time1,
             2 => $request->work_start_time2,
@@ -69,8 +102,10 @@ class HnlWorktypeController extends Controller
             4 => $request->work_start_time4,
             5 => $request->work_start_time5,
             6 => $request->work_start_time6
+
         );
         $workend = array(
+
             0 => $request->work_end_time0,
             1 => $request->work_end_time1,
             2 => $request->work_end_time2,
@@ -78,8 +113,10 @@ class HnlWorktypeController extends Controller
             4 => $request->work_end_time4,
             5 => $request->work_end_time5,
             6 => $request->work_end_time6
+
         );
         $breaktime = array(
+
             0 => $request->break_time0,
             1 => $request->break_time1,
             2 => $request->break_time2,
@@ -87,8 +124,11 @@ class HnlWorktypeController extends Controller
             4 => $request->break_time4,
             5 => $request->break_time5,
             6 => $request->break_time6
+
         );
+
         $worktype = array($request->worktype_0, $request->worktype_1, $request->worktype_2, $request->worktype_3, $request->worktype_4, $request->worktype_5, $request->worktype_6);
+
         $worknum = array($request->now_0, $request->now_1, $request->now_2, $request->now_3, $request->now_4, $request->now_5, $request->now_6);
 
             $scount = count($workstart);
@@ -100,21 +140,22 @@ class HnlWorktypeController extends Controller
                 $count1 = array_search(null,$workstart);
                 array_splice($workstart,$count1,1,"0");
             }
-        }
+        } // 시작 시간 입력값이 비어있으면 0
 
         for($i=0; $i < $ecount; $i++){
             if(in_array(null,$workend)){
                 $count1 = array_search(null,$workend);
                 array_splice($workend,$count1,1,"0");
             }
-        }
+        } // 끝 시간 입력값이 비어있으면 0
 
         for($i=0; $i < $bcount; $i++){
             if(in_array(null,$breaktime)){
                 $count1 = array_search(null,$breaktime);
                 array_splice($breaktime,$count1,1,"0");
             }
-        }
+        } // 휴게시간 입력값이 비어있으면 0
+
         //계산
         for($i=0; $i < 7; $i++){
             if($worktype[$i] == '무급휴무일'){
@@ -127,60 +168,145 @@ class HnlWorktypeController extends Controller
                 $weekwork[] = (integer)$workend[$i] - (integer)$workstart[$i];
 
                 if($worknum[$i] == '매주'){
+
+                    //실근로시간
+                    $totalwork[] = $weekwork[$i] - (integer)$breaktime[$i];
+                    //기본근로
+                    $basicwork[] = $totalwork[$i];
+
+                    //8시간 초과시 연장근로 시간
+                    if($totalwork[$i] > 800){
+
+                        $extend[] = $totalwork[$i] - 800;
+                        $extendwork[] = $extend[$i] * 1.5;
+
+                    }else{
+
+                        $extendwork[] = 0;
+
+                    } //초과 근로시간 끝
+
+                    //야간 근로시간
+                    $night = 2200;
+
+                    if($workend[$i] > $night){
+
+                        $nwork[] = (integer)$workend[$i] - $night;
+                        $nw[] = $nwork[$i] * 24;
+                        $nightwork[] = $nw[$i] * 0.5;
+
+                    }else{
+
+                        $nightwork[] = 0;
+
+                    } // 야간근로시간 끝
+
+
+                } elseif($worknum[$i] == '격주'){
+
                     //실근로시간
                     $totalwork[] = $weekwork[$i] - (integer)$breaktime[$i];
 
+                    //기본근로
+                    $basicwork[] = $totalwork[$i] / 2;
+
                     //8시간 초과시 연장근로 시간
                     if($totalwork[$i] > 800){
 
-                        $extendwork[] = $totalwork[$i] - 800 * 1.5;
+                        $extend[] = $totalwork[$i] - 800;
+                        $ex[] = $extend[$i]  * 1.5;
+                        $extendwork[] = $ex[$i] / 2;
 
                     }else{
 
-                        $extendwork[] = $totalwork[$i];
-                    }
+                        $extendwork[] = 0;
+
+                    } //초과 근로시간 끝
 
                     //야간 근로시간
                     $night = 2200;
+
                     if($workend[$i] > $night){
 
-                        $nightwork[] = (integer)$workend[$i] - $night * 24 ;
+                        $nwork[] = (integer)$workend[$i] - $night;
+                        $nw[] = $nwork[$i] * 24;
+                        $ngwork[] = $nw[$i] * 0.5;
+                        $nightwork[] = $ngwork[$i] / 2;
 
                     }else{
 
-                        $nightwork[] = (integer)$workend[$i];
+                        $nightwork[] = 0;
 
-                    }
+                    }//야간 근로시간 끝
 
+                }elseif($worknum[$i] == '월1회'){
 
-
-                }
-                elseif($worknum[$i] == '격주'){
                     //실근로시간
-                    $totalwork[] = $weekwork[$i] - (integer)$breaktime[$i] / 2;
+                    $totalwork[] = $weekwork[$i] - (integer)$breaktime[$i];
+                    //기본근로
+                    $bwork[] = $totalwork[$i] * 1;
+                    $basicwork[] = $bwork[$i] / 4.345;
 
                     //8시간 초과시 연장근로 시간
                     if($totalwork[$i] > 800){
-                        $extendwork[] = $totalwork[$i] - 800 * 1.5 / 2;
+
+                        $e[] = $totalwork[$i] - 800;
+                        $ex[] = $e[$i] * 1.5;
+                        $ext[] = $ex[$i] * 1;
+                        $extendwork[] = $ext[$i] / 4.345;
+
                     }else{
-                        $extendwork[] = $totalwork[$i] / 2;
-                    }
+
+                        $extendwork[] = 0;
+
+                    }//초과연장근로시간
 
                     //야간 근로시간
                     $night = 2200;
+
                     if($workend[$i] > $night){
-                        $nightwork[] = (integer)$workend[$i] - $night * 24 / 2;
+                        $nwork[] = (integer)$workend[$i] - $night;
+                        $nw[] = $nwork[$i] * 24;
+                        $niw[] = $nw[$i] * 0.5;
+                        $nightw[] = $niw[$i] * 1;
+                        $nightwork[] = $nightw[$i] / 4.345;
+
                     }else{
-                        $nightwork[] = (integer)$workend[$i];
-                    }
-                }elseif($worknum[$i] == ''){
 
-                }
+                        $nightwork[] = 0;
 
-            }
+                    }//야간 근로시간 끝
 
-        }
+                }elseif($worknum[$i] == '월2회'){
 
+                }elseif($worknum[$i] == '월3회'){
+
+                }elseif($worknum[$i] == '월4회'){
+
+                }elseif($worknum[$i] == '월5회'){
+
+                }//근무횟수 if 끝
+
+                //1주 소정 근로시간
+                $weekworktime = array_sum($basicwork);
+                //1달 소정 근로시간
+                $totalWorkTime = $weekworktime * 4;
+
+                //1주 주휴시간
+                $weekbreaktime = array_sum($breaktime);
+                //1달 주휴시간
+                $totalBreakTime = $weekbreaktime * 4;
+
+                //1주 연장시간
+                $weekExtend = array_sum($extend);
+                //1달 연장시간
+                $totalWeekExtend = $weekExtend * 4;
+
+                //
+
+            }//근무타입 if 끝
+
+        } //계산 for문 끝
 
         for($i=0; $i<7; $i++){
                 $types = Worktype::where('type', '=', $type)->where('sortnum', '=', $i)->first();
@@ -191,6 +317,20 @@ class HnlWorktypeController extends Controller
                 $types->eworktime = $workend[$i];
                 $types->breaktime = $breaktime[$i];
                 $types->save();
+            }
+
+            for($i=0; $i<7; $i++){
+                $calcs = Calctable::where('type', '=', $type)->first();
+                $calcs->mtotal = $totalWorkTime ;
+                $calcs->mbreak = $totalBreakTime;
+                $calcs->mover = $totalWeekExtend ;
+                /*  $calcs->mnight = ;
+                  $calcs->mwwork = ;
+                  $calcs->mwover = ;
+                  $calcs->mwnight = ;
+                  $calcs->mwbt = ;
+                  $calcs->total = ;*/
+                $calcs->save();
             }
 
         return Redirect::to('hnl/basicinfo/worktype')->with('success');

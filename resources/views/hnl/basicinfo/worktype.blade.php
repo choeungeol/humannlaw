@@ -77,60 +77,60 @@
                                             <thead>
                                                 <tr>
                                                     <th colspan="2">요일</th>
-                                                    @foreach($v as $va)
-                                                    <th>{{ $va->week }}</th>
-                                                    @endforeach
+                                                    @for($i=0; $i < 7; $i++)
+                                                    <th>{{ $v[$i]->week }}</th>
+                                                    @endfor
                                                 </tr>
                                                 <tr>
                                                     <th colspan="2">주 근무횟수 </th>
-                                                    @foreach($v as $va)
+                                                    @for($i=0; $i < 7; $i++)
                                                     <th>
-                                                        <select class="form-control input-sm" name="now_{{ $va->sortnum }}" placeholder="09:00">
+                                                        <select class="form-control input-sm" name="now_{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                              @foreach($worknum as $wn)
-                                                                        <option value="{{ $wn }}" {!! ($wn === $va->worknum ? 'selected' : '') !!}>{{ $wn }}</option>
+                                                                        <option value="{{ $wn }}" {!! ($wn === $v[$i]->worknum ? 'selected' : '') !!}>{{ $wn }}</option>
                                                              @endforeach
                                                         </select>
                                                     </th>
-                                                    @endforeach
+                                                    @endfor
                                                 </tr>
                                                 <tr>
                                                     <th colspan="2">근무유형</th>
-                                                    @foreach($v as $va)
+                                                    @for($i=0; $i < 7; $i++)
                                                     <th>
-                                                        <select class="form-control input-sm" name="worktype_{{ $va->sortnum }}" placeholder="09:00">
+                                                        <select class="form-control input-sm" name="worktype_{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                             @foreach($worktype as $wt)
-                                                                <option value="{{ $wt }}"{!! ($wt === $va->worktype ? 'selected' : '') !!}>{{ $wt }}</option>
+                                                                <option value="{{ $wt }}"{!! ($wt === $v[$i]->worktype ? 'selected' : '') !!}>{{ $wt }}</option>
                                                             @endforeach
                                                         </select>
                                                     </th>
-                                                    @endforeach
+                                                    @endfor
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <th style="vertical-align: middle;" rowspan="2">근무시간</th>
                                                     <td>시작</td>
-                                                    @foreach($v as $va)
+                                                    @for($i=0; $i < 7; $i++)
                                                     <td>
-                                                        @if($va->sworktime == 0)
-                                                        <input type="text" class="form-control input-sm" name="work_start_time{{ $va->sortnum }}" placeholder="09:00">
+                                                        @if($v[$i]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
-                                                        <input type="text" class="form-control input-sm" name="work_start_time{{ $va->sortnum }}" placeholder="09:00" value="{{ $va->sworktime }}">
+                                                        <input type="text" class="form-control input-sm" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sworktime }}">
                                                         @endif
                                                     </td>
-                                                    @endforeach
+                                                    @endfor
                                                 </tr>
                                                 <tr>
                                                     <td>종료</td>
-                                                    @foreach($v as $va)
+                                                    @for($i=0; $i < 7; $i++)
                                                     <td>
-                                                        @if($va->eworktime == 0)
-                                                        <input class="form-control input-sm" type="text" name="work_end_time{{ $va->sortnum }}" placeholder="09:00">
+                                                        @if($v[$i]->eworktime == 0)
+                                                        <input class="form-control input-sm" type="text" name="work_end_time{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
-                                                        <input class="form-control input-sm" type="text" name="work_end_time{{ $va->sortnum }}" placeholder="09:00" value="{{ $va->eworktime }}">
+                                                        <input class="form-control input-sm" type="text" name="work_end_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->eworktime }}">
                                                         @endif
                                                     </td>
-                                                    @endforeach
+                                                    @endfor
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -138,15 +138,15 @@
                                             <tr>
                                                 <th style="vertical-align: middle;" rowspan="2">휴게시간</th>
                                                 <td>시간</td>
-                                                @foreach($v as $va)
+                                                @for($i=0; $i < 7; $i++)
                                                     <td>
-                                                        @if($va->breaktime == 0)
-                                                        <input class="form-control input-sm" type="text" name="break_time{{ $va->sortnum }}" placeholder="09:00">
+                                                        @if($v[$i]->breaktime == 0)
+                                                        <input class="form-control input-sm" type="text" name="break_time{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
-                                                        <input class="form-control input-sm" type="text" name="break_time{{ $va->sortnum }}" placeholder="09:00" value="{{ $va->breaktime }}">
+                                                        <input class="form-control input-sm" type="text" name="break_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->breaktime }}">
                                                         @endif
                                                     </td>
-                                                @endforeach
+                                                @endfor
                                             </tr>
                                         </table>
                                         <table class="table table-condensed">
@@ -162,7 +162,7 @@
                                                 <th>총 근로시간</th>
                                             </tr>
                                             <tr>
-                                                @foreach($v as $va)
+                                                @foreach($v[7] as $va)
                                                 <td>{{ $va->mtotal }}</td>
                                                 <td>{{ $va->mbreak }}</td>
                                                 <td>{{ $va->mover }}</td>
@@ -171,6 +171,7 @@
                                                 <td>{{ $va->mwover }}</td>
                                                 <td>{{ $va->mwnight }}</td>
                                                 <td>{{ $va->mwbt }}</td>
+                                                <td>{{ $va->total }}</td>
                                                 @endforeach
                                             </tr>
                                         </table>
