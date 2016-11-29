@@ -15,15 +15,15 @@ class CreateCalcTable extends Migration
         Schema::create('calc_table', function(Blueprint $table){
             $table->increments('id');
             $table->string('type' ,10);
-            $table->integer('mtotal')->nullable();
-            $table->integer('mbreak')->nullable();
-            $table->integer('mover')->nullable();
-            $table->integer('mnight')->nullable();
-            $table->integer('mwwork')->nullable();
-            $table->integer('mwover')->nullable();
-            $table->integer('mwnight')->nullable();
-            $table->integer('mwbt')->nullable();
-            $table->integer('total')->nullable();
+            $table->string('mtotal')->nullable();
+            $table->string('mbreak')->nullable();
+            $table->string('mover')->nullable();
+            $table->string('mnight')->nullable();
+            $table->string('mwwork')->nullable();
+            $table->string('mwover')->nullable();
+            $table->string('mwnight')->nullable();
+            $table->string('mwbt')->nullable();
+            $table->string('total')->nullable();
             $table->timestamps();
         });
     }

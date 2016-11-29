@@ -63,11 +63,11 @@ $("#clockface3").clockface({
 //clockface picker end
 
 
-/*
-$("#a_times1").datetimepicker({
+
+$(".datetime2").datetimepicker({
     format: 'HH:mm'
 }).parent().css("position :relative");
-
+/*
 $("#a_times2").datetimepicker({
     format: 'HH:mm'
 }).parent().css("position :relative");

@@ -13,7 +13,7 @@
     <![endif]-->
     <title>
     	@section('title')
-        | Welcome to GOOD LABOR
+        | Welcome
         @show
     </title>
     <!--global css starts-->

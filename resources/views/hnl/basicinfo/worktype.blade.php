@@ -20,6 +20,8 @@
     <link href="{{ asset('assets/vendors/pickadate/css/default.time.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/airDatepicker/css/datepicker.min.css') }}" rel="stylesheet" type="text/css" />
 
+
+
 @stop
 
 {{-- Page content --}}
@@ -113,9 +115,9 @@
                                                     @for($i=0; $i < 7; $i++)
                                                     <td>
                                                         @if($v[$i]->sworktime == 0)
-                                                        <input type="text" class="form-control input-sm" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00">
+                                                         <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00" min="0" max="2400">
                                                         @else
-                                                        <input type="text" class="form-control input-sm" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sworktime }}">
+                                                        <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sworktime }}">
                                                         @endif
                                                     </td>
                                                     @endfor
@@ -125,9 +127,9 @@
                                                     @for($i=0; $i < 7; $i++)
                                                     <td>
                                                         @if($v[$i]->eworktime == 0)
-                                                        <input class="form-control input-sm" type="text" name="work_end_time{{ $v[$i]->sortnum }}" placeholder="09:00">
+                                                            <input class="form-control input-sm datetime2" type="text" name="work_end_time{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
                                                         @else
-                                                        <input class="form-control input-sm" type="text" name="work_end_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->eworktime }}">
+                                                        <input class="form-control input-sm datetime2" type="text" name="work_end_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->eworktime }}" data-format="hh:mm">
                                                         @endif
                                                     </td>
                                                     @endfor
@@ -141,9 +143,9 @@
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
                                                         @if($v[$i]->breaktime == 0)
-                                                        <input class="form-control input-sm" type="text" name="break_time{{ $v[$i]->sortnum }}" placeholder="09:00">
+                                                        <input class="form-control input-sm datetime2" type="text" name="break_time{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
                                                         @else
-                                                        <input class="form-control input-sm" type="text" name="break_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->breaktime }}">
+                                                        <input class="form-control input-sm datetime2" type="text" name="break_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->breaktime }}" data-format="hh:mm">
                                                         @endif
                                                     </td>
                                                 @endfor
