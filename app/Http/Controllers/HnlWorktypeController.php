@@ -644,6 +644,7 @@ class HnlWorktypeController extends Controller
 
             }//근무타입 if 끝
 
+            $total = $totalWorkTime + $totalBreakTime + $totalWeekExtend + $totalNightTime + $totalWeekendWorkTime + $totalWeekendOverTime + $totalWeekendnightTime + $monthannualleave;
 
 
         } //계산 for문 끝
@@ -669,7 +670,7 @@ class HnlWorktypeController extends Controller
                 $calcs->mwover = $totalWeekendOverTime;
                 $calcs->mwnight = $totalWeekendnightTime;
                 $calcs->mwbt = $monthannualleave;
-                $calcs->total = 0;
+                $calcs->total = $total;
                 $calcs->save();
             }
 
