@@ -133,9 +133,7 @@ class HnlWorktypeController extends Controller
                     //기본근로
                     $basicwork[] = $weekwork[$i];
 
-
-
-                        //8시간 초과시 연장근로 시간
+                     //8시간 초과시 연장근로 시간
                         if($totalwork[$i] > 800){
                             if($worktype[$i] === '무급휴무일'){
                                 //연장근로시간
@@ -167,6 +165,7 @@ class HnlWorktypeController extends Controller
                     } // 야간근로시간 끝
 
                     //휴일 근로시간
+                    $weekend=0;
                     $finalweekend = 0;
                     if(count($basicwork) === 7){
                         $weekend = array_slice($basicwork,5);
@@ -234,6 +233,7 @@ class HnlWorktypeController extends Controller
                     } // 야간근로시간 끝
 
                     //휴일 근로시간
+                    $weekend=0;
                     $finalweekend = 0;
                     if(count($basicwork) === 7){
                         $weekend = array_slice($basicwork,5);
@@ -302,6 +302,7 @@ class HnlWorktypeController extends Controller
                     } // 야간근로시간 끝
 
                     //휴일 근로시간
+                    $weekend=0;
                     $finalweekend = 0;
                     if(count($basicwork) === 7){
                         $weekend = array_slice($basicwork,5);
@@ -370,6 +371,7 @@ class HnlWorktypeController extends Controller
                     } // 야간근로시간 끝
 
                     //휴일 근로시간
+                    $weekend=0;
                     $finalweekend = 0;
                     if(count($basicwork) === 7){
                         $weekend = array_slice($basicwork,5);
@@ -436,6 +438,7 @@ class HnlWorktypeController extends Controller
                     } // 야간근로시간 끝
 
                     //휴일 근로시간
+                    $weekend=0;
                     $finalweekend = 0;
                     if(count($basicwork) === 7){
                         $weekend = array_slice($basicwork,5);
@@ -502,6 +505,7 @@ class HnlWorktypeController extends Controller
                     } // 야간근로시간 끝
 
                     //휴일 근로시간
+                    $weekend=0;
                     $finalweekend = 0;
                     if(count($basicwork) === 7){
                         $weekend = array_slice($basicwork,5);
@@ -567,6 +571,7 @@ class HnlWorktypeController extends Controller
                     } // 야간근로시간 끝
 
                     //휴일 근로시간
+                    $weekend=0;
                     $finalweekend = 0;
                     if(count($basicwork) === 7){
                         $weekend = array_slice($basicwork,5);
