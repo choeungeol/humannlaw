@@ -1053,7 +1053,7 @@ class HnlWorktypeController extends Controller
                 $weeknightwork = array_slice($nightwork,0,5);
                 $weeknightwork = array_sum($weeknightwork);
                 //1주 휴일 근로시간
-                $weekweekend = $finalweekend;
+                $weekweekend = $weekend;
                 //1주 휴일 연장시간
                 $weekweekendover = $weekendovertime;
                 //1주 휴일 야간시간
