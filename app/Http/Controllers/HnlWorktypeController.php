@@ -177,7 +177,7 @@ class HnlWorktypeController extends Controller
                                         }*/
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -237,7 +237,7 @@ class HnlWorktypeController extends Controller
                                         }*/
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -297,7 +297,7 @@ class HnlWorktypeController extends Controller
                        $weekendovertime = array_slice($extendwork,5);}*/
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -357,7 +357,7 @@ class HnlWorktypeController extends Controller
                     $weekendovertime = $finalweekend;
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -417,7 +417,7 @@ class HnlWorktypeController extends Controller
                     $weekendovertime = $finalweekend;
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -477,7 +477,7 @@ class HnlWorktypeController extends Controller
                     $weekendovertime = $finalweekend;
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -535,7 +535,7 @@ class HnlWorktypeController extends Controller
                     $weekendovertime = $finalweekend;
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -607,7 +607,7 @@ class HnlWorktypeController extends Controller
                     }*/
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -674,7 +674,7 @@ class HnlWorktypeController extends Controller
                                         }*/
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -738,7 +738,7 @@ class HnlWorktypeController extends Controller
                        $weekendovertime = array_slice($extendwork,5);}*/
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -804,7 +804,7 @@ class HnlWorktypeController extends Controller
                     $weekendovertime = $finalweekend;
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -868,7 +868,7 @@ class HnlWorktypeController extends Controller
                     $weekendovertime = $finalweekend;
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -934,7 +934,7 @@ class HnlWorktypeController extends Controller
                     $weekendovertime = $finalweekend;
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
@@ -997,7 +997,7 @@ class HnlWorktypeController extends Controller
                     $weekendovertime = $finalweekend;
 
                     //휴일 야간 근로시간
-                    $weekendnighttime = '';
+                    $weekendnighttime[] = '';
                     if(count($nightwork) === 7){
                         $weekendnighttime = array_slice($nightwork,5);
                     }
