@@ -599,6 +599,7 @@ class HnlWorktypeController extends Controller
                     $onedayworktime = $weekworktime / count($basicwork);
                     $onedayworktime = floor($onedayworktime * 100) / 100;
                     //1주 주휴시간
+                    $weekbreaktime = '';
                     $weekbreaktime = array_sum($breaktime);
                     //1주 연장 근로시간
                     $weekExtend = array_sum($extendwork);
@@ -637,14 +638,11 @@ class HnlWorktypeController extends Controller
                     $monthannualleave = 7 * 15;
                     $monthannualleave = $monthannualleave / 12;
 
+                    $total = $totalWorkTime + $totalBreakTime + $totalWeekExtend + $totalNightTime + $totalWeekendWorkTime + $totalWeekendOverTime + $totalWeekendnightTime + $monthannualleave;
+
                 }//실근로시간 값이 전부 들어왔을때
 
-
-
-
             }//근무타입 if 끝
-
-            $total = $totalWorkTime + $totalBreakTime + $totalWeekExtend + $totalNightTime + $totalWeekendWorkTime + $totalWeekendOverTime + $totalWeekendnightTime + $monthannualleave;
 
 
         } //계산 for문 끝
