@@ -11,6 +11,8 @@ class PostitleSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
         // Auto Increments 초기화
         DB::table('postitles')->truncate();
 
@@ -137,6 +139,7 @@ class PostitleSeeder extends Seeder
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
         }
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1'); // enable foreign key constraints
 
     }
 }
