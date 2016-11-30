@@ -20,7 +20,12 @@ class CreateWorktypeTable extends Migration
             $table->string('worktype', 40);
             $table->string('sworktime')->nullable();
             $table->string('eworktime')->nullable();
-            $table->string('breaktime')->nullable();
+            $table->string('sbtime1')->nullable();
+            $table->string('ebtime1')->nullable();
+            $table->string('sbtime2')->nullable();
+            $table->string('ebtime2')->nullable();
+            $table->string('sbtime3')->nullable();
+            $table->string('ebtime3')->nullable();
             $table->integer('sortnum');
             $table->timestamps();
 

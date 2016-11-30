@@ -11,6 +11,7 @@ class CalctableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('calc_table')->truncate();
 
         $alpha = array('A','B','C','D','E','F','G','H','I','J');
         $len = count($alpha);

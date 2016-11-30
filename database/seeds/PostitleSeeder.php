@@ -11,8 +11,9 @@ class PostitleSeeder extends Seeder
      */
     public function run()
     {
-        /*// Auto Increments 초기화
-        DB::table('postitles')->truncate();*/
+        // Auto Increments 초기화
+        DB::table('postitles')->truncate();
+
 
         for ($i=1; $i < 7; $i++){
             DB::table('postitles')->insert([

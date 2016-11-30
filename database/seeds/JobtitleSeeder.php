@@ -12,7 +12,8 @@ class JobtitleSeeder extends Seeder
     public function run()
     {
         // Auto Increments 초기화
-      /*  DB::table('jobtitles')->truncate();*/
+        DB::table('jobtitles')->truncate();
+
 
         //1. 본사
         DB::table('jobtitles')->insert([
