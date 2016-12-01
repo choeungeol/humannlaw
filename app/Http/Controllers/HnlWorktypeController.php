@@ -152,76 +152,65 @@ class HnlWorktypeController extends Controller
                 $weekwork[] = (float)$workend[$i] - (float)$workstart[$i];  //업무종료시간 - 업무시작시간
                 $break[] = (float)$ebtime1[$i] - (float)$sbtime1[$i];       //휴게종료시간 - 휴게시작시간
 
+
                 if($worknum[$i] === '매주'){
 
-                    //실근로시간
+                    //총근로시간
                     $totalwork[] = $weekwork[$i] - (float)$break[$i];
                     //기본근로
-                    if($worktype[$i] === '무급휴무일') {
+                    $basicwork[] = 800;
 
-                        $basicwork[] = 500;
+                    //실 근로시간
+                    if($totalwork[$i] > 800){
+                            $realworktime[] = $BASICWORK;
                     }else{
-                        $basicwork[] = 800;
-                    }
+                            $realworktime[] = $totalwork[$i];
+                    } //실 근로시간 끝
 
                      //8시간 초과시 연장근로 시간
-                        if($totalwork[$i] > 800){
-                            if($worktype[$i] === '무급휴무일'){
-                                //연장근로시간
-                                $extend = $basicwork[$i] + $totalwork[$i]- $ONEWEEKWORKTIME;
-                                $extendwork[] = $extend * 1.5;
-                            }else{
-                                $extend = $totalwork[$i] - 800;
-                                $extendwork[] = $extend * 1.5;
-                            }
-                        }else{
-                              $extendwork[] = 0;
-                        } //초과 근로시간 끝
+                    //무급휴무일이면 근무일로 선택된 요일의 합계
+                    //무급휴무일의 실근로시간 합계 합친것에 -40을 해준다.
 
+                    if($totalwork[$i] > 800){
+                        $extend = $totalwork[$i] - 800;
+                        $extendwork[] = $extend * 1.5;
+                        if($worktype[$i] === '근무일'){
+                            //연장근로시간
+                            $extend = $totalwork[$i] - 800;
+                            $extendwork[] = $totalwork[$i] * 1.5;
+                        }elseif($worktype[$i] === '유급휴일'){
+                            $extend = $totalwork[$i] - 800;
+                            $extendwork[] = $totalwork[$i] * 1.5;
+                        }elseif($worktype[$i] === '무급휴일'){
+                            $extend = $totalwork[$i] - 800;
+                            $extendwork[] = $totalwork[$i] * 1.5;
+                        }elseif($worktype[$i] === '무급휴무일'){
+                            $extendwork[] = $totalwork[$i] *1.5;
+                        }
+                    }else{
+                          $extendwork[] = 0 * 1.5;
+                    } //연장근로시간
 
                     //야간 근로시간
                     $night = 2200;
 
                     if($workend[$i] > $night){
-
-                        $nwork = (float)$workend[$i] - $night;
-                        $nwork = $nwork * 24;
-                        $nightwork[] = $nwork * 0.5;
-
-                    }else{
-
-                        $nightwork[] = 0;
-
-                    } // 야간근로시간 끝
-
-                    //휴일 근로시간
-                    $weekend=0;
-                    $finalweekend = 0;
-                    if(count($basicwork) === 7){
-                        $weekend = array_slice($basicwork,5);
-                        $weekend = array_sum($weekend);
-                        if($weekend > 1200){
-                            $finalweekend = $weekend - 1200;
-                            $weekend = 1200;
-                        }else{
-                            $finalweekend = 0;  //휴일연장근로시간
-                            $weekend = $weekend;
+                        if($worktype[$i] === '근무일'){
+                            $nwork = (float)$workend[$i] - $night;
+                            $nightwork[] = $nwork * 0.5;
+                        }elseif($worktype[$i] === '유급휴일'){
+                            $nwork = (float)$workend[$i] - $night;
+                            $nightwork[] = $nwork * 0.5;
+                        }elseif($worktype[$i] === '무급휴일'){
+                            $nwork = (float)$workend[$i] - $night;
+                            $nightwork[] = $nwork * 0.5;
+                        }elseif($worktype[$i] === '무급휴무일'){
+                            $nwork = (float)$workend[$i] - $night;
+                            $nightwork[] = $nwork * 0.5;
                         }
-                    }//휴일 근로시간 추출끝
-
-                    //휴일 연장 근로시간
-                    $weekendovertime = $finalweekend;
-/*                    if(count($extendwork) === 7){
-                        $weekendovertime = array_slice($extendwork,5);
-                    }*/
-
-                    //휴일 야간 근로시간
-                    $weekendnighttime[] = 0;
-                    if(count($nightwork) === 7){
-                        $weekendnighttime = array_slice($nightwork,5);
-                    }
-
-
+                    }else{
+                        $nightwork[] = 0;
+                    } // 야간근로시간 끝
 
                 } elseif($worknum[$i] === '격주'){
 
@@ -584,6 +573,17 @@ class HnlWorktypeController extends Controller
                 }//근무횟수 if 끝
 
             //1주 소정 근로시간
+            //근무일과 무급휴무일의 기본근로시간 들의 합산.
+            //합산액이 40보다 크면 40만 나오고, 40보다 작으면 작은숫자 그대로.
+ /*           if($worktype[$i] === '근무일'){ //근무일 기본근로시간
+                $basic[] = $basicwork[$i];
+            }elseif($worktype[$i] === '무급휴일'){//무급휴무일 기본근로시간
+                $basic[] = 0;
+            }elseif($worktype[$i] === '유급휴일'){//무급휴무일 기본근로시간
+                $basic[] = 0;
+            }*/
+
+/*            $sumbasic = array_sum($basic);//기본근로시간합산.*/
             $weekworktime = array_sum($basicwork);
 
             if(count($basicwork) === 7){
@@ -599,8 +599,8 @@ class HnlWorktypeController extends Controller
                 }//1주 소정근로시간이 40시간 기준
 
                 if(count($basicwork) === 7){
-                    $basicworkcopy = $basicwork;
-                    for($i=0; $i < 7; $i++){
+                    $basicworkcopy = $realworktime;
+                    for($i=0; $i < count($basicworkcopy); $i++){
                         if(array_search(0,$basicworkcopy)){
                             $one = array_search(0,$basicworkcopy);
                             array_splice($basicworkcopy, $one,1);
@@ -612,35 +612,99 @@ class HnlWorktypeController extends Controller
                 }//기본근로시간 근무일 개수
 
                 //1일 소정 근로시간
-                $onedayworktime = array_sum($basicwork) / $countone;
-
-                //1주 주휴시간
-                $weekbreaktime = array_sum($break);
+                $onedayworktime = array_sum($realworktime) / $countone;  // 1주일분 실근로시간 / 근무일로 선택된 수
 
                 //1주 연장 근로시간
-                $weekExtend = array_sum($extendwork);
+                //근무일 무급휴무일 합산
+
+                for($i=0; $i < count($worktype); $i++) {
+
+                    if ($worktype[$i] === '근무일') {
+                        $works[] = $extendwork[$i];
+                    } else {
+                        $works[] = 0;
+                    }
+                    if ($worktype[$i] === '무급휴무일') {
+                        $workss[] = $extendwork[$i];
+                    } else {
+                        $workss[]  = 0;
+                    }
+                }
+                    $weekExtend = array_sum($works) + array_sum($workss);
 
                 /* $minuswtime = $minusworktime;*/
 
-                //1주 야간 근로시간
-                $weeknight = array_slice($nightwork,0,5);
-                $weeknightwork = array_sum($weeknight);
+                for($i=0; $i < count($worktype); $i++) {
+                    //1주 야간 근로시간
+                    if ($worktype[$i] === '근무일') {
+                        $nights[] = $nightwork[$i];
+                    } else {
+                        $nights[] = 0;
+                    }
+                    if ($worktype[$i] === '무급휴무일') {
+                        $nightss[] = $nightwork[$i];
+                    } else {
+                        $nightss[] = 0;
+                    }
+                }
+                $weeknight = array_sum($nights) + array_sum($nightss);
 
                 //1주 휴일 근로시간
-                $weekweekend = $weekend;
+                for($i=0; $i < count($worktype); $i++) {
+                    if ($worktype[$i] === '유급휴일') {
+                        $holiday[] = $realworktime[$i];
+                    } else {
+                        $holiday[] = 0;
+                    }
+                    if ($worktype[$i] === '무급휴일') {
+                        $holidays[] = $realworktime[$i];
+                    } else {
+                        $holidays[] = 0;
+                    }
+                }
+                $weekweekend = array_sum($holiday) + array_sum($holidays);
+                $weekweekend = $weekweekend * 1.5 ;
 
                 //1주 휴일 연장시간
-                $weekweekendover = $weekendovertime;
+                for($i=0; $i < count($worktype); $i++) {
+                    if ($worktype[$i] === '유급휴일') {
+                        $worksno[] = $extendwork[$i];
+                    } else {
+                        $worksno[] = 0;
+                    }
 
+                    if ($worktype[$i] === '무급휴일') {
+                        $workssno[] = $extendwork[$i];
+                    } else {
+                        $workssno[] = 0;
+                    }
+                }
+                $weekweekendover = array_sum($worksno) + array_sum($workssno);
+                $weekweekendover = $weekweekendover / 1.5;
+                $weekweekendover = $weekweekendover * 2;
+
+                for($i=0; $i < count($worktype); $i++) {
                 //1주 휴일 야간시간
-                $weekweekendnight = array_sum($weekendnighttime);
+                    if($worktype[$i] === '유급휴일'){
+                        $worksnos[] = $extendwork[$i];
+                    }else{
+                        $worksnos[] = 0;
+                    }
 
+                    if($worktype[$i] === '무급휴일'){
+                        $workssnos[] = $extendwork[$i];
+                    }else{
+                        $workssnos[]     = 0;
+                    }
+
+                }
+                $weekweekendnight = array_sum($worksnos) + array_sum($workssnos);
                 //1달 소정 근로시간
                 $totalWorkTime = $weekworktime * 4.345;
                 $totalWorkTime = floor($totalWorkTime  * 100) / 10000;
                 $totalWorkTime = sprintf('%02.2f', $totalWorkTime);
                 //1달 주휴시간
-                $totalBreakTime = $weekbreaktime * 4.345;
+                $totalBreakTime = $onedayworktime * 4.345;
                 $totalBreakTime = floor($totalBreakTime * 100) / 10000;
                 $totalBreakTime = sprintf('%02.2f', $totalBreakTime);
                 //1달 연장시간
@@ -648,7 +712,7 @@ class HnlWorktypeController extends Controller
                 $totalWeekExtend = floor($totalWeekExtend * 100) / 10000;
                 $totalWeekExtend = sprintf('%02.2f', $totalWeekExtend);
                 //1달 야간 근로시간
-                $totalNightTime = $weeknightwork * 4.345;
+                $totalNightTime = $weeknight * 4.345;
                 $totalNightTime = floor($totalNightTime * 100) / 10000;
                 $totalNightTime =  sprintf('%02.2f', $totalNightTime);
                 //1달 휴일 근로시간
