@@ -155,12 +155,12 @@ class HnlWorktypeController extends Controller
 
                 if($worknum[$i] === '매주'){
 
-                    //총근로시간
+                    //실근로시간
                     $totalwork[] = $weekwork[$i] - (float)$break[$i];
-                    //기본근로
-                    $basicwork[] = 800;
+           /*         //실근로시간근로
+                    $basicwork[] = 800;*/
 
-                    //실 근로시간
+                    //기본 근로시간
                     if($totalwork[$i] > 800){
                             $realworktime[] = $BASICWORK;
                     }else{
@@ -172,8 +172,6 @@ class HnlWorktypeController extends Controller
                     //무급휴무일의 실근로시간 합계 합친것에 -40을 해준다.
 
                     if($totalwork[$i] > 800){
-                        $extend = $totalwork[$i] - 800;
-                        $extendwork[] = $extend * 1.5;
                         if($worktype[$i] === '근무일'){
                             //연장근로시간
                             $extend = $totalwork[$i] - 800;
@@ -258,7 +256,7 @@ class HnlWorktypeController extends Controller
                     //휴일 근로시간
                     $weekend=0;
                     $finalweekend = 0;
-                    if(count($basicwork) === 7){
+                    if(count($totalwork) === 7){
                         $weekend = array_slice($basicwork,5);
                         $weekend = array_sum($weekend);
                         if($weekend > 1200){
@@ -330,7 +328,7 @@ class HnlWorktypeController extends Controller
                     //휴일 근로시간
                     $weekend=0;
                     $finalweekend = 0;
-                    if(count($basicwork) === 7){
+                    if(count($totalwork) === 7){
                         $weekend = array_slice($basicwork,5);
                         $weekend = array_sum($weekend);
                         if($weekend > 1200){
@@ -401,7 +399,7 @@ class HnlWorktypeController extends Controller
                     //휴일 근로시간
                     $weekend=0;
                     $finalweekend = 0;
-                    if(count($basicwork) === 7){
+                    if(count($totalwork) === 7){
                         $weekend = array_slice($basicwork,5);
                         $weekend = array_sum($weekend);
                         if($weekend > 1200){
@@ -472,7 +470,7 @@ class HnlWorktypeController extends Controller
                     //휴일 근로시간
                     $weekend=0;
                     $finalweekend = 0;
-                    if(count($basicwork) === 7){
+                    if(count($totalwork) === 7){
                         $weekend = array_slice($basicwork,5);
                         $weekend = array_sum($weekend);
                         if($weekend > 1200){
@@ -543,7 +541,7 @@ class HnlWorktypeController extends Controller
                     //휴일 근로시간
                     $weekend=0;
                     $finalweekend = 0;
-                    if(count($basicwork) === 7){
+                    if(count($totalwork) === 7){
                         $weekend = array_slice($basicwork,5);
                         $weekend = array_sum($weekend);
                         if($weekend > 1200){
@@ -583,10 +581,10 @@ class HnlWorktypeController extends Controller
                 $basic[] = 0;
             }*/
 
-/*            $sumbasic = array_sum($basic);//기본근로시간합산.*/
-            $weekworktime = array_sum($basicwork);
 
-            if(count($basicwork) === 7){
+            $weekworktime = array_sum($realworktime);
+
+            if(count($totalwork) === 7){
 
                 if($weekworktime > 4000){
 
@@ -598,7 +596,7 @@ class HnlWorktypeController extends Controller
 
                 }//1주 소정근로시간이 40시간 기준
 
-                if(count($basicwork) === 7){
+                if(count($totalwork) === 7){
                     $basicworkcopy = $realworktime;
                     for($i=0; $i < count($basicworkcopy); $i++){
                         if(array_search(0,$basicworkcopy)){
