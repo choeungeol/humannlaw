@@ -167,6 +167,16 @@ class HnlWorktypeController extends Controller
                             $realworktime[] = $totalwork[$i];
                     } //실 근로시간 끝
 
+                    //1주소정근로시간 구하기 위한 조건
+                        if($totalwork[$i] > 800){
+                            if($worktype[$i] === '근무일'){
+                                $realwtime[] = $BASICWORK;
+                            }else{
+                                $realwtime[] = 0;
+                            }
+                        }else{
+                            $realwtime[] = 0;
+                        }
                      //8시간 초과시 연장근로 시간
                     //무급휴무일이면 근무일로 선택된 요일의 합계
                     //무급휴무일의 실근로시간 합계 합친것에 -40을 해준다.
@@ -582,7 +592,7 @@ class HnlWorktypeController extends Controller
             }*/
 
 
-            $weekworktime = array_sum($realworktime);
+            $weekworktime = array_sum($realwtime);
 
             if(count($totalwork) === 7){
 
@@ -692,7 +702,7 @@ class HnlWorktypeController extends Controller
                     if($worktype[$i] === '무급휴일'){
                         $workssnos[] = $extendwork[$i];
                     }else{
-                        $workssnos[]     = 0;
+                        $workssnos[]   = 0;
                     }
 
                 }
