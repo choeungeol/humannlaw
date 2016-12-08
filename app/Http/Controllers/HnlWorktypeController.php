@@ -160,6 +160,10 @@ class HnlWorktypeController extends Controller
         $ecount = count($workend);
         $sbcount = count($sbtime1);
         $ebcount = count($ebtime1);
+        $sbcount2 = count($sbtime2);
+        $ebcount2 = count($ebtime2);
+        $sbcount3 = count($sbtime3);
+        $ebcount3 = count($ebtime3);
 
         for($i=0; $i < $scount; $i++){
             if(in_array(null,$workstart)){
@@ -189,6 +193,34 @@ class HnlWorktypeController extends Controller
             }
         } // 휴게종료시간1 입력값이 비어있으면 0
 
+        for($i=0; $i < $sbcount2; $i++){
+            if(in_array(null,$sbtime2)){
+                $count1 = array_search(null,$sbtime2);
+                array_splice($sbtime2,$count1,1,"0");
+            }
+        } // 휴게시작시간2 입력값이 비어있으면 0
+
+        for($i=0; $i < $ebcount2; $i++){
+            if(in_array(null,$ebtime2)){
+                $count1 = array_search(null,$ebtime2);
+                array_splice($ebtime2,$count1,1,"0");
+            }
+        } // 휴게종료시간2 입력값이 비어있으면 0
+
+        for($i=0; $i < $sbcount3; $i++){
+            if(in_array(null,$sbtime3)){
+                $count1 = array_search(null,$sbtime3);
+                array_splice($sbtime3,$count1,1,"0");
+            }
+        } // 휴게시작시간3 입력값이 비어있으면 0
+
+        for($i=0; $i < $ebcount3; $i++){
+            if(in_array(null,$ebtime3)){
+                $count1 = array_search(null,$ebtime3);
+                array_splice($ebtime3,$count1,1,"0");
+            }
+        } // 휴게종료시간3 입력값이 비어있으면 0
+
         //1주소정근로시간
         $ONEWEEKWORKTIME = sprintf('%02.2f', floor(4000 * 100) / 10000);
         $BASICWORK = sprintf('%02.2f', floor(800 * 100) / 10000);
@@ -196,7 +228,10 @@ class HnlWorktypeController extends Controller
         for($i=0; $i < 7; ++$i){
 
             $weekwork[] = sprintf('%02.2f', floor(($workend[$i] - $workstart[$i]) * 100) / 10000);  //업무종료시간 - 업무시작시간 = 총 근로시간;
-            $break[] = sprintf('%02.2f', floor(($ebtime1[$i] - $sbtime1[$i]) * 100) / 10000);       //휴게종료시간 - 휴게시작시간
+            $break1[] = sprintf('%02.2f', floor(($ebtime1[$i] - $sbtime1[$i]) * 100) / 10000);       //휴게종료시간1 - 휴게시작시간1
+            $break2[] = sprintf('%02.2f', floor(($ebtime2[$i] - $sbtime2[$i]) * 100) / 10000);       //휴게종료시간2 - 휴게시작시간2
+            $break3[] = sprintf('%02.2f', floor(($ebtime3[$i] - $sbtime3[$i]) * 100) / 10000);       //휴게종료시간3 - 휴게시작시간3
+            $break[] = $break1[$i] + $break2[$i] + $break3[$i];      // 휴게시간123 합
             $totalwork[] = sprintf('%02.2f', floor($weekwork[$i] - $break[$i]));                    //실근로시간
             $workending[] =  sprintf('%02.2f', floor($workend[$i] * 100) / 10000);                  //근로종료시간
 
@@ -822,6 +857,10 @@ class HnlWorktypeController extends Controller
             $types->eworktime = $workend[$i];
             $types->sbtime1 = $sbtime1[$i];
             $types->ebtime1 = $ebtime1[$i];
+            $types->sbtime1 = $sbtime2[$i];
+            $types->ebtime1 = $ebtime2[$i];
+            $types->sbtime1 = $sbtime3[$i];
+            $types->ebtime1 = $ebtime3[$i];
             $types->save();
         }
 
