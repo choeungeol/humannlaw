@@ -252,16 +252,35 @@ class HnlWorktypeController extends Controller
                 if($totalwork[$i] > 8.00){
                     if($worktype[$i] === '근무일'){
                         $realwtime[] = $BASICWORK;
+                    }elseif($worktype[$i] === '무급휴무일'){
+                        $realwtime[] = $BASICWORK;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
                     if($worktype[$i] === '근무일'){
                         $realwtime[] = $totalwork[$i];
+                    }elseif($worktype[$i] === '무급휴무일'){
+                        $realwtime[] = $totalwork[$i];
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }// 근무일의 기본근로시간
+
+                //1일 소정 근로시간
+                if($totalwork[$i] > 8.00){
+                    if($worktype[$i] === '근무일'){
+                        $realwtimeone[] = $BASICWORK;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }else{
+                    if($worktype[$i] === '근무일'){
+                        $realwtimeone[] = $totalwork[$i];
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }// 1일 소정근로시간
 
                 //8시간 초과시 연장근로 시간
                 //무급휴무일이면 근무일로 선택된 요일의 합계
@@ -325,16 +344,35 @@ class HnlWorktypeController extends Controller
                 if($totalwork[$i] > 8.00){
                     if($worktype[$i] === '근무일'){
                         $realwtime[] = $BASICWORK / 2;
+                    }elseif($worktype[$i] === '무급휴무일'){
+                        $realwtime[] = $BASICWORK / 2;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
                     if($worktype[$i] === '근무일'){
                         $realwtime[] = $totalwork[$i] / 2;
+                    }elseif($worktype[$i] === '무급휴무일'){
+                        $realwtime[] = $totalwork[$i] / 2;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }// 근무일의 기본근로시간
+
+                //1일 소정 근로시간
+                if($totalwork[$i] > 8.00){
+                    if($worktype[$i] === '근무일'){
+                        $realwtimeone[] = $BASICWORK / 2;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }else{
+                    if($worktype[$i] === '근무일'){
+                        $realwtimeone[] = $totalwork[$i] /2 ;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }// 1일 소정근로시간
 
                 //8시간 초과시 연장근로 시간
                 //무급휴무일이면 근무일로 선택된 요일의 합계
@@ -393,18 +431,38 @@ class HnlWorktypeController extends Controller
 
                 //1주소정근로시간 구하기 위한 조건
                 if($totalwork[$i] > 8.00){
-                    if($worktype[$i] === '근무일'){
+                    if($worktype[$i] === '근무일') {
+                        $realwtime[] = ($BASICWORK * 1) / 4.345;
+                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($BASICWORK * 1) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
-                    if($worktype[$i] === '근무일'){
+                    if($worktype[$i] === '근무일') {
+                        $realwtime[] = ($totalwork[$i] * 1) / 4.345;
+                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($totalwork[$i] * 1) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }// 근무일의 기본근로시간
+
+                //1일소정근로시간 구하기 위한 조건
+                if($totalwork[$i] > 8.00){
+                    if($worktype[$i] === '근무일') {
+                        $realwtimeone[] = ($BASICWORK * 1) / 4.345;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }else{
+                    if($worktype[$i] === '근무일') {
+                        $realwtimeone[] = ($totalwork[$i] * 1) / 4.345;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }// 근무일의 기본근로시간
+
 
                 //8시간 초과시 연장근로 시간
                 //무급휴무일이면 근무일로 선택된 요일의 합계
@@ -459,20 +517,42 @@ class HnlWorktypeController extends Controller
                     $realworktime[] = ($totalwork[$i] * 2) / 4.345;
                 } //기본 근로시간 끝
 
+
                 //1주소정근로시간 구하기 위한 조건
                 if($totalwork[$i] > 8.00){
-                    if($worktype[$i] === '근무일'){
+                    if($worktype[$i] === '근무일') {
+                        $realwtime[] = ($BASICWORK * 2) / 4.345;
+                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($BASICWORK * 2) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
-                    if($worktype[$i] === '근무일'){
+                    if($worktype[$i] === '근무일') {
+                        $realwtime[] = ($totalwork[$i] * 2) / 4.345;
+                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($totalwork[$i] * 2) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }// 근무일의 기본근로시간
+
+                //1일소정근로시간 구하기 위한 조건
+                if($totalwork[$i] > 8.00){
+                    if($worktype[$i] === '근무일') {
+                        $realwtimeone[] = ($BASICWORK * 2) / 4.345;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }else{
+                    if($worktype[$i] === '근무일') {
+                        $realwtimeone[] = ($totalwork[$i] * 2) / 4.345;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }// 근무일의 기본근로시간
+
+
 
                 //8시간 초과시 연장근로 시간
                 //무급휴무일이면 근무일로 선택된 요일의 합계
@@ -538,21 +618,41 @@ class HnlWorktypeController extends Controller
                     $realworktime[] = ($totalwork[$i] * 3) / 4.345;
                 } //기본 근로시간 끝
 
+
                 //1주소정근로시간 구하기 위한 조건
                 if($totalwork[$i] > 8.00){
-                    if($worktype[$i] === '근무일'){
+                    if($worktype[$i] === '근무일') {
+                        $realwtime[] = ($BASICWORK * 3) / 4.345;
+                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($BASICWORK * 3) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
-                    if($worktype[$i] === '근무일'){
+                    if($worktype[$i] === '근무일') {
+                        $realwtime[] = ($totalwork[$i] * 3) / 4.345;
+                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($totalwork[$i] * 3) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
-                    $realwtime[] = ($totalwork[$i] * 3) / 4.345;
                 }// 근무일의 기본근로시간
+
+                //1일소정근로시간 구하기 위한 조건
+                if($totalwork[$i] > 8.00){
+                    if($worktype[$i] === '근무일') {
+                        $realwtimeone[] = ($BASICWORK * 3) / 4.345;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }else{
+                    if($worktype[$i] === '근무일') {
+                        $realwtimeone[] = ($totalwork[$i] * 3) / 4.345;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }// 근무일의 기본근로시간
+
 
                 //8시간 초과시 연장근로 시간
                 //무급휴무일이면 근무일로 선택된 요일의 합계
@@ -620,18 +720,39 @@ class HnlWorktypeController extends Controller
 
                 //1주소정근로시간 구하기 위한 조건
                 if($totalwork[$i] > 8.00){
-                    if($worktype[$i] === '근무일'){
+                    if($worktype[$i] === '근무일') {
+                        $realwtime[] = ($BASICWORK * 4) / 4.345;
+                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($BASICWORK * 4) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
-                    if($worktype[$i] === '근무일'){
+                    if($worktype[$i] === '근무일') {
+                        $realwtime[] = ($totalwork[$i] * 4) / 4.345;
+                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($totalwork[$i] * 4) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }// 근무일의 기본근로시간
+
+                //1일소정근로시간 구하기 위한 조건
+                if($totalwork[$i] > 8.00){
+                    if($worktype[$i] === '근무일') {
+                        $realwtimeone[] = ($BASICWORK * 4) / 4.345;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }else{
+                    if($worktype[$i] === '근무일') {
+                        $realwtimeone[] = ($totalwork[$i] * 4) / 4.345;
+                    }else{
+                        $realwtimeone[] = '0.00';
+                    }
+                }// 근무일의 기본근로시간
+
+
 
                 //8시간 초과시 연장근로 시간
                 //무급휴무일이면 근무일로 선택된 요일의 합계
@@ -704,7 +825,7 @@ class HnlWorktypeController extends Controller
                 }//1주 소정근로시간이 40시간 기준
 
                 if(count($totalwork) === 7) {
-                    $basicw = $realwtime;
+                    $basicw = $realwtimeone;
                     for ($i = 0; $i < count($basicw); $i++) {
                         if (array_search('0.00', $basicw)) {
                             $one = array_search('0.00', $basicw);
@@ -715,7 +836,7 @@ class HnlWorktypeController extends Controller
                 }
 
                 //1일 소정 근로시간
-                $onedayworktime = sprintf('%02.2f', array_sum($realwtime) / $countone);  // 1주일분 기본근로시간 / 근무일로 선택된 수
+                $onedayworktime = sprintf('%02.2f', array_sum($basicw) / $countone);  // 1주일분 기본근로시간 / 근무일로 선택된 수
                 $TEST = '';
                 //1주 연장 근로시간
                 //근무일 무급휴무일 합산
