@@ -409,7 +409,13 @@ class HnlWorktypeController extends Controller
                         $realwtime[] = '0.00';
                     }
                 }else{
-                    $realwtime[] = ($totalwork[$i] * 1) / 4.345;
+                    if($worktype[$i] === '근무일'){
+                        $realwtime[] = ($totalwork[$i] * 1) / 4.345 ;
+                    }elseif($totalwork[$i] === '무급휴무일'){
+                        $realwtime[] = ($totalwork[$i] * 1) / 4.345 ;
+                    }else{
+                        $realwtime[] = '0.00';
+                    }
                 }// 근무일의 기본근로시간
 
                 //8시간 초과시 연장근로 시간

@@ -115,7 +115,7 @@
                                                     @for($i=0; $i < 7; $i++)
                                                     <td>
                                                         @if($v[$i]->sworktime == 0)
-                                                         <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00" min="0" max="2400">
+                                                         <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
                                                         <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sworktime }}">
                                                         @endif
