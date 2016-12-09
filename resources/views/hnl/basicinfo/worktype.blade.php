@@ -169,7 +169,7 @@
                                                 <td>시작</td>
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
-                                                        @if($v[$i]->sbtime1 == 0)
+                                                        @if($v[$i]->sbtime2 == 0)
                                                             <input class="form-control input-sm datetime2" type="text" name="break_stime2{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
                                                         @else
                                                             <input class="form-control input-sm datetime2" type="text" name="break_stime2{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sbtime2 }}" data-format="hh:mm">
@@ -181,7 +181,7 @@
                                                 <td>종료</td>
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
-                                                        @if($v[$i]->ebtime1 == 0)
+                                                        @if($v[$i]->ebtime2 == 0)
                                                             <input class="form-control input-sm datetime2" type="text" name="break_etime2{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
                                                         @else
                                                             <input class="form-control input-sm datetime2" type="text" name="break_etime2{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->ebtime2 }}" data-format="hh:mm">
@@ -196,7 +196,7 @@
                                                 <td>시작</td>
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
-                                                        @if($v[$i]->sbtime1 == 0)
+                                                        @if($v[$i]->sbtime3 == 0)
                                                             <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
                                                         @else
                                                             <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sbtime3 }}" data-format="hh:mm">
@@ -208,7 +208,7 @@
                                                 <td>종료</td>
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
-                                                        @if($v[$i]->ebtime1 == 0)
+                                                        @if($v[$i]->ebtime3 == 0)
                                                             <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
                                                         @else
                                                             <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->ebtime3 }}" data-format="hh:mm">
