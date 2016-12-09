@@ -153,8 +153,12 @@ class HnlWorktypeController extends Controller
 
         $workstart = str_replace(':','',$workstart);    //업무시작시간 : 표시 없애기
         $workend = str_replace(':','',$workend);        //업무종료시간 : 표시 없애기
-        $sbtime1 = str_replace(':','',$sbtime1);    //휴식시작시간 : 표시 없애기
-        $ebtime1 = str_replace(':','',$ebtime1);    //휴식종료시간 : 표시 없애기
+        $sbtime1 = str_replace(':','',$sbtime1);    //휴식시작시간1 : 표시 없애기
+        $ebtime1 = str_replace(':','',$ebtime1);    //휴식종료시간1 : 표시 없애기
+        $sbtime2 = str_replace(':','',$sbtime2);    //휴식시작시간2 : 표시 없애기
+        $ebtime2 = str_replace(':','',$ebtime2);    //휴식종료시간2 : 표시 없애기
+        $sbtime3 = str_replace(':','',$sbtime3);    //휴식시작시간3 : 표시 없애기
+        $ebtime3 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
 
         $scount = count($workstart);
         $ecount = count($workend);

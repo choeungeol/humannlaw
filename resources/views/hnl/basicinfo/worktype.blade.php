@@ -110,7 +110,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <th style="vertical-align: middle;" rowspan="2">근무시간</th>
+                                                    <th style="vertical-align: middle;" rowspan="2">근무시간&nbsp;</th>
                                                     <td>시작</td>
                                                     @for($i=0; $i < 7; $i++)
                                                     <td>
