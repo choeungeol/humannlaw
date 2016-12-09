@@ -65,10 +65,6 @@
                                     </select>
                                     </div>
                                 </li>
-                                <li class="pull-right">
-                                    <button class="btn btn-sm btn-primary" ng-click="addTab()" ng-disabled="(tabs | filter: {title:'J'}).length> 0">추가</button>
-                                    <button class="btn btn-sm btn-warning" ng-click="removeTab()" ng-disabled="tabs.length <= 5">삭제</button>
-                                </li>
                             </ul>
                                 <div id="myTabContent" class="tab-content">
                                     @foreach($typename as $t => $v)
