@@ -857,10 +857,10 @@ class HnlWorktypeController extends Controller
             $types->eworktime = $workend[$i];
             $types->sbtime1 = $sbtime1[$i];
             $types->ebtime1 = $ebtime1[$i];
-            $types->sbtime1 = $sbtime2[$i];
-            $types->ebtime1 = $ebtime2[$i];
-            $types->sbtime1 = $sbtime3[$i];
-            $types->ebtime1 = $ebtime3[$i];
+            $types->sbtime2 = $sbtime2[$i];
+            $types->ebtime2 = $ebtime2[$i];
+            $types->sbtime3 = $sbtime3[$i];
+            $types->ebtime3 = $ebtime3[$i];
             $types->save();
         }
 
