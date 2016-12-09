@@ -252,15 +252,11 @@ class HnlWorktypeController extends Controller
                 if($totalwork[$i] > 8.00){
                     if($worktype[$i] === '근무일'){
                         $realwtime[] = $BASICWORK;
-                    }elseif($worktype[$i] === '무급휴무일'){
-                        $realwtime[] = $BASICWORK;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
                     if($worktype[$i] === '근무일'){
-                        $realwtime[] = $totalwork[$i];
-                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = $totalwork[$i];
                     }else{
                         $realwtime[] = '0.00';
@@ -329,15 +325,11 @@ class HnlWorktypeController extends Controller
                 if($totalwork[$i] > 8.00){
                     if($worktype[$i] === '근무일'){
                         $realwtime[] = $BASICWORK / 2;
-                    }elseif($worktype[$i] === '무급휴무일'){
-                        $realwtime[] = $BASICWORK / 2;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
                     if($worktype[$i] === '근무일'){
-                        $realwtime[] = $totalwork[$i] / 2;
-                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = $totalwork[$i] / 2;
                     }else{
                         $realwtime[] = '0.00';
@@ -403,15 +395,11 @@ class HnlWorktypeController extends Controller
                 if($totalwork[$i] > 8.00){
                     if($worktype[$i] === '근무일'){
                         $realwtime[] = ($BASICWORK * 1) / 4.345 ;
-                    }elseif($totalwork[$i] === '무급휴무일'){
-                        $realwtime[] = ($BASICWORK * 1) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
                     if($worktype[$i] === '근무일'){
-                        $realwtime[] = ($totalwork[$i] * 1) / 4.345 ;
-                    }elseif($totalwork[$i] === '무급휴무일'){
                         $realwtime[] = ($totalwork[$i] * 1) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
@@ -475,15 +463,11 @@ class HnlWorktypeController extends Controller
                 if($totalwork[$i] > 8.00){
                     if($worktype[$i] === '근무일'){
                         $realwtime[] = ($BASICWORK * 2) / 4.345 ;
-                    }elseif($worktype[$i] === '무급휴무일'){
-                        $realwtime[] = ($BASICWORK * 2) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
                     if($worktype[$i] === '근무일'){
-                        $realwtime[] = ($totalwork[$i] * 2) / 4.345 ;
-                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($totalwork[$i] * 2) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
@@ -558,15 +542,11 @@ class HnlWorktypeController extends Controller
                 if($totalwork[$i] > 8.00){
                     if($worktype[$i] === '근무일'){
                         $realwtime[] = ($BASICWORK * 3) / 4.345 ;
-                    }elseif($worktype[$i] === '무급휴무일'){
-                        $realwtime[] = ($BASICWORK * 3) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
                     if($worktype[$i] === '근무일'){
-                        $realwtime[] = ($totalwork[$i] * 3) / 4.345 ;
-                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($totalwork[$i] * 3) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
@@ -642,15 +622,11 @@ class HnlWorktypeController extends Controller
                 if($totalwork[$i] > 8.00){
                     if($worktype[$i] === '근무일'){
                         $realwtime[] = ($BASICWORK * 4) / 4.345 ;
-                    }elseif($worktype[$i] === '무급휴무일'){
-                        $realwtime[] = ($BASICWORK * 4) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
                     }
                 }else{
                     if($worktype[$i] === '근무일'){
-                        $realwtime[] = ($totalwork[$i] * 4) / 4.345 ;
-                    }elseif($worktype[$i] === '무급휴무일'){
                         $realwtime[] = ($totalwork[$i] * 4) / 4.345 ;
                     }else{
                         $realwtime[] = '0.00';
