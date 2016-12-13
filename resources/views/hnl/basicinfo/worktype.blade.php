@@ -74,7 +74,7 @@
                                         <table class="table table-condensed" style="margin-bottom:0px;">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="2">요일</th>
+                                                    <th colspan="2">요일 </th>
                                                     @for($i=0; $i < 7; $i++)
                                                     <th>{{ $v[$i]->week }}</th>
                                                     @endfor
