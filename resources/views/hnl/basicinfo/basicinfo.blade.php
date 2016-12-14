@@ -28,7 +28,7 @@
     </section>
     <section class="content">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-9">
                 <div class="panel panel-danger">
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
@@ -41,136 +41,153 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <form method="post" class="form-horizontal">
+                            <form method="post"  class="form-horizontal" action="{{ route('insert/cbinfo') }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="first_Name">사업장명:</label>
+                                        <label class="control-label col-md-3" for="company_name">사업장명칭:</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="first_Name" placeholder="사업장명">
+                                            <input type="text" class="form-control" id="company_name" name="company_name" placeholder="사업장명칭">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="input_Email">사업자 번호:</label>
+                                        <label class="control-label col-md-3" for="company_no">사업자 번호:</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="input_Email" placeholder="사업자 번호">
+                                            <input type="text" class="form-control" id="company_no" name="company_no" placeholder="사업자 번호">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="input_Password">대표자명:</label>
+                                        <label class="control-label col-md-3" for="corporation_regino">법인 등록번호:</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="input_Password" placeholder="대표자명">
+                                            <input type="text" class="form-control" id="corporation_regino" name="corporation_regino" placeholder="법인 등록번호">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="input_Password">주민번호:</label>
+                                        <label class="control-label col-md-3" for="representative_name">대표자명:</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="input_Password" placeholder="주민번호">
+                                            <input type="text" class="form-control" id="representative_name" name="representative_name" placeholder="대표자명">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="Zip_Code">대표자 핸드폰:</label>
+                                        <label class="control-label col-md-3" for="representative_phone">대표자 핸드폰:</label>
                                         <div class="col-md-9">
-                                            <input type="tel" class="form-control" id="Zip_Code" placeholder="대표자 핸드폰">
+                                            <input type="tel" class="form-control" id="representative_phone" name="representative_phone" placeholder="대표자 핸드폰">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="city">업종:</label>
+                                        <label class="control-label col-md-3" for="representative_regino">대표자 주민번호:</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="city" placeholder="업종">
+                                            <input type="text" class="form-control" id="representative_regino" name="representative_regino" placeholder="대표자 주민번호:">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="city">전화번호:</label>
+                                        <label class="control-label col-md-3" for="representative_addr">대표자 주소:</label>
                                         <div class="col-md-9">
-                                            <input type="tel" class="form-control" id="city" placeholder="전화번호">
+                                            <input type="text" class="form-control" id="representative_addr" name="representative_post" placeholder="우편번호">
+                                            <input type="text" class="form-control" id="representative_addr" name="representative_addr1" placeholder="주소1">
+                                            <input type="text" class="form-control" id="representative_addr" name="representative_addr2" placeholder="주소2">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="last_Name">사업자 구분:</label>
+                                        <label class="control-label col-md-3" for="company_addr">사업장 소재지:</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="last_Name" placeholder="사업자 구분">
+                                            <input type="text" class="form-control" id="company_post" name="company_post" placeholder="우편번호">
+                                            <input type="text" class="form-control" id="company_addr1" name="company_addr1" placeholder="주소1">
+                                            <input type="text" class="form-control" id="company_addr2" name="company_addr2" placeholder="주소2">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="phone_Number">비밀번호:</label>
+                                        <label class="control-label col-md-3" for="tel_no">전화 번호:</label>
                                         <div class="col-md-9">
-                                            <input type="password" class="form-control" id="phone_Number" placeholder="비밀번호">
+                                            <input type="tel" class="form-control" id="tel_no" name="tel_no" placeholder="전화번호">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="confirm_Password">비밀번호 확인:</label>
+                                        <label class="control-label col-md-3" for="fax_no">팩스 번호:</label>
                                         <div class="col-md-9">
-                                            <input type="password" class="form-control" id="confirm_Password" placeholder="비밀번호 확인">
+                                            <input type="tel" class="form-control" id="fax_no" name="fax_no" placeholder="팩스번호">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="postal_Address">사업장 소재지:</label>
+                                        <label class="control-label col-md-3" for="company_email">사업장 Email:</label>
                                         <div class="col-md-9">
-                                            <textarea rows="3" class="form-control resize_vertical" id="postal_Address" placeholder="사업장 소재지"></textarea>
+                                            <input type="text" class="form-control" id="company_email"  name="company_email" placeholder="사업장 Email">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="postal_Address">업태:</label>
+                                        <label class="control-label col-md-3" for="PIC_name">담당자 명칭:</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="last_Name" placeholder="업태">
+                                            <input type="text" class="form-control" id="PIC_name" name="PIC_name" placeholder="담당자 명칭">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="postal_Address">팩스번호:</label>
+                                        <label class="control-label col-md-3" for="PIC_tel_no">담당자 연락처:</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="last_Name" placeholder="팩스번호">
+                                            <input type="tel" class="form-control" id="PIC_tel_no" name="PIC_tel_no" placeholder="전화번호">
                                         </div>
                                     </div>
+                                    <div class="form-group striped-col ">
+                                        <label class="col-md-3 control-label" for="form-file-input">사업자 도장</label>
+                                        <div class="col-md-9 pad-top20 ">
+                                            <input type="file" id="company_stamp">
+                                        </div>
+                                    </div>
+                                    <div class="form-group striped-col ">
+                                        <label class="col-md-3 control-label" for="form-file-input">회사 로고</label>
+                                        <div class="col-md-9 pad-top20 ">
+                                            <input type="file" id="company_logo">
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="last_Name">법인등록번호:</label>
+                                        <label class="control-label col-md-3" for="business_type">업종:</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="last_Name" placeholder="법인등록번호">
+                                            <input type="text" class="form-control" id="business_type" name="business_type" placeholder="업종">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="phone_Number">주간 근로일:</label>
+                                        <label class="control-label col-md-3" for="business_condition">업태:</label>
                                         <div class="col-md-9">
-                                            <select class="form-control">
-                                                <option>5일근로</option>
-                                            </select>
+                                            <input type="text" class="form-control" id="business_condition" name="business_condition" placeholder="업태">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="confirm_Password">종목:</label>
+                                        <label class="control-label col-md-3" for="pay_basic_date">급여 기준일:</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="confirm_Password" placeholder="종목">
+                                            <input type="text" class="form-control" id="pay_basic_date" name="pay_basic_date" placeholder="급여 기준일">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="postal_Address">사업개시일:</label>
+                                        <label class="control-label col-md-3" for="pay_day">급여 지급일:</label>
                                         <div class="col-md-9">
-                                            <input type="date" class="form-control" id="confirm_Password" placeholder="종목">
+                                            <input type="text" class="form-control" id="pay_day" name="pay_day" placeholder="급여 지급일">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="postal_Address">특이사항:</label>
+                                        <label class="control-label col-md-3" for="business_calc_manner">일할계산 방법:</label>
                                         <div class="col-md-9">
-                                            <textarea rows="3" class="form-control resize_vertical" id="postal_Address" placeholder="특이사항"></textarea>
+                                            <input type="text" class="form-control" id="business_calc_manner" name="business_calc_manner" placeholder="일할계산 방법">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button class="btn btn-block btn-rounded btn-primary btn-large" style="font-size:20px;padding:10px;">저장</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-3">
                 <div class="panel panel-danger">
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
                             <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
-                               data-l="true"></i> 사업장 추가정보
+                               data-l="true"></i> 사업장 목록
                         </h4>
                         <span class="pull-right">
                             <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
@@ -178,77 +195,36 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <form method="post" class="form-horizontal">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="first_Name">담당자명:</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" id="first_Name" placeholder="담당자명">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="input_Email">대표자 주소:</label>
-                                        <div class="col-md-9">
-                                                <input type="text" class="form-control" id="input_Email" placeholder="우편번호">
-                                                <input type="text" class="form-control" id="input_Email" placeholder="주소1">
-                                                <input type="text" class="form-control" id="input_Email" placeholder="주소2">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="input_Password">담당자전화:</label>
-                                        <div class="col-md-9">
-                                            <input type="tel" class="form-control" id="input_Password" placeholder="담당자전화">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="Zip_Code">사업장 규모:</label>
-                                        <div class="col-md-9">
-                                            <input type="tel" class="form-control" id="Zip_Code" placeholder="대표자 핸드폰">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="city">사업자도장:</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" id="city" placeholder="사업자도장">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="city">정년연령:</label>
-                                        <div class="col-md-9">
-                                            <input type="tel" class="form-control" id="city" placeholder="정년연령">
-                                            ex) 50
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="last_Name">취업규칙신고:</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" id="last_Name" placeholder="취업규칙신고">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="postal_Address">급여지급일:</label>
-                                        <div class="col-md-9">
-                                            <input type="date" class="form-control" id="confirm_Password" placeholder="급여지급일">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="postal_Address">임금산출기간:</label>
-                                        <div class="col-md-9">
-                                            <textarea rows="3" class="form-control resize_vertical" id="postal_Address" placeholder="임금산출기간"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            <table class="table table-condensed table-hover table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>사업장명</th>
+                                    <th>담당자명</th>
+                                    <th>담당자연락처</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @forelse($allcompany as $ac)
+                                <tr>
+                                    <td>{!! $ac->id !!}</td>
+                                    <td>{!! $ac->co_name !!}</td>
+                                    <td>{!! $ac->pic_name !!}</td>
+                                    <td>{!! $ac->pic_telno !!}</td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td></td>
+                                    <td>Nothing</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <a href="#" class="button button-block button-rounded button-primary button-large">저장</a>
             </div>
         </div>
     </section>

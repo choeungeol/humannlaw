@@ -1,5 +1,5 @@
 <?php
-
+//기본정보등록 - 근무유형
 namespace App\Http\Controllers;
 
 use App\Calctable;
@@ -17,8 +17,6 @@ class HnlWorktypeController extends Controller
 
         $worktypes = Worktype::all();
         $calctotal = Calctable::all();
-
-        $test = array_sum(array(1));
 
         $days = array('월요일','화요일','수요일','목요일','금요일','토요일','일요일');
         $worknum = array('없음','매주','격주','월1회','월2회','월3회','월4회');

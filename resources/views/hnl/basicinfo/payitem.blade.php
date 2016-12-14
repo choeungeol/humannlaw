@@ -15,6 +15,7 @@
 
 {{-- Page content --}}
 @section('content')
+
     <section class="content-header">
         <h1>급여항목</h1>
         <ol class="breadcrumb">
@@ -26,6 +27,7 @@
             </li>
         </ol>
     </section>
+
     <section class="content">
         <div class="row">
             <div class="col-lg-12">
@@ -57,11 +59,67 @@
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div class="tab-pane fade active in" id="basicpay">
-
-
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-striped">
                                             <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>명칭</th>
+                                                    <th>급여계산기준</th>
+                                                    <th>수습율적용</th>
+                                                    <th>퇴직금대상</th>
+                                                    <th>비과세여부</th>
+                                                    <th>기본급포함</th>
+                                                    <th>사용여부</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <input type="text" class="form-control input-sm" readonly value="명칭">
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="">
+                                                            @foreach($paycalc as $pc)
+                                                                <option {!! ($pc ? 'selected' : '') !!}>{{ $pc }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="">
+                                                            @foreach($colapply as $col)
+                                                                <option>{{ $col }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="">
+                                                            @foreach($exitpay as $exit)
+                                                                <option>{{ $exit }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="">
+                                                            @foreach($istexfree as $itf)
+                                                                <option>{{ $itf }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="">
+                                                            @foreach($inbasicpay as $ibi)
+                                                                <option>{{ $ibi }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" >
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            {{--<thead>
                                             <tr>
                                                 <th>#</th><th>지급 명칭</th><th>지급코드</th><th>출력명칭</th><th>비과세 구분</th><th>비과세 한도</th>
                                                 <th>급여 지급율 적용</th><th>상여 지급율 적용</th><th>퇴직금 대상</th><th>수습적용율</th><th>급여 계산기준</th>
@@ -106,7 +164,7 @@
                                                 <td>2</td>
                                             </tr>
 
-                                            </tbody>
+                                            </tbody>--}}
                                         </table>
                                     </div>
                                 </div>

@@ -120,6 +120,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {{ $postitles->links() }}
                             <div>
                                 <a class="btn btn-raised btn-info btn-large" data-toggle="modal" data-href="#poscreate" href="#poscreate">등록</a>
                             </div>
