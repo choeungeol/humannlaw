@@ -47,124 +47,145 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <div class="panel panel-blue">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-
+                                        일반정보
                                 </h4>
                             </div>
                             <div class="panel-body">
-                                <div class="col-lg-4">
-                                    <div class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">급여유형:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="급여유형">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">급여금액:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="급여금액">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">근무유형:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="근무유형">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <table class="table table-condensed table-bordered">
+                                    <tr>
+                                        <th>사원번호</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>성 명</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>주민번호</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th>부 서</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>직 위</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>사업장</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th>근무상태</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>채용형태</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>수습기간</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th>수습비율</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>입사일</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>퇴사일</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-                        <div class="panel panel-green">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-
+                                    급여정보
                                 </h4>
                             </div>
                             <div class="panel-body">
-                                <div class="col-lg-4">
-                                    <div class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">사원번호:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="사원번호">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">성명:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="성명">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">근무상태:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="근무상태">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">사업장:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="사업장">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">부서:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="부서">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">직위:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="직위">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">채용형태:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="채용형태">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">계약기간:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="계약기간">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">입사일자:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="입사일자">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-3" for="first_Name">퇴사일자:</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control input-sm" id="first_Name" placeholder="퇴사일자">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <table class="table table-condensed table-bordered">
+                                    <tr>
+                                        <th>급여유형</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>근무유형</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>주민번호</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th>월급여액</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="3,000,000"></td>
+                                        <th>생산직비과세 여부( Y , N )</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="Y"></td>
+                                        <th></th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>일용직 세액공제 여부( Y , N )</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>국외 근로 비과세 여부</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th></th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>통상시급</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>입사일</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <th>퇴사일</th>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    급여항목
+                                </h4>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-condensed table-bordered">
+                                    <tr>
+                                        <th rowspan="2">통상임금</th><th>기본급</th><th>주휴수당</th><th>직책수당</th><th>근속수당</th><th>직무수당</th><th> - </th>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th rowspan="2">법정수당</th><th>연장수당</th><th>야간수당</th><th>휴일수당</th><th>휴일연장</th><th>휴일야간</th><th>연차수당</th>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th rowspan="2">복리후생</th><th>식대</th><th>차량유지비</th><th>육아수당</th><th>연구활동비</th><th>명절떡값</th><th> - </th>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th rowspan="2">약정수당</th><th>상여금</th><th>특별성과금</th><th>특근수당</th><th>특별수당</th><th> - </th><th> - </th>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>

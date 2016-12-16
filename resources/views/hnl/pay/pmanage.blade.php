@@ -105,15 +105,15 @@
                                         <tr>
                                             <th>순번</th>
                                             <th>이름</th>
-                                            <th>총 근로시간</th>
-                                            <th>소정 근로시간</th>
-                                            <th>주휴 부여시간</th>
-                                            <th>연장 근로시간</th>
-                                            <th>야간 근로시간</th>
-                                            <th>휴일 근로시간</th>
-                                            <th>휴일연장 근로시간</th>
-                                            <th>휴일야간 근로시간</th>
-                                            <th>연차 부여시간</th>
+                                            <th>총근로시간</th>
+                                            <th>소정근로</th>
+                                            <th>주휴시간</th>
+                                            <th>연장근로</th>
+                                            <th>야간근로</th>
+                                            <th>휴일근로</th>
+                                            <th>휴일연장</th>
+                                            <th>휴일야간</th>
+                                            <th>연차수당</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -138,33 +138,23 @@
                                 <div class="tab-pane fade" id="pays">
                                     <table class="table table-condensed table-bordered">
                                         <caption>
-                                            <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 수당?
+                                            <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 급여세부항목
                                         </caption>
                                         <thead>
                                         <tr>
-                                            <th rowspan="2">순번</th>
-                                            <th rowspan="2">이름</th>
-                                            <th colspan="2">통상임금 기본급</th>
-                                            <th colspan="4">통상임금 수당</th>
-                                            <th colspan="4">평균임금 법정수당</th>
-                                            <th colspan="2">약정수당</th>
-                                            <th colspan="2">복리후생</th>
-                                        </tr>
-                                        <tr>
-                                            <th>기본급여</th>
+                                            <th>순번</th>
+                                            <th>이름</th>
+                                            <th>기본급</th>
                                             <th>주휴수당</th>
                                             <th>직책수당</th>
-                                            <th>근속수당</th>
-                                            <th>자격수당</th>
-                                            <th>직무수당</th>
                                             <th>연장수당</th>
                                             <th>야간수당</th>
                                             <th>휴일수당</th>
                                             <th>연차수당</th>
                                             <th>성과급</th>
-                                            <th>ㅡ</th>
+                                            <th>특별수당</th>
                                             <th>식대</th>
-                                            <th>차량</th>
+                                            <th>차량유지비</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -172,9 +162,6 @@
                                             <tr>
                                                 <td>{{ $i }}</td>
                                                 <td>홍길동</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>

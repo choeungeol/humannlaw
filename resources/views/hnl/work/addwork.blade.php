@@ -25,6 +25,11 @@
     <link href="{{ asset('assets/vendors/daterangepicker/css/daterangepicker.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <style>
+        .table th{
+            text-align:center;
+        }
+    </style>
 
 @stop
 
@@ -56,11 +61,11 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <div class="col-lg-8">
+                        <div class="col-lg-8 text-center">
                         <table class="table table-bordered table-condensed">
                             <thead>
                             <tr>
-                                <th class="success" rowspan="2">공제근태<br>
+                                <th class="success" rowspan="2">공제근태&nbsp;&nbsp;<br>
                                     <button type="button" class="btn btn-primary btn-sm" ng-click="addRow()">추가</button>
                                 </th>
                                 <th class="success">공제유형</th>
@@ -121,7 +126,7 @@
                                         </div>
                                     </td>
                                     <th class="success">적용일자</th>
-                                    <td><input type="date" class="form-control input-sm" /></td>
+                                    <td><input type="text" class="form-control input-sm" /></td>
                                 </tr>
                                 <tr>
                                     <th class="success">급여반영</th>
@@ -138,7 +143,7 @@
                         <table class="table table-bordered table-condensed">
                             <thead>
                             <tr>
-                                <th class="success" rowspan="2">추가근무<br>
+                                <th class="success" rowspan="2">추가근무&nbsp;&nbsp;<br>
                                     <button type="button" class="btn btn-primary btn-sm" ng-click="addRowb()">추가</button>
                                 </th>
                                 <th class="success">추가유형</th>
@@ -160,7 +165,7 @@
                                 </td>
                                 <th class="success">적용일자</th>
                                 <td>
-                                    <input type="date" class="form-control input-sm" />
+                                    <input type="text" class="form-control input-sm" />
                                 </td>
                             </tr>
                             <tr>
@@ -212,7 +217,7 @@
                         <table class="table table-bordered table-condensed">
                             <thead>
                             <tr>
-                                <th class="success" rowspan="2">휴가 휴직<br>
+                                <th class="success" rowspan="2">휴가 휴직&nbsp;&nbsp;<br>
                                     <button type="button" class="btn btn-primary btn-sm" ng-click="addRowc()">추가</button>
                                 </th>
                                 <th class="success">휴가·휴직 유형</th>
