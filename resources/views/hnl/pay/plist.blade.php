@@ -181,78 +181,51 @@
                             <thead>
                             <tr>
                                 <th colspan="3">인적사항</th>
-                                <th colspan="2">통상임금</th>
-                                <th colspan="3">법정수당</th>
-                                <th colspan="2">복리후생</th>
-                                <th colspan="2">약정수당</th>
+                                <th>통상임금</th>
+                                <th>법정수당</th>
+                                <th>복리후생</th>
+                                <th>약정수당</th>
                                 <th>변동사항</th>
-                                <th>임금총액</th>
-                                <th colspan="3">공제사항</th>
-                                <th>공제총액</th>
-                                <th>차인지급액</th>
+                                <th rowspan="4">임금총액</th>
+                                <th colspan="2">공제사항</th>
+                                <th rowspan="4">공제총액</th>
+                                <th rowspan="4">차인지급액</th>
                             </tr>
                             <tr>
-                                <th>이름</th>
-                                <th>채용형태</th>
-                                <th>부서</th>
+                                <th>성명</th>
+                                <th>생년월일</th>
+                                <th>수습여부</th>
                                 <th>기본급</th>
-                                <th>추가1</th>
                                 <th>연장수당</th>
-                                <th>휴일연장수당</th>
-                                <th>추가3</th>
                                 <th>식대</th>
-                                <th>추가5</th>
                                 <th>상여금</th>
-                                <th>특근수당</th>
                                 <th>근태공제</th>
-                                <th></th>
                                 <th>소득세</th>
                                 <th>국민연금</th>
-                                <th>추가1</th>
-                                <th></th>
-                                <th></th>
                             </tr>
                             <tr>
                                 <th>입사일</th>
                                 <th>급여형태</th>
-                                <th>직위</th>
-                                <th>주휴수당</th>
-                                <th>추가2</th>
+                                <th>부서</th>
+                                <th>직책수당</th>
                                 <th>야간수당</th>
-                                <th>휴일야간수당</th>
-                                <th>추가4</th>
                                 <th>차량유지비</th>
-                                <th>추가6</th>
                                 <th>특별성과급</th>
-                                <th>추가7</th>
                                 <th>추가근무</th>
-                                <th></th>
                                 <th>주민세</th>
                                 <th>건강보험</th>
-                                <th>추가2</th>
-                                <th></th>
-                                <th></th>
                             </tr>
                             <tr>
                                 <th>퇴사일</th>
-                                <th>생년월일</th>
-                                <th></th>
-                                <th>직책수당</th>
-                                <th></th>
+                                <th>채용형태</th>
+                                <th>직위</th>
+                                <th>직무수당</th>
                                 <th>휴일수당</th>
-                                <th>연차수당</th>
-                                <th></th>
-                                <th>육아수당</th>
-                                <th></th>
+                                <th> - </th>
                                 <th>특별수당</th>
-                                <th>추가8</th>
-                                <th></th>
                                 <th></th>
                                 <th>고용보험</th>
-                                <th>장기요양</th>
-                                <th>추가3</th>
-                                <th></th>
-                                <th></td>
+                                <th>장기요양보험</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -265,18 +238,12 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td rowspan="3"></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                                <td rowspan="3"></td>
+                                <td rowspan="3"></td>
+                              </tr>
                             <tr>
                                 <td>2012-08-21</td>
                                 <td>연봉제</td>
@@ -288,28 +255,10 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                               </tr>
                             <tr>
                                 <td>2016-09-01</td>
                                 <td>770816</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -330,30 +279,15 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td rowspan="3"></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                                <td rowspan="3"></td>
+                                <td rowspan="3"></td>
+                                </tr>
                             <tr>
                                 <td>2014-06-01</td>
                                 <td>월급제</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -366,15 +300,6 @@
                             <tr>
                                 <td></td>
                                 <td>801106</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -402,6 +327,6 @@
 
     <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" ></script>
     <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/form_examples.js') }}"></script
+    <script src="{{ asset('assets/js/pages/form_examples.js') }}"></script>
 
 @stop

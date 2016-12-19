@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\Job;
+use App\Jobtitle;
 use App\Pinfo;
+use App\Postitle;
 use App\Worktype;
 use Sentinel;
 use Illuminate\Http\Request;
@@ -14,12 +17,14 @@ class PinfoController extends Controller
     public function showPinfo()
     {
 
+        $jobtitle = Jobtitle::All();
+        $position = Jobtitle::findOrFail(1)->postitles;
         $worktype = Worktype::All();
         $pinfo = Pinfo::All();
 
 
         if(Sentinel::check())
-            return view('hnl.pinfo.pinfo',compact('worktype','pinfo'));
+            return view('hnl.pinfo.pinfo',compact('worktype','pinfo','jobtitle','position'));
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }

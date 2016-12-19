@@ -198,7 +198,11 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">부서:</label>
                                                             <div class="col-md-9">
-                                                                <input type="text" class="form-control input-sm" name="job" placeholder="부서">
+                                                                <select class="form-control input-sm" name="job">
+                                                                    @foreach($jobtitle as $job)
+                                                                        <option value="{{$job->id}}">{{ $job->name }}</option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -246,7 +250,11 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">직위:</label>
                                                             <div class="col-md-9">
-                                                                <input type="text" class="form-control input-sm" name="position" placeholder="직위">
+                                                                <select class="form-control input-sm" name="position">
+                                                                    @foreach($position as $pos)
+                                                                        <option value="{{$pos->id}}">{{ $pos->pos_name }}</option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -502,21 +510,21 @@
                                                 <div class="table-scrollable">
                                                     <table class="table table-hover table-bordered">
                                                         <thead>
-                                                        <tr>
-                                                            <th>사번</th>
-                                                            <th>이름</th>
-                                                            <th>담당업무</th>
-                                                            <th>취업장소</th>
-                                                            <th>출근시각</th>
-                                                            <th>퇴근시각</th>
-                                                            <th>총휴게시간</th>
-                                                            <th>근무유형</th>
-                                                            <th>급여유형</th>
-                                                            <th>급여액</th>
-                                                            <th>채용형태</th>
-                                                            <th>수습여부</th>
-                                                            <th>수습율</th>
-                                                        </tr>
+                                                            <tr>
+                                                                <th>사번</th>
+                                                                <th>이름</th>
+                                                                <th>담당업무</th>
+                                                                <th>취업장소</th>
+                                                                <th>출근시각</th>
+                                                                <th>퇴근시각</th>
+                                                                <th>총휴게시간</th>
+                                                                <th>근무유형</th>
+                                                                <th>급여유형</th>
+                                                                <th>급여액</th>
+                                                                <th>채용형태</th>
+                                                                <th>수습여부</th>
+                                                                <th>수습율</th>
+                                                            </tr>
                                                         </thead>
                                                         <tbody>
                                                         @foreach($pinfo as $p)
@@ -558,8 +566,7 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
 
-
-        <!-- begining of page level js -->
+    <!-- begining of page level js -->
     <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/daterangepicker/js/daterangepicker.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
@@ -576,4 +583,5 @@
     <script src="{{ asset('assets/vendors/airDatepicker/js/datepicker.en.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript" src="{{ asset('assets/js/hnl/src/timepickerdirective.js') }}"></script>
+
 @stop

@@ -48,6 +48,6 @@ class CreateCompanyBasicinfo extends Migration
      */
     public function down()
     {
-        Schema::drop('company_basicinfo');
+        Schema::drop('company_basicinfos');
     }
 }

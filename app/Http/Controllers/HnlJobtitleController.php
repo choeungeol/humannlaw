@@ -19,7 +19,7 @@ class HnlJobtitleController extends Controller
 
             $jobtitles = Jobtitle::All();
 
-            $postitles = Jobtitle::join('postitles', 'postitles.job_id', '=', 'jobtitles.id')
+            $postitles = Jobtitle::join('postitles', 'postitles.jobtitle_id', '=', 'jobtitles.id')
                 ->Paginate(10);
 
           /*  $postitles = Postitle::All();*/
