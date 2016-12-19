@@ -17,10 +17,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call('AdminSeeder');
 /*       $this->call('DatatablesSeeder');*/
-        $this->call('JobtitleSeeder');
         $this->call('PostitleSeeder');
-/*        $this->call('WorktypeSeeder');
-        $this->call('CalctableSeeder');*/
+        $this->call('JobtitleSeeder');
+
+        $this->call('WorktypeSeeder');
+        $this->call('CalctableSeeder');
 
         Model::reguard();
     }
