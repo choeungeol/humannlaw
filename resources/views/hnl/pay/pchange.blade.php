@@ -28,74 +28,7 @@
     </section>
     <section class="content">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            <i class="livicon" data-name="doc-portrait" data-c="#fff" data-hc="#fff" data-size="18" data-loop="true"></i> 급여기준
-                        </h3>
-                            <span class="pull-right">
-                                <i class="fa fa-fw fa-chevron-up clickable"></i>
-                                <i class="fa fa-fw fa-times removepanel clickable"></i>
-                            </span>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <form method="post" class="form-horizontal">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="first_Name">지급년월 설정:</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control input-sm" id="first_Name" placeholder="지급년월 설정">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="input_Email">지급일 설정:</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control input-sm" id="input_Email" placeholder="지급일 설정">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">일할 계산방법:</label>
-                                        <div class="col-md-9">
-                                            <select class="form-control input-sm">
-                                                <option>월일수</option>
-                                                <option>30일</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="last_Name">상여 지급기준:</label>
-                                        <div class="col-md-9">
-                                            <select class="form-control input-sm">
-                                                <option>기본급</option>
-                                                <option>정액제</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="phone_Number">대상월 상여 지급율:</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control input-sm" id="phone_Number" placeholder="대상월 상여 지급율">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3" for="confirm_Password">최근 불러오기: </label>
-                                        <div class="col-md-9">
-                                            <button type="button" class="btn btn-default btn-sm">최근 불러오기</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <div class="panel panel-primary">
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
@@ -113,7 +46,7 @@
                                     <a href="#basic" data-toggle="tab">연봉/월급제</a>
                                 </li>
                                 <li>
-                                    <a href="#wday" data-toggle="tab">일급제</a>
+                                    <a href="#wday" data-toggle="tab">일당제</a>
                                 </li>
                                 <li>
                                     <a href="#wtime" data-toggle="tab">시급제</a>
@@ -122,32 +55,60 @@
                             <div id="myTabContent" class="tab-content">
                                 <div class="tab-pane fade active in" id="basic">
                                     <div class="row">
-                                        <table class="table table-bordered">
+                                        <table class="table table-condensed table-bordered">
                                             <caption>
                                                 <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 지급항목
                                             </caption>
                                             <tr>
-                                                <th>기본급여</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>식대</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>자가운전보조비</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>직무수당</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <th rowspan="2">통상임금</th><th>기본급</th><th>주휴수당</th><th>직책수당</th><th>근속수당</th><th>직무수당</th><th> - </th>
                                             </tr>
                                             <tr>
-                                                <th>휴일수당</th>
+                                                <td><input type="text" class="form-control input-sm" disabled></td>
+                                                <td><input type="text" class="form-control input-sm" disabled></td>
                                                 <td><input type="text" class="form-control input-sm"></td>
-                                                <th>시간외 근무수당</th>
                                                 <td><input type="text" class="form-control input-sm"></td>
-                                                <th>성과급</th>
                                                 <td><input type="text" class="form-control input-sm"></td>
-                                                <th></th>
                                                 <td></td>
                                             </tr>
+                                            <tr>
+                                                <th rowspan="2">법정수당</th><th>연장수당</th><th>야간수당</th><th>휴일수당</th><th>휴일연장</th><th>휴일야간</th><th>연차수당</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control input-sm" disabled></td>
+                                                <td><input type="text" class="form-control input-sm" disabled></td>
+                                                <td><input type="text" class="form-control input-sm" disabled></td>
+                                                <td><input type="text" class="form-control input-sm" disabled></td>
+                                                <td><input type="text" class="form-control input-sm" disabled></td>
+                                                <td><input type="text" class="form-control input-sm" disabled></td>
+                                            </tr>
+                                            <tr>
+                                                <th rowspan="2">복리후생</th><th>식대</th><th>차량유지비</th><th>육아수당</th><th>연구활동비</th><th>명절떡값</th><th> - </th>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th rowspan="2">약정수당</th><th>상여금</th><th>특별성과금</th><th>특근수당</th><th>특별수당</th><th> - </th><th> - </th>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>총액</th>
+                                                <td colspan="6"><input type="text" class="form-control input-sm" disabled></td>
+                                            </tr>
                                         </table>
-                                        <table class="table table-bordered">
+                                        {{--<table class="table table-bordered">
                                             <caption>
                                                 <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 공제항목
                                             </caption>
@@ -244,78 +205,37 @@
                                                 <th>학자금 비과세</th>
                                                 <td><input type="text" class="form-control input-sm"></td>
                                             </tr>
-                                        </table>
-                                        <div class="pull-right">
+                                        </table>--}}
+{{--                                        <div class="pull-right">
                                         <a href="{{ URL::to('hnl/pay/pchangec') }}" class="btn btn-primary btn-sm">변동사항 확인</a>
                                         <button class="btn btn-success btn-sm">급여계산</button>
                                         <button class="btn btn-success btn-sm">급여저장</button>
                                         <button class="btn btn-info btn-sm">급여대장</button>
-                                        </div>
+                                        </div>--}}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="wday">
-                                    <table class="table table-condensed table-bordered">
+                                    <table class="table table-hover table-bordered">
                                         <caption>
-                                            <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 일급제
+                                            <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 일당제
                                         </caption>
-                                        <thead>
                                         <tr>
-                                            <th>순번</th>
-                                            <th>이름</th>
-                                            <th>주민번호</th>
-                                            <th>주소</th>
+                                            <th>일당</th>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <th>근무일수</th>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <th>총 급여액</th>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <th>일 평균근로시간</th>
+                                            <td><input type="text" class="form-control input-sm"></td>
                                             <th>이직사유</th>
-                                            <th>일당</th>
-                                            <th>일 평균 근로시간</th>
-                                            <th>근로일 수</th>
-                                            <th>임금총액</th>
-                                            <th>소득세</th>
-                                            <th>주민세</th>
-                                            <th>국민연금</th>
-                                            <th>건강보험</th>
-                                            <th>장기요양</th>
-                                            <th>고용보험</th>
-                                            <th>기타공제</th>
-                                            <th>차인지급액</th>
+                                            <td><input type="text" class="form-control input-sm"></td>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        @for ($i = 1; $i < 5; $i++)
-                                            <tr>
-                                                <td>{{ $i }}</td>
-                                                <td>홍길동</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>150,000</td>
-                                                <td>급여정보</td>
-                                                <td>20</td>
-                                                <td>3,000,000</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        @endfor
-                                        </tbody>
                                     </table>
-                                    <table class="table table-condensed table-bordered">
-                                        <caption>
-                                            <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 급여구성항목
-                                        </caption>
-                                        <thead>
+                                    <table class="table table-hover table-bordered">
                                         <tr>
-                                            <th>순번</th>
-                                            <th>이름</th>
-                                            <th>일당</th>
-                                            <th>일 평균 근로시간</th>
-                                            <th>근로일수</th>
-                                            <th>임금총액</th>
                                             <th>기본급</th>
+                                            <th>주휴수당</th>
                                             <th>연장수당</th>
                                             <th>야간수당</th>
                                             <th>휴일수당</th>
@@ -323,128 +243,233 @@
                                             <th>휴일야간</th>
                                             <th>연차수당</th>
                                             <th>기타수당</th>
+                                            <th>총급여액</th>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        @for ($i = 1; $i < 5; $i++)
-                                            <tr>
-                                                <td>{{ $i }}</td>
-                                                <td>홍길동</td>
-                                                <td>150,000</td>
-                                                <td>8</td>
-                                                <td>20</td>
-                                                <td>3,000,000</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                            </tr>
-                                        @endfor
-                                        </tbody>
+                                        <tr>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm"></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                        </tr>
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="wtime">
                                     <table class="table table-condensed table-bordered">
                                         <caption>
-                                            <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 일용직
+                                            <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 시급제
                                         </caption>
-                                        <thead>
                                         <tr>
-                                            <th>순번</th>
-                                            <th>이름</th>
-                                            <th>주민번호</th>
-                                            <th>주소</th>
-                                            <th>이직사유</th>
                                             <th>시급</th>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <th>근무일수</th>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <th>총 급여액</th>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
                                             <th>일 평균 근로시간</th>
-                                            <th>근로일 수</th>
-                                            <th>임금총액</th>
-                                            <th>소득세</th>
-                                            <th>주민세</th>
-                                            <th>국민연금</th>
-                                            <th>건강보험</th>
-                                            <th>장기요양</th>
-                                            <th>고용보험</th>
-                                            <th>기타공제</th>
-                                            <th>차인지급액</th>
+                                            <td><input type="text" class="form-control input-sm"></td>
+                                            <th>이직사유</th>
+                                            <td><input type="text" class="form-control input-sm"></td>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        @for ($i = 1; $i < 5; $i++)
-                                            <tr>
-                                                <td>{{ $i }}</td>
-                                                <td>홍길동</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>7,000</td>
-                                                <td>급여정보</td>
-                                                <td>20</td>
-                                                <td>3,000,000</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        @endfor
-                                        </tbody>
                                     </table>
                                     <table class="table table-condensed table-bordered">
                                         <caption>
-                                            <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 일반직원
+                                            <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 1달 동안의 근무시간
                                         </caption>
-                                        <thead>
                                         <tr>
-                                            <th>순번</th>
-                                            <th>이름</th>
-                                            <th>시급</th>
-                                            <th>총 근로시간</th>
-                                            <th>소정 근로시간</th>
-                                            <th>연장 근로시간</th>
-                                            <th>야간 근로시간</th>
-                                            <th>주휴 부여시간</th>
-                                            <th>연차 부여시간</th>
-                                            <th>임금총액</th>
+                                            <th>소정근로</th>
+                                            <th>연장근로</th>
+                                            <th>야간근로</th>
+                                            <th>연차시간</th>
+                                            <th>주휴시간</th>
+                                            <th>총 근무시간</th>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                        </tr>
+                                        <tr>
                                             <th>기본급</th>
                                             <th>연장수당</th>
                                             <th>야간수당</th>
                                             <th>연차수당</th>
+                                            <th>주휴수당</th>
                                             <th>기타수당</th>
+                                            <th>총 급여액</th>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        @for ($i = 1; $i < 5; $i++)
-                                            <tr>
-                                                <td>{{ $i }}</td>
-                                                <td>홍길동</td>
-                                                <td>7,000</td>
-                                                <td>244</td>
-                                                <td>174</td>
-                                                <td>25</td>
-                                                <td>5</td>
-                                                <td>32</td>
-                                                <td>8</td>
-                                                <td>1,708,000</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        @endfor
-                                        </tbody>
+                                        <tr>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                            <td><input type="text" class="form-control input-sm"></td>
+                                            <td><input type="text" class="form-control input-sm" disabled></td>
+                                        </tr>
                                     </table>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading border-light">
+                        <h4 class="panel-title">
+                            <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
+                               data-l="true"></i> 사원목록
+                        </h4>
+                            <span class="pull-right">
+                                <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
+                            </span>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <td>사번</td><td>이름</td><td>생년월일</td><td>수정</td>
+                            </tr>
+                            <tr>
+                                <td>0001</td>
+                                <td>홍길동</td>
+                                <td>1988-11-11</td>
+                                <td><button class="btn btn-sm btn-default" type="button">수정</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading border-light">
+                        <h4 class="panel-title">
+                            <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
+                               data-l="true"></i> 공통공제사항
+                        </h4>
+                    <span class="pull-right">
+                        <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
+                    </span>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <th>월총지급액</th>
+                                <td>3,400,000</td>
+                                <th>월비과세액</th>
+                                <td>400,000</td>
+                                <th>월보수총액</th>
+                                <td>3,000,000</td>
+                                <th>기준보수월액</th>
+                                <td>2,800,000</td>
+                                <th>부양가족수</th>
+                                <td>2</td>
+                            </tr>
+                        </table>
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <th rowspan="2">법정 공제사항</th>
+                                <th>소득세</th>
+                                <th>주민세</th>
+                                <th>국민연금</th>
+                                <th>건강보험</th>
+                                <th>장기요양보험</th>
+                                <th>고용보험</th>
+                            </tr>
+                            <tr>
+                                <td>67,350</td>
+                                <td>6,730</td>
+                                <td>126,000</td>
+                                <td>91,800</td>
+                                <td>6,010</td>
+                                <td>19,500</td>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">약정 공제사항</th>
+                                <th>축의금</th>
+                                <th>가불금</th>
+                                <th>부의금</th>
+                                <th>전별금</th>
+                                <th>연말정산</th>
+                                <th>기타</th>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading border-light">
+                        <h4 class="panel-title">
+                            <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
+                               data-l="true"></i> 변동사항확인
+                        </h4>
+                    <span class="pull-right">
+                        <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
+                    </span>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <th>사번</th>
+                                <th>이름</th>
+                                <th>직책수당</th>
+                                <th>연장수당</th>
+                                <th>휴일수당</th>
+                                <th>식대</th>
+                                <th>상여금</th>
+                                <th>특별성과금</th>
+                                <th>축의금</th>
+                                <th>가불금</th>
+                                <th>연말정산</th>
+                            </tr>
+                            <tr>
+                                <th>1</th>
+                                <th>홍길동</th>
+                                <th>100,000</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <th>고길동</th>
+                                <th>100,000</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
