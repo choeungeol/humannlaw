@@ -142,7 +142,7 @@
             </li>
         </ul>
     </li>
-    <li {!! (Request::is('hnl/pinfo/pinfo') || Request::is('hnl/pinfo/payinfo')  ? 'class="active"' : '') !!}>
+    <li {!! (Request::is('hnl/pinfo/pinfo') || Request::is('hnl/pinfo/payinfo') || Request::is('hnl/pinfo/pcard')  ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="users-add" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
