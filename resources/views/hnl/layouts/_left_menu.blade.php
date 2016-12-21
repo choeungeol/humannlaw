@@ -69,7 +69,7 @@
             </li>
         </ul>
     </li>
-    <li {!! (Request::is('hnl/basicinfo/basicinfo') || Request::is('hnl/basicinfo/jobtitle') || Request::is('hnl/basicinfo/payitem') || Request::is('hnl/basicinfo/paytype') || Request::is('hnl/basicinfo/worktype') ? 'class="active"' : '') !!}>
+    <li {!! (Request::is('hnl/basicinfo/basicinfo') || Request::is('hnl/basicinfo/jobtitle') || Request::is('hnl/basicinfo/payitem') || Request::is('hnl/basicinfo/paytype') || Request::is('hnl/basicinfo/worktype') || Request::is('hnl/basicinfo/worktype1') || Request::is('hnl/basicinfo/worktype2') || Request::is('hnl/basicinfo/worktype3') ||Request::is('hnl/basicinfo/worktype4')? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
@@ -101,11 +101,44 @@
                     급여 유형
                 </a>
             </li>
-            <li {!! (Request::is('hnl/basicinfo/worktype') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('hnl/basicinfo/worktype') }}">
+            <li  {!! (Request::is('hnl/basicinfo/worktype') || Request::is('hnl/basicinfo/worktype1') || Request::is('hnl/basicinfo/worktype2') || Request::is('hnl/basicinfo/worktype3') ||Request::is('hnl/basicinfo/worktype4') ? 'class="active"' : '') !!}>
+                <a href="#">
                     <i class="fa fa-angle-double-right"></i>
-                    근무 유형
+                    <span class="title">근무유형</span>
+                    <span class="fa arrow"></span>
                 </a>
+                <ul class="sub-menu">
+                    <li {!! (Request::is('hnl/basicinfo/worktype') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('hnl/basicinfo/worktype') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            일반 근무유형
+                        </a>
+                    </li>
+                    <li {!! (Request::is('hnl/basicinfo/worktype1') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('hnl/basicinfo/worktype1') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            교대제 근무유형
+                        </a>
+                    </li>
+                    <li {!! (Request::is('hnl/basicinfo/worktype2') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('hnl/basicinfo/worktype2') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            격일제 근무유형
+                        </a>
+                    </li>
+                    <li {!! (Request::is('hnl/basicinfo/worktype3') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('hnl/basicinfo/worktype3') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            감시단속 근무유형
+                        </a>
+                    </li>
+                    <li {!! (Request::is('hnl/basicinfo/worktype4') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('hnl/basicinfo/worktype4') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            일용직 근무유형
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </li>

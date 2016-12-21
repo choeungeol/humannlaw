@@ -52,8 +52,8 @@
             </li>
         </ol>
     </section>
-    <section class="content">
-        <div class="row">
+    <section class="content" ng-app="">
+        <div class="row" ng-controller="">
             <div class="col-lg-12">
                 <div class="panel panel-danger">
                     <div class="panel-heading border-light">

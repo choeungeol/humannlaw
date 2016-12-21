@@ -12,7 +12,7 @@ class CreateCalcTable extends Migration
      */
     public function up()
     {
-        Schema::create('calc_table', function(Blueprint $table){
+        Schema::create('calc_tables', function(Blueprint $table){
             $table->increments('id');
             $table->string('type' ,10);
             $table->string('mtotal')->nullable();
@@ -34,6 +34,6 @@ class CreateCalcTable extends Migration
      */
     public function down()
     {
-        Schema::drop('calc_table');
+        Schema::drop('calc_tables');
     }
 }

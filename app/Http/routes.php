@@ -152,6 +152,37 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
         });
 
+        Route::group(array('prefix' => 'worktype1'), function () {
+
+            Route::get('/', array('as' => 'hnl', 'uses' => 'HnlWorktypeController@index1'));
+
+            Route::post('insert' , array('as' => 'insert/worktype1', 'uses' => 'HnlWorktypeController@typeInsert1'));
+
+        });
+
+        Route::group(array('prefix' => 'worktype2'), function () {
+
+            Route::get('/', array('as' => 'hnl', 'uses' => 'HnlWorktypeController@index2'));
+
+            Route::post('insert' , array('as' => 'insert/worktype2', 'uses' => 'HnlWorktypeController@typeInsert2'));
+
+        });
+
+        Route::group(array('prefix' => 'worktype3'), function () {
+
+            Route::get('/', array('as' => 'hnl', 'uses' => 'HnlWorktypeController@index3'));
+
+            Route::post('insert' , array('as' => 'insert/worktype3', 'uses' => 'HnlWorktypeController@typeInsert3'));
+
+        });
+
+        Route::group(array('prefix' => 'worktype4'), function () {
+
+            Route::get('/', array('as' => 'hnl', 'uses' => 'HnlWorktypeController@index4'));
+
+            Route::post('insert' , array('as' => 'insert/worktype4', 'uses' => 'HnlWorktypeController@typeinsert4'));
+
+        });
     });
 
     # hnl / Index

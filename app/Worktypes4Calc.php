@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Calctable extends Model
+class Worktypes4Calc extends Model
 {
-    protected $table = 'calc_tables';
+    protected $table = 'worktypes4_calc';
 
     protected $guarded  = ['id'];
 }

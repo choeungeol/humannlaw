@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Calctable;
 use App\Worktype;
+use App\Worktypes1;
+use App\Worktypes1Calc;
+use App\Worktypes2;
+use App\Worktypes2Calc;
+use App\Worktypes3;
+use App\Worktypes3Calc;
+use App\Worktypes4;
+use App\Worktypes4Calc;
 use Illuminate\Http\Request;
 use Sentinel;
 use Redirect;
@@ -44,6 +52,92 @@ class HnlWorktypeController extends Controller
 
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
 
+    }
+
+    public function index1()
+    {
+
+
+        $worktype = Worktypes1::all();
+        $calctotal = Worktypes1Calc::all();
+
+        if(Sentinel::check())
+
+        return view('hnl.basicinfo.worktype1',compact('worktype'));
+
+        else
+
+            return Redirect::to('admin/signin')->with('error','You must be logged in!');
+    }
+
+    public function index2()
+    {
+        $alpha = array('A','B','C','D','E','F','G','H','I','J');
+        $worktype = Worktypes2::all();
+        $calctotal = Worktypes2Calc::all();
+
+        for($i=0; $i < count($alpha); $i++){
+            $typename[$alpha[$i]] = Worktypes2::where('type','=',$alpha[$i])->get();
+        }
+
+        for($i=0; $i < count($alpha); $i++){
+            $typename[$alpha[$i]][] = $calctotal[$i];
+        }
+
+        if(Sentinel::check())
+
+            return view('hnl.basicinfo.worktype2', compact('typename'));
+
+        else
+
+            return Redirect::to('admin/signin')->with('error','You must be logged in!');
+    }
+
+    public function index3()
+    {
+        $alpha = array('A','B','C','D','E','F','G','H','I','J');
+        $calctotal = Worktypes3Calc::all();
+
+        for($i=0; $i < count($alpha); $i++){
+            $typename[$alpha[$i]] = Worktypes3::where('type','=',$alpha[$i])->get();
+        }
+
+
+        for($i=0; $i < count($alpha); $i++){
+            $typename[$alpha[$i]][] = $calctotal[$i];
+        }
+
+        if(Sentinel::check())
+
+            return view('hnl.basicinfo.worktype3', compact('typename'));
+
+        else
+
+            return Redirect::to('admin/signin')->with('error','You must be logged in!');
+    }
+
+    public function index4()
+    {
+
+        $alpha = array('A','B','C','D','E','F','G','H','I','J');
+        $calctotal = Worktypes4Calc::all();
+
+        for($i=0; $i < count($alpha); $i++){
+            $typename[$alpha[$i]] = Worktypes4::where('type','=',$alpha[$i])->get();
+        }
+
+
+        for($i=0; $i < count($alpha); $i++){
+            $typename[$alpha[$i]][] = $calctotal[$i];
+        }
+
+        if(Sentinel::check())
+
+            return view('hnl.basicinfo.worktype4',compact('typename'));
+
+        else
+
+            return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }
 
     public function typeInsert(Request $request)
@@ -751,7 +845,6 @@ class HnlWorktypeController extends Controller
                 }// 근무일의 기본근로시간
 
 
-
                 //8시간 초과시 연장근로 시간
                 //무급휴무일이면 근무일로 선택된 요일의 합계
                 //무급휴무일의 실근로시간 합계 합친것에 -40을 해준다.
@@ -984,6 +1077,333 @@ class HnlWorktypeController extends Controller
         }
 
         return Redirect::to('hnl/basicinfo/worktype')->with('success');
+
+    }
+
+    public function typeInsert1(Request $request)
+    {
+
+    }
+
+    public function typeInsert2(Request $request)
+    {
+
+        $type = $request->type;
+        $workstart = $request->work_start_time;
+        $workend = $request->work_end_time;
+        $sbtime1 = $request->break_stime1;
+        $ebtime1 = $request->break_etime1;
+        $sbtime2 = $request->break_stime2;
+        $ebtime2 = $request->break_etime2;
+        $sbtime3 = $request->break_stime3;
+        $ebtime3 = $request->break_etime3;
+        $sbtime4 = $request->break_stime4;
+        $ebtime4 = $request->break_etime4;
+
+        if($workstart == null){
+            $workstart = '00:00';
+        } // 시작 시간 입력값이 비어있으면 0
+
+        if($workend == null){
+            $workend = '00:00';
+        } // 끝 시간 입력값이 비어있으면 0
+
+        if($sbtime1 == null){
+            $sbtime1 = '00:00';
+        } // 휴게시작시간1 입력값이 비어있으면 0
+
+        if($ebtime1 == null){
+           $ebtime1 = '00:00';
+        } // 휴게종료시간1 입력값이 비어있으면 0
+
+        if($sbtime2 == null){
+            $sbtime2 = '00:00';
+        } // 휴게시작시간2 입력값이 비어있으면 0
+
+        if($ebtime2 == null){
+            $ebtime2 = '00:00';
+        } // 휴게종료시간2 입력값이 비어있으면 0
+
+        if($sbtime3 == null){
+            $sbtime3 = '00:00';
+        } // 휴게시작시간3 입력값이 비어있으면 0
+
+        if($ebtime3 == null){
+            $ebtime3 = '00:00';
+        } // 휴게종료시간3 입력값이 비어있으면 0
+
+        if($sbtime4 == null){
+            $sbtime4 = '00:00';
+        } // 휴게시작시간4 입력값이 비어있으면 0
+
+        if($ebtime4 == null){
+            $ebtime4 = '00:00';
+        } // 휴게종료시간4 입력값이 비어있으면 0
+
+        $workstart = str_replace(':','',$workstart);    //업무시작시간 : 표시 없애기
+        $workend = str_replace(':','',$workend);        //업무종료시간 : 표시 없애기
+        $sbtime1 = str_replace(':','',$sbtime1);    //휴식시작시간1 : 표시 없애기
+        $ebtime1 = str_replace(':','',$ebtime1);    //휴식종료시간1 : 표시 없애기
+        $sbtime2 = str_replace(':','',$sbtime2);    //휴식시작시간2 : 표시 없애기
+        $ebtime2 = str_replace(':','',$ebtime2);    //휴식종료시간2 : 표시 없애기
+        $sbtime3 = str_replace(':','',$sbtime3);    //휴식시작시간3 : 표시 없애기
+        $ebtime3 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $sbtime4 = str_replace(':','',$sbtime4);    //휴식시작시간3 : 표시 없애기
+        $ebtime4 = str_replace(':','',$ebtime4);    //휴식종료시간3 : 표시 없애기
+
+        $btime1 = ((float)$ebtime1 - (float)$sbtime1);    // 휴게시간1
+/*        if($btime1 == 30){
+            $btime1 = 50;
+        }elseif($btime1 == 15){
+            $btime1 = 25;
+        }elseif($btime1 == 45){
+            $btime1 = 75;
+        }*/
+
+        $btime2 = (float)$ebtime2 - (float)$sbtime2;    // 휴게시간2
+        $btime3 = (float)$ebtime3 - (float)$sbtime3;    // 휴게시간3
+        $btime4 = (float)$ebtime4 - (float)$sbtime4;    // 휴게시간4
+        $allbtime = $btime1 + $btime2 + $btime3 + $btime4;
+
+        $worktime = $workend - $workstart;
+        $worktime = $worktime - $allbtime; // 실 근무시간
+
+        $BASICWORK = "0800";
+        $NIGHT = "2200";
+
+        if($worktime > $BASICWORK){
+            $wtime = $BASICWORK;
+        }else{
+            $wtime = $worktime;
+        }   // 소정근로시간
+
+        $etime = ($worktime - $BASICWORK) * 1.5; //연장근로시간
+
+        if($workend > $NIGHT){
+            $ntime = ($workend - $NIGHT) * 0.5;
+        }else{
+            $ntime = "0000";
+        }   // 야간근로시간
+
+        $weekwtime = ($wtime * 7) / 2; //1주 소정근로시간
+        $weeketime = ($etime * 7) / 2; //1주 연장근로시간
+        $weekntime = ($ntime * 7) / 2; //1주 야간근로시간
+
+        $total = $weekwtime + $weeketime + $weekntime; //1주 총합
+
+        $night = sprintf('%02.2f', floor(2200 * 100) / 10000);
+
+        $monthwtime = sprintf('%02.2f',(($weekwtime * 100) / 10000) * 4.345); //1달 소정근로시간
+        $monthetime = sprintf('%02.2f',(($weeketime * 100) / 10000) * 4.345); //1달 연장근로시간
+        $monthbtime =  sprintf('%02.2f',(($weekntime * 100) / 10000) * 4.345); //1달 야간근로시간
+        $monthbreak =  sprintf('%02.2f',(($wtime * 100) / 10000) * 4.345);        //1달 주휴부여시간
+        $monthwbreak =  sprintf('%02.2f',(($wtime * 15) / 12 * 100) / 10000);        //1달 주휴부여시간
+        $mtotal = $monthwtime + $monthetime + $monthbtime + $monthbreak + $monthbreak + $monthwbreak;
+
+
+        $types = Worktypes2::where('type', '=', $type)->first();
+        $types->type = $type;
+        $types->sworktime = $workstart;
+        $types->eworktime = $workend;
+        $types->sbtime1 = $sbtime1;
+        $types->ebtime1 = $ebtime1;
+        $types->sbtime2 = $sbtime2;
+        $types->ebtime2 = $ebtime2;
+        $types->sbtime3 = $sbtime3;
+        $types->ebtime3 = $ebtime3;
+        $types->sbtime4 = $sbtime4;
+        $types->ebtime4 = $ebtime4;
+        $types->save();
+
+        $totals = Worktypes2Calc::where('type', '=', $type)->first();
+        $totals->type = $type;
+        $totals->mtotal = $monthwtime;
+        $totals->mover = $monthetime;
+        $totals->mnight = $monthbtime;
+        $totals->mbreak = $monthbreak;
+        $totals->mwbt = $monthwbreak;
+        $totals->total = $mtotal;
+        $totals->save();
+
+
+        return Redirect::to('hnl/basicinfo/worktype2')->with('success');
+
+    }
+
+    public function typeInsert3(Request $request)
+    {
+
+
+        return Redirect::to('hnl/basicinfo/worktype3')->with('success');
+
+    }
+
+    public function typeInsert4(Request $request)
+    {
+        $type = $request->type;
+        $workstart = $request->work_start_time;
+        $workend = $request->work_end_time;
+        $sbtime1 = $request->break_stime1;
+        $ebtime1 = $request->break_etime1;
+        $sbtime2 = $request->break_stime2;
+        $ebtime2 = $request->break_etime2;
+        $sbtime3 = $request->break_stime3;
+        $ebtime3 = $request->break_etime3;
+        $sbtime4 = $request->break_stime4;
+        $ebtime4 = $request->break_etime4;
+        $daypay = $request->daypay;
+        $workday = $request->workday;
+
+        if($workstart == null){
+            $workstart = '00:00';
+        } // 시작 시간 입력값이 비어있으면 0
+
+        if($workend == null){
+            $workend = '00:00';
+        } // 끝 시간 입력값이 비어있으면 0
+
+        if($sbtime1 == null){
+            $sbtime1 = '00:00';
+        } // 휴게시작시간1 입력값이 비어있으면 0
+
+        if($ebtime1 == null){
+            $ebtime1 = '00:00';
+        } // 휴게종료시간1 입력값이 비어있으면 0
+
+        if($sbtime2 == null){
+            $sbtime2 = '00:00';
+        } // 휴게시작시간2 입력값이 비어있으면 0
+
+        if($ebtime2 == null){
+            $ebtime2 = '00:00';
+        } // 휴게종료시간2 입력값이 비어있으면 0
+
+        if($sbtime3 == null){
+            $sbtime3 = '00:00';
+        } // 휴게시작시간3 입력값이 비어있으면 0
+
+        if($ebtime3 == null){
+            $ebtime3 = '00:00';
+        } // 휴게종료시간3 입력값이 비어있으면 0
+
+        if($sbtime4 == null){
+            $sbtime4 = '00:00';
+        } // 휴게시작시간4 입력값이 비어있으면 0
+
+        if($ebtime4 == null){
+            $ebtime4 = '00:00';
+        } // 휴게종료시간4 입력값이 비어있으면 0
+
+        $workstart = str_replace(':','',$workstart);    //업무시작시간 : 표시 없애기
+        $workend = str_replace(':','',$workend);        //업무종료시간 : 표시 없애기
+        $sbtime1 = str_replace(':','',$sbtime1);    //휴식시작시간1 : 표시 없애기
+        $ebtime1 = str_replace(':','',$ebtime1);    //휴식종료시간1 : 표시 없애기
+        $sbtime2 = str_replace(':','',$sbtime2);    //휴식시작시간2 : 표시 없애기
+        $ebtime2 = str_replace(':','',$ebtime2);    //휴식종료시간2 : 표시 없애기
+        $sbtime3 = str_replace(':','',$sbtime3);    //휴식시작시간3 : 표시 없애기
+        $ebtime3 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $sbtime4 = str_replace(':','',$sbtime4);    //휴식시작시간3 : 표시 없애기
+        $ebtime4 = str_replace(':','',$ebtime4);    //휴식종료시간3 : 표시 없애기
+
+
+        $btime1 = ((float)$ebtime1 - (float)$sbtime1);    // 휴게시간1
+        $btime2 = (float)$ebtime2 - (float)$sbtime2;    // 휴게시간2
+        $btime3 = (float)$ebtime3 - (float)$sbtime3;    // 휴게시간3
+        $btime4 = (float)$ebtime4 - (float)$sbtime4;    // 휴게시간4
+        $allbtime = $btime1 + $btime2 + $btime3 + $btime4;  //총휴게시간
+
+        $worktime = $workend - $workstart;
+        $worktime = $worktime - $allbtime; // 실 근로시간
+
+        $BASICWORK = "0800";
+        $NIGHT = "2200";
+
+        if($worktime > $BASICWORK){
+            $wtime = $BASICWORK;
+        }else{
+            $wtime = $worktime;
+        }   //1일 소정근로시간
+
+        if($worktime > $BASICWORK){
+            $etime = ($worktime - $BASICWORK) * 1.5;
+        }else{
+            $etime = '0000' * 1.5;
+        }  //1일 연장근로
+
+
+        if($workend > $NIGHT){
+            $ntime = ($workend - $NIGHT) * 0.5;
+        }else{
+            $ntime = "0000";
+        }   // 1일 야간근로
+
+        if($wtime * 5 == 4000){
+            $weekwtime = '4000';
+        }else{
+            $weekwtime = $wtime * 5;
+        }  //1주 소정근로
+
+        $weeketime = ($worktime * 6) - 4000; //1주 연장근로
+        $weekntime = ($ntime * 5) + ($ntime * 2);  //1주 야간근로
+        $weekendwtime = ($wtime  * 1.5);   //1주 휴일수당
+        $weekendetime = $etime; //1주 휴일연장
+        $weekendntime = $ntime * 2; //1주 휴일야간
+        $weekbreak = $wtime; //주휴일
+        $yearpay = ($wtime * 15) / 12;  //연차수당
+
+
+        $etc1 = ((4000 * 4.345) *100) / 10000;
+        $etc2 = (32 * 1.5) * 4.345;
+        $etc3 = (6 * 1.5) * 4.345;
+        $etc4 = (12 * 1.5) * 4.345;
+        $etc5 = (4 * 0.5) * 4.345;
+        $etc6 = (1 * 0.5) * 4.345;
+        $etc7 = 8 * 4.345;
+        $etc8 = ($yearpay *100) / 10000;
+        $etctotal = $etc1 + $etc2 + $etc3 + $etc4 + $etc5 + $etc6 + $etc7 + $etc8;
+
+        $percent1 = sprintf('%02.2f',($etc1 / $etctotal) * 100);
+        $percent2 = sprintf('%02.2f',($etc2 / $etctotal) * 100);
+        $percent3 = sprintf('%02.2f',($etc3 / $etctotal) * 100);
+        $percent4 = sprintf('%02.2f',($etc4 / $etctotal) * 100);
+        $percent5 = sprintf('%02.2f',($etc5 / $etctotal) * 100);
+        $percent6 = sprintf('%02.2f',($etc6 / $etctotal) * 100);
+        $percent7 = sprintf('%02.2f',($etc7 / $etctotal) * 100);
+        $percent8 = sprintf('%02.2f',($etc8 / $etctotal) * 100);
+
+        $ptotal = $percent1 + $percent2 + $percent3 + $percent4 + $percent5 + $percent6 + $percent7 + $percent8;
+
+
+        $types = Worktypes4::where('type', '=', $type)->first();
+        $types->type = $type;
+        $types->sworktime = $workstart;
+        $types->eworktime = $workend;
+        $types->sbtime1 = $sbtime1;
+        $types->ebtime1 = $ebtime1;
+        $types->sbtime2 = $sbtime2;
+        $types->ebtime2 = $ebtime2;
+        $types->sbtime3 = $sbtime3;
+        $types->ebtime3 = $ebtime3;
+        $types->sbtime4 = $sbtime4;
+        $types->ebtime4 = $ebtime4;
+        $types->save();
+
+        $totals = Worktypes4Calc::where('type', '=', $type)->first();
+        $totals->type = $type;
+        $totals->mtotal = $percent1;
+        $totals->mover = $percent2;
+        $totals->mnight = $percent3;
+        $totals->mwwork = $percent4;
+        $totals->mwover = $percent5;
+        $totals->mwnight = $percent6;
+        $totals->mbreak = $percent7;
+        $totals->mwbt = $percent8;
+        $totals->total = $ptotal;
+        $totals->daypay = $daypay;
+        $totals->workday = $workday;
+        $totals->save();
+
+        return Redirect::to('hnl/basicinfo/worktype4')->with('success');
 
     }
 

@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call('PostitleSeeder');
         $this->call('WorktypeSeeder');
         $this->call('CalctableSeeder');
+        $this->call('Worktype1234Seeder');
+        $this->call('Worktype1234CalcSeeder');
 
         Model::reguard();
     }

@@ -44,7 +44,7 @@
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
                             <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
-                               data-l="true"></i> 근무 유형
+                               data-l="true"></i> 일반 근무유형
                         </h4>
                         <span class="pull-right">
                             <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
