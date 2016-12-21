@@ -34,7 +34,7 @@ class CreatePosTitleTable extends Migration
     public function down()
     {
         Schema::table('postitles', function (Blueprint $table) {
-           $table->dropForeign('postitles_job_id_foreign');
+           $table->dropForeign('postitles_jobtitle_id_foreign');
         });
         Schema::drop('postitles');
 
