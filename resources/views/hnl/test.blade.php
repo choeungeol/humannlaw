@@ -2,8 +2,8 @@
 
 {{-- Page title --}}
 @section('title')
-UI Example
-@parent
+    UI Example
+    @parent
 @stop
 
 {{-- page level styles --}}

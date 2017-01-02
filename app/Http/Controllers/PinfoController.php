@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\Job;
 use App\Jobtitle;
 use App\Pinfo;
 use App\Postitle;
@@ -14,11 +13,11 @@ use App\Http\Requests;
 
 class PinfoController extends Controller
 {
-    public function showPinfo()
+    public function showPinfo($id = null)
     {
 
         $jobtitle = Jobtitle::All();
-        $position = Jobtitle::findOrFail(1)->postitles;
+        $position = Jobtitle::findOrFail($id)->postitles;
         $worktype = Worktype::All();
         $pinfo = Pinfo::All();
 

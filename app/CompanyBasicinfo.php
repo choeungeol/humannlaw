@@ -10,5 +10,10 @@ class CompanyBasicinfo extends Model
 
     protected $guarded  = ['id'];
 
+    public function person_infos()
+    {
+        return $this->hasMany('App\Pinfo');
+    }
+
 
 }

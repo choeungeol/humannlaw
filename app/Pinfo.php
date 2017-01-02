@@ -10,4 +10,9 @@ class Pinfo extends Model
 
     protected $guarded  = ['id'];
 
+    public function company_basicinfos()
+    {
+        return $this->belongsTo('App\CompanyBasicinfo');
+    }
+
 }

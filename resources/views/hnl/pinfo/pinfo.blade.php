@@ -1,4 +1,4 @@
-@extends('hnl/layouts/default')
+@extends('hnl/layouts/person_default')
 
 {{-- Page title --}}
 @section('title')
@@ -72,6 +72,7 @@
                                 <div id="myTabContent" class="tab-content">
                                     <form class="tab-pane fade active in" id="pregi" method="POST" action="{{ route('insert/pinfo') }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="id" value="{{ $id  }}" />
                                         <div class="panel panel-primary">
                                             <div class="panel-heading border-light">
                                                 <h4 class="panel-title">
@@ -88,7 +89,7 @@
                                                         <img width="200px" src="http://www.iconsfind.com/wp-content/uploads/2015/10/20151012_561baed03a54e.png">
                                                         <div class="form-group">
                                                             <label class="col-md-3 control-label" for="form-file-input">사원 사진</label>
-                                                            <div class="col-md-9 pad-top20 ">
+                                                            <div class="col-md-9 pad-top20">
                                                                 <input type="file" id="profile_pic">
                                                             </div>
                                                         </div>
@@ -470,10 +471,10 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach($pinfo as $p)
+                                                        @foreach($companypinfo as $p)
                                                         <tr>
                                                             <td>{{ $p->employee_num }}</td>
-                                                            <td>{{ $p->name }}</td>
+                                                            <td><a href="{{route('payinfo_index',$p->id )}}">{{ $p->name }}</a></td>
                                                             <td>{{ $p->country }}</td>
                                                             <td>{{ $p->job }}</td>
                                                             <td>{{ $p->position }}</td>
@@ -483,7 +484,7 @@
                                                             <td>{{ $p->employee_post }} {{ $p->employee_addr1 }} {{ $p->employee_addr2 }}</td>
                                                             <td>{{ $p->tel }}</td>
                                                             <td>{{ $p->email }}</td>
-                                                            <td>{{ $p->paybank }}</td>
+                                                            <td>{{ $p->pay_bank }}</td>
                                                             <td>{{ $p->account_num }}</td>
                                                         </tr>
                                                         @endforeach
@@ -527,7 +528,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach($pinfo as $p)
+                                                        @foreach($companypinfo as $p)
                                                             <tr>
                                                                 <td>{{ $p->employee_num }}</td>
                                                                 <td>{{ $p->name }}</td>

@@ -13,7 +13,7 @@
             <span class="title">UI Example</span>
         </a>
     </li>
-    <li {!! (Request::is('hnl/users') || Request::is('hnl/users/create') || Request::is('hnl/user_profile') || Request::is('hnl/users/*') || Request::is('hnl/deleted_users') ? 'class="active"' : '') !!}>
+    {{--<li {!! (Request::is('hnl/users') || Request::is('hnl/users/create') || Request::is('hnl/user_profile') || Request::is('hnl/users/*') || Request::is('hnl/deleted_users') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
@@ -141,8 +141,8 @@
                 </ul>
             </li>
         </ul>
-    </li>
-    {{--<li {!! (Request::is('hnl/pinfo/pinfo') || Request::is('hnl/pinfo/payinfo') || Request::is('hnl/pinfo/pcard')  ? 'class="active"' : '') !!}>
+    </li>--}}
+    <li {!! (Request::is('hnl/pinfo/pinfo') || Request::is('hnl/pinfo/payinfo') || Request::is('hnl/pinfo/pcard')  ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="users-add" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
@@ -150,12 +150,12 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-            <li {!! (Request::is('hnl/pinfo/pinfo') ? 'class="active"' : '') !!}>
+{{--            <li {!! (Request::is('hnl/pinfo/pinfo') ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to('hnl/pinfo/pinfo') }}">
                     <i class="fa fa-angle-double-right"></i>
                     사원 정보
                 </a>
-            </li>
+            </li>--}}
             <li {!! (Request::is('hnl/pinfo/payinfo') ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to('hnl/pinfo/payinfo') }}">
                     <i class="fa fa-angle-double-right"></i>
@@ -169,8 +169,8 @@
                 </a>
             </li>
         </ul>
-    </li>--}}
-    <li {!! (Request::is('hnl/work/addwork') || Request::is('hnl/work/workaday') || Request::is('hnl/work/workatime') || Request::is('hnl/work/yearoff') ? 'class="active"' : '') !!}>
+    </li>
+    {{--<li {!! (Request::is('hnl/work/addwork') || Request::is('hnl/work/workaday') || Request::is('hnl/work/workatime') || Request::is('hnl/work/yearoff') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="inbox" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
@@ -320,7 +320,7 @@
             <span class="title">상담 센터</span>
             <span class="fa arrow"></span>
         </a>
-    </li>
+    </li>--}}
     {{--<li {!! (Request::is('admin/datatables') || Request::is('admin/editable_datatables') || Request::is('admin/dropzone') || Request::is('admin/multiple_upload')? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"

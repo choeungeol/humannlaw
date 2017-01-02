@@ -1,4 +1,4 @@
-@extends('hnl/layouts/default')
+@extends('hnl/layouts/person_default')
 
 {{-- Page title --}}
 @section('title')
@@ -57,35 +57,35 @@
                                 <table class="table table-condensed table-bordered">
                                     <tr>
                                         <th>사원번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->employee_num }}"></td>
                                         <th>성 명</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->name }}"></td>
                                         <th>주민번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->regi_no }}"></td>
                                     </tr>
                                     <tr>
                                         <th>부 서</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->job }}"></td>
                                         <th>직 위</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->position }}"></td>
                                         <th>사업장</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value=""></td>
                                     </tr>
                                     <tr>
                                         <th>근무상태</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->work_condition }}"></td>
                                         <th>채용형태</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->employee_type }}"></td>
                                         <th>수습기간</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value=""></td>
                                     </tr>
                                     <tr>
                                         <th>수습비율</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->first_pay }}"></td>
                                         <th>입사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->join_day }}"></td>
                                         <th>퇴사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->exit_day }}"></td>
                                     </tr>
                                 </table>
                             </div>
@@ -108,7 +108,7 @@
                                     </tr>
                                     <tr>
                                         <th>월급여액</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="3,000,000"></td>
+                                        <td><input type="text" class="form-control input-sm" name="mpay"></td>
                                         <th>생산직비과세 여부( Y , N )</th>
                                         <td><input type="text" class="form-control input-sm" disabled value="Y"></td>
                                         <th></th>

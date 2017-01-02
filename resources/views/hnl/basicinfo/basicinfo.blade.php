@@ -208,7 +208,7 @@
                                 @forelse($allcompany as $ac)
                                 <tr>
                                     <td>{!! $ac->id !!}</td>
-                                    <td>{!! $ac->co_name !!}</td>
+                                    <td><a href="{{route('pinfo_index', $ac->id)}}">{!! $ac->co_name !!}</a></td>
                                     <td>{!! $ac->pic_name !!}</td>
                                     <td>{!! $ac->pic_telno !!}</td>
                                 </tr>
