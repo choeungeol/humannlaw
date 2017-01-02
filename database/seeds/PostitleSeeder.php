@@ -13,7 +13,7 @@ class PostitleSeeder extends Seeder
     {
 
         // Auto Increments 초기화
-        DB::table('postitles')->truncate();
+/*        DB::table('postitles')->truncate();*/
 
         $job = \App\Jobtitle::All();
         foreach($job as $j){
