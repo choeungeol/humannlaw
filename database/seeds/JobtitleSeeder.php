@@ -14,7 +14,7 @@ class JobtitleSeeder extends Seeder
 /*        DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints*/
         // Auto Increments 초기화
 
- /*       DB::table('jobtitles')->truncate();*/
+        DB::table('jobtitles')->truncate();
 
 
 
