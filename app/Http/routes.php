@@ -133,6 +133,8 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
             Route::get('/', array('as' => 'hnl', 'uses' => 'HnlPayItemController@index'));
 
+            Route::post('insert', array('as' => 'insert/payitem1', 'uses' => 'HnlPayItemController@store1'));
+
 
 
         });
@@ -140,6 +142,9 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
         Route::group(array('prefix' => 'paytype'), function(){
 
             Route::get('/', array('uses' => 'HnlPaytypeController@index'));
+
+
+
 
         });
 
