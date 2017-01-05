@@ -523,11 +523,11 @@
                                 <tr>
                                     <td>사용여부</td>
                                     @foreach($tdeduction as $td)
-                                        <form id="checkbox" action="{{ route('check/tdeduction',$td->id) }}" method="POST">
+                                        <form class="checkbox{{$td->id}}" action="{{ route('check/tdeduction',$td->id) }}" method="POST">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <td>
                                             <input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                   data-off-color="primary" data-animate onchange="$('#checkbox').submit();" value="{!! ($td->is_check == 0) ? 'false' : 'true' !!}" {!! ($td->is_check == 1) ? 'checked' : '' !!}>
+                                                   data-off-color="primary" data-animate onchange="$('.checkbox{{ $td->id }}').submit();" value="{!! ($td->is_check == 0) ? 'false' : 'true' !!}" {!! ($td->is_check == 1) ? 'checked' : '' !!}>
                                         </td>
                                         </form>
                                     @endforeach
