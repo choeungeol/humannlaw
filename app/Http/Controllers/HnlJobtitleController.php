@@ -78,7 +78,7 @@ class HnlJobtitleController extends Controller
 
         } catch (GroupNotFoundException $e) {
             // Redirect to the groups management page
-            return Rediret::route('jobtitle')->with('error', compact('id'));
+            return Redirect::route('jobtitle')->with('error', compact('id'));
         }
 
         // Update the group data

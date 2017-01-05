@@ -10,6 +10,13 @@
 @section('header_styles')
 
     <meta name="_token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/all.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/line/line.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/bootstrap-switch/css/bootstrap-switch.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/switchery/css/switchery.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/awesomeBootstrapCheckbox/awesome-bootstrap-checkbox.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/formelements.css') }}"/>
+
 
 @stop
 
@@ -28,7 +35,7 @@
         </ol>
     </section>
 
-    <section class="content">
+    <section class="content" ng-app="payitem" ng-controller="payitemCtrl">
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-success">
@@ -70,40 +77,44 @@
                                                     <th>퇴직금대상</th>
                                                     <th>비과세여부</th>
                                                     <th>기본급포함</th>
+                                                    <th>설정</th>
+                                                    <th>삭제</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($payitem1 as $p1)
+                                                <form method="POST" action="{{ route('update/payitem', $p1->id) }}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                 <tr>
-                                                    <td>{{ $p1->id }}</td>
+                                                    <td>&nbsp;</td>
                                                     <td>
-                                                        <input type="text" class="form-control input-sm" readonly value="{{ $p1->title }}">
+                                                        <input type="text" class="form-control input-sm" readonly value="{{ $p1->title }}" name="title">
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="paycalc">
                                                             @foreach($paycalc as $pc)
-                                                                <option {!! ($pc === $p1->paycalc  ? 'selected' : '') !!} value="{{ $p1->paycalc }}">{{ $pc }}</option>
+                                                                <option {!! ($pc === $p1->paycalc  ? 'selected' : '') !!} value="{{ $pc }}">{{ $pc }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="probaion">
                                                             @foreach($colapply as $col)
-                                                                <option {!! ($col === $p1->probaion  ? 'selected' : '') !!} value="{{ $p1->probaion }}">{{ $col }}</option>
+                                                                <option {!! ($col === $p1->probaion  ? 'selected' : '') !!} value="{{ $col }}">{{ $col }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="is_severance_pay">
                                                             @foreach($exitpay as $exit)
-                                                                <option {!! ($exit === $p1->is_severance_pay  ? 'selected' : '') !!} value="{{ $p1->is_severance_pay }}">{{ $exit }}</option>
+                                                                <option {!! ($exit === $p1->is_severance_pay  ? 'selected' : '') !!} value="{{ $exit }}">{{ $exit }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="is_taxfree">
                                                             @foreach($istexfree as $itf)
-                                                                <option {!! ($itf === $p1->is_taxfree  ? 'selected' : '') !!} value="{{ $p1->is_taxfree }}">{{ $itf }}</option>
+                                                                <option {!! ($itf === $p1->is_taxfree  ? 'selected' : '') !!} value="{{ $itf }}">{{ $itf }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
@@ -111,7 +122,7 @@
                                                     <td>
                                                         <select class="form-control input-sm" name="in_basicpay">
                                                             @foreach($inbasicpay as $ibi)
-                                                                <option {!! ($ibi === $p1->in_basicpay  ? 'selected' : '') !!} value="{{ $p1->in_basicpay }}">{{ $ibi }}</option>
+                                                                <option {!! ($ibi === $p1->in_basicpay  ? 'selected' : '') !!} value="{{ $ibi }}">{{ $ibi }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
@@ -120,7 +131,15 @@
 
                                                     </td>
                                                     @endif
+                                                    <td>
+                                                        <button class="btn btn-success btn-sm">설정</button>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('confirm-delete/payitem', $p1->id) }}" class="btn btn-warning btn-sm" data-toggle="modal"
+                                                           data-target="#delete_confirm" {!! (($p1->title === '기본급') || ($p1->title === '주휴수당') || ($p1->title === '직책수당')  || ($p1->title === '근속수당')  || ($p1->title === '직무수당')  ? 'disabled' : '') !!}>지우기</a>
+                                                    </td>
                                                 </tr>
+                                                </form>
                                             @endforeach
                                             <form method="POST" action="{{ route('insert/payitem1') }}">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -130,32 +149,35 @@
                                                 <td>
                                                     <select class="form-control input-sm" name="i_paycalc">
                                                         @foreach($paycalc as $pc)
-                                                            <option {!! ($pc === $p1->paycalc  ? 'selected' : '') !!} value="{{ $p1->paycalc }}">{{ $pc }}</option>
+                                                            <option value="{{ $pc }}">{{ $pc }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                                 <td>
                                                     <select class="form-control input-sm" name="i_probaion">
                                                         @foreach($colapply as $col)
-                                                            <option {!! ($col === $p1->probaion  ? 'selected' : '') !!} value="{{ $p1->probaion }}">{{ $col }}</option>
+                                                            <option value="{{ $col }}">{{ $col }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                                 <td>
                                                     <select class="form-control input-sm" name="i_is_severance_pay">
                                                         @foreach($exitpay as $exit)
-                                                            <option {!! ($exit === $p1->is_severance_pay  ? 'selected' : '') !!} value="{{ $p1->is_severance_pay }}">{{ $exit }}</option>
+                                                            <option value="{{ $exit }}">{{ $exit }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                                 <td>
                                                     <select class="form-control input-sm" name="i_is_taxfree">
                                                         @foreach($istexfree as $itf)
-                                                            <option {!! ($itf === $p1->is_taxfree  ? 'selected' : '') !!} value="{{ $p1->is_taxfree }}">{{ $itf }}</option>
+                                                            <option value="{{ $itf }}">{{ $itf }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
-                                                <td><button class="btn btn-primary">추가</button></td>
+                                                <td></td>
+                                                <td><button class="btn btn-primary btn-sm">추가</button></td>
+
+                                                <td></td>
                                             </tr>
                                             </form>
                                             </tbody>
@@ -173,52 +195,94 @@
                                                 <th>수습율적용</th>
                                                 <th>퇴직금대상</th>
                                                 <th>비과세여부</th>
+                                                <th>설정</th>
+                                                <th>삭제</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($payitem2 as $p2)
+                                                <form method="POST" action="{{ route('update/payitem2', $p2->id) }}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                 <tr>
-                                                    <td>{{ $p2->id }}</td>
+                                                    <td></td>
                                                     <td>
-                                                        <input type="text" class="form-control input-sm" readonly value="{{ $p2->title }}">
+                                                        <input type="text" class="form-control input-sm" readonly value="{{ $p2->title }}" name="title">
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="paycalc">
                                                             @foreach($paycalc as $pc)
-                                                                <option {!! ($pc === $p2->paycalc  ? 'selected' : '') !!} value="{{ $p2->paycalc }}">{{ $pc }}</option>
+                                                                <option {!! ($pc === $p2->paycalc  ? 'selected' : '') !!} value="{{ $pc }}">{{ $pc }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="probaion">
                                                             @foreach($colapply as $col)
-                                                                <option {!! ($col === $p2->probaion  ? 'selected' : '') !!} value="{{ $p2->probaion }}">{{ $col }}</option>
+                                                                <option {!! ($col === $p2->probaion  ? 'selected' : '') !!} value="{{ $col }}">{{ $col }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="is_severance_pay">
                                                             @foreach($exitpay as $exit)
-                                                                <option {!! ($exit === $p2->is_severance_pay  ? 'selected' : '') !!} value="{{ $p2->is_severance_pay }}">{{ $exit }}</option>
+                                                                <option {!! ($exit === $p2->is_severance_pay  ? 'selected' : '') !!} value="{{ $exit }}">{{ $exit }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="is_taxfree">
                                                             @foreach($istexfree as $itf)
-                                                                <option {!! ($itf === $p2->is_taxfree  ? 'selected' : '') !!} value="{{ $p2->is_taxfree }}">{{ $itf }}</option>
+                                                                <option {!! ($itf === $p2->is_taxfree  ? 'selected' : '') !!} value="{{ $itf }}">{{ $itf }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
+                                                    <td>
+                                                        <button class="btn btn-success btn-sm">설정</button>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('confirm-delete/payitem2', $p2->id) }}" class="btn btn-warning btn-sm" data-toggle="modal"
+                                                           data-target="#delete_confirm" {!! (($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당')  || ($p2->title === '휴일연장')  || ($p2->title === '휴일야간') || ($p2->title === '연차수당')  ? 'disabled' : '') !!}>지우기</a>
+                                                    </td>
+                                                </tr>
+                                                </form>
                                                 </tr>
                                             @endforeach
-                                            <tr>
-                                                <td><input class="form-control input-sm" name="i_title"></td>
-                                                <td><input class="form-control input-sm" name="i_paycalc"></td>
-                                                <td><input class="form-control input-sm" name="i_probaion"></td>
-                                                <td><input class="form-control input-sm" name="i_is_severance_pay"></td>
-                                                <td><input class="form-control input-sm" name="i_is_taxfree"></td>
-                                            </tr>
+                                            <form method="POST" action="{{ route('insert/payitem2') }}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                <tr>
+                                                    <td></td>
+                                                    <td><input class="form-control input-sm" name="i_title"></td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_paycalc">
+                                                            @foreach($paycalc as $pc)
+                                                                <option value="{{ $pc }}">{{ $pc }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_probaion">
+                                                            @foreach($colapply as $col)
+                                                                <option value="{{ $col }}">{{ $col }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_is_severance_pay">
+                                                            @foreach($exitpay as $exit)
+                                                                <option value="{{ $exit }}">{{ $exit }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_is_taxfree">
+                                                            @foreach($istexfree as $itf)
+                                                                <option value="{{ $itf }}">{{ $itf }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td><button class="btn btn-primary btn-sm">추가</button></td>
+                                                </tr>
+                                            </form>
                                             </tbody>
                                         </table>
                                     </div>
@@ -234,52 +298,94 @@
                                                 <th>수습율적용</th>
                                                 <th>퇴직금대상</th>
                                                 <th>비과세여부</th>
+                                                <th>설정</th>
+                                                <th>삭제</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($payitem3 as $p3)
+                                                <form method="POST" action="{{ route('update/payitem3', $p3->id) }}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                 <tr>
-                                                    <td>{{ $p3->id }}</td>
+                                                    <td></td>
                                                     <td>
-                                                        <input type="text" class="form-control input-sm" readonly value="{{ $p3->title }}">
+                                                        <input type="text" class="form-control input-sm" readonly value="{{ $p3->title }}" name="title">
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="paycalc">
                                                             @foreach($paycalc as $pc)
-                                                                <option {!! ($pc === $p3->paycalc  ? 'selected' : '') !!} value="{{ $p3->paycalc }}">{{ $pc }}</option>
+                                                                <option {!! ($pc === $p3->paycalc  ? 'selected' : '') !!} value="{{ $pc }}">{{ $pc }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="probaion">
                                                             @foreach($colapply as $col)
-                                                                <option {!! ($col === $p3->probaion  ? 'selected' : '') !!} value="{{ $p3->probaion }}">{{ $col }}</option>
+                                                                <option {!! ($col === $p3->probaion  ? 'selected' : '') !!} value="{{ $col }}">{{ $col }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="is_severance_pay">
                                                             @foreach($exitpay as $exit)
-                                                                <option {!! ($exit === $p3->is_severance_pay  ? 'selected' : '') !!} value="{{ $p3->is_severance_pay }}">{{ $exit }}</option>
+                                                                <option {!! ($exit === $p3->is_severance_pay  ? 'selected' : '') !!} value="{{ $exit }}">{{ $exit }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="is_taxfree">
                                                             @foreach($istexfree as $itf)
-                                                                <option {!! ($itf === $p3->is_taxfree  ? 'selected' : '') !!} value="{{ $p3->is_taxfree }}">{{ $itf }}</option>
+                                                                <option {!! ($itf === $p3->is_taxfree  ? 'selected' : '') !!} value="{{ $itf }}">{{ $itf }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
+                                                    <td>
+                                                        <button class="btn btn-success btn-sm">설정</button>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('confirm-delete/payitem3', $p3->id) }}" class="btn btn-warning btn-sm" data-toggle="modal"
+                                                           data-target="#delete_confirm" {!! (($p3->title === '식대') || ($p3->title === '차량유지비') || ($p3->title === '육아수당')  || ($p3->title === '연구활동비')  || ($p3->title === '명절떡값')  ? 'disabled' : '') !!}>지우기</a>
+                                                    </td>
+                                                </tr>
+                                                </form>
                                                 </tr>
                                             @endforeach
-                                            <tr>
-                                                <td><input class="form-control input-sm" name="i_title"></td>
-                                                <td><input class="form-control input-sm" name="i_paycalc"></td>
-                                                <td><input class="form-control input-sm" name="i_probaion"></td>
-                                                <td><input class="form-control input-sm" name="i_is_severance_pay"></td>
-                                                <td><input class="form-control input-sm" name="i_is_taxfree"></td>
-                                            </tr>
+                                            <form method="POST" action="{{ route('insert/payitem3') }}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                <tr>
+                                                    <td></td>
+                                                    <td><input class="form-control input-sm" name="i_title"></td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_paycalc">
+                                                            @foreach($paycalc as $pc)
+                                                                <option value="{{ $pc }}">{{ $pc }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_probaion">
+                                                            @foreach($colapply as $col)
+                                                                <option value="{{ $col }}">{{ $col }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_is_severance_pay">
+                                                            @foreach($exitpay as $exit)
+                                                                <option value="{{ $exit }}">{{ $exit }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_is_taxfree">
+                                                            @foreach($istexfree as $itf)
+                                                                <option value="{{ $itf }}">{{ $itf }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td><button class="btn btn-primary btn-sm">추가</button></td>
+                                                </tr>
+                                            </form>
                                             </tbody>
                                         </table>
                                     </div>
@@ -295,52 +401,94 @@
                                                 <th>수습율적용</th>
                                                 <th>퇴직금대상</th>
                                                 <th>비과세여부</th>
+                                                <th>설정</th>
+                                                <th>삭제</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($payitem4 as $p4)
+                                                <form method="POST" action="{{ route('update/payitem4', $p4->id) }}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                 <tr>
-                                                    <td>{{ $p4->id }}</td>
+                                                    <td></td>
                                                     <td>
                                                         <input type="text" class="form-control input-sm" readonly value="{{ $p4->title }}">
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="paycalc">
                                                             @foreach($paycalc as $pc)
-                                                                <option {!! ($pc === $p4->paycalc  ? 'selected' : '') !!} value="{{ $p4->paycalc }}">{{ $pc }}</option>
+                                                                <option {!! ($pc === $p4->paycalc  ? 'selected' : '') !!} value="{{ $pc }}">{{ $pc }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="probaion">
                                                             @foreach($colapply as $col)
-                                                                <option {!! ($col === $p4->probaion  ? 'selected' : '') !!} value="{{ $p4->probaion }}">{{ $col }}</option>
+                                                                <option {!! ($col === $p4->probaion  ? 'selected' : '') !!} value="{{ $col }}">{{ $col }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="is_severance_pay">
                                                             @foreach($exitpay as $exit)
-                                                                <option {!! ($exit === $p4->is_severance_pay  ? 'selected' : '') !!} value="{{ $p4->is_severance_pay }}">{{ $exit }}</option>
+                                                                <option {!! ($exit === $p4->is_severance_pay  ? 'selected' : '') !!} value="{{ $exit }}">{{ $exit }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="is_taxfree">
                                                             @foreach($istexfree as $itf)
-                                                                <option {!! ($itf === $p4->is_taxfree  ? 'selected' : '') !!} value="{{ $p4->is_taxfree }}">{{ $itf }}</option>
+                                                                <option {!! ($itf === $p4->is_taxfree  ? 'selected' : '') !!} value="{{ $itf }}">{{ $itf }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
+                                                    <td>
+                                                        <button class="btn btn-success btn-sm">설정</button>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('confirm-delete/payitem4', $p4->id) }}" class="btn btn-warning btn-sm" data-toggle="modal"
+                                                           data-target="#delete_confirm" {!! (($p4->title === '상여금') || ($p4->title === '특별성과금') || ($p4->title === '특근수당')  || ($p4->title === '특별수당') ? 'disabled' : '') !!}>지우기</a>
+                                                    </td>
+                                                </tr>
+                                                </form>
                                                 </tr>
                                             @endforeach
-                                            <tr>
-                                                <td><input class="form-control input-sm" name="i_title"></td>
-                                                <td><input class="form-control input-sm" name="i_paycalc"></td>
-                                                <td><input class="form-control input-sm" name="i_probaion"></td>
-                                                <td><input class="form-control input-sm" name="i_is_severance_pay"></td>
-                                                <td><input class="form-control input-sm" name="i_is_taxfree"></td>
-                                            </tr>
+                                            <form method="POST" action="{{ route('insert/payitem4') }}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                <tr>
+                                                    <td></td>
+                                                    <td><input class="form-control input-sm" name="i_title"></td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_paycalc">
+                                                            @foreach($paycalc as $pc)
+                                                                <option value="{{ $pc }}">{{ $pc }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_probaion">
+                                                            @foreach($colapply as $col)
+                                                                <option value="{{ $col }}">{{ $col }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_is_severance_pay">
+                                                            @foreach($exitpay as $exit)
+                                                                <option value="{{ $exit }}">{{ $exit }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-sm" name="i_is_taxfree">
+                                                            @foreach($istexfree as $itf)
+                                                                <option value="{{ $itf }}">{{ $itf }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td><button class="btn btn-primary btn-sm">추가</button></td>
+                                                </tr>
+                                            </form>
                                             </tbody>
                                         </table>
                                     </div>
@@ -366,47 +514,52 @@
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>공제명칭</th>
-                                        <th>공제코드</th>
-                                        <th>출력명칭</th>
-                                        <th>사용여부</th>
-                                        <th>출력순번</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>소득세</td>
-                                        <td>01</td>
-                                        <td>소득세</td>
-                                        <td><input class="custom-checkbox" type="checkbox"></td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>주민세</td>
-                                        <td>02</td>
-                                        <td>주민세</td>
-                                        <td><input class="custom-checkbox" type="checkbox"></td>
-                                        <td>2</td>
-                                    </tr>
-                                </tbody>
+                                <tr>
+                                    <th>명 칭</th>
+                                    @foreach($tdeduction as $td)
+                                    <th>{{ $td->title }}</th>
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    <td>사용여부</td>
+                                    @foreach($tdeduction as $td)
+                                        <form id="checkbox" action="{{ route('check/tdeduction',$td->id) }}" method="POST">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <td>
+                                            <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                   data-off-color="primary" data-animate onchange="$('#checkbox').submit();" value="{!! ($td->is_check == 0) ? 'false' : 'true' !!}" {!! ($td->is_check == 1) ? 'checked' : '' !!}>
+                                        </td>
+                                        </form>
+                                    @endforeach
+                                </tr>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- confirm modal -->
+        <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
     </section>
+
 
 @stop
 
 {{-- page level scripts --}}
 @section('footer_scripts')
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/bootstrap-switch/js/bootstrap-switch.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/switchery/js/switchery.js') }}" ></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/card/lib/js/jquery.card.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/js/pages/radio_checkbox.js') }}"></script>
 
 
+    <script src="{{ asset('assets/js/hnl/payitem.js') }}" type="text/javascript"></script>
 
 @stop

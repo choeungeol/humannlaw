@@ -11,6 +11,14 @@ class PayitemsSeed extends Seeder
      */
     public function run()
     {
+
+
+        // Auto Increments 초기화
+        DB::table('payitems1')->truncate();
+        DB::table('payitems2')->truncate();
+        DB::table('payitems3')->truncate();
+        DB::table('payitems4')->truncate();
+
         $payitem1 = array('기본급','주휴수당','직책수당','근속수당','직무수당');
 
         for($i=0; $i < count($payitem1); $i++){
