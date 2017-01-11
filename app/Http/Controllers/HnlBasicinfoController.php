@@ -22,6 +22,7 @@ class HnlBasicinfoController extends Controller
         if(Sentinel::check()){
 
             $company = CompanyBasicinfo::All();
+
             // Show the page
             return view('hnl.basicinfo.basicinfo')->with('company', $company);
 
@@ -107,9 +108,48 @@ class HnlBasicinfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        try {
+            $com = CompanyBasicinfo::findOrFail(1);
+
+        } catch (GroupNotFoundException $e) {
+            // Redirect to the groups management page
+            return Redirect::route('basicinfo')->with('error', compact('id'));
+        }
+
+        // Update the group data
+        $com->co_name = $request->get('company_name');
+        $com->co_no = $request->get('company_no');
+        $com->corp_regino = $request->get('corporation_regino');
+        $com->repre_name = $request->get('representative_name');
+        $com->repre_phone = $request->get('representative_phone');
+        $com->repre_regino = $request->get('representative_regino');
+        $com->repre_post = $request->get('representative_post');
+        $com->repre_addr1 = $request->get('representative_addr1');
+        $com->repre_addr2 = $request->get('representative_addr2');
+        $com->co_post = $request->get('company_post');
+        $com->co_addr1 = $request->get('company_addr1');
+        $com->co_addr2 = $request->get('company_addr2');
+        $com->tel_no = $request->get('tel_no');
+        $com->fax_no = $request->get('fax_no');
+        $com->co_email = $request->get('company_email');
+        $com->pic_name = $request->get('PIC_name');
+        $com->pic_telno = $request->get('PIC_tel_no');
+        $com->b_type = $request->get('business_type');
+        $com->b_condition = $request->get('business_condition');
+        $com->pay_basicdate = $request->get('pay_basic_date');
+        $com->pay_day = $request->get('pay_day');
+        $com->b_cal_manner = $request->get('business_calc_manner');
+
+        // Was the group updated?
+        if ($com->save()) {
+            // Redirect to the group page
+            return Redirect::route('basicinfo')->with('success', Lang::get('groups/message.success.update'));
+        } else {
+            // Redirect to the group page
+            return Redirect::route('update/basicinfo', $id)->with('error', Lang::get('groups/message.error.update'));
+        }
     }
 
     /**

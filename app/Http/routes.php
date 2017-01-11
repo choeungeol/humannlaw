@@ -98,10 +98,12 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
         Route::group(array('prefix' => 'basicinfo'), function (){
 
-            Route::get('/', array('as' => 'hnl', 'uses' => 'HnlBasicinfoController@index'));
+            Route::get('/', array('as' => 'basicinfo', 'uses' => 'HnlBasicinfoController@index'));
 
             //사업장 기본정보
             Route::post('create', array('as' => 'insert/cbinfo', 'uses' => 'HnlBasicinfoController@store'));
+            //사업장 기본정보
+            Route::post('update', array('as' => 'update/cbinfo', 'uses' => 'HnlBasicinfoController@update'));
 
         });
 
