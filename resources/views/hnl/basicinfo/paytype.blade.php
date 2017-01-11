@@ -68,134 +68,126 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="bs-example">
-                                <ul class="nav nav-tabs" style="margin-bottom: 15px;">
-                                    <li class="active">
-                                        <a href="#cass" data-toggle="tab">포괄연봉제</a>
-                                    </li>
-                                    <li>
-                                        <a href="#cmps" data-toggle="tab">포괄월급제</a>
-                                    </li>
-                                    <li>
-                                        <a href="#dp" data-toggle="tab">일당제</a>
-                                    </li>
-{{--                                    <li>
-                                        <a href="#tp" data-toggle="tab">시급제</a>
-                                    </li>--}}
-                                </ul>
-                                <div id="myTabContent" class="tab-content">
-                                    <div class="tab-pane fade active in" id="cass">
-                                        <div class="col-lg-2">
-                                            <table class="table table-condensed table-bordered table-th">
-                                                <tr>
-                                                    <th>명 칭</th>
-                                                    <th>포괄여부</th>
-                                                </tr>
-                                                @foreach($paymonth1 as $p1)
-                                                <tr>
-                                                    <td>{{ $p1 }}</td>
-                                                    <td><input type="checkbox" class="square"></td>
-                                                </tr>
-                                                @endforeach
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                </tr>
-                                                @foreach($paymonth2 as $p2)
-                                                    <tr>
-                                                        <td>{{ $p2 }}</td>
-                                                        <td><input type="checkbox" class="square"></td>
-                                                    </tr>
-                                                @endforeach
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                </tr>
-                                                @foreach($paymonth3 as $p3)
-                                                    <tr>
-                                                        <td>{{ $p3 }}</td>
-                                                        <td><input type="checkbox" class="square"></td>
-                                                    </tr>
-                                                @endforeach
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                </tr>
-                                                @foreach($paymonth4 as $p4)
-                                                    <tr>
-                                                        <td>{{ $p4 }}</td>
-                                                        <td><input type="checkbox" class="square"></td>
-                                                    </tr>
-                                                @endforeach
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="cmps">
-                                        <div class="col-lg-2">
-                                            <table class="table table-condensed table-bordered table-th">
-                                                <tr>
-                                                    <th>명 칭</th>
-                                                    <th>포괄여부</th>
-                                                </tr>
-                                                @foreach($paymonth1 as $p1)
-                                                    <tr>
-                                                        <td>{{ $p1 }}</td>
-                                                        <td><input type="checkbox" class="square"></td>
-                                                    </tr>
-                                                @endforeach
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                </tr>
-                                                @foreach($paymonth2 as $p2)
-                                                    <tr>
-                                                        <td>{{ $p2 }}</td>
-                                                        <td><input type="checkbox" class="square"></td>
-                                                    </tr>
-                                                @endforeach
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                </tr>
-                                                @foreach($paymonth3 as $p3)
-                                                    <tr>
-                                                        <td>{{ $p3 }}</td>
-                                                        <td><input type="checkbox" class="square"></td>
-                                                    </tr>
-                                                @endforeach
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                </tr>
-                                                @foreach($paymonth4 as $p4)
-                                                    <tr>
-                                                        <td>{{ $p4 }}</td>
-                                                        <td><input type="checkbox" class="square"></td>
-                                                    </tr>
-                                                @endforeach
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="dp">
-                                        <div class="col-lg-2">
-                                            <table class="table table-condensed table-bordered table-th">
-                                                <thead>
-                                                <tr>
-                                                    <th> 명칭</th><th>포괄여부</th>
-                                                </tr>
-                                                @foreach($payday as $pd)
-                                                    <tr>
-                                                        <td>{{ $pd }}</td><td><input type="checkbox" class="square"></td>
-                                                    </tr>
-                                                @endforeach
-                                                </thead>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    {{--<div class="tab-pane fade" id="tp">
-                                        <div class="col-lg-2">
-
-                                        </div>
-                                    </div>--}}
+                                <div class="col-lg-2">
+                                    <table class="table table-condensed table-bordered table-th">
+                                        <caption>포괄연봉제</caption>
+                                        <tr>
+                                            <th>명 칭</th>
+                                            <th>포괄여부</th>
+                                        </tr>
+                                        <tr>
+                                            <td>통상임금</td>
+                                            <td></td>
+                                        </tr>
+                                        @foreach($paymonth1 as $p1)
+                                        <tr>
+                                            <td>{{ $p1 }}</td>
+                                            <td><input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                       data-off-color="primary" data-animate></td>
+                                        </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>통상임금</td>
+                                            <td></td>
+                                        </tr>
+                                        @foreach($paymonth2 as $p2)
+                                            <tr>
+                                                <td>{{ $p2 }}</td>
+                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                           data-off-color="primary" data-animate></td>
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                        @foreach($paymonth3 as $p3)
+                                            <tr>
+                                                <td>{{ $p3 }}</td>
+                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                           data-off-color="primary" data-animate></td>
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                        @foreach($paymonth4 as $p4)
+                                            <tr>
+                                                <td>{{ $p4 }}</td>
+                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                           data-off-color="primary" data-animate></td>
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-lg-2">
+                                    <table class="table table-condensed table-bordered table-th">
+                                        <caption>포괄월급제</caption>
+                                        <tr>
+                                            <th>명 칭</th>
+                                            <th>포괄여부</th>
+                                        </tr>
+                                        @foreach($paymonth1 as $p1)
+                                            <tr>
+                                                <td>{{ $p1 }}</td>
+                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                           data-off-color="primary" data-animate></td>
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                        @foreach($paymonth2 as $p2)
+                                            <tr>
+                                                <td>{{ $p2 }}</td>
+                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                           data-off-color="primary" data-animate></td>
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                        @foreach($paymonth3 as $p3)
+                                            <tr>
+                                                <td>{{ $p3 }}</td>
+                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                           data-off-color="primary" data-animate></td>
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                        @foreach($paymonth4 as $p4)
+                                            <tr>
+                                                <td>{{ $p4 }}</td>
+                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                           data-off-color="primary" data-animate></td>
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-lg-2">
+                                    <table class="table table-condensed table-bordered table-th">
+                                        <caption>일당제</caption>
+                                        <tr>
+                                            <th> 명칭</th>
+                                            <th>포괄여부</th>
+                                        </tr>
+                                        @foreach($payday as $pd)
+                                            <tr>
+                                                <td>{{ $pd }}</td>
+                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info" data-off-color="primary" data-animate></td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
                                 </div>
                             </div>
                         </div>
