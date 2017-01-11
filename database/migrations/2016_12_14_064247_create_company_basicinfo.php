@@ -15,7 +15,7 @@ class CreateCompanyBasicinfo extends Migration
         Schema::create('company_basicinfos', function(Blueprint $table){
             $table->increments('id');
             $table->string('co_name')->nullable();          //사업장명칭
-            $table->string('co_no')->nullable();            //사업장번호
+            $table->string('co_no')->nullable();            //사업자번호
             $table->string('corp_regino')->nullable();      //법인등록번호
             $table->string('repre_name')->nullable();       //대표자명
             $table->string('repre_phone')->nullable();      //대표자핸드폰

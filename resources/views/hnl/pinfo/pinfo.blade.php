@@ -1,4 +1,4 @@
-@extends('hnl/layouts/person_default')
+@extends('hnl/layouts/default')
 
 {{-- Page title --}}
 @section('title')
@@ -72,7 +72,6 @@
                                 <div id="myTabContent" class="tab-content">
                                     <form class="tab-pane fade active in" id="pregi" method="POST" action="{{ route('insert/pinfo') }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <input type="hidden" name="id" value="{{ $id  }}" />
                                         <div class="panel panel-primary">
                                             <div class="panel-heading border-light">
                                                 <h4 class="panel-title">
@@ -468,13 +467,15 @@
                                                             <th>이메일</th>
                                                             <th>은행</th>
                                                             <th>계좌번호</th>
+                                                            <th>급여정보</th>
+                                                            <th>인사기록카드</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach($companypinfo as $p)
+                                                        @foreach($pinfo as $p)
                                                         <tr>
                                                             <td>{{ $p->employee_num }}</td>
-                                                            <td><a href="{{route('payinfo_index',$p->id )}}">{{ $p->name }}</a></td>
+                                                            <td>{{ $p->name }}</td>
                                                             <td>{{ $p->country }}</td>
                                                             <td>{{ $p->job }}</td>
                                                             <td>{{ $p->position }}</td>
@@ -486,6 +487,8 @@
                                                             <td>{{ $p->email }}</td>
                                                             <td>{{ $p->pay_bank }}</td>
                                                             <td>{{ $p->account_num }}</td>
+                                                            <td><a class="btn btn-primary" href="{{route('payinfo_index',$p->id )}}">급여정보</a></td>
+                                                            <td><a class="btn btn-success" href="{{route('pcard_index',$p->id )}}">인사기록카드</a></td>
                                                         </tr>
                                                         @endforeach
                                                         </tbody>
@@ -528,7 +531,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach($companypinfo as $p)
+                                                        @foreach($pinfo as $p)
                                                             <tr>
                                                                 <td>{{ $p->employee_num }}</td>
                                                                 <td>{{ $p->name }}</td>

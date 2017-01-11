@@ -222,7 +222,7 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
         Route::group(array('prefix'=> 'pinfo'), function (){
 
-            Route::get('{company_id?}', array('as' => 'pinfo_index', 'uses' => 'HnlPinfoController@index'));
+            Route::get('/', array('as' => 'hnl', 'uses' => 'HnlPinfoController@index'));
 
             Route::post('insert' , array('as' => 'insert/pinfo', 'uses' => 'HnlPinfoController@store'));
 
@@ -230,13 +230,13 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
         Route::group(array('prefix'=> 'payinfo'), function (){
 
-            Route::get('{pinfo_id?}', array('as' => 'payinfo_index', 'uses' => 'HnlPayinfoController@index'));
+            Route::get('{payinfoId}', array('as' => 'payinfo_index', 'uses' => 'HnlPayinfoController@index'));
 
         });
 
         Route::group(array('prefix'=> 'pcard'), function (){
 
-            Route::get('/', array('as' => 'hnl', 'uses' => 'PinfoController@showPcard'));
+            Route::get('{pcardId}', array('as' => 'pcard_index', 'uses' => 'HnlPcardController@index'));
 
         });
 

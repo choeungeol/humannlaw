@@ -1,4 +1,4 @@
-@extends('hnl/layouts/person_default')
+@extends('hnl/layouts/default')
 
 {{-- Page title --}}
 @section('title')

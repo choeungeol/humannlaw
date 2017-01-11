@@ -21,10 +21,9 @@ class HnlBasicinfoController extends Controller
     {
         if(Sentinel::check()){
 
-
-            $allcompany = CompanyBasicinfo::All();
+            $company = CompanyBasicinfo::All();
             // Show the page
-            return view('hnl.basicinfo.basicinfo')->with('allcompany', $allcompany);
+            return view('hnl.basicinfo.basicinfo')->with('company', $company);
 
         }else{
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
