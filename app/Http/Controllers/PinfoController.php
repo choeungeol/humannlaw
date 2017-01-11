@@ -17,7 +17,7 @@ class PinfoController extends Controller
     {
 
         $jobtitle = Jobtitle::All();
-        $position = Jobtitle::findOrFail($id)->postitles;
+        $position = Postitle::All();
         $worktype = Worktype::All();
         $pinfo = Pinfo::All();
 

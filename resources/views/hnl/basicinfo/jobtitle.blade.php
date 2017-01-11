@@ -29,7 +29,7 @@
     </section>
     <section class="content">
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
@@ -45,7 +45,7 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>ID</th><th>실부서 코드</th><th>입력 코드</th><th>명칭</th><th>사용여부</th><th>출력순서</th><th>삭제</th>
+                                    <th>ID</th><th>실부서 코드</th><th>입력 코드</th><th>명칭</th><th>사용여부</th><th>삭제</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -64,7 +64,6 @@
                                         미사용
                                         @endif
                                     </td>
-                                    <td>{{ $jt->id }} </td>
                                     <td><a href="{{ route('confirm-delete/jobtitle', $jt->id) }}" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#delete_confirm">지우기</a></td>
                                 </tr>
                                 @endforeach
@@ -77,7 +76,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
@@ -93,7 +92,7 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>ID</th><th>직위코드</th><th>직위구분코드</th><th>직위명</th><th>사용여부</th><th>부서명</th><th>출력순서</th><th>삭제</th>
+                                    <th>ID</th><th>직위코드</th><th>직위구분코드</th><th>직위명</th><th>사용여부</th><th>삭제</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -111,16 +110,11 @@
                                         @else
                                             미사용
                                         @endif</td>
-                                    <td>{{ $pt->name }}</td>
-                                    <td>
-                                        {{ $pt->id }}
-                                    </td>
                                     <td><a href="{{ route('confirm-delete/postitle', $pt->id) }}" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#pos_delete_confirm">지우기</a></td>
                                 </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            {{ $postitles->links() }}
                             <div>
                                 <a class="btn btn-raised btn-info btn-large" data-toggle="modal" data-href="#poscreate" href="#poscreate">등록</a>
                             </div>
@@ -187,16 +181,6 @@
                         <h4 class="modal-title">직위등록</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="job_id">부서 선택</label>
-                            <div class="col-md-9">
-                                <select id="job_id" name="job_id" class="form-control" required>
-                                    @foreach($jobtitles as $jt)
-                                        <option value="{{ $jt->id }}">{{ $jt->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="pos_code">직위코드</label>
                             <div class="col-md-9">

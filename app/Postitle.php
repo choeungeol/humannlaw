@@ -10,8 +10,4 @@ class Postitle extends Model
 
     protected $guarded  = ['id'];
 
-    public function jobtitles()
-    {
-        return $this->belongsTo('App\Jobtitle');
-    }
 }

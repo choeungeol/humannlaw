@@ -21,7 +21,6 @@ class HnlPosController extends Controller
     public function store(Request $request)
     {
         $postitles = new Postitle([
-            'job_id' => $request->get('job_id'),
             'pos_code' => $request->get('pos_code'),
             'pos_div_code' => $request->get('pos_div_code'),
             'pos_name' => $request->get('pos_name'),

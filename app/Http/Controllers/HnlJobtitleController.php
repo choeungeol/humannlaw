@@ -18,11 +18,7 @@ class HnlJobtitleController extends Controller
         if(Sentinel::check()){
 
             $jobtitles = Jobtitle::All();
-
-            $postitles = Jobtitle::join('postitles', 'postitles.jobtitle_id', '=', 'jobtitles.id')
-                ->Paginate(10);
-
-          /*  $postitles = Postitle::All();*/
+            $postitles = Postitle::All();
 
             // Show the page
             return view('hnl.basicinfo.jobtitle')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CompanyBasicinfo;
 use App\Jobtitle;
 use App\Pinfo;
+use App\Postitle;
 use App\Worktype;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class HnlPinfoController extends Controller
     public function index()
     {
         $jobtitle = Jobtitle::All();
-        $position = Jobtitle::findOrFail(1)->postitles;
+        $position = Postitle::All();
         $worktype = Worktype::All();
         $pinfo = Pinfo::All();
 
