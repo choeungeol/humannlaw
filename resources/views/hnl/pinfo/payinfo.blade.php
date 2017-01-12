@@ -100,7 +100,6 @@
                                         <td><input type="text" class="form-control input-sm" disabled></td>
                                     </tr>
                                 @else
-                                    @foreach($pinfo as $key=>$p)
                                     <tr>
                                         <th>사원번호</th>
                                         <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->employee_num }}"></td>
@@ -111,9 +110,21 @@
                                     </tr>
                                     <tr>
                                         <th>부 서</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->job }}"></td>
+                                        <td>
+                                            @foreach($jobtitles as $job)
+                                                @if($job->id == $searchp->job)
+                                                    <input type="text" class="form-control input-sm" disabled value="{{ $searchp->job }}">
+                                                @endif
+                                            @endforeach
+                                        </td>
                                         <th>직 위</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->position }}"></td>
+                                        <td>
+                                            @foreach($position as $pos)
+                                                @if($pos->id == $searchp->position)
+                                                    <input type="text" class="form-control input-sm" disabled value="{{ $searchp->position }}">
+                                                @endif
+                                            @endforeach
+                                        </td>
                                         <th>사업장</th>
                                         <td><input type="text" class="form-control input-sm" disabled value=""></td>
                                     </tr>
@@ -133,7 +144,6 @@
                                         <th>퇴사일</th>
                                         <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->exit_day }}"></td>
                                     </tr>
-                                    @endforeach
                                 @endif
                             </table>
                         </div>
