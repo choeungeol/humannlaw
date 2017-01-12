@@ -234,6 +234,10 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
             Route::get('/', array('as' => 'payinfo_index', 'uses' => 'HnlPayinfoController@index'));
 
+
+            Route::get('/{payinfoId?}', array('as' => 'payinfo_view', 'uses' => 'HnlPayinfoController@show'));
+
+
         });
 
         Route::group(array('prefix'=> 'pcard'), function (){

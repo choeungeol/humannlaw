@@ -227,7 +227,6 @@
                 </div>
             </div>
         </div>
-    </section>
     <!-- pos confirm modal -->
     <div class="modal fade" id="pos_delete_confirm" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -235,7 +234,6 @@
             </div>
         </div>
     </div>
-    </section>
 
     <!-- edit modal -->
     <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog">

@@ -17,6 +17,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/awesomeBootstrapCheckbox/awesome-bootstrap-checkbox.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/formelements.css') }}"/>
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/buttons.bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/colReorder.bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/rowReorder.bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/buttons.bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/scroller.bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/tables.css') }}" />
+
     <link href="{{ asset('assets/css/pages/tables.css') }}" rel="stylesheet" type="text/css" />
 @stop
 
@@ -39,56 +48,95 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
-                            <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
-                               data-l="true"></i> 급여 정보
+                            <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white" data-l="true"></i> 급여 정보
                         </h4>
                         <span class="pull-right">
                             <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
                         </span>
                     </div>
                     <div class="panel-body">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                        일반정보
-                                </h4>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table table-condensed table-bordered">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                    일반정보
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-condensed table-bordered">
+                                <caption>
+                                    <a class="btn btn-raised btn-info btn-large" data-toggle="modal" data-href="#searchmember" href="#searchmember">검색</a>
+                                </caption>
+                                @if(!$searchp)
                                     <tr>
                                         <th>사원번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->employee_num }}"--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                         <th>성 명</th>
-                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->name }}"--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                         <th>주민번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->regi_no }}"--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                     </tr>
                                     <tr>
                                         <th>부 서</th>
-                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->job }}"--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                         <th>직 위</th>
-                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->position }}"--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                         <th>사업장</th>
-                                        <td><input type="text" class="form-control input-sm" disabled{{-- value=""--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                     </tr>
                                     <tr>
                                         <th>근무상태</th>
-                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->work_condition }}"--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                         <th>채용형태</th>
-                                        <td><input type="text" class="form-control input-sm" disabled {{--value="{{ $pinfo->employee_type }}"--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                         <th>수습기간</th>
-                                        <td><input type="text" class="form-control input-sm" disabled{{-- value=""--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                     </tr>
                                     <tr>
                                         <th>수습비율</th>
-                                        <td><input type="text" class="form-control input-sm" disabled {{--value="{{ $pinfo->first_pay }}"--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                         <th>입사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->join_day }}"--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                         <th>퇴사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->exit_day }}"--}}></td>
+                                        <td><input type="text" class="form-control input-sm" disabled></td>
                                     </tr>
-                                </table>
-                            </div>
+                                @else
+                                    @foreach($pinfo as $key=>$p)
+                                    <tr>
+                                        <th>사원번호</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->employee_num }}"></td>
+                                        <th>성 명</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->name }}"></td>
+                                        <th>주민번호</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->regi_no }}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>부 서</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->job }}"></td>
+                                        <th>직 위</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->position }}"></td>
+                                        <th>사업장</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value=""></td>
+                                    </tr>
+                                    <tr>
+                                        <th>근무상태</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->work_condition }}"></td>
+                                        <th>채용형태</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->employee_type }}"></td>
+                                        <th>수습기간</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value=""></td>
+                                    </tr>
+                                    <tr>
+                                        <th>수습비율</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->first_pay }}"></td>
+                                        <th>입사일</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->join_day }}"></td>
+                                        <th>퇴사일</th>
+                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->exit_day }}"></td>
+                                    </tr>
+                                    @endforeach
+                                @endif
+                            </table>
+                        </div>
                         </div>
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -192,6 +240,58 @@
                 </div>
             </div>
         </div>
+        <!-- search member modal-->
+        <div class="modal fade in" id="searchmember" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">사원 검색</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-condensed table-bordered" id="table2">
+                            <thead>
+                            <tr>
+                                <th>순번</th>
+                                <th>사번</th>
+                                <th>이름</th>
+                                <th>부서</th>
+                                <th>직위</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($pinfo as $key=>$p)
+                            <tr>
+                                <td>{{ ++$key }}</td>
+                                <td>{{ $p->employee_num }}</td>
+                                <td><a href="{{ route('payinfo_view',$p->id) }}">{{ $p->name }}</a></td>
+                                <td>
+                                    @foreach($jobtitle as $job)
+                                        @if($job->id == $p->job)
+                                            {{ $job->name }}
+                                        @endif
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach($position as $pos)
+                                        @if($pos->id == $p->position)
+                                            {{ $pos->pos_name }}
+                                        @endif
+                                    @endforeach
+                                </td>
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                        <button class="btn btn-primary">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END modal-->
     </section>
 
 @stop
@@ -206,4 +306,22 @@
     <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"></script>
     <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/card/lib/js/jquery.card.js') }}"></script>
     <script language="javascript" type="text/javascript" src="{{ asset('assets/js/pages/radio_checkbox.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/jeditable/js/jquery.jeditable.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.buttons.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.colReorder.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.responsive.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.rowReorder.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.colVis.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.html5.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.print.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.bootstrap.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.print.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/pdfmake.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/vfs_fonts.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.scroller.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/js/pages/table-advanced.js') }}" ></script>
+
 @stop
