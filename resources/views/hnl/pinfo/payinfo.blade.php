@@ -111,7 +111,7 @@
                                     <tr>
                                         <th>부 서</th>
                                         <td>
-                                            @foreach($jobtitles as $job)
+                                            @foreach($jobtitle as $job)
                                                 @if($job->id == $searchp->job)
                                                     <input type="text" class="form-control input-sm" disabled value="{{ $searchp->job }}">
                                                 @endif
