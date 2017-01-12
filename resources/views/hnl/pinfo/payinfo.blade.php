@@ -113,7 +113,7 @@
                                         <td>
                                             @foreach($jobtitle as $job)
                                                 @if($job->id == $searchp->job)
-                                                    <input type="text" class="form-control input-sm" disabled value="{{ $searchp->job }}">
+                                                    <input type="text" class="form-control input-sm" disabled value="{{ $job->name }}">
                                                 @endif
                                             @endforeach
                                         </td>
@@ -121,7 +121,7 @@
                                         <td>
                                             @foreach($position as $pos)
                                                 @if($pos->id == $searchp->position)
-                                                    <input type="text" class="form-control input-sm" disabled value="{{ $searchp->position }}">
+                                                    <input type="text" class="form-control input-sm" disabled value="{{ $pos->pos_name }}">
                                                 @endif
                                             @endforeach
                                         </td>
