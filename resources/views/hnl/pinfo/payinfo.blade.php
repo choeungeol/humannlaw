@@ -57,35 +57,35 @@
                                 <table class="table table-condensed table-bordered">
                                     <tr>
                                         <th>사원번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->employee_num }}"></td>
+                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->employee_num }}"--}}></td>
                                         <th>성 명</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->name }}"></td>
+                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->name }}"--}}></td>
                                         <th>주민번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->regi_no }}"></td>
+                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->regi_no }}"--}}></td>
                                     </tr>
                                     <tr>
                                         <th>부 서</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->job }}"></td>
+                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->job }}"--}}></td>
                                         <th>직 위</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->position }}"></td>
+                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->position }}"--}}></td>
                                         <th>사업장</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value=""></td>
+                                        <td><input type="text" class="form-control input-sm" disabled{{-- value=""--}}></td>
                                     </tr>
                                     <tr>
                                         <th>근무상태</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->work_condition }}"></td>
+                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->work_condition }}"--}}></td>
                                         <th>채용형태</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->employee_type }}"></td>
+                                        <td><input type="text" class="form-control input-sm" disabled {{--value="{{ $pinfo->employee_type }}"--}}></td>
                                         <th>수습기간</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value=""></td>
+                                        <td><input type="text" class="form-control input-sm" disabled{{-- value=""--}}></td>
                                     </tr>
                                     <tr>
                                         <th>수습비율</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->first_pay }}"></td>
+                                        <td><input type="text" class="form-control input-sm" disabled {{--value="{{ $pinfo->first_pay }}"--}}></td>
                                         <th>입사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->join_day }}"></td>
+                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->join_day }}"--}}></td>
                                         <th>퇴사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $pinfo->exit_day }}"></td>
+                                        <td><input type="text" class="form-control input-sm" disabled{{-- value="{{ $pinfo->exit_day }}"--}}></td>
                                     </tr>
                                 </table>
                             </div>

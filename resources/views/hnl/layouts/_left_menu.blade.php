@@ -156,18 +156,18 @@
                     사원 정보
                 </a>
             </li>
-{{--            <li {!! (Request::is('hnl/pinfo/payinfo') ? 'class="active"' : '') !!}>
+            <li {!! (Request::is('hnl/pinfo/payinfo') ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to('hnl/pinfo/payinfo') }}">
                     <i class="fa fa-angle-double-right"></i>
                     급여 정보
                 </a>
-            </li>--}}
-{{--            <li {!! (Request::is('hnl/pinfo/pcard') ? 'class="active"' : '') !!}>
+            </li>
+            <li {!! (Request::is('hnl/pinfo/pcard') ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to('hnl/pinfo/pcard') }}">
                     <i class="fa fa-angle-double-right"></i>
                     인사기록카드
                 </a>
-            </li>--}}
+            </li>
         </ul>
     </li>
     <li {!! (Request::is('hnl/work/addwork') || Request::is('hnl/work/workaday') || Request::is('hnl/work/workatime') || Request::is('hnl/work/yearoff') ? 'class="active"' : '') !!}>

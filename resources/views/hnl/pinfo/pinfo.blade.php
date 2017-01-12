@@ -467,8 +467,8 @@
                                                             <th>이메일</th>
                                                             <th>은행</th>
                                                             <th>계좌번호</th>
-                                                            <th>급여정보</th>
-                                                            <th>인사기록카드</th>
+{{--                                                            <th>급여정보</th>
+                                                            <th>인사기록카드</th>--}}
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -487,8 +487,8 @@
                                                             <td>{{ $p->email }}</td>
                                                             <td>{{ $p->pay_bank }}</td>
                                                             <td>{{ $p->account_num }}</td>
-                                                            <td><a class="btn btn-primary" href="{{route('payinfo_index',$p->id )}}">급여정보</a></td>
-                                                            <td><a class="btn btn-success" href="{{route('pcard_index',$p->id )}}">인사기록카드</a></td>
+ {{--                                                           <td><a class="btn btn-primary" href="{{route('payinfo_index',$p->id )}}">급여정보</a></td>
+                                                            <td><a class="btn btn-success" href="{{route('pcard_index',$p->id )}}">인사기록카드</a></td>--}}
                                                         </tr>
                                                         @endforeach
                                                         </tbody>

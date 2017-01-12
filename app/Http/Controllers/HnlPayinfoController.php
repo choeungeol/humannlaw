@@ -15,10 +15,10 @@ class HnlPayinfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id = null)
+    public function index()
     {
 
-        $pinfo = Pinfo::findOrFail($id);
+        $pinfo = Pinfo::all();
 
         if(Sentinel::check())
             return view('hnl.pinfo.payinfo', compact('pinfo'));

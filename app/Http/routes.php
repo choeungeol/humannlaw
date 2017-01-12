@@ -232,13 +232,13 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
         Route::group(array('prefix'=> 'payinfo'), function (){
 
-            Route::get('{payinfoId}', array('as' => 'payinfo_index', 'uses' => 'HnlPayinfoController@index'));
+            Route::get('/', array('as' => 'payinfo_index', 'uses' => 'HnlPayinfoController@index'));
 
         });
 
         Route::group(array('prefix'=> 'pcard'), function (){
 
-            Route::get('{pcardId}', array('as' => 'pcard_index', 'uses' => 'HnlPcardController@index'));
+            Route::get('/', array('as' => 'pcard_index', 'uses' => 'HnlPcardController@index'));
 
         });
 
