@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobtitle;
+use App\Pinfo;
+use App\Postitle;
+use Illuminate\Support\Facades\Redirect;
 use Sentinel;
 use Illuminate\Http\Request;
+
 
 use App\Http\Requests;
 
@@ -14,10 +19,15 @@ class HnlPcardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id = null)
+    public function index($searchp = null)
     {
+        $pinfo = Pinfo::all();
+        $jobtitle = Jobtitle::All();
+        $position = Postitle::All();
+        $searchp = $searchp;
+
         if(Sentinel::check())
-            return view('hnl.pinfo.pcard');
+            return view('hnl.pinfo.pcard', compact('pinfo','jobtitle','position','searchp'));
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }
@@ -51,7 +61,19 @@ class HnlPcardController extends Controller
      */
     public function show($id)
     {
-        //
+        $pinfo = Pinfo::all();
+        $jobtitle = Jobtitle::All();
+        $position = Postitle::All();
+        $searchp = Pinfo::findOrFail($id);
+
+        if(Sentinel::check())
+
+            return view('hnl.pinfo.pcard', compact('pinfo','jobtitle','position','searchp'));
+
+        else
+
+            return Redirect::to('admin/signin')->with('error','You must be logged in!');
+
     }
 
     /**

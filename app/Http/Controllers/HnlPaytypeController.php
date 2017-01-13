@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Payitem1;
+use App\Payitem2;
+use App\Payitem3;
+use App\Payitem4;
+use Illuminate\Support\Facades\Lang;
 use Redirect;
 use Sentinel;
 use Illuminate\Http\Request;
@@ -18,10 +23,10 @@ class HnlPaytypeController extends Controller
     public function index()
     {
 
-        $paymonth1 = array('기본급','주휴수당','직책수당','근속수당','가족수당'); // 포괄연봉제,월급제 명칭1
-        $paymonth2 = array('연장수당','야간수당','휴일수당','휴일연장','휴일야간'.'연차수당'); // 포괄연봉제,월급제 명칭2
-        $paymonth3 = array('식대','차량유지비','육아수당','연구활동비'); // 포괄연봉제,월급제 명칭3
-        $paymonth4 = array('상여금','특별성과금','특근수당','특별수당'); // 포괄연봉제,월급제 명칭4
+        $paymonth1 = Payitem1::all();
+        $paymonth2 = Payitem2::all();
+        $paymonth3 = Payitem3::all();
+        $paymonth4 = Payitem4::all();
         $payday = array('기본급','주휴수당','연장수당','야간수당'.'휴일수당','휴일연장','휴일야간','연차수당'); // 포괄일당제 명칭
 
 
@@ -43,6 +48,47 @@ class HnlPaytypeController extends Controller
     {
         //
     }
+
+    public function clickcheck($id, Request $request)
+    {
+
+
+        try {
+            $re = $request->get('pay');
+
+            if($re === 'a'){
+                $pitem = Payitem1::findOrFail($id);
+            }elseif($re === 'b'){
+                $pitem = Payitem2::findOrFail($id);
+            }elseif($re === 'c'){
+                $pitem = Payitem3::findOrFail($id);
+            }elseif($re === 'd'){
+                $pitem = Payitem4::findOrFail($id);
+            }
+
+        } catch (GroupNotFoundException $e) {
+
+            return Redirect::route('paytype')->with('error', compact('id'));
+        }
+
+        if($pitem->use_this == 0){
+            $pitem->use_this = 1;
+        }else{
+            $pitem->use_this = 0;
+        }
+
+        // Was the group updated?
+        if ($pitem->save()) {
+            // Redirect to the group page
+            return Redirect::route('paytype')->with('success', Lang::get('groups/message.success.update'));
+        } else {
+            // Redirect to the group page
+            return Redirect::route('paytype', $id)->with('error', Lang::get('groups/message.error.update'));
+        }
+
+
+    }
+
 
     /**
      * Store a newly created resource in storage.

@@ -156,16 +156,16 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
             Route::get('{payitemId}/delete4', array('as' => 'delete/payitem4', 'uses' => 'HnlPayItemController@destroy4'));
             Route::post('{payitemId}/update4', array('as' => 'update/payitem4', 'uses' => 'HnlPayItemController@update4'));
 
-            Route::post('{tdeductionId}/check}', array('as' => 'check/tdeduction', 'uses' => 'HnlPayItemController@clickcheck'));
+            Route::post('{tdeductionId}/check', array('as' => 'check/tdeduction', 'uses' => 'HnlPayItemController@clickcheck'));
 
 
         });
 
         Route::group(array('prefix' => 'paytype'), function(){
 
-            Route::get('/', array('uses' => 'HnlPaytypeController@index'));
+            Route::get('/', array('as' => 'paytype' , 'uses' => 'HnlPaytypeController@index'));
 
-
+            Route::post('{paytypeId}/check', array('as' => 'check/paytype', 'uses' => 'HnlPaytypeController@clickcheck'));
 
 
         });
@@ -243,6 +243,8 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
         Route::group(array('prefix'=> 'pcard'), function (){
 
             Route::get('/', array('as' => 'pcard_index', 'uses' => 'HnlPcardController@index'));
+
+            Route::get('/{pcardId?}', array('as' => 'pcard_view', 'uses' => 'HnlPcardController@show'));
 
         });
 

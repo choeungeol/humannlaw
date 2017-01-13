@@ -76,53 +76,69 @@
                                             <th>포괄여부</th>
                                         </tr>
                                         <tr>
-                                            <td>통상임금</td>
-                                            <td></td>
+                                            <td colspan="2">통상임금</td>
                                         </tr>
                                         @foreach($paymonth1 as $p1)
                                         <tr>
-                                            <td>{{ $p1 }}</td>
-                                            <td><input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                       data-off-color="primary" data-animate></td>
+                                            <td>{{ $p1->title }}</td>
+                                            <td>
+                                                <form class="checkboxa{{$p1->id}}" action="{{ route('check/paytype',$p1->id) }}" method="POST">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                <input type="hidden" name="pay" value="a" />
+                                                <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                       data-off-color="primary" data-animate onchange="$('.checkboxa{{$p1->id}}').submit();" value="{!! ($p1->use_this == 0) ? 'false' : 'true' !!}" {!! ($p1->use_this == 1) ? 'checked' : '' !!}>
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="2"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>통상임금</td>
-                                            <td></td>
+                                            <td colspan="2">법정수당</td>
                                         </tr>
                                         @foreach($paymonth2 as $p2)
                                             <tr>
-                                                <td>{{ $p2 }}</td>
-                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                           data-off-color="primary" data-animate></td>
+                                                <td>{{ $p2->title }}</td>
+                                                <td>
+                                                    <form class="checkboxb{{$p2->id}}" action="{{ route('check/paytype',$p2->id) }}" method="POST">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                        <input type="hidden" name="pay" value="b" />
+                                                        <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                               data-off-color="primary" data-animate onchange="$('.checkboxb{{$p2->id}}').submit();" value="{!! ($p2->use_this == 0) ? 'false' : 'true' !!}" {!! ($p2->use_this == 1) ? 'checked' : '' !!}>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="2"></td>
+                                            <td colspan="2">복리후생</td>
                                         </tr>
                                         @foreach($paymonth3 as $p3)
                                             <tr>
-                                                <td>{{ $p3 }}</td>
-                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                           data-off-color="primary" data-animate></td>
+                                                <td>{{ $p3->title }}</td>
+                                                <td>
+                                                    <form class="checkboxc{{$p3->id}}" action="{{ route('check/paytype',$p3->id) }}" method="POST">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                        <input type="hidden" name="pay" value="c" />
+                                                        <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                               data-off-color="primary" data-animate onchange="$('.checkboxc{{$p3->id}}').submit();" value="{!! ($p3->use_this == 0) ? 'false' : 'true' !!}" {!! ($p3->use_this == 1) ? 'checked' : '' !!}>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="2"></td>
+                                            <td colspan="2">약정수당</td>
                                         </tr>
                                         @foreach($paymonth4 as $p4)
                                             <tr>
-                                                <td>{{ $p4 }}</td>
-                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                           data-off-color="primary" data-animate></td>
+                                                <td>{{ $p4->title }}</td>
+                                                <td>
+                                                    <form class="checkboxd{{$p4->id}}" action="{{ route('check/paytype',$p4->id) }}" method="POST">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                        <input type="hidden" name="pay" value="d" />
+                                                        <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                               data-off-color="primary" data-animate onchange="$('.checkboxd{{$p4->id}}').submit();" value="{!! ($p4->use_this == 0) ? 'false' : 'true' !!}" {!! ($p4->use_this == 1) ? 'checked' : '' !!}>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
-                                        <tr>
-                                            <td colspan="2"></td>
-                                        </tr>
                                     </table>
                                 </div>
                                 <div class="col-lg-2">
@@ -134,7 +150,7 @@
                                         </tr>
                                         @foreach($paymonth1 as $p1)
                                             <tr>
-                                                <td>{{ $p1 }}</td>
+                                                <td>{{ $p1->title }}</td>
                                                 <td><input type="checkbox" name="my-checkbox" data-on-color="info"
                                                            data-off-color="primary" data-animate></td>
                                             </tr>
@@ -144,7 +160,7 @@
                                         </tr>
                                         @foreach($paymonth2 as $p2)
                                             <tr>
-                                                <td>{{ $p2 }}</td>
+                                                <td>{{ $p2->title }}</td>
                                                 <td><input type="checkbox" name="my-checkbox" data-on-color="info"
                                                            data-off-color="primary" data-animate></td>
                                             </tr>
@@ -154,7 +170,7 @@
                                         </tr>
                                         @foreach($paymonth3 as $p3)
                                             <tr>
-                                                <td>{{ $p3 }}</td>
+                                                <td>{{ $p3->title }}</td>
                                                 <td><input type="checkbox" name="my-checkbox" data-on-color="info"
                                                            data-off-color="primary" data-animate></td>
                                             </tr>
@@ -164,7 +180,7 @@
                                         </tr>
                                         @foreach($paymonth4 as $p4)
                                             <tr>
-                                                <td>{{ $p4 }}</td>
+                                                <td>{{ $p4->title }}</td>
                                                 <td><input type="checkbox" name="my-checkbox" data-on-color="info"
                                                            data-off-color="primary" data-animate></td>
                                             </tr>
