@@ -155,6 +155,9 @@
                                             <th>명 칭</th>
                                             <th>포괄여부</th>
                                         </tr>
+                                        <tr>
+                                            <td colspan="2">통상임금</td>
+                                        </tr>
                                         @foreach($paymonth1 as $p1)
                                             <tr>
                                                 <td>{{ $p1->title }}</td>
@@ -163,14 +166,14 @@
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                         <input type="hidden" name="paytype" value="b" />
                                                         <input type="hidden" name="pay" value="a" />
-                                                    <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                        <input type="checkbox" name="my-checkbox" data-on-color="info"
                                                            data-off-color="primary" data-animate onchange="$('.checkboxe{{$p1->id}}').submit();" value="{!! ($p1->use_this1 == 0) ? 'false' : 'true' !!}" {!! ($p1->use_this1 == 1) ? 'checked' : '' !!}>
                                                     </form>
                                                 </td>
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="2"></td>
+                                            <td colspan="2">법정수당</td>
                                         </tr>
                                         @foreach($paymonth2 as $p2)
                                             <tr>
@@ -187,7 +190,7 @@
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="2"></td>
+                                            <td colspan="2">복리후생</td>
                                         </tr>
                                         @foreach($paymonth3 as $p3)
                                             <tr>
@@ -204,7 +207,7 @@
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="2"></td>
+                                            <td colspan="2">약정수당</td>
                                         </tr>
                                         @foreach($paymonth4 as $p4)
                                             <tr>
