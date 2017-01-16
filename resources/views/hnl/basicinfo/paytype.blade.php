@@ -1,12 +1,14 @@
 @extends('hnl/layouts/default')
 
-{{-- Page title --}}
+ Page title
+
 @section('title')
     기본정보 등록
     @parent
 @stop
 
-{{-- page level styles --}}
+ page level styles
+
 @section('header_styles')
 
     <meta name="_token" content="{{ csrf_token() }}">
@@ -39,7 +41,8 @@
 
 @stop
 
-{{-- Page content --}}
+ Page content
+
 @section('content')
     <section class="content-header">
         <h1>급여 유형</h1>
@@ -84,6 +87,7 @@
                                             <td>
                                                 <form class="checkboxa{{$p1->id}}" action="{{ route('check/paytype',$p1->id) }}" method="POST">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                <input type="hidden" name="paytype" value="a" />
                                                 <input type="hidden" name="pay" value="a" />
                                                 <input type="checkbox" name="my-checkbox" data-on-color="info"
                                                        data-off-color="primary" data-animate onchange="$('.checkboxa{{$p1->id}}').submit();" value="{!! ($p1->use_this == 0) ? 'false' : 'true' !!}" {!! ($p1->use_this == 1) ? 'checked' : '' !!}>
@@ -100,7 +104,8 @@
                                                 <td>
                                                     <form class="checkboxb{{$p2->id}}" action="{{ route('check/paytype',$p2->id) }}" method="POST">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                        <input type="hidden" name="pay" value="b" />
+                                                        <input type="hidden" name="paytype" value="a" />
+                                                        <input type="hidden" name="pay" value="a1" />
                                                         <input type="checkbox" name="my-checkbox" data-on-color="info"
                                                                data-off-color="primary" data-animate onchange="$('.checkboxb{{$p2->id}}').submit();" value="{!! ($p2->use_this == 0) ? 'false' : 'true' !!}" {!! ($p2->use_this == 1) ? 'checked' : '' !!}>
                                                     </form>
@@ -116,7 +121,8 @@
                                                 <td>
                                                     <form class="checkboxc{{$p3->id}}" action="{{ route('check/paytype',$p3->id) }}" method="POST">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                        <input type="hidden" name="pay" value="c" />
+                                                        <input type="hidden" name="paytype" value="a" />
+                                                        <input type="hidden" name="pay" value="a2" />
                                                         <input type="checkbox" name="my-checkbox" data-on-color="info"
                                                                data-off-color="primary" data-animate onchange="$('.checkboxc{{$p3->id}}').submit();" value="{!! ($p3->use_this == 0) ? 'false' : 'true' !!}" {!! ($p3->use_this == 1) ? 'checked' : '' !!}>
                                                     </form>
@@ -132,7 +138,8 @@
                                                 <td>
                                                     <form class="checkboxd{{$p4->id}}" action="{{ route('check/paytype',$p4->id) }}" method="POST">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                        <input type="hidden" name="pay" value="d" />
+                                                        <input type="hidden" name="paytype" value="a" />
+                                                        <input type="hidden" name="pay" value="a3" />
                                                         <input type="checkbox" name="my-checkbox" data-on-color="info"
                                                                data-off-color="primary" data-animate onchange="$('.checkboxd{{$p4->id}}').submit();" value="{!! ($p4->use_this == 0) ? 'false' : 'true' !!}" {!! ($p4->use_this == 1) ? 'checked' : '' !!}>
                                                     </form>
@@ -151,8 +158,15 @@
                                         @foreach($paymonth1 as $p1)
                                             <tr>
                                                 <td>{{ $p1->title }}</td>
-                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                           data-off-color="primary" data-animate></td>
+                                                <td>
+                                                    <form class="checkboxe{{$p1->id}}" action="{{ route('check/paytype',$p1->id) }}" method="POST">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                        <input type="hidden" name="paytype" value="b" />
+                                                        <input type="hidden" name="pay" value="a" />
+                                                    <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                           data-off-color="primary" data-animate onchange="$('.checkboxe{{$p1->id}}').submit();" value="{!! ($p1->use_this1 == 0) ? 'false' : 'true' !!}" {!! ($p1->use_this1 == 1) ? 'checked' : '' !!}>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         <tr>
@@ -161,8 +175,15 @@
                                         @foreach($paymonth2 as $p2)
                                             <tr>
                                                 <td>{{ $p2->title }}</td>
-                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                           data-off-color="primary" data-animate></td>
+                                                <td>
+                                                    <form class="checkboxf{{$p2->id}}" action="{{ route('check/paytype',$p2->id) }}" method="POST">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                        <input type="hidden" name="paytype" value="b" />
+                                                        <input type="hidden" name="pay" value="a1" />
+                                                        <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                               data-off-color="primary" data-animate onchange="$('.checkboxf{{$p2->id}}').submit();" value="{!! ($p2->use_this1 == 0) ? 'false' : 'true' !!}" {!! ($p2->use_this1 == 1) ? 'checked' : '' !!}>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         <tr>
@@ -171,8 +192,15 @@
                                         @foreach($paymonth3 as $p3)
                                             <tr>
                                                 <td>{{ $p3->title }}</td>
-                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                           data-off-color="primary" data-animate></td>
+                                                <td>
+                                                    <form class="checkboxg{{$p3->id}}" action="{{ route('check/paytype',$p3->id) }}" method="POST">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                        <input type="hidden" name="paytype" value="b" />
+                                                        <input type="hidden" name="pay" value="a2" />
+                                                        <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                               data-off-color="primary" data-animate onchange="$('.checkboxg{{$p3->id}}').submit();" value="{!! ($p3->use_this1 == 0) ? 'false' : 'true' !!}" {!! ($p3->use_this1 == 1) ? 'checked' : '' !!}>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         <tr>
@@ -181,8 +209,15 @@
                                         @foreach($paymonth4 as $p4)
                                             <tr>
                                                 <td>{{ $p4->title }}</td>
-                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                           data-off-color="primary" data-animate></td>
+                                                <td>
+                                                    <form class="checkboxh{{$p4->id}}" action="{{ route('check/paytype',$p4->id) }}" method="POST">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                        <input type="hidden" name="paytype" value="b" />
+                                                        <input type="hidden" name="pay" value="a3" />
+                                                        <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                               data-off-color="primary" data-animate onchange="$('.checkboxh{{$p4->id}}').submit();" value="{!! ($p4->use_this1 == 0) ? 'false' : 'true' !!}" {!! ($p4->use_this1 == 1) ? 'checked' : '' !!}>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         <tr>
@@ -200,7 +235,10 @@
                                         @foreach($payday as $pd)
                                             <tr>
                                                 <td>{{ $pd }}</td>
-                                                <td><input type="checkbox" name="my-checkbox" data-on-color="info" data-off-color="primary" data-animate></td>
+                                                <td>
+                                                        <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                               data-off-color="primary" data-animate{{-- onchange="$('.checkboxa{{$pd->id}}').submit();" value="{!! ($pd->use_this2 == 0) ? 'false' : 'true' !!}" {!! ($pd->use_this2 == 1) ? 'checked' : '' !!}--}}>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </table>
@@ -215,7 +253,8 @@
 
 @stop
 
-{{-- page level scripts --}}
+ page level scripts
+
 @section('footer_scripts')
 
     <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>

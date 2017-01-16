@@ -52,18 +52,172 @@ class HnlPaytypeController extends Controller
     public function clickcheck($id, Request $request)
     {
 
-
         try {
-            $re = $request->get('pay');
+            $re = $request->get('paytype');
+            $res = $request->get('pay');
 
             if($re === 'a'){
-                $pitem = Payitem1::findOrFail($id);
+
+                if($res === 'a'){
+
+                    $pitem = Payitem1::findOrFail($id);
+
+                    if($pitem->use_this == 0){
+                        $pitem->use_this = 1;
+                    }else{
+                        $pitem->use_this = 0;
+                    }
+
+                }elseif($res === 'a1'){
+
+                    $pitem = Payitem2::findOrFail($id);
+
+                    if($pitem->use_this == 0){
+                        $pitem->use_this = 1;
+                    }else{
+                        $pitem->use_this = 0;
+                    }
+
+                }elseif($res === 'a2'){
+
+                    $pitem = Payitem3::findOrFail($id);
+
+                    if($pitem->use_this == 0){
+                        $pitem->use_this = 1;
+                    }else{
+                        $pitem->use_this = 0;
+                    }
+
+                }elseif($res === 'a3'){
+
+                    $pitem = Payitem4::findOrFail($id);
+
+                    if($pitem->use_this == 0){
+                        $pitem->use_this = 1;
+                    }else{
+                        $pitem->use_this = 0;
+                    }
+
+                }
+
             }elseif($re === 'b'){
-                $pitem = Payitem2::findOrFail($id);
+
+                if($res === 'a'){
+
+                    $pitem = Payitem1::findOrFail($id);
+
+                    if($pitem->use_this1 == 0){
+                        $pitem->use_this1 = 1;
+                    }else{
+                        $pitem->use_this1 = 0;
+                    }
+
+                }elseif($res === 'a1'){
+
+                    $pitem = Payitem2::findOrFail($id);
+
+                    if($pitem->use_this1 == 0){
+                        $pitem->use_this1 = 1;
+                    }else{
+                        $pitem->use_this1 = 0;
+                    }
+
+                }elseif($res === 'a2'){
+
+                    $pitem = Payitem3::findOrFail($id);
+
+                    if($pitem->use_this1 == 0){
+                        $pitem->use_this1 = 1;
+                    }else{
+                        $pitem->use_this1 = 0;
+                    }
+
+                }elseif($res === 'a3'){
+
+                    $pitem = Payitem4::findOrFail($id);
+
+                    if($pitem->use_this1 == 0){
+                        $pitem->use_this1 = 1;
+                    }else{
+                        $pitem->use_this1 = 0;
+                    }
+
+                }
+
             }elseif($re === 'c'){
                 $pitem = Payitem3::findOrFail($id);
+
+                if($res === 'a'){
+
+                    if($pitem->use_this2 == 0){
+                        $pitem->use_this2 = 1;
+                    }else{
+                        $pitem->use_this2 = 0;
+                    }
+
+                }elseif($res === 'a1'){
+
+                    if($pitem->use_this2 == 0){
+                        $pitem->use_this2 = 1;
+                    }else{
+                        $pitem->use_this2 = 0;
+                    }
+
+                }elseif($res === 'a2'){
+
+                    if($pitem->use_this2 == 0){
+                        $pitem->use_this2 = 1;
+                    }else{
+                        $pitem->use_this2 = 0;
+                    }
+
+                }elseif($res === 'a3'){
+
+                    if($pitem->use_this2 == 0){
+                        $pitem->use_this2 = 1;
+                    }else{
+                        $pitem->use_this2 = 0;
+                    }
+
+                }
+
             }elseif($re === 'd'){
                 $pitem = Payitem4::findOrFail($id);
+
+                if($res === 'a'){
+
+                    if($pitem->use_this3 == 0){
+                        $pitem->use_this3 = 1;
+                    }else{
+                        $pitem->use_this3 = 0;
+                    }
+
+                }elseif($res === 'a1'){
+
+                    if($pitem->use_this3 == 0){
+                        $pitem->use_this3 = 1;
+                    }else{
+                        $pitem->use_this3 = 0;
+                    }
+
+                }elseif($res === 'a2'){
+
+                    if($pitem->use_this3 == 0){
+                        $pitem->use_this3 = 1;
+                    }else{
+                        $pitem->use_this3 = 0;
+                    }
+
+                }elseif($res === 'a3'){
+
+                    if($pitem->use_this3 == 0){
+                        $pitem->use_this3 = 1;
+                    }else{
+                        $pitem->use_this3 = 0;
+                    }
+
+                }
+
             }
 
         } catch (GroupNotFoundException $e) {
@@ -71,11 +225,7 @@ class HnlPaytypeController extends Controller
             return Redirect::route('paytype')->with('error', compact('id'));
         }
 
-        if($pitem->use_this == 0){
-            $pitem->use_this = 1;
-        }else{
-            $pitem->use_this = 0;
-        }
+
 
         // Was the group updated?
         if ($pitem->save()) {
