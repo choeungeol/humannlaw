@@ -13,25 +13,25 @@ class Worktype1234Seeder extends Seeder
     {
 
         $type = array('A','B','C','D','E','F','G','H','I','J');
-/*        DB::table('worktypes1')->truncate();
+        DB::table('worktypes1')->truncate();
 
         for($i=0; $i < count($type); $i++) {
             DB::table('worktypes1')->insert([
                 'type' => $type[$i],
-                'change' => '',
+                /*'change' => '',*/
                 'sworktime' => '',
                 'eworktime' => '',
                 'sbtime1' => '',
                 'ebtime1' => '',
                 'sbtime2' => '',
                 'ebtime2' => '',
-                'sbtime3' => '',
-                'ebtime3' => '',
+/*                'sbtime3' => '',
+                'ebtime3' => '',*/
                 'sortnum' => $i,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
             ]);
-        };*/
+        };
 
         DB::table('worktypes2')->truncate();
 
@@ -61,6 +61,7 @@ class Worktype1234Seeder extends Seeder
                 'type' => $type[$i],
                 'sworktime' => '',
                 'eworktime' => '',
+                'nextdaytime' => '',
                 'sbtime1' => '',
                 'ebtime1' => '',
                 'sbtime2' => '',

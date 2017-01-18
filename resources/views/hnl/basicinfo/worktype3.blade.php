@@ -20,6 +20,14 @@
     <link href="{{ asset('assets/vendors/pickadate/css/default.time.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/airDatepicker/css/datepicker.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/all.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/line/line.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/bootstrap-switch/css/bootstrap-switch.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/switchery/css/switchery.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/awesomeBootstrapCheckbox/awesome-bootstrap-checkbox.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/formelements.css') }}"/>
+
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/tab.css') }}" />
 @stop
 
 {{-- Page content --}}
@@ -63,31 +71,42 @@
                                 </div>
                             </li>
                         </ul>
-                        <div id="myTabContent" class="tab-content">
+                        <div id="TabContent" class="tab-content">
                             @foreach($typename as $k=> $t)
-                                <form class="tab-pane fade {!! $k === 'A' ? 'active in' : '' !!}" id="{{ $k }}type" method="POST" action="">
+                                <form class="tab-pane fade {!! $k === 'A' ? 'active in' : '' !!}" id="{{ $k }}type" method="POST" action="{{ route('insert/worktype3') }}">
                                     <input type="hidden" name="type" value="{{ $k }}">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <table class="table table-bordered" style="margin-bottom:0px;">
                                         <tr>
                                             <th style="vertical-align: middle;" rowspan="2">근무시간&nbsp;</th>
-                                            <td>시작</td>
+                                            <td>
+                                                시작 &nbsp;&nbsp;&nbsp;<i class="fa fa-question-circle" title="시작 시간" data-container="body" data-toggle="popover" data-placement="top" data-content="종료시간은 자동 24:00로 설정됩니다."></i>
+                                            </td>
                                             <td>
                                                 @if($t[0]->sworktime == 0)
-                                                    <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $t[0]->sortnum }}" placeholder="09:00">
+                                                    <input type="text" class="form-control input-sm datetime2" name="work_start_time" placeholder="09:00">
                                                 @else
-                                                    <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $t[0]->sortnum }}" placeholder="09:00" value="{{ $t[0]->sworktime }}">
+                                                    <input type="text" class="form-control input-sm datetime2" name="work_start_time" placeholder="09:00" value="{{ $t[0]->sworktime }}">
                                                 @endif
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>종료</td>
+                                            <td><label>익일
+                                                    @if($t[0]->nextdaytime == 0)
+                                                    <input type="checkbox" ng-model="checked">
+                                                    @else
+                                                    <input type="checkbox" ng-model="checked" checked>
+                                                    @endif
+                                                </label>&nbsp;&nbsp;&nbsp;
+                                                <i class="fa fa-question-circle" title="익일 체크" data-container="body" data-toggle="popover" data-placement="top" data-content="익일 체크시 활성화 되며, 24시 이후의 총 시간을 입력하세요 ex)익일 새벽 5시 = 05:00"></i>
+                                            </td>
                                             <td>
-                                                @if($t[0]->eworktime == 0)
-                                                    <input class="form-control input-sm datetime2" type="text" name="work_end_time{{ $t[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                @if($t[0]->nextdaytime == 0)
+                                                    <input class="form-control input-sm datetime2" type="text" name="next_day_time" placeholder="09:00" ng-disabled="!checked">
                                                 @else
-                                                    <input class="form-control input-sm datetime2" type="text" name="work_end_time{{ $t[0]->sortnum }}" placeholder="09:00" value="{{ $t[0]->eworktime }}" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="next_day_time" placeholder="09:00" value="{{ $t[0]->nextdaytime }}" ng-readonly="!checked">
                                                 @endif
+
                                             </td>
                                         </tr>
                                         <tr>
@@ -95,9 +114,9 @@
                                             <td>시작</td>
                                             <td>
                                                 @if($t[0]->sbtime1 == 0)
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime1{{ $t[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime1" placeholder="09:00">
                                                 @else
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime1{{ $t[0]->sortnum }}" placeholder="09:00" value="{{ $t[0]->sbtime1 }}" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime1" placeholder="09:00" value="{{ $t[0]->sbtime1 }}">
                                                 @endif
                                             </td>
                                         </tr>
@@ -105,9 +124,9 @@
                                             <td>종료</td>
                                             <td>
                                                 @if($t[0]->ebtime1 == 0)
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime1{{ $t[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime1" placeholder="09:00">
                                                 @else
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime1{{ $t[0]->sortnum }}" placeholder="09:00" value="{{ $t[0]->ebtime1 }}" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime1" placeholder="09:00" value="{{ $t[0]->ebtime1 }}">
                                                 @endif
                                             </td>
                                         </tr>
@@ -116,9 +135,9 @@
                                             <td>시작</td>
                                             <td>
                                                 @if($t[0]->sbtime2 == 0)
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime2{{ $t[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime2" placeholder="09:00">
                                                 @else
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime2{{ $t[0]->sortnum }}" placeholder="09:00" value="{{ $t[0]->sbtime2 }}" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime2" placeholder="09:00" value="{{ $t[0]->sbtime2 }}">
                                                 @endif
                                             </td>
                                         </tr>
@@ -127,9 +146,9 @@
                                             <td>종료</td>
                                             <td>
                                                 @if($t[0]->ebtime2 == 0)
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime2{{ $t[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime2" placeholder="09:00">
                                                 @else
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime2{{ $t[0]->sortnum }}" placeholder="09:00" value="{{ $t[0]->ebtime2 }}" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime2" placeholder="09:00" value="{{ $t[0]->ebtime2 }}">
                                                 @endif
                                             </td>
                                         </tr>
@@ -138,9 +157,9 @@
                                             <td>시작</td>
                                             <td>
                                                 @if($t[0]->sbtime3 == 0)
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $t[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime3" placeholder="09:00">
                                                 @else
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $t[0]->sortnum }}" placeholder="09:00" value="{{ $t[0]->sbtime3 }}" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime3" placeholder="09:00" value="{{ $t[0]->sbtime3 }}">
                                                 @endif
                                             </td>
                                         </tr>
@@ -149,9 +168,9 @@
                                             <td>종료</td>
                                             <td>
                                                 @if($t[0]->ebtime3 == 0)
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $t[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime3" placeholder="09:00">
                                                 @else
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $t[0]->sortnum }}" placeholder="09:00" value="{{ $t[0]->ebtime3 }}" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime3" placeholder="09:00" value="{{ $t[0]->ebtime3 }}">
                                                 @endif
                                             </td>
                                         </tr>
@@ -160,9 +179,9 @@
                                             <td>시작</td>
                                             <td>
                                                 @if($t[0]->sbtime4 == 0)
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $t[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime4" placeholder="09:00">
                                                 @else
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $t[0]->sortnum }}" placeholder="09:00" value="{{ $t[0]->sbtime4 }}" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_stime4" placeholder="09:00" value="{{ $t[0]->sbtime4 }}">
                                                 @endif
                                             </td>
                                         </tr>
@@ -171,9 +190,9 @@
                                             <td>종료</td>
                                             <td>
                                                 @if($t[0]->ebtime4 == 0)
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $t[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime4" placeholder="09:00">
                                                 @else
-                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $t[0]->sortnum }}" placeholder="09:00" value="{{ $t[0]->ebtime4 }}" data-format="hh:mm">
+                                                    <input class="form-control input-sm datetime2" type="text" name="break_etime4" placeholder="09:00" value="{{ $t[0]->ebtime4 }}">
                                                 @endif
                                             </td>
                                         </tr>
@@ -207,7 +226,6 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
 
-
         <!-- begining of page level js -->
     <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/daterangepicker/js/daterangepicker.js') }}" type="text/javascript"></script>
@@ -228,4 +246,5 @@
 
     <script src="{{ asset('assets/js/hnl/worktype.js') }}" type="text/javascript"></script>
 
+    <script src="{{ asset('assets/js/pages/tabs_accordions.js') }}" type="text/javascript"></script>
 @stop
