@@ -20,7 +20,7 @@
     <link href="{{ asset('assets/vendors/pickadate/css/default.time.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/airDatepicker/css/datepicker.min.css') }}" rel="stylesheet" type="text/css" />
 
-
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/tab.css') }}" />
 
 @stop
 
@@ -66,12 +66,12 @@
                                     </div>
                                 </li>
                             </ul>
-                                <div id="myTabContent" class="tab-content">
+                                <div id="TabContent" class="tab-content">
                                     @foreach($typename as $t => $v)
                                     <form class="tab-pane fade {!! $t === 'A' ? 'active in' : '' !!}" id="{{ $t }}type" method="POST" action="{{ route('insert/worktype') }}">
                                         <input type="hidden" name="type" value="{{ $t }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <table class="table table-condensed" style="margin-bottom:0px;">
+                                        <table class="table table-bordered" style="margin-bottom:0px;">
                                             <thead>
                                                 <tr>
                                                     <th colspan="2">요일 </th>
@@ -83,11 +83,13 @@
                                                     <th colspan="2">주 근무횟수 </th>
                                                     @for($i=0; $i < 7; $i++)
                                                     <th>
+                                                        <div class="col-md-10">
                                                         <select class="form-control input-sm" name="now_{{ $v[$i]->sortnum }}" placeholder="09:00">
-                                                             @foreach($worknum as $wn)
-                                                                        <option value="{{ $wn }}" {!! ($wn === $v[$i]->worknum ? 'selected' : '') !!}>{{ $wn }}</option>
-                                                             @endforeach
+                                                            @foreach($worknum as $wn)
+                                                                <option value="{{ $wn }}" {!! ($wn === $v[$i]->worknum ? 'selected' : '') !!}>{{ $wn }}</option>
+                                                            @endforeach
                                                         </select>
+                                                        </div>
                                                     </th>
                                                     @endfor
                                                 </tr>
@@ -95,125 +97,149 @@
                                                     <th colspan="2">근무유형</th>
                                                     @for($i=0; $i < 7; $i++)
                                                     <th>
+                                                        <div class="col-md-10">
                                                         <select class="form-control input-sm" name="worktype_{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                             @foreach($worktype as $wt)
                                                                 <option value="{{ $wt }}"{!! ($wt === $v[$i]->worktype ? 'selected' : '') !!}>{{ $wt }}</option>
                                                             @endforeach
                                                         </select>
+                                                        </div>
                                                     </th>
                                                     @endfor
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <th style="vertical-align: middle;" rowspan="2">근무시간&nbsp;</th>
-                                                    <td>시작</td>
+                                                    <th style="vertical-align: middle;width:120px;" rowspan="2">근무시간</th>
+                                                    <td style="width:30px;">시작</td>
                                                     @for($i=0; $i < 7; $i++)
                                                     <td>
+                                                        <div class="col-md-10">
                                                         @if($v[$i]->sworktime == 0)
-                                                         <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00">
+                                                        <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
                                                         <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sworktime }}">
                                                         @endif
+                                                        </div>
                                                     </td>
                                                     @endfor
                                                 </tr>
                                                 <tr>
-                                                    <td>종료</td>
+                                                    <td style="width:30px;">
+                                                        종료
+                                                    </td>
                                                     @for($i=0; $i < 7; $i++)
                                                     <td>
+                                                        <div class="col-md-10">
                                                         @if($v[$i]->eworktime == 0)
-                                                            <input class="form-control input-sm datetime2" type="text" name="work_end_time{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                        <input class="form-control input-sm datetime2" type="text" name="work_end_time{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
-                                                        <input class="form-control input-sm datetime2" type="text" name="work_end_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->eworktime }}" data-format="hh:mm">
+                                                        <input class="form-control input-sm datetime2" type="text" name="work_end_time{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->eworktime }}">
                                                         @endif
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                        <input type="checkbox" name="is_next_day{{ $i }}">
+                                                        <i class="fa fa-question-circle" title="익일 체크" data-container="body" data-toggle="popover" data-placement="top" data-content="익일 시간 입력시 체크, 24시 이후의 총 시간을 입력하세요 ex)익일 새벽 5시 = 05:00"></i>
+                                                        </div>
                                                     </td>
                                                     @endfor
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <table class="table table-condensed" style="margin-bottom:1px;">
+                                        <table class="table table-bordered" style="margin-bottom:1px;">
                                             <tr>
-                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
-                                                <td>시작</td>
+                                                <th style="vertical-align: middle;width:120px;" rowspan="2">휴게시간1</th>
+                                                <td style="width:30px;">시작</td>
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
+                                                        <div class="col-md-10">
                                                         @if($v[$i]->sbtime1 == 0)
-                                                        <input class="form-control input-sm datetime2" type="text" name="break_stime1{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                        <input class="form-control input-sm datetime2" type="text" name="break_stime1{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
-                                                        <input class="form-control input-sm datetime2" type="text" name="break_stime1{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sbtime1 }}" data-format="hh:mm">
+                                                        <input class="form-control input-sm datetime2" type="text" name="break_stime1{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sbtime1 }}">
                                                         @endif
+                                                        </div>
                                                     </td>
                                                 @endfor
                                             </tr>
                                             <tr>
-                                                <td>종료</td>
+                                                <td style="width:30px;">종료</td>
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
+                                                        <div class="col-md-10">
                                                         @if($v[$i]->ebtime1 == 0)
-                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime1{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime1{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
-                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime1{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->ebtime1 }}" data-format="hh:mm">
+                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime1{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->ebtime1 }}">
                                                         @endif
+                                                        </div>
                                                     </td>
                                                 @endfor
                                             </tr>
                                         </table>
-                                        <table class="table table-condensed" style="margin-bottom:1px;">
+                                        <table class="table table-bordered" style="margin-bottom:1px;">
                                             <tr>
-                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
-                                                <td>시작</td>
+                                                <th style="vertical-align: middle;width:120px;" rowspan="2">휴게시간2</th>
+                                                <td style="width:30px;">시작</td>
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
+                                                        <div class="col-md-10">
                                                         @if($v[$i]->sbtime2 == 0)
-                                                            <input class="form-control input-sm datetime2" type="text" name="break_stime2{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                            <input class="form-control input-sm datetime2" type="text" name="break_stime2{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
-                                                            <input class="form-control input-sm datetime2" type="text" name="break_stime2{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sbtime2 }}" data-format="hh:mm">
+                                                            <input class="form-control input-sm datetime2" type="text" name="break_stime2{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sbtime2 }}">
                                                         @endif
+                                                        </div>
                                                     </td>
                                                 @endfor
                                             </tr>
                                             <tr>
-                                                <td>종료</td>
+                                                <td style="width:30px;">종료</td>
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
+                                                        <div class="col-md-10">
                                                         @if($v[$i]->ebtime2 == 0)
-                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime2{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime2{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
-                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime2{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->ebtime2 }}" data-format="hh:mm">
+                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime2{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->ebtime2 }}">
                                                         @endif
+                                                        </div>
                                                     </td>
                                                 @endfor
                                             </tr>
                                         </table>
-                                        <table class="table table-condensed" style="margin-bottom:1px;">
+                                        <table class="table table-bordered" style="margin-bottom:1px;">
                                             <tr>
-                                                <th style="vertical-align: middle;" rowspan="2">휴게시간3</th>
-                                                <td>시작</td>
+                                                <th style="vertical-align: middle; width:120px;" rowspan="2">휴게시간3</th>
+                                                <td style="width:30px;">시작</td>
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
+                                                        <div class="col-md-10">
                                                         @if($v[$i]->sbtime3 == 0)
-                                                            <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                            <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
-                                                            <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sbtime3 }}" data-format="hh:mm">
+                                                            <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->sbtime3 }}">
                                                         @endif
+                                                        </div>
                                                     </td>
                                                 @endfor
                                             </tr>
                                             <tr>
-                                                <td>종료</td>
+                                                <td style="width:30px;">종료</td>
                                                 @for($i=0; $i < 7; $i++)
                                                     <td>
+                                                        <div class="col-md-10">
                                                         @if($v[$i]->ebtime3 == 0)
-                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $v[$i]->sortnum }}" placeholder="09:00" data-format="hh:mm">
+                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $v[$i]->sortnum }}" placeholder="09:00">
                                                         @else
-                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->ebtime3 }}" data-format="hh:mm">
+                                                            <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $v[$i]->sortnum }}" placeholder="09:00" value="{{ $v[$i]->ebtime3 }}">
                                                         @endif
+                                                        </div>
                                                     </td>
                                                 @endfor
                                             </tr>
                                         </table>
-                                        <table class="table table-condensed">
+                                        <table class="table table-bordered">
                                             <tr>
                                                 <th>1달 소정근로시간</th>
                                                 <th>1달 주휴시간</th>
@@ -283,4 +309,5 @@
 
     <script src="{{ asset('assets/js/hnl/worktype.js') }}" type="text/javascript"></script>
 
+    <script src="{{ asset('assets/js/pages/tabs_accordions.js') }}" type="text/javascript"></script>
 @stop
