@@ -92,8 +92,8 @@
                                         </tr>
                                         <tr>
                                             <td><label>익일
-                                                    @if($t[0]->nextdaytime === 'on')
-                                                    <input type="checkbox" name="is_next_time" checked>
+                                                    @if($t[0]->nextdaytime == 1 or $t[0]->nextdaytime === 'on')
+                                                    <input type="checkbox" name="is_next_time" checked value="1">
                                                     @else
                                                     <input type="checkbox" name="is_next_time">
                                                     @endif

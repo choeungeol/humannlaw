@@ -138,7 +138,11 @@
                                                         @endif
                                                         </div>
                                                         <div class="col-md-2">
+                                                        @if($v[$i]->isnextday == 1 or $v[$i]->isnextday === 'on')
+                                                        <input type="checkbox" name="is_next_day{{ $i }}" checked value="1">
+                                                        @else
                                                         <input type="checkbox" name="is_next_day{{ $i }}">
+                                                        @endif
                                                         <i class="fa fa-question-circle" title="익일 체크" data-container="body" data-toggle="popover" data-placement="top" data-content="익일 시간 입력시 체크, 24시 이후의 총 시간을 입력하세요 ex)익일 새벽 5시 = 05:00"></i>
                                                         </div>
                                                     </td>
