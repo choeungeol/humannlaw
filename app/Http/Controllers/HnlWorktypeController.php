@@ -341,7 +341,7 @@ class HnlWorktypeController extends Controller
         for($i=0; $i < 7; ++$i){
 
 
-            if($isnextday[$i] === 'on'){
+            if($isnextday[$i] === 'on' || $isnextday[$i] == 1){
                 $weekwork[] = sprintf('%02.2f', floor((2400 + $workend[$i] - $workstart[$i]) * 100) / 10000);   //업무종료시간 - 업무시작시간 = 총 근로시간;
             }else{
                 $weekwork[] = sprintf('%02.2f', floor(($workend[$i] - $workstart[$i]) * 100) / 10000);  //업무종료시간 - 업무시작시간 = 총 근로시간;
@@ -1331,7 +1331,7 @@ class HnlWorktypeController extends Controller
         $btime4 = (float)$ebtime4 - (float)$sbtime4;    // 총 야간 휴게시간
         $allbtime = $btime1 + $btime2 + $btime3 + $btime4;
 
-        if($nextdaytime === 'on'){
+        if($nextdaytime == 1 || $nextdaytime === 'on'){
             $exittime = 2400 + $workend;
         }else{
             $exittime = $workend;
@@ -1374,7 +1374,12 @@ class HnlWorktypeController extends Controller
         $types->type = $type;
         $types->sworktime = $workstart;
         $types->eworktime = $workend;
-        $types->nextdaytime = $nextdaytime;
+        if($nextdaytime == 1 || $nextdaytime === 'on'){
+            $types->nextdaytime = 1;
+        }else{
+            $types->nextdaytime = 0;
+        }
+        
         $types->sbtime1 = $sbtime1;
         $types->ebtime1 = $ebtime1;
         $types->sbtime2 = $sbtime2;
