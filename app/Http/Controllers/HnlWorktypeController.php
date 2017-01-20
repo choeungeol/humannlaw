@@ -1081,7 +1081,12 @@ class HnlWorktypeController extends Controller
             $types->ebtime2 = $ebtime2[$i];
             $types->sbtime3 = $sbtime3[$i];
             $types->ebtime3 = $ebtime3[$i];
-            $types->isnextday = $isnextday[$i];
+            if($isnextday[$i] === 1){
+                $types->isnextday = 1;
+            }else{
+                $types->isnextday = 0;
+
+            }
             $types->save();
         }
 
