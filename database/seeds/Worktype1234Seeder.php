@@ -61,7 +61,7 @@ class Worktype1234Seeder extends Seeder
                 'type' => $type[$i],
                 'sworktime' => '',
                 'eworktime' => '',
-                'nextdaytime' => '',
+                'nextdaytime' => '0',
                 'sbtime1' => '',
                 'ebtime1' => '',
                 'sbtime2' => '',

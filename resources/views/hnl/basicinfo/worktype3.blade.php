@@ -92,19 +92,19 @@
                                         </tr>
                                         <tr>
                                             <td><label>익일
-                                                    @if($t[0]->nextdaytime == 0)
-                                                    <input type="checkbox" ng-model="checked">
+                                                    @if($t[0]->nextdaytime === 'on')
+                                                    <input type="checkbox" name="is_next_time" checked>
                                                     @else
-                                                    <input type="checkbox" ng-model="checked" checked>
+                                                    <input type="checkbox" name="is_next_time">
                                                     @endif
                                                 </label>&nbsp;&nbsp;&nbsp;
-                                                <i class="fa fa-question-circle" title="익일 체크" data-container="body" data-toggle="popover" data-placement="top" data-content="익일 체크시 활성화 되며, 24시 이후의 총 시간을 입력하세요 ex)익일 새벽 5시 = 05:00"></i>
+                                                <i class="fa fa-question-circle" title="익일 체크" data-container="body" data-toggle="popover" data-placement="top" data-content="익일 시간 입력시 체크하시고 24시 이후의 총 시간을 입력하세요 ex)익일 새벽 5시 = 05:00"></i>
                                             </td>
                                             <td>
-                                                @if($t[0]->nextdaytime == 0)
-                                                    <input class="form-control input-sm datetime2" type="text" name="next_day_time" placeholder="09:00" ng-disabled="!checked">
+                                                @if($t[0]->eworktime == 0)
+                                                    <input class="form-control input-sm datetime2" type="text" name="work_end_time" placeholder="09:00">
                                                 @else
-                                                    <input class="form-control input-sm datetime2" type="text" name="next_day_time" placeholder="09:00" value="{{ $t[0]->nextdaytime }}" ng-readonly="!checked">
+                                                    <input class="form-control input-sm datetime2" type="text" name="work_end_time" placeholder="09:00" value="{{ $t[0]->eworktime }}">
                                                 @endif
 
                                             </td>
