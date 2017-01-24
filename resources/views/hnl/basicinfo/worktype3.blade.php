@@ -80,7 +80,7 @@
                                         <tr>
                                             <th style="vertical-align: middle;" rowspan="2">근무시간&nbsp;</th>
                                             <td>
-                                                시작 &nbsp;&nbsp;&nbsp;<i class="fa fa-question-circle" title="시작 시간" data-container="body" data-toggle="popover" data-placement="top" data-content="종료시간은 자동 24:00로 설정됩니다."></i>
+                                                시작
                                             </td>
                                             <td>
                                                 @if($t[0]->sworktime == 0)
@@ -91,11 +91,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><label>익일
+                                            <td>종료/<label>익일
                                                     @if($t[0]->nextdaytime == 1 or $t[0]->nextdaytime === 'on')
-                                                    <input type="checkbox" name="is_next_time" checked value="1">
+                                                        <input type="checkbox" name="is_next_time" checked value="1">
                                                     @else
-                                                    <input type="checkbox" name="is_next_time">
+                                                        <input type="checkbox" name="is_next_time">
                                                     @endif
                                                 </label>&nbsp;&nbsp;&nbsp;
                                                 <i class="fa fa-question-circle" title="익일 체크" data-container="body" data-toggle="popover" data-placement="top" data-content="익일 시간 입력시 체크하시고 24시 이후의 총 시간을 입력하세요 ex)익일 새벽 5시 = 05:00"></i>

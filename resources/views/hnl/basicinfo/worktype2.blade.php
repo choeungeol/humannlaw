@@ -19,7 +19,7 @@
     <link href="{{ asset('assets/vendors/pickadate/css/default.date.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/pickadate/css/default.time.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/airDatepicker/css/datepicker.min.css') }}" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/tab.css') }}" />
 @stop
 
 {{-- Page content --}}
@@ -63,7 +63,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <div id="myTabContent" class="tab-content">
+                        <div id="TabContent" class="tab-content">
                             @foreach($typename as $k=> $t)
                                 <form class="tab-pane fade {!! $k === 'A' ? 'active in' : '' !!}" id="{{ $k }}type" method="POST" action="{{ route('insert/worktype2') }}">
                                     <input type="hidden" name="type" value="{{ $k }}">
@@ -81,7 +81,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>종료</td>
+                                            <td>종료/<label>익일
+                                                    @if($t[0]->nextdaytime == 1 or $t[0]->nextdaytime === 'on')
+                                                        <input type="checkbox" name="is_next_time" checked value="1">
+                                                    @else
+                                                        <input type="checkbox" name="is_next_time">
+                                                    @endif
+                                                </label>&nbsp;&nbsp;&nbsp;
+                                                <i class="fa fa-question-circle" title="익일 체크" data-container="body" data-toggle="popover" data-placement="top" data-content="익일 시간 입력시 체크하시고 24시 이후의 총 시간을 입력하세요 ex)익일 새벽 5시 = 05:00"></i>
+                                            </td>
                                             <td>
                                                 @if($t[0]->eworktime == 0)
                                                     <input class="form-control input-sm datetime2" type="text" name="work_end_time" placeholder="09:00" data-format="hh:mm">
@@ -229,5 +237,5 @@
     <script type="text/javascript" src="{{ asset('assets/js/hnl/src/timepickerdirective.js') }}"></script>
 
     <script src="{{ asset('assets/js/hnl/worktype.js') }}" type="text/javascript"></script>
-
+    <script src="{{ asset('assets/js/pages/tabs_accordions.js') }}" type="text/javascript"></script>
 @stop

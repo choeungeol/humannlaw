@@ -17,6 +17,7 @@ class CreateWorktype4Table extends Migration
             $table->string('type' ,10);
             $table->string('sworktime')->nullable();
             $table->string('eworktime')->nullable();
+            $table->boolean('nextdaytime')->nullable()->default(0);
             $table->string('sbtime1')->nullable();
             $table->string('ebtime1')->nullable();
             $table->string('sbtime2')->nullable();

@@ -20,6 +20,8 @@
     <link href="{{ asset('assets/vendors/pickadate/css/default.time.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/airDatepicker/css/datepicker.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/tab.css') }}" />
+
 @stop
 
 {{-- Page content --}}
@@ -63,7 +65,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <div id="myTabContent" class="tab-content">
+                        <div id="TabContent" class="tab-content">
                             @foreach($typename as $t => $v)
                             <form class="tab-pane fade {!! $t === 'A' ? 'active in' : '' !!}" method="POST" action="">
                                 <input type="hidden" name="type" value="{{ $t }}">
@@ -195,5 +197,5 @@
     <script type="text/javascript" src="{{ asset('assets/js/hnl/src/timepickerdirective.js') }}"></script>
 
     <script src="{{ asset('assets/js/hnl/worktype.js') }}" type="text/javascript"></script>
-
+    <script src="{{ asset('assets/js/pages/tabs_accordions.js') }}" type="text/javascript"></script>
 @stop

@@ -1111,6 +1111,7 @@ class HnlWorktypeController extends Controller
     public function typeInsert1(Request $request)
     {
 
+
     }
 
     public function typeInsert2(Request $request)
@@ -1119,6 +1120,7 @@ class HnlWorktypeController extends Controller
         $type = $request->type;
         $workstart = $request->work_start_time;
         $workend = $request->work_end_time;
+        $nextdaytime = $request->is_next_time;
         $sbtime1 = $request->break_stime1;
         $ebtime1 = $request->break_etime1;
         $sbtime2 = $request->break_stime2;
@@ -1193,22 +1195,29 @@ class HnlWorktypeController extends Controller
         $btime4 = (float)$ebtime4 - (float)$sbtime4;    // 휴게시간4
         $allbtime = $btime1 + $btime2 + $btime3 + $btime4;
 
-        $worktime = $workend - $workstart;
-        $worktime = $worktime - $allbtime; // 실 근무시간
+        if($nextdaytime == 1 || $nextdaytime === 'on'){
+            $exittime = 2400 + $workend;
+        }else{
+            $exittime = $workend;
+        }// 익일 체크시 + 2400
+
+
+        $worktime = $exittime - $workstart;
+        $workt = $worktime - $allbtime; // 실 근무시간
 
         $BASICWORK = "0800";
         $NIGHT = "2200";
 
-        if($worktime > $BASICWORK){
+        if($workt > $BASICWORK){
             $wtime = $BASICWORK;
         }else{
-            $wtime = $worktime;
+            $wtime = $workt;
         }   // 소정근로시간
 
-        $etime = ($worktime - $BASICWORK) * 1.5; //연장근로시간
+        $etime = ($workt - $BASICWORK) * 1.5; //연장근로시간
 
-        if($workend > $NIGHT){
-            $ntime = ($workend - $NIGHT) * 0.5;
+        if($exittime > $NIGHT){
+            $ntime = ($exittime - $NIGHT) * 0.5;
         }else{
             $ntime = "0000";
         }   // 야간근로시간
@@ -1233,6 +1242,12 @@ class HnlWorktypeController extends Controller
         $types->type = $type;
         $types->sworktime = $workstart;
         $types->eworktime = $workend;
+        if($nextdaytime == 1 || $nextdaytime === 'on'){
+            $types->nextdaytime = 1;
+        }else{
+            $types->nextdaytime = 0;
+        }
+
         $types->sbtime1 = $sbtime1;
         $types->ebtime1 = $ebtime1;
         $types->sbtime2 = $sbtime2;
@@ -1379,7 +1394,7 @@ class HnlWorktypeController extends Controller
         }else{
             $types->nextdaytime = 0;
         }
-        
+
         $types->sbtime1 = $sbtime1;
         $types->ebtime1 = $ebtime1;
         $types->sbtime2 = $sbtime2;
@@ -1409,6 +1424,7 @@ class HnlWorktypeController extends Controller
         $type = $request->type;
         $workstart = $request->work_start_time;
         $workend = $request->work_end_time;
+        $nextdaytime = $request->is_next_time;
         $sbtime1 = $request->break_stime1;
         $ebtime1 = $request->break_etime1;
         $sbtime2 = $request->break_stime2;
@@ -1478,27 +1494,33 @@ class HnlWorktypeController extends Controller
         $btime4 = (float)$ebtime4 - (float)$sbtime4;    // 휴게시간4
         $allbtime = $btime1 + $btime2 + $btime3 + $btime4;  //총휴게시간
 
-        $worktime = $workend - $workstart;
-        $worktime = $worktime - $allbtime; // 실 근로시간
+        if($nextdaytime == 1 || $nextdaytime === 'on'){
+            $exittime = 2400 + $workend;
+        }else{
+            $exittime = $workend;
+        }// 익일 체크시 + 2400
+
+        $worktime = $exittime - $workstart;
+        $workt = $worktime - $allbtime; // 실 근로시간
 
         $BASICWORK = "0800";
         $NIGHT = "2200";
 
-        if($worktime > $BASICWORK){
+        if($workt > $BASICWORK){
             $wtime = $BASICWORK;
         }else{
-            $wtime = $worktime;
+            $wtime = $workt;
         }   //1일 소정근로시간
 
         if($worktime > $BASICWORK){
-            $etime = ($worktime - $BASICWORK) * 1.5;
+            $etime = ($workt - $BASICWORK) * 1.5;
         }else{
             $etime = '0000' * 1.5;
         }  //1일 연장근로
 
 
-        if($workend > $NIGHT){
-            $ntime = ($workend - $NIGHT) * 0.5;
+        if($exittime > $NIGHT){
+            $ntime = ($exittime - $NIGHT) * 0.5;
         }else{
             $ntime = "0000";
         }   // 1일 야간근로
@@ -1544,6 +1566,11 @@ class HnlWorktypeController extends Controller
         $types->type = $type;
         $types->sworktime = $workstart;
         $types->eworktime = $workend;
+        if($nextdaytime == 1 || $nextdaytime === 'on'){
+            $types->nextdaytime = 1;
+        }else{
+            $types->nextdaytime = 0;
+        }
         $types->sbtime1 = $sbtime1;
         $types->ebtime1 = $ebtime1;
         $types->sbtime2 = $sbtime2;
