@@ -90,7 +90,7 @@
                                             <td>교대수를 먼저 입력해 주세요.</td>
                                         </tr>
                                     </table>
-                                @elseif($v[0]->change === '1')
+                                @elseif($v[0]->change == 1)
                                     <div class="col-md-6">
                                     <table class="table table-bordered" style="margin-bottom:0px;">
                                         <tr>
@@ -159,7 +159,7 @@
                                         </tr>
                                     </table>
                                     </div>
-                                @elseif($v[0]->change === '2')
+                                @elseif($v[0]->change == 2)
                                     <div class="col-md-6">
                                         <table class="table table-bordered" style="margin-bottom:0px;">
                                             <tr>
@@ -292,7 +292,7 @@
                                             </tr>
                                         </table>
                                     </div>
-                                @elseif($v[0]->change === '3')
+                                @elseif($v[0]->change == 3)
                                     <div class="col-md-6">
                                         <table class="table table-bordered" style="margin-bottom:0px;">
                                             <tr>
@@ -489,7 +489,7 @@
                                             </tr>
                                         </table>
                                     </div>
-                                @elseif($v[0]->change === '4')
+                                @elseif($v[0]->change == 4)
                                     <div class="col-md-6">
                                         <table class="table table-bordered" style="margin-bottom:0px;">
                                             <tr>
@@ -750,7 +750,7 @@
                                             </tr>
                                         </table>
                                     </div>
-                                @elseif($v[0]->change === '5')
+                                @elseif($v[0]->change == 5)
                                     <div class="col-md-6">
                                         <table class="table table-bordered" style="margin-bottom:0px;">
                                             <tr>
