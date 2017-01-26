@@ -1110,9 +1110,120 @@ class HnlWorktypeController extends Controller
 
     public function typeInsert1(Request $request)
     {
+        $type = $request->type;
+
+        $part = $request->part;
+        $change = $request->change;
+        $type = $request->type;
+
+        $arr = array(
+            0 => $request->first_work_start_time,
+            1 => $request->first_work_end_time,
+            2 => $request->second_work_start_time,
+            3 => $request->second_work_end_time,
+            4 => $request->third_work_start_time,
+            5 => $request->third_work_end_time,
+            6 => $request->fourth_work_start_time,
+            7 => $request->fourth_work_end_time,
+            8 => $request->fifth_work_start_time,
+            9 => $request->fifth_work_end_time,
+            10 => $request->is_next_time,
+            11 => $request->first_break_stime1,
+            12 => $request->first_break_etime1,
+            13 => $request->first_break_stime2,
+            14 => $request->first_break_etime2,
+            15 => $request->second_break_stime1,
+            16 => $request->second_break_etime1,
+            17 => $request->second_break_stime2,
+            18 => $request->second_break_etime2,
+            19 => $request->third_break_stime1,
+            20 => $request->third_break_etime1,
+            21 => $request->third_break_stime2,
+            22 => $request->third_break_etime2,
+            23 => $request->fourth_break_stime1,
+            24 => $request->fourth_break_etime1,
+            25 => $request->fourth_break_stime2,
+            26 => $request->fourth_break_etime2,
+            27 => $request->fifth_break_stime1,
+            28 => $request->fifth_break_etime1,
+            29 => $request->fifth_break_stime2,
+            30 => $request->fifth_break_etime2,
+        );
+        /*$first_workstart = $request->first_work_start_time;
+        $first_workend = $request->first_work_end_time;
+        $second_workstart = $request->second_work_start_time;
+        $second_workend = $request->second_work_end_time;
+        $third_workstart = $request->third_work_start_time;
+        $third_workend = $request->third_work_end_time;
+        $fourth_workstart = $request->fourth_work_start_time;
+        $fourth_workend = $request->fourth_work_end_time;
+        $fifth_workstart = $request->fifth_work_start_time;
+        $fifth_workend = $request->fifth_work_end_time;
+        $nextdaytime = $request->is_next_time;
+        $first_sbtime1 = $request->first_break_stime1;
+        $first_ebtime1 = $request->first_break_etime1;
+        $first_sbtime2 = $request->first_break_stime2;
+        $first_ebtime2 = $request->first_break_etime2;
+        $second_sbtime1 = $request->second_break_stime1;
+        $second_ebtime1 = $request->second_break_etime1;
+        $second_sbtime2 = $request->second_break_stime2;
+        $second_ebtime2 = $request->second_break_etime2;
+        $third_sbtime1 = $request->third_break_stime1;
+        $third_ebtime1 = $request->third_break_etime1;
+        $third_sbtime2 = $request->third_break_stime2;
+        $third_ebtime2 = $request->third_break_etime2;
+        $fourth_sbtime1 = $request->fourth_break_stime1;
+        $fourth_ebtime1 = $request->fourth_break_etime1;
+        $fourth_sbtime2 = $request->fourth_break_stime2;
+        $fourth_ebtime2 = $request->fourth_break_etime2;
+        $fifth_sbtime1 = $request->fifth_break_stime1;
+        $fifth_ebtime1 = $request->fifth_break_etime1;
+        $fifth_sbtime2 = $request->fifth_break_stime2;
+        $fifth_ebtime2 = $request->fifth_break_etime2;
+        $part = $request->part;
+        $change = $request->change;*/
+
+       /* $first_workstart = str_replace(':','',$workstart);    //업무시작시간 : 표시 없애기
+        $first_workend = str_replace(':','',$workend);        //업무종료시간 : 표시 없애기
+        $second_workstart = str_replace(':','',$sbtime1);    //휴식시작시간1 : 표시 없애기
+        $second_workend = str_replace(':','',$ebtime1);    //휴식종료시간1 : 표시 없애기
+        $third_workstart = str_replace(':','',$sbtime2);    //휴식시작시간2 : 표시 없애기
+        $third_workend = str_replace(':','',$ebtime2);    //휴식종료시간2 : 표시 없애기
+        $fourth_workstart = str_replace(':','',$sbtime3);    //휴식시작시간3 : 표시 없애기
+        $fourth_workend = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $fifth_workstart = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $fifth_workend = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $first_sbtime1 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $second_ebtime1 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $second_sbtime2 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $second_ebtime2 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $third_sbtime1 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $third_ebtime1 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $third_sbtime2 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $third_ebtime2 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $fourth_sbtime1 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $fourth_ebtime1 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $fourth_sbtime2 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $fourth_ebtime2 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $fifth_sbtime1 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $fifth_ebtime1 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $fifth_sbtime2 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
+        $fifth_ebtime2 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기*/
 
 
+        for($i=0; $i < count($arr); $i++){
+            $arr = str_replace(':','',$arr[$i]);
+        }
+
+
+        $types = Worktypes1::where('type', '=', $type)->first();
+        $types->part = $part;
+        $types->change = $change;
+        $types->save();
+
+        return Redirect::to('hnl/basicinfo/worktype1')->with('success');
     }
+
 
     public function typeInsert2(Request $request)
     {

@@ -67,102 +67,1015 @@
                         </ul>
                         <div id="TabContent" class="tab-content">
                             @foreach($typename as $t => $v)
-                            <form class="tab-pane fade {!! $t === 'A' ? 'active in' : '' !!}" method="POST" action="">
+                            <form class="tab-pane fade {!! $t === 'A' ? 'active in' : '' !!}" method="POST" id="{{$t}}type" action="{{ route('insert/worktype1') }}">
                                 <input type="hidden" name="type" value="{{ $t }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                <table class="table table-condensed" style="margin-bottom:0px;">
-                                    <tr>
-                                        <th style="vertical-align: middle;" rowspan="2">근무시간&nbsp;</th>
-                                        <td>시작</td>
-                                        <td>
-                                            @if($v[0]->sworktime == 0)
-                                                <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $v[0]->sortnum }}" placeholder="09:00">
-                                            @else
-                                                <input type="text" class="form-control input-sm datetime2" name="work_start_time{{ $v[0]->sortnum }}" placeholder="09:00" value="{{ $v[0]->sworktime }}">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>종료</td>
-                                        <td>
-                                            @if($v[0]->eworktime == 0)
-                                                <input class="form-control input-sm datetime2" type="text" name="work_end_time{{ $v[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
-                                            @else
-                                                <input class="form-control input-sm datetime2" type="text" name="work_end_time{{ $v[0]->sortnum }}" placeholder="09:00" value="{{ $v[0]->eworktime }}" data-format="hh:mm">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <table class="table table-condensed" style="margin-bottom:1px;">
-                                    <tr>
-                                        <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
-                                        <td>시작</td>
-                                        <td>
-                                            @if($v[0]->sbtime1 == 0)
-                                                <input class="form-control input-sm datetime2" type="text" name="break_stime1{{ $v[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
-                                            @else
-                                                <input class="form-control input-sm datetime2" type="text" name="break_stime1{{ $v[0]->sortnum }}" placeholder="09:00" value="{{ $v[0]->sbtime1 }}" data-format="hh:mm">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>종료</td>
-                                        <td>
-                                            @if($v[0]->ebtime1 == 0)
-                                                <input class="form-control input-sm datetime2" type="text" name="break_etime1{{ $v[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
-                                            @else
-                                                <input class="form-control input-sm datetime2" type="text" name="break_etime1{{ $v[0]->sortnum }}" placeholder="09:00" value="{{ $v[0]->ebtime1 }}" data-format="hh:mm">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                </table>
-                                <table class="table table-condensed" style="margin-bottom:1px;">
-                                    <tr>
-                                        <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
-                                        <td>시작</td>
-                                        <td>
-                                            @if($v[0]->sbtime2 == 0)
-                                                <input class="form-control input-sm datetime2" type="text" name="break_stime2{{ $v[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
-                                            @else
-                                                <input class="form-control input-sm datetime2" type="text" name="break_stime2{{ $v[0]->sortnum }}" placeholder="09:00" value="{{ $v[0]->sbtime2 }}" data-format="hh:mm">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>종료</td>
-                                        <td>
-                                            @if($v[0]->ebtime2 == 0)
-                                                <input class="form-control input-sm datetime2" type="text" name="break_etime2{{ $v[0]->sortnum }}" placeholder="09:00" data-format="hh:mm">
-                                            @else
-                                                <input class="form-control input-sm datetime2" type="text" name="break_etime2{{ $v[0]->sortnum }}" placeholder="09:00" value="{{ $v[0]->ebtime2 }}" data-format="hh:mm">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                </table>
-{{--                                <table class="table table-condensed" style="margin-bottom:1px;">
-                                    <tr>
-                                        <th style="vertical-align: middle;" rowspan="2">휴게시간3</th>
-                                        <td>시작</td>
-                                        <td>
-                                            @if($t->sbtime3 == 0)
-                                                <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $t->sortnum }}" placeholder="09:00" data-format="hh:mm">
-                                            @else
-                                                <input class="form-control input-sm datetime2" type="text" name="break_stime3{{ $t->sortnum }}" placeholder="09:00" value="{{ $t->sbtime3 }}" data-format="hh:mm">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>종료</td>
-                                        <td>
-                                            @if($t->ebtime3 == 0)
-                                                <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $t->sortnum }}" placeholder="09:00" data-format="hh:mm">
-                                            @else
-                                                <input class="form-control input-sm datetime2" type="text" name="break_etime3{{ $t->sortnum }}" placeholder="09:00" value="{{ $t->ebtime3 }}" data-format="hh:mm">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                </table>--}}
+                                <div class="form-inline col-md-12">
+                                    <div class="input-group">
+                                        <div class="form-inline">
+                                            <input type="text" class="form-control" name="part" placeholder="조를 입력하세요" value="{{ $v[0]->part }}">
+                                            <input type="text" class="form-control" name="change" placeholder="교대수를 입력하세요" value="{{ $v[0]->change }}">
+                                        </div>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default">
+                                                입력
+                                            </button>
+                                        </div>
+                                    </div>
+                                    * 최대 5교대까지
+                                </div>
+                                @if($v[0]->change == null)
+                                    <table class="table table-bordered" style="margin-bottom:0px;">
+                                        <tr>
+                                            <td>교대수를 먼저 입력해 주세요.</td>
+                                        </tr>
+                                    </table>
+                                @elseif($v[0]->change === '1')
+                                    <div class="col-md-6">
+                                    <table class="table table-bordered" style="margin-bottom:0px;">
+                                        <tr>
+                                            <th style="vertical-align: middle;" rowspan="6">1교대 &nbsp;</th>
+                                            <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                            <td>시작</td>
+                                            <td>
+                                                @if($v[0]->sworktime == 0)
+                                                    <input type="text" class="form-control input-sm datetime2" name="first_work_start_time" placeholder="09:00">
+                                                @else
+                                                    <input type="text" class="form-control input-sm datetime2" name="first_work_start_time" value="{{ $v[0]->first_sworktime }}" placeholder="09:00">
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>종료</td>
+                                            <td>
+                                                @if($v[0]->eworktime == 0)
+                                                    <input class="form-control input-sm datetime2" type="text" name="first_work_end_time" placeholder="09:00">
+                                                @else
+                                                    <input class="form-control input-sm datetime2" type="text" name="first_work_end_time" placeholder="09:00" value="{{ $v[0]->first_eworktime }}">
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                            <td>시작</td>
+                                            <td>
+                                                @if($v[0]->sbtime1 == 0)
+                                                    <input class="form-control input-sm datetime2" type="text" name="first_break_stime1" placeholder="09:00">
+                                                @else
+                                                    <input class="form-control input-sm datetime2" type="text" name="first_break_stime1" placeholder="09:00" value="{{ $v[0]->first_sbtime1 }}">
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>종료</td>
+                                            <td>
+                                                @if($v[0]->ebtime1 == 0)
+                                                    <input class="form-control input-sm datetime2" type="text" name="first_break_etime1" placeholder="09:00">
+                                                @else
+                                                    <input class="form-control input-sm datetime2" type="text" name="first_break_etime1" placeholder="09:00" value="{{ $v[0]->first_ebtime1 }}">
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                            <td>시작</td>
+                                            <td>
+                                                @if($v[0]->sbtime2 == 0)
+                                                    <input class="form-control input-sm datetime2" type="text" name="first_break_stime2" placeholder="09:00">
+                                                @else
+                                                    <input class="form-control input-sm datetime2" type="text" name="first_break_stime2" placeholder="09:00" value="{{ $v[0]->first_sbtime2 }}">
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>종료</td>
+                                            <td>
+                                                @if($v[0]->ebtime2 == 0)
+                                                    <input class="form-control input-sm datetime2" type="text" name="first_break_etime2" placeholder="09:00">
+                                                @else
+                                                    <input class="form-control input-sm datetime2" type="text" name="first_break_etime2" placeholder="09:00" value="{{ $v[0]->first_ebtime2 }}">
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    </div>
+                                @elseif($v[0]->change === '2')
+                                    <div class="col-md-6">
+                                        <table class="table table-bordered" style="margin-bottom:0px;">
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">1교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="first_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="first_work_start_time" value="{{ $v[0]->first_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_work_end_time" placeholder="09:00" value="{{ $v[0]->first_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime1" placeholder="09:00" value="{{ $v[0]->first_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime1" placeholder="09:00" value="{{ $v[0]->first_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime2" placeholder="09:00" value="{{ $v[0]->first_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime2" placeholder="09:00" value="{{ $v[0]->first_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">2교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="second_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="second_work_start_time" value="{{ $v[0]->second_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_work_end_time" placeholder="09:00" value="{{ $v[0]->second_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime1" placeholder="09:00" value="{{ $v[0]->second_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime1" placeholder="09:00" value="{{ $v[0]->second_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime2" placeholder="09:00" value="{{ $v[0]->second_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime2" placeholder="09:00" value="{{ $v[0]->second_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                @elseif($v[0]->change === '3')
+                                    <div class="col-md-6">
+                                        <table class="table table-bordered" style="margin-bottom:0px;">
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">1교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="first_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="first_work_start_time" value="{{ $v[0]->first_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_work_end_time" placeholder="09:00" value="{{ $v[0]->first_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime1" placeholder="09:00" value="{{ $v[0]->first_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime1" placeholder="09:00" value="{{ $v[0]->first_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime2" placeholder="09:00" value="{{ $v[0]->first_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime2" placeholder="09:00" value="{{ $v[0]->first_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">2교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="second_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="second_work_start_time" value="{{ $v[0]->second_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_work_end_time" placeholder="09:00" value="{{ $v[0]->second_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime1" placeholder="09:00" value="{{ $v[0]->second_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime1" placeholder="09:00" value="{{ $v[0]->second_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime2" placeholder="09:00" value="{{ $v[0]->second_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime2" placeholder="09:00" value="{{ $v[0]->second_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">3교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="third_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="third_work_start_time" value="{{ $v[0]->third_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_work_end_time" placeholder="09:00" value="{{ $v[0]->third_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime1" placeholder="09:00" value="{{ $v[0]->third_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime1" placeholder="09:00" value="{{ $v[0]->third_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime2" placeholder="09:00" value="{{ $v[0]->third_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime2" placeholder="09:00" value="{{ $v[0]->third_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                @elseif($v[0]->change === '4')
+                                    <div class="col-md-6">
+                                        <table class="table table-bordered" style="margin-bottom:0px;">
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">1교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="first_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="first_work_start_time" value="{{ $v[0]->first_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_work_end_time" placeholder="09:00" value="{{ $v[0]->first_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime1" placeholder="09:00" value="{{ $v[0]->first_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime1" placeholder="09:00" value="{{ $v[0]->first_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime2" placeholder="09:00" value="{{ $v[0]->first_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime2" placeholder="09:00" value="{{ $v[0]->first_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">2교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="second_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="second_work_start_time" value="{{ $v[0]->second_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_work_end_time" placeholder="09:00" value="{{ $v[0]->second_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime1" placeholder="09:00" value="{{ $v[0]->second_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime1" placeholder="09:00" value="{{ $v[0]->second_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime2" placeholder="09:00" value="{{ $v[0]->second_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime2" placeholder="09:00" value="{{ $v[0]->second_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">3교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="third_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="third_work_start_time" value="{{ $v[0]->third_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_work_end_time" placeholder="09:00" value="{{ $v[0]->third_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime1" placeholder="09:00" value="{{ $v[0]->third_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime1" placeholder="09:00" value="{{ $v[0]->third_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime2" placeholder="09:00" value="{{ $v[0]->third_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime2" placeholder="09:00" value="{{ $v[0]->third_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">4교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="fourth_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="fourth_work_start_time" value="{{ $v[0]->fourth_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_work_end_time" placeholder="09:00" value="{{ $v[0]->fourth_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_stime1" placeholder="09:00" value="{{ $v[0]->fourth_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_etime1" placeholder="09:00" value="{{ $v[0]->fourth_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_stime2" placeholder="09:00" value="{{ $v[0]->fourth_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_etime2" placeholder="09:00" value="{{ $v[0]->fourth_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                @elseif($v[0]->change === '5')
+                                    <div class="col-md-6">
+                                        <table class="table table-bordered" style="margin-bottom:0px;">
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">1교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="first_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="first_work_start_time" value="{{ $v[0]->first_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_work_end_time" placeholder="09:00" value="{{ $v[0]->first_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime1" placeholder="09:00" value="{{ $v[0]->first_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime1" placeholder="09:00" value="{{ $v[0]->first_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_stime2" placeholder="09:00" value="{{ $v[0]->first_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="first_break_etime2" placeholder="09:00" value="{{ $v[0]->first_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">2교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="second_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="second_work_start_time" value="{{ $v[0]->second_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_work_end_time" placeholder="09:00" value="{{ $v[0]->second_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime1" placeholder="09:00" value="{{ $v[0]->second_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime1" placeholder="09:00" value="{{ $v[0]->second_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_stime2" placeholder="09:00" value="{{ $v[0]->second_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="second_break_etime2" placeholder="09:00" value="{{ $v[0]->second_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">3교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="third_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="third_work_start_time" value="{{ $v[0]->third_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_work_end_time" placeholder="09:00" value="{{ $v[0]->third_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime1" placeholder="09:00" value="{{ $v[0]->third_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime1" placeholder="09:00" value="{{ $v[0]->third_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_stime2" placeholder="09:00" value="{{ $v[0]->third_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="third_break_etime2" placeholder="09:00" value="{{ $v[0]->third_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">4교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="fourth_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="fourth_work_start_time" value="{{ $v[0]->fourth_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_work_end_time" placeholder="09:00" value="{{ $v[0]->fourth_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_stime1" placeholder="09:00" value="{{ $v[0]->fourth_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_etime1" placeholder="09:00" value="{{ $v[0]->fourth_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_stime2" placeholder="09:00" value="{{ $v[0]->fourth_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fourth_break_etime2" placeholder="09:00" value="{{ $v[0]->fourth_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="6">5교대 &nbsp;</th>
+                                                <th style="vertical-align: middle;" rowspan="2">근무시간 &nbsp;</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sworktime == 0)
+                                                        <input type="text" class="form-control input-sm datetime2" name="fifth_work_start_time" placeholder="09:00">
+                                                    @else
+                                                        <input type="text" class="form-control input-sm datetime2" name="fifth_work_start_time" value="{{ $v[0]->fifth_sworktime }}" placeholder="09:00">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->eworktime == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fifth_work_end_time" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fifth_work_end_time" placeholder="09:00" value="{{ $v[0]->fifth_eworktime }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간1</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fifth_break_stime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fifth_break_stime1" placeholder="09:00" value="{{ $v[0]->fifth_sbtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime1 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name=fifth_break_etime1" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fifth_break_etime1" placeholder="09:00" value="{{ $v[0]->fifth_ebtime1 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle;" rowspan="2">휴게시간2</th>
+                                                <td>시작</td>
+                                                <td>
+                                                    @if($v[0]->sbtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fifth_break_stime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fifth_break_stime2" placeholder="09:00" value="{{ $v[0]->fifth_sbtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>종료</td>
+                                                <td>
+                                                    @if($v[0]->ebtime2 == 0)
+                                                        <input class="form-control input-sm datetime2" type="text" name="fifth_break_etime2" placeholder="09:00">
+                                                    @else
+                                                        <input class="form-control input-sm datetime2" type="text" name="fifth_break_stime2" placeholder="09:00" value="{{ $v[0]->fifth_ebtime2 }}">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                @endif
                             </form>
                             @endforeach
                         </div>

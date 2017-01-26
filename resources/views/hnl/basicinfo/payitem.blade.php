@@ -411,7 +411,7 @@
                                                 <tr>
                                                     <td></td>
                                                     <td>
-                                                        <input type="text" class="form-control input-sm" readonly value="{{ $p4->title }}">
+                                                        <input type="text" clas s="form-control input-sm" readonly value="{{ $p4->title }}">
                                                     </td>
                                                     <td>
                                                         <select class="form-control input-sm" name="paycalc">
@@ -511,27 +511,27 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <tr>
-                                    <th>명 칭</th>
+                        <div class="col-lg-2">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <tr>
+                                        <th>명 칭</th>
+                                        <th>사용 여부</th>
+                                    </tr>
                                     @foreach($tdeduction as $td)
-                                    <th>{{ $td->title }}</th>
-                                    @endforeach
-                                </tr>
-                                <tr>
-                                    <td>사용여부</td>
-                                    @foreach($tdeduction as $td)
+                                    <tr>
+                                        <th>{{ $td->title }}</th>
                                         <form class="checkbox{{$td->id}}" action="{{ route('check/tdeduction',$td->id) }}" method="POST">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <td>
-                                            <input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                   data-off-color="primary" data-animate onchange="$('.checkbox{{ $td->id }}').submit();" value="{!! ($td->is_check == 0) ? 'false' : 'true' !!}" {!! ($td->is_check == 1) ? 'checked' : '' !!}>
-                                        </td>
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                            <td>
+                                                <input type="checkbox" name="my-checkbox" data-on-color="info"
+                                                       data-off-color="primary" data-animate onchange="$('.checkbox{{ $td->id }}').submit();" value="{!! ($td->is_check == 0) ? 'false' : 'true' !!}" {!! ($td->is_check == 1) ? 'checked' : '' !!}>
+                                            </td>
                                         </form>
+                                    </tr>
                                     @endforeach
-                                </tr>
-                            </table>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
