@@ -71,12 +71,14 @@ class HnlWorktypeController extends Controller
         }
 
         for($i=0; $i < count($alpha); $i++){
+
             $typename[$alpha[$i]][] = $calc[$i];
+
         }
 
         if(Sentinel::check())
 
-        return view('hnl.basicinfo.worktype1',compact('typename','calctotal'));
+            return view('hnl.basicinfo.worktype1',compact('typename','calctotal'));
 
         else
 
@@ -1114,41 +1116,61 @@ class HnlWorktypeController extends Controller
 
         $part = $request->part;
         $change = $request->change;
-        $type = $request->type;
 
-        $arr = array(
+        $first_arr = array(
             0 => $request->first_work_start_time,
             1 => $request->first_work_end_time,
-            2 => $request->second_work_start_time,
-            3 => $request->second_work_end_time,
-            4 => $request->third_work_start_time,
-            5 => $request->third_work_end_time,
-            6 => $request->fourth_work_start_time,
-            7 => $request->fourth_work_end_time,
-            8 => $request->fifth_work_start_time,
-            9 => $request->fifth_work_end_time,
-            10 => $request->is_next_time,
-            11 => $request->first_break_stime1,
-            12 => $request->first_break_etime1,
-            13 => $request->first_break_stime2,
-            14 => $request->first_break_etime2,
-            15 => $request->second_break_stime1,
-            16 => $request->second_break_etime1,
-            17 => $request->second_break_stime2,
-            18 => $request->second_break_etime2,
-            19 => $request->third_break_stime1,
-            20 => $request->third_break_etime1,
-            21 => $request->third_break_stime2,
-            22 => $request->third_break_etime2,
-            23 => $request->fourth_break_stime1,
-            24 => $request->fourth_break_etime1,
-            25 => $request->fourth_break_stime2,
-            26 => $request->fourth_break_etime2,
-            27 => $request->fifth_break_stime1,
-            28 => $request->fifth_break_etime1,
-            29 => $request->fifth_break_stime2,
-            30 => $request->fifth_break_etime2,
+            2 => $request->first_break_stime1,
+            3 => $request->first_break_etime1,
+            4 => $request->first_break_stime2,
+            5 => $request->first_break_etime2
         );
+
+        $second_arr = array(
+            0 => $request->second_work_start_time,
+            1 => $request->second_work_end_time,
+            2 => $request->second_break_stime1,
+            3 => $request->second_break_etime1,
+            4 => $request->second_break_stime2,
+            5 => $request->second_break_etime2,
+        );
+
+        $third_arr = array(
+            0 => $request->third_work_start_time,
+            1 => $request->third_work_end_time,
+            2 => $request->third_break_stime1,
+            3 => $request->third_break_etime1,
+            4 => $request->third_break_stime2,
+            5 => $request->third_break_etime2,
+        );
+
+        $fourth_arr = array(
+            0 => $request->fourth_work_start_time,
+            1 => $request->fourth_work_end_time,
+            2 => $request->fourth_break_stime1,
+            3 => $request->fourth_break_etime1,
+            4 => $request->fourth_break_stime2,
+            5 => $request->fourth_break_etime2
+        );
+
+        $fifth_arr = array(
+            0 => $request->fifth_work_start_time,
+            1 => $request->fifth_work_end_time,
+            2 => $request->fifth_break_stime1,
+            3 => $request->fifth_break_etime1,
+            4 => $request->fifth_break_stime2,
+            5 => $request->fifth_break_etime2
+        );
+
+        $nextday_arr = array(
+            0 => $request->third_nextday,
+            1 => $request->third_bnextday,
+            2 => $request->fourth_nextday,
+            3 => $request->fourth_bnextday,
+            4 => $request->fifth_nextday,
+            5 => $request->fifth_bnextday
+        );
+
         /*$first_workstart = $request->first_work_start_time;
         $first_workend = $request->first_work_end_time;
         $second_workstart = $request->second_work_start_time;
@@ -1209,17 +1231,303 @@ class HnlWorktypeController extends Controller
         $fifth_ebtime1 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
         $fifth_sbtime2 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기
         $fifth_ebtime2 = str_replace(':','',$ebtime3);    //휴식종료시간3 : 표시 없애기*/
+        $NIGHT = "2200";
 
+        for($i=0; $i < count($first_arr); $i++){
 
-        for($i=0; $i < count($arr); $i++){
-            $arr = str_replace(':','',$arr[$i]);
+            $first_array[] = str_replace(':','',$first_arr[$i]);
+
+            if($first_array[$i] == null){
+                $first_arrays[] = '0000';
+            }else{
+                $first_arrays[] = $first_array[$i];
+            }
+
+            // 시작 시간 입력값이 비어있으면 0
         }
 
+        for($i=0; $i < count($second_arr); $i++){
+
+            $second_array[] = str_replace(':','',$second_arr[$i]);
+
+            if($second_array[$i] == null){
+                $second_arrays[] = '0000';
+            }else{
+                $second_arrays[] = $second_array[$i];
+            }
+            // 시작 시간 입력값이 비어있으면 0
+        }
+
+        for($i=0; $i < count($third_arr); $i++){
+
+            $third_array[] = str_replace(':','',$third_arr[$i]);
+
+            if($third_array[$i] == null){
+                $third_arrays[] = '0000';
+            }else{
+                $third_arrays[] = $third_array[$i];
+            }
+            // 시작 시간 입력값이 비어있으면 0
+        }
+
+        for($i=0; $i < count($fourth_arr); $i++){
+
+            $fourth_array[] = str_replace(':','',$fourth_arr[$i]);
+
+            if($fourth_array[$i] == null){
+                $fourth_arrays[] = '0000';
+            }else{
+                $fourth_arrays[] = $fourth_array[$i];
+            }
+            // 시작 시간 입력값이 비어있으면 0
+        }
+
+        for($i=0; $i < count($fifth_arr); $i++){
+
+            $fifth_array[] = str_replace(':','',$fifth_arr[$i]);
+
+            if($fifth_array[$i] == null){
+                $fifth_arrays[] = '0000';
+            }else{
+                $fifth_arrays[] = $fifth_array[$i];
+            }
+            // 시작 시간 입력값이 비어있으면 0
+        }
+
+        //교대별 휴게시간
+        $firstbreaktime = ($first_arrays[3] - $first_arrays[2]) + ($first_arrays[5] - $first_arrays[4]);
+        $secondbreaktime = ($second_arrays[3] - $second_arrays[2]) + ($second_arrays[5] - $second_arrays[4]);
+
+        if($nextday_arr[1] == 1 || $nextday_arr[1] === 'on'){
+            $thirdbreaktime = ($third_arrays[3] - $third_arrays[2]) + ((2400 + $third_arrays[5]) - $third_arrays[4]);
+        }else{
+            $thirdbreaktime = ($third_arrays[3] - $third_arrays[2]) + ($third_arrays[5] - $third_arrays[4]);
+        }
+
+        if($nextday_arr[3] == 1 || $nextday_arr[3] === 'on') {
+            $fourthbreaktime = ($fourth_arrays[3] - $fourth_arrays[2]) + ((2400 + $fourth_arrays[5]) - $fourth_arrays[4]);
+        }else{
+            $fourthbreaktime = ($fourth_arrays[3] - $fourth_arrays[2]) + ($fourth_arrays[5] - $fourth_arrays[4]);
+        }
+
+        if($nextday_arr[5] == 1 || $nextday_arr[5] === 'on') {
+            $fifthbreaktime = ($fifth_arrays[3] - $fifth_arrays[2]) + ((2400 + $fifth_arrays[5]) - $fifth_arrays[4]);
+        }else{
+            $fifthbreaktime = ($fifth_arrays[3] - $fifth_arrays[2]) + ($fifth_arrays[5] - $fifth_arrays[4]);
+        }
+
+        //교대별 근무시간
+        $change_first_worktime = $first_arrays[1] - $first_arrays[0];
+        $change_second_worktime = $second_arrays[1] - $second_arrays[0];
+
+        if($nextday_arr[0] == 1 || $nextday_arr[0] === 'on'){
+
+            $change_third_worktime = (2400 + $third_arrays[1]) - $third_arrays[0];
+            $third_night_worktime = (2400 + $third_arrays[1]) - $NIGHT;
+
+        }else{
+
+            $change_third_worktime = $third_arrays[1] - $third_arrays[0];
+            $third_night_worktime = '0000';
+        }
+
+        if($nextday_arr[2] == 1 || $nextday_arr[2] === 'on'){
+
+            $change_fourth_worktime = (2400 + $fourth_arrays[1]) - $fourth_arrays[0];
+            $fourth_night_worktime =  (2400 + $fourth_arrays[1]) - $NIGHT;
+        }else{
+
+            $change_fourth_worktime = $fourth_arrays[1] - $fourth_arrays[0];
+            $fourth_night_worktime = '0000';
+        }
+
+        if($nextday_arr[4] == 1 || $nextday_arr[4] === 'on'){
+
+            $change_fifth_worktime = (2400 + $fifth_arrays[1]) - $fifth_arrays[0];
+            $fifth_night_worktime =  (2400 + $fifth_arrays[1]) - $NIGHT;
+        }else{
+
+            $change_fifth_worktime = $fifth_arrays[1] - $fifth_arrays[0];
+            $fifth_night_worktime = '0000';
+        }
+
+
+
+        //실근로시간
+        $first_real_wtime = $change_first_worktime - $firstbreaktime;
+        $second_real_wtime = $change_second_worktime - $secondbreaktime;
+        $third_real_wtime = $change_third_worktime - $thirdbreaktime;
+        $fourth_real_wtime = $change_fourth_worktime - $fourthbreaktime;
+        $fifth_real_wtime = $change_fifth_worktime - $fifthbreaktime;
+
+        $BASICWORK = "0800";
+
+        if($first_real_wtime > $BASICWORK){
+            $first_wtime = $BASICWORK;
+        }else{
+            $first_wtime = $first_real_wtime;
+        }   // 1st 소정근로시간
+
+        if($second_real_wtime > $BASICWORK){
+            $second_wtime = $BASICWORK;
+        }else{
+            $second_wtime = $second_real_wtime;
+        }   // 2nd 소정근로시간
+
+        if($third_real_wtime > $BASICWORK){
+            $third_wtime = $BASICWORK;
+        }else{
+            $third_wtime = $third_real_wtime;
+        }   // 3rd 소정근로시간
+
+        if($fourth_real_wtime > $BASICWORK){
+            $fourth_wtime = $BASICWORK;
+        }else{
+            $fourth_wtime = $fourth_real_wtime;
+        }   // 4th 소정근로시간
+
+        if($fifth_real_wtime > $BASICWORK){
+            $fifth_wtime = $BASICWORK;
+        }else{
+            $fifth_wtime = $fifth_real_wtime;
+        }   // 5th 소정근로시간
+
+        if($first_real_wtime > 800){
+            $first_etime = ($first_real_wtime - 800) * 1.5;
+        }else{
+            $first_etime = 0;
+        }
+
+        if($second_real_wtime > 800){
+            $second_etime = ($second_real_wtime - 800) * 1.5;
+        }else{
+            $second_etime = 0;
+        }
+
+        if($third_real_wtime > 800){
+            $third_etime = ($third_real_wtime - 800) * 1.5;
+        }else{
+            $third_etime = 0;
+        }
+
+        if($fourth_real_wtime > 800){
+            $fourth_etime = ($fourth_real_wtime - 800) * 1.5;
+        }else{
+            $fourth_etime = 0;
+        }
+
+        if($fifth_real_wtime > 800){
+            $fifth_etime = ($fifth_real_wtime - 800) * 1.5;
+        }else{
+            $fifth_etime = 0;
+        }
+
+        //조 * 7일 = 일간
+        $parts = $part * 7;
+
+        //총교대 소정근로시간 합계
+        $sumwtime = $first_wtime + $second_wtime + $third_wtime + $fourth_wtime + $fifth_wtime;
+
+        //총교대 연장근무시간 합계
+        $sumetime = $first_etime + $second_etime + $third_etime + $fourth_etime +  $fifth_etime;
+
+        //총교대 야간근로시간 합계
+        $nightwork = ($third_night_worktime + $fourth_night_worktime + $fifth_night_worktime) * 0.5;
+
+        //조 * 7일간 소정근로
+        $sumallwtime = (($sumwtime * 7) * 100) / 10000 ;
+
+        //조 * 7일간 연장근무시간
+        $sumalletime = (($sumetime * 7) * 100) / 10000 ;
+
+        //조 * 7일간 야간근무시간.
+        $sumallnightwtime = (($nightwork * 7) * 100) / 10000;
+
+        //1주간 소정근무시간
+        $weekwtime = $sumallwtime / $part;
+
+        if($weekwtime > 40){
+            $wwtime = 40;
+        }else{
+            $wwtime = $weekwtime;
+        }
+
+        //1주간 연장근무시간
+        $weeketime = ($sumalletime / $part) + (($sumallwtime / $part) - $weekwtime) * 1.5;
+
+        //1주간 야간근무시간
+        $weekntime = $sumallnightwtime / $part;
+
+        //1개월간 소정근무시간
+        $monthwtime = sprintf('%02.2f',($weekwtime * 4.345));
+
+        //1개월간 연장근무시간
+        $monthetime = sprintf('%02.2f',($weeketime * 4.345));
+
+        //1개월간 야간근무시간
+        $monthntime = sprintf('%02.2f',($weekntime * 4.345));
+
+        //1개월 주휴시간
+        $monthbreak = sprintf('%02.2f',floor(($sumwtime / $change) * 4.345) * 100) / 10000;
+
+        //1개월 연차시간
+        $mwbt = sprintf('%02.2f',floor((($sumwtime / $change) * 15) / 12) * 100) / 10000;
+
+        //총근로시간
+        $allworktime = $monthwtime + $monthntime + $monthbreak + $mwbt;
 
         $types = Worktypes1::where('type', '=', $type)->first();
         $types->part = $part;
         $types->change = $change;
+        $types->first_sworktime = $first_arr[0];
+        $types->first_eworktime = $first_arr[1];
+        $types->second_sworktime = $second_arr[0];
+        $types->second_eworktime = $second_arr[1];
+        $types->third_sworktime = $third_arr[0];
+        $types->third_eworktime = $third_arr[1];
+        $types->fourth_sworktime = $fourth_arr[0];
+        $types->fourth_eworktime = $fourth_arr[1];
+        $types->fifth_sworktime = $fifth_arr[0];
+        $types->fifth_eworktime = $fifth_arr[1];
+        $types->third_nextday = $nextday_arr[0];
+        $types->third_bnextday = $nextday_arr[1];
+        $types->fourth_nextday = $nextday_arr[2];
+        $types->fourth_bnextday = $nextday_arr[3];
+        $types->fifth_nextday = $nextday_arr[4];
+        $types->fifth_bnextday = $nextday_arr[5];
+        $types->first_sbtime1 = $first_arr[2];
+        $types->first_ebtime1 = $first_arr[3];
+        $types->second_sbtime1 = $second_arr[2];
+        $types->second_ebtime1 = $second_arr[3];
+        $types->third_sbtime1 = $third_arr[2];
+        $types->third_ebtime1 = $third_arr[3];
+        $types->fourth_sbtime1 = $fourth_arr[2];
+        $types->fourth_ebtime1 = $fourth_arr[3];
+        $types->fifth_sbtime1 = $fifth_arr[2];
+        $types->fifth_ebtime1 = $fifth_arr[3];
+        $types->first_sbtime2 = $first_arr[4];
+        $types->first_ebtime2 = $first_arr[5];
+        $types->second_sbtime2 = $second_arr[4];
+        $types->second_ebtime2 = $second_arr[5];
+        $types->third_sbtime2 = $third_arr[4];
+        $types->third_ebtime2 = $third_arr[5];
+        $types->fourth_sbtime2 = $fourth_arr[4];
+        $types->fourth_ebtime2 = $fourth_arr[5];
+        $types->fifth_sbtime2 = $fifth_arr[4];
+        $types->fifth_ebtime2 = $fifth_arr[5];
         $types->save();
+
+        $totals = Worktypes1Calc::where('type', '=', $type)->first();
+        $totals->mtotal = $monthwtime;
+        $totals->mover = $monthetime;
+        $totals->mnight = $monthntime;
+        $totals->mbreak = $monthbreak;
+        $totals->mwbt = $mwbt;
+        $totals->total = $allworktime;
+        $totals->save();
+
+
+
 
         return Redirect::to('hnl/basicinfo/worktype1')->with('success');
     }
@@ -1292,6 +1600,9 @@ class HnlWorktypeController extends Controller
         $sbtime4 = str_replace(':','',$sbtime4);    //휴식시작시간3 : 표시 없애기
         $ebtime4 = str_replace(':','',$ebtime4);    //휴식종료시간3 : 표시 없애기
 
+        $BASICWORK = "0800";
+        $NIGHT = "2200";
+
         $btime1 = ((float)$ebtime1 - (float)$sbtime1);    // 휴게시간1
 /*        if($btime1 == 30){
             $btime1 = 50;
@@ -1306,6 +1617,20 @@ class HnlWorktypeController extends Controller
         $btime4 = (float)$ebtime4 - (float)$sbtime4;    // 휴게시간4
         $allbtime = $btime1 + $btime2 + $btime3 + $btime4;
 
+
+        if($sbtime3 < $NIGHT){
+            $ni3 = $btime3 - ($NIGHT - $sbtime3);
+        }else{
+            $ni3 = $btime3 - 0;
+        }
+
+        if($sbtime4 < $NIGHT){
+            $ni4 = $btime4 - ($NIGHT - $sbtime4);
+        }else{
+            $ni4 = $btime4 - 0;
+        }
+
+        $sumni = $ni3 + $ni4;
         if($nextdaytime == 1 || $nextdaytime === 'on'){
             $exittime = 2400 + $workend;
         }else{
@@ -1316,8 +1641,6 @@ class HnlWorktypeController extends Controller
         $worktime = $exittime - $workstart;
         $workt = $worktime - $allbtime; // 실 근무시간
 
-        $BASICWORK = "0800";
-        $NIGHT = "2200";
 
         if($workt > $BASICWORK){
             $wtime = $BASICWORK;
@@ -1325,10 +1648,15 @@ class HnlWorktypeController extends Controller
             $wtime = $workt;
         }   // 소정근로시간
 
-        $etime = ($workt - $BASICWORK) * 1.5; //연장근로시간
+        if($workt > $BASICWORK){
+            $etime = ($workt - $BASICWORK) * 1.5;
+        }else{
+            $etime = 0;
+        }  //연장근로시간
+
 
         if($exittime > $NIGHT){
-            $ntime = ($exittime - $NIGHT) * 0.5;
+            $ntime = (($exittime - $NIGHT) - $sumni) * 0.5;
         }else{
             $ntime = "0000";
         }   // 야간근로시간
@@ -1345,7 +1673,7 @@ class HnlWorktypeController extends Controller
         $monthetime = sprintf('%02.2f',(($weeketime * 100) / 10000) * 4.345); //1달 연장근로시간
         $monthbtime =  sprintf('%02.2f',(($weekntime * 100) / 10000) * 4.345); //1달 야간근로시간
         $monthbreak =  sprintf('%02.2f',(($wtime * 100) / 10000) * 4.345);        //1달 주휴부여시간
-        $monthwbreak =  sprintf('%02.2f',(($wtime * 15) / 12 * 100) / 10000);        //1달 주휴부여시간
+        $monthwbreak =  sprintf('%02.2f',(($wtime * 15) / 12 * 100) / 10000);        //1달 연차부여시간
         $mtotal = $monthwtime + $monthetime + $monthbtime + $monthbreak + $monthbreak + $monthwbreak;
 
 

@@ -48,32 +48,24 @@ class AddPayitemUseage extends Migration
      */
     public function down()
     {
-        /*Schema::table('payitems1', function(Blueprint $table)
+        Schema::table('payitems1', function(Blueprint $table)
         {
-            $table->dropColumn('use_this1');
-            $table->dropColumn('use_this2');
-            $table->dropColumn('use_this3');
+            $table->dropColumn(array('use_this1', 'use_this2', 'use_this3'));
         });
 
         Schema::table('payitems2', function(Blueprint $table)
         {
-            $table->dropColumn('use_this1');
-            $table->dropColumn('use_this2');
-            $table->dropColumn('use_this3');
+            $table->dropColumn(array('use_this1', 'use_this2', 'use_this3'));
         });
 
         Schema::table('payitems3', function(Blueprint $table)
         {
-            $table->dropColumn('use_this1');
-            $table->dropColumn('use_this2');
-            $table->dropColumn('use_this3');
+            $table->dropColumn(array('use_this1', 'use_this2', 'use_this3'));
         });
 
         Schema::table('payitems4', function(Blueprint $table)
         {
-            $table->dropColumn('use_this1');
-            $table->dropColumn('use_this2');
-            $table->dropColumn('use_this3');
-        });*/
+            $table->dropColumn(array('use_this1', 'use_this2', 'use_this3'));
+        });
     }
 }

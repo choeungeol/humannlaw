@@ -50,7 +50,7 @@ $('input.line').each(function(){
 });
 
 $("[name='my-checkbox']").bootstrapSwitch();
-
+$("[class='switch']").bootstrapSwitch();
 
 var elem = document.querySelector('.js-switch');
 var init = new Switchery(elem, {
