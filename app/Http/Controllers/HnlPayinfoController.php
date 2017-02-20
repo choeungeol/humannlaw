@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Jobtitle;
+use App\Payday;
 use App\Payitem1;
 use App\Payitem2;
 use App\Payitem3;
 use App\Payitem4;
+use App\Paytime;
 use App\Pinfo;
 use App\Postitle;
 use Illuminate\Support\Facades\Redirect;
