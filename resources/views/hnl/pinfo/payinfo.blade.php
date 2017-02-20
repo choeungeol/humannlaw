@@ -158,7 +158,11 @@
                                 <table class="table table-condensed table-bordered">
                                     <tr>
                                         <th>급여유형</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td>
+                                            <select class="form-control input-sm">
+                                                <option></option>
+                                            </select>
+                                        </td>
                                         <th>근무유형</th>
                                         <td><input type="text" class="form-control input-sm" disabled></td>
                                         <th>주민번호</th>
@@ -168,13 +172,13 @@
                                         <th>월급여액</th>
                                         <td><input type="text" class="form-control input-sm" name="mpay"></td>
                                         <th>생산직비과세 여부( Y , N )</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="Y"></td>
+                                        <td><input type="checkbox" name="my-checkbox" data-on-color="info" data-off-color="primary" data-animate></td>
                                         <th></th>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <th>일용직 세액공제 여부( Y , N )</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="checkbox" name="my-checkbox" data-on-color="info" data-off-color="primary" data-animate></td>
                                         <th>국외 근로 비과세 여부</th>
                                         <td><input type="text" class="form-control input-sm" disabled></td>
                                         <th></th>
@@ -189,6 +193,7 @@
                                         <td><input type="text" class="form-control input-sm" disabled></td>
                                     </tr>
                                 </table>
+                                <button class="btn btn-default col-lg-12">등 록</button>
                             </div>
                         </div>
                         <div class="panel panel-primary">

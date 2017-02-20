@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Payday;
 use App\Payitem1;
 use App\Payitem2;
 use App\Payitem3;
 use App\Payitem4;
+use App\Paytime;
 use Illuminate\Support\Facades\Lang;
 use Redirect;
 use Sentinel;
@@ -27,12 +29,13 @@ class HnlPaytypeController extends Controller
         $paymonth2 = Payitem2::all();
         $paymonth3 = Payitem3::all();
         $paymonth4 = Payitem4::all();
-        $payday = array('기본급','주휴수당','연장수당','야간수당'.'휴일수당','휴일연장','휴일야간','연차수당'); // 포괄일당제 명칭
+        $payday = Payday::all(); // 포괄일당제 명칭
+        $paytimes = Paytime::all(); // 포괄시급제 명칭
 
 
         if(Sentinel::check())
 
-            return view('hnl.basicinfo.paytype', compact('paymonth1','paymonth2','paymonth3','paymonth4','payday'));
+            return view('hnl.basicinfo.paytype', compact('paymonth1','paymonth2','paymonth3','paymonth4','payday','paytimes'));
 
         else
 
@@ -47,6 +50,36 @@ class HnlPaytypeController extends Controller
     public function create()
     {
         //
+    }
+
+    public function paydaycheck(Request $request)
+    {
+        $id = $request->id;
+        try {
+
+            $pday = Payday::findOrFail($id);
+
+            if($pday->is_check == 0){
+                $pday->is_check = 1;
+            }else{
+                $pday->is_check = 0;
+            }
+
+        } catch (GroupNotFoundException $e) {
+
+            return Redirect::route('paytype')->with('error', compact('id'));
+
+        }
+
+        // Was the group updated?
+        if ($pday->save()) {
+            // Redirect to the group page
+            return Redirect::route('paytype')->with('success', Lang::get('groups/message.success.update'));
+        } else {
+            // Redirect to the group page
+            return Redirect::route('paytype', $id)->with('error', Lang::get('groups/message.error.update'));
+        }
+
     }
 
     public function clickcheck($id, Request $request)
@@ -223,9 +256,8 @@ class HnlPaytypeController extends Controller
         } catch (GroupNotFoundException $e) {
 
             return Redirect::route('paytype')->with('error', compact('id'));
+
         }
-
-
 
         // Was the group updated?
         if ($pitem->save()) {
@@ -235,7 +267,6 @@ class HnlPaytypeController extends Controller
             // Redirect to the group page
             return Redirect::route('paytype', $id)->with('error', Lang::get('groups/message.error.update'));
         }
-
 
     }
 

@@ -167,6 +167,8 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
             Route::post('{paytypeId}/check', array('as' => 'check/paytype', 'uses' => 'HnlPaytypeController@clickcheck'));
 
+            Route::post('payaday', array('as' => 'check/payday', 'uses' => 'HnlPaytypeController@paydaycheck'));
+
 
         });
 

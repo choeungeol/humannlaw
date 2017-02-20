@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call('Worktype1234CalcSeeder');
         $this->call('PayitemsSeed');
         $this->call('TaxdeductionSeeder');
+        $this->call('PayDayTimeSeeder');
 
         Model::reguard();
     }

@@ -14,9 +14,9 @@ class AddPayitemUseage extends Migration
     {
         Schema::table('payitems1', function(Blueprint $table)
         {
-            $table->boolean('use_this1')->nullable()->default(0)->after('use_this');
-            $table->boolean('use_this2')->nullable()->default(0)->after('use_this');
-            $table->boolean('use_this3')->nullable()->default(0)->after('use_this');
+            $table->boolean('use_this1')->nullable()->default(0)->after('use_this');    //포괄연봉제
+            $table->boolean('use_this2')->nullable()->default(0)->after('use_this');    //포괄월급제
+            $table->boolean('use_this3')->nullable()->default(0)->after('use_this');    //일당제
         });
 
         Schema::table('payitems2', function(Blueprint $table)

@@ -236,10 +236,14 @@
                                         </tr>
                                         @foreach($payday as $pd)
                                             <tr>
-                                                <td>{{ $pd }}</td>
+                                                <td>{{ $pd->title }}</td>
                                                 <td>
-                                                        <input type="checkbox" name="my-checkbox" data-on-color="info"
-                                                               data-off-color="primary" data-animate{{-- onchange="$('.checkboxa{{$pd->id}}').submit();" value="{!! ($pd->use_this2 == 0) ? 'false' : 'true' !!}" {!! ($pd->use_this2 == 1) ? 'checked' : '' !!}--}}>
+                                                    <form class="payday{{$pd->id}}" action="{{ route('check/payday') }}" method="POST">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                        <input type="hidden" name="id" value="{{ $pd->id }}">
+                                                        <input type="checkbox" class="switch" data-on-color="info"
+                                                               data-off-color="primary" data-animate onchange="$('.payday{{$pd->id}}').submit();" value="{!! ($pd->is_check == 0) ? 'false' : 'true' !!}" {!! ($pd->is_check == 1) ? 'checked' : '' !!}>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
