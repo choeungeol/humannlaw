@@ -3,12 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Jobtitle;
-use App\Payday;
-use App\Payitem1;
-use App\Payitem2;
-use App\Payitem3;
-use App\Payitem4;
-use App\Paytime;
 use App\Pinfo;
 use App\Postitle;
 use Illuminate\Support\Facades\Redirect;
@@ -71,13 +65,6 @@ class HnlPayinfoController extends Controller
         $jobtitle = Jobtitle::All();
         $position = Postitle::All();
         $searchp = Pinfo::findOrFail($id);
-        $paymonth1 = Payitem1::all();
-        $paymonth2 = Payitem2::all();
-        $paymonth3 = Payitem3::all();
-        $paymonth4 = Payitem4::all();
-        $payday = Payday::all(); // 포괄일당제 명칭
-        $paytimes = Paytime::all(); // 포괄시급제 명칭
-
 
         if(Sentinel::check())
 

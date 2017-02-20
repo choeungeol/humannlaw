@@ -160,9 +160,17 @@
                                         <th>월급여액</th>
                                         <td><input type="text" class="form-control input-sm" name="mpay"></td>
                                         <th>급여유형</th>
+                                        @if(!$searchp)
+                                        <td><input type="text" class="form-control input-sm" readonly value=""></td>
+                                        @else
                                         <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->paytype }}"></td>
+                                        @endif
                                         <th>근무유형</th>
+                                        @if(!$searchp)
+                                        <td><input type="text" class="form-control input-sm" readonly value=""></td>
+                                        @else
                                         <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->worktype }}"></td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <th>생산직비과세 여부( Y , N )</th>
