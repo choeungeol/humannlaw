@@ -69,51 +69,51 @@
                                 @if(!$searchp)
                                     <tr>
                                         <th>사원번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>성 명</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>주민번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                     </tr>
                                     <tr>
                                         <th>부 서</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>직 위</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>사업장</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                     </tr>
                                     <tr>
                                         <th>근무상태</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>채용형태</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>수습기간</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                     </tr>
                                     <tr>
                                         <th>수습비율</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>입사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>퇴사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                     </tr>
                                 @else
                                     <tr>
                                         <th>사원번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->employee_num }}"></td>
+                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->employee_num }}"></td>
                                         <th>성 명</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->name }}"></td>
+                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->name }}"></td>
                                         <th>주민번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->regi_no }}"></td>
+                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->regi_no }}"></td>
                                     </tr>
                                     <tr>
                                         <th>부 서</th>
                                         <td>
                                             @foreach($jobtitle as $job)
                                                 @if($job->id == $searchp->job)
-                                                    <input type="text" class="form-control input-sm" disabled value="{{ $job->name }}">
+                                                    <input type="text" class="form-control input-sm" readonly value="{{ $job->name }}">
                                                 @endif
                                             @endforeach
                                         </td>
@@ -121,28 +121,28 @@
                                         <td>
                                             @foreach($position as $pos)
                                                 @if($pos->id == $searchp->position)
-                                                    <input type="text" class="form-control input-sm" disabled value="{{ $pos->pos_name }}">
+                                                    <input type="text" class="form-control input-sm" readonly value="{{ $pos->pos_name }}">
                                                 @endif
                                             @endforeach
                                         </td>
                                         <th>사업장</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value=""></td>
+                                        <td><input type="text" class="form-control input-sm" readonly value=""></td>
                                     </tr>
                                     <tr>
                                         <th>근무상태</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->work_condition }}"></td>
+                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->work_condition }}"></td>
                                         <th>채용형태</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->employee_type }}"></td>
+                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->employee_type }}"></td>
                                         <th>수습기간</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value=""></td>
+                                        <td><input type="text" class="form-control input-sm" readonly value=""></td>
                                     </tr>
                                     <tr>
                                         <th>수습비율</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->first_pay }}"></td>
+                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->first_pay }}"></td>
                                         <th>입사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->join_day }}"></td>
+                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->join_day }}"></td>
                                         <th>퇴사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled value="{{ $searchp->exit_day }}"></td>
+                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->exit_day }}"></td>
                                     </tr>
                                 @endif
                             </table>
@@ -164,9 +164,9 @@
                                             </select>
                                         </td>
                                         <th>근무유형</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>주민번호</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                     </tr>
                                     <tr>
                                         <th>월급여액</th>
@@ -180,17 +180,17 @@
                                         <th>일용직 세액공제 여부( Y , N )</th>
                                         <td><input type="checkbox" name="my-checkbox" data-on-color="info" data-off-color="primary" data-animate></td>
                                         <th>국외 근로 비과세 여부</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th></th>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <th>통상시급</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>입사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <th>퇴사일</th>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                     </tr>
                                 </table>
                                 <button class="btn btn-default col-lg-12">등 록</button>
@@ -208,8 +208,8 @@
                                         <th rowspan="2">통상임금</th><th>기본급</th><th>주휴수당</th><th>직책수당</th><th>근속수당</th><th>직무수당</th><th> - </th>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                         <td><input type="text" class="form-control input-sm"></td>
                                         <td><input type="text" class="form-control input-sm"></td>
                                         <td><input type="text" class="form-control input-sm"></td>
@@ -219,12 +219,12 @@
                                         <th rowspan="2">법정수당</th><th>연장수당</th><th>야간수당</th><th>휴일수당</th><th>휴일연장</th><th>휴일야간</th><th>연차수당</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
-                                        <td><input type="text" class="form-control input-sm" disabled></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
                                     </tr>
                                     <tr>
                                         <th rowspan="2">복리후생</th><th>식대</th><th>차량유지비</th><th>육아수당</th><th>연구활동비</th><th>명절떡값</th><th> - </th>
@@ -247,6 +247,25 @@
                                         <td><input type="text" class="form-control input-sm"></td>
                                         <td></td>
                                         <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    4대 보험 정보
+                                </h4>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-condensed table-bordered">
+                                    <tr>
+                                        <td>월 급여액</td>
+                                        <td><input type="text" class="form-control input-sm" readonly></td>
+                                        <td>비과세액</td>
+                                        <td><input type="text" class="form-control input-sm"></td>
+                                        <td>보수총액</td>
+                                        <td><input type="text" class="form-control input-sm"></td>
                                     </tr>
                                 </table>
                             </div>

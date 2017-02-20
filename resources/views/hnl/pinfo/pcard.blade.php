@@ -489,7 +489,7 @@
                                                 @endforeach
                                             </td>
                                             <th>입사일자</th>
-                                            <td></td>
+                                            <td>{{ $searchp->join_day }}</td>
                                             <th>퇴직, 계약기간만료일</th>
                                             <td></td>
                                         </tr>
@@ -515,7 +515,7 @@
                                         </tr>
                                         <tr>
                                             <th>현주소</th>
-                                            <td colspan="5"></td>
+                                            <td colspan="5">{{ $searchp->employee_post }} {{ $searchp->employee_addr1 }} {{ $searchp->employee_addr2 }}</td>
                                         </tr>
                                         <tr>
                                             <th>본적</th>
@@ -525,17 +525,17 @@
                                             <th>자택전화</th>
                                             <td></td>
                                             <th>휴대폰</th>
-                                            <td></td>
+                                            <td>{{ $searchp->tel }}</td>
                                             <th>이메일</th>
-                                            <td></td>
+                                            <td>{{ $searchp->email }}</td>
                                         </tr>
                                         <tr>
                                             <th>취미</th>
-                                            <td></td>
+                                            <td>{{ $searchp->hobby }}</td>
                                             <th>특기</th>
-                                            <td></td>
+                                            <td>{{ $searchp->speciality }}</td>
                                             <th>종교</th>
-                                            <td></td>
+                                            <td>{{ $searchp->faith }}</td>
                                         </tr>
                                         <tr>
                                             <th>군필유무</th>
@@ -555,13 +555,15 @@
                                         </tr>
                                         <tr>
                                             <th>보훈구분</th>
-                                            <td></td>
+                                            <td>
+                                                {{ $searchp->isveterans === 'false' || $searchp->isveterans === 0 || $searchp->isveterans === 'off' ? '아니오' : '예' }}
+                                            </td>
                                             <th>보훈번호</th>
                                             <td></td>
                                             <th>보훈자관계</th>
                                             <td></td>
                                             <th>키(Cm)</th>
-                                            <td></td>
+                                            <td>{{ $searchp->height }}</td>
                                         </tr>
                                         <tr>
                                             <th>특례구분</th>
@@ -571,7 +573,7 @@
                                             <th>시력(좌/우)</th>
                                             <td></td>
                                             <th>몸무게(Kg)</th>
-                                            <td></td>
+                                            <td>{{ $searchp->weight }}</td>
                                         </tr>
                                     </table>
                                     <table class="table table-bordered tables text-center">
@@ -589,14 +591,14 @@
                                             <th>기간(년)</th>
                                         </tr>
                                         <tr>
-                                            <td>근무시간</td>
-                                            <td>9:00</td>
-                                            <td>17:00</td>
-                                            <td>8.0</td>
-                                            <td>근무기간</td>
-                                            <td>2011-03-28</td>
-                                            <td>2015-04-12</td>
-                                            <td>4.0</td>
+                                            <th>근무시간</th>
+                                            <td>{{ $searchp->swtime }}</td>
+                                            <td>{{ $searchp->ewtime }}</td>
+                                            <td>{{ $searchp->ewtime - $searchp->swtime }}</td>
+                                            <th>근무기간</th>
+                                            <td>{{ $searchp->join_day }}</td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th>휴게구분</th>
@@ -608,9 +610,9 @@
                                         </tr>
                                         <tr>
                                             <th>휴게시간1</th>
-                                            <td>12:30</td>
-                                            <td>13:30</td>
-                                            <td>1.0</td>
+                                            <td>{{ $searchp->sbtime }}</td>
+                                            <td>{{ $searchp->ebtime }}</td>
+                                            <td>{{ $searchp->ebtime - $searchp->sbtime  }}</td>
                                             <th>담당업무</th>
                                             <td colspan="3"></td>
                                         </tr>
@@ -618,9 +620,9 @@
                                             <th>휴게시간2</th>
                                             <td></td>
                                             <td></td>
-                                            <td>0.0</td>
+                                            <td></td>
                                             <th>취업장소</th>
-                                            <td>본사</td>
+                                            <td>{{ $searchp->location }}</td>
                                         </tr>
                                         <tr>
                                             <th>일수구분</th>
@@ -633,24 +635,24 @@
                                         </tr>
                                         <tr>
                                             <th>근무일수</th>
-                                            <td>5</td>
-                                            <td colspan="2">월~금(주5일 근무시), 월~토(주6일 근무시)  </td>
+                                            <td></td>
+                                            <td colspan="2"></td>
                                             <th>구분</th>
-                                            <th colspan="3">기타사항</th>
+                                            <th colspan="3"></th>
                                         </tr>
                                         <tr>
                                             <th>급여구분</th>
                                             <th colspan="2">급여액</th>
                                             <th>구분정의</th>
                                             <th>월급계좌</th>
-                                            <td>농협은행</td>
-                                            <td colspan="2"> 001-002003-04-005</td>
+                                            <td>{{ $searchp->pay_bank }}</td>
+                                            <td colspan="2">{{ $searchp->account_num     }}</td>
                                         </tr>
                                         <tr>
                                             <th>시급제</th>
                                             <td> - </td>
                                             <td><< 시급기제</td>
-                                            <td>알바,일용직,단기,임시직</td>
+                                            <td></td>
                                             <th>기타사항</th>
                                             <td colspan="3"></td>
                                         </tr>
@@ -664,7 +666,7 @@
                                         </tr>
                                         <tr>
                                             <th>연봉제</th>
-                                            <td> 65,000,000 </td>
+                                            <td></td>
                                             <td><< 연봉기제</td>
                                             <td></td>
                                             <th>기타사항</th>
@@ -688,12 +690,12 @@
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td>졸업</td>
-                                            <td>2012-01-01</td>
-                                            <td>2012-01-01</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>{{ $searchp->last_ability }}</td>
                                         </tr>
                                         <tr>
                                             <td></td>
@@ -757,11 +759,11 @@
                                             <th>인증기관</th>
                                         </tr>
                                         <tr>
-                                            <td>2012-01-01</td>
+                                            <td> </td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td>2012-01-01</td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td>-</td>
@@ -849,8 +851,8 @@
                                             <td></td>
                                         </tr>
                                     </table>
-                                    <p class="text-center"><span>위 기재 내용은 사실과 다름없으며 사실과 다를 경우 발생하는 어떠한 불이익도 감수하겠습니다.</span></p>
-                                    <p><pre class="text-center">20    년      월      일     작성자:                                (인)</pre></p>
+                                    <p class="text-center"><span>위 기재 내용은 사실과 다름없으며 사실과 다를 경우 발생하는 어떠한 불이익도 감수하겠습니다.{{ $searchp->updated_at }}</span></p>
+                                    <p><pre class="text-center">20{{ substr("$searchp->updated_at",2,2) }} 년  {{ substr("$searchp->updated_at",5,2) }}월  {{ substr("$searchp->updated_at",8,2) }}일     작성자: {{ $searchp->name }} (인)</pre></p>
                                     @endif
                             </div>
                         </div>

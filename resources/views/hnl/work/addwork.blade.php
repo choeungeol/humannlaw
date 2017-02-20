@@ -293,26 +293,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading border-light">
-                        <h4 class="panel-title">
-                            <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
-                               data-l="true"></i> 월급제
-                        </h4>
-                        <span class="pull-right">
-                            <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
-                        </span>
-                    </div>
-                    <div class="panel-body">
-                            <div class="box-body">
-                                <div id="calendar"></div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
 
