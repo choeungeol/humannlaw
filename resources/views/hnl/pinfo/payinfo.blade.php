@@ -157,39 +157,30 @@
                             <div class="panel-body">
                                 <table class="table table-condensed table-bordered">
                                     <tr>
-                                        <th>급여유형</th>
-                                        <td>
-                                            <select class="form-control input-sm">
-                                                <option></option>
-                                            </select>
-                                        </td>
-                                        <th>근무유형</th>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <th>주민번호</th>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                    </tr>
-                                    <tr>
                                         <th>월급여액</th>
                                         <td><input type="text" class="form-control input-sm" name="mpay"></td>
-                                        <th>생산직비과세 여부( Y , N )</th>
-                                        <td><input type="checkbox" name="my-checkbox" data-on-color="info" data-off-color="primary" data-animate></td>
-                                        <th></th>
-                                        <td></td>
+                                        <th>급여유형</th>
+                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->paytype }}"></td>
+                                        <th>근무유형</th>
+                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->worktype }}"></td>
                                     </tr>
                                     <tr>
+                                        <th>생산직비과세 여부( Y , N )</th>
+                                        <td><input type="checkbox" name="my-checkbox" data-on-color="info" data-off-color="primary" data-animate></td>
                                         <th>일용직 세액공제 여부( Y , N )</th>
                                         <td><input type="checkbox" name="my-checkbox" data-on-color="info" data-off-color="primary" data-animate></td>
                                         <th>국외 근로 비과세 여부</th>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <th></th>
-                                        <td></td>
+                                        <td>
+                                            <select class="form-control input-sm">
+                                                <option>없음</option>
+                                                <option>국외근로</option>
+                                                <option>선원</option>
+                                                <option>해외건설근로</option>
+                                            </select>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>통상시급</th>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <th>입사일</th>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <th>퇴사일</th>
                                         <td><input type="text" class="form-control input-sm" readonly></td>
                                     </tr>
                                 </table>
@@ -205,7 +196,13 @@
                             <div class="panel-body">
                                 <table class="table table-condensed table-bordered">
                                     <tr>
-                                        <th rowspan="2">통상임금</th><th>기본급</th><th>주휴수당</th><th>직책수당</th><th>근속수당</th><th>직무수당</th><th> - </th>
+                                        <th rowspan="2">통상임금</th>
+                                        <th>기본급</th>
+                                        <th>주휴수당</th>
+                                        <th>직책수당</th>
+                                        <th>근속수당</th>
+                                        <th>직무수당</th>
+                                        <th> - </th>
                                     </tr>
                                     <tr>
                                         <td><input type="text" class="form-control input-sm" readonly></td>

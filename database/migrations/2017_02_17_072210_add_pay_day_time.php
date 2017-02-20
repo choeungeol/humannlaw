@@ -16,6 +16,7 @@ class AddPayDayTime extends Migration
         {
             $table->increments('id');
             $table->string('title');
+            $table->string('calc_price');
             $table->boolean('is_check')->default(0);
             $table->timestamps();
 
@@ -25,6 +26,7 @@ class AddPayDayTime extends Migration
         {
             $table->increments('id');
             $table->string('title');
+            $table->string('calc_price');
             $table->string('price');
             $table->boolean('is_check')->default(0);
             $table->timestamps();
