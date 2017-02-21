@@ -185,9 +185,9 @@
                                     @if($payinfo)
                                     <tr>
                                         <th>생산직비과세 여부( Y , N )</th>
-                                        <td><input class="switch" type="checkbox" name="non_taxable" data-on-color="info" data-off-color="primary" data-animate {!! ($payinfo->non_taxable == null) ? '' : 'checked' !!}></td>
+                                        <td><input class="switch" type="checkbox" name="non_taxable" data-on-color="info" data-off-color="primary" data-animate {!! ($payinfo->non_taxable === null) ? '' : 'checked' !!}></td>
                                         <th>일용직 세액공제 여부( Y , N )</th>
-                                        <td><input class="switch" type="checkbox" name="tax_deduction" data-on-color="info" data-off-color="primary" data-animate {!! ($payinfo->tax_deduction == null) ? '' : 'checked' !!}></td>
+                                        <td><input class="switch" type="checkbox" name="tax_deduction" data-on-color="info" data-off-color="primary" data-animate {!! ($payinfo->tax_deduction === null) ? '' : 'checked' !!}></td>
                                         <th>국외 근로 비과세 여부</th>
                                         <td>
                                             <select class="form-control input-sm" name="overseas_taxable">
