@@ -19,7 +19,7 @@ class CreatePayitemTables extends Migration
             $table->string('probaion');                     //수습율
             $table->string('is_severance_pay');             //퇴직금 대상
             $table->string('is_taxfree');                    //비과세여부
-            $table->boolean('in_basicpay')->default(1);                 //기본급 포함
+            $table->boolean('in_basicpay')->default(0);                 //기본급 포함
             $table->boolean('use_this')->default(0);             //사용
             $table->timestamps();
         });     //통상임금
