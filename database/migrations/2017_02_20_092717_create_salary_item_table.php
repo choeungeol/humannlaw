@@ -12,13 +12,13 @@ class CreateSalaryItemTable extends Migration
      */
     public function up()
     {
-/*        Schema::create('salary_items1', function(Blueprint $table)
+        /*Schema::create('salary_items1', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('pinfo_id');    //사원 id
-            $table->integer('payitem_id');  //통상임금 ID
-            $table->string('title');    //통상임금 명
-            $table->strign('input_pay');    //입력값
+            $table->integer('payitem_id')->nullable();  //통상임금 ID
+            $table->string('title')->nullable();    //통상임금 명
+            $table->string('input_pay')->nullable();    //입력값
             $table->timestamps();
 
         });
@@ -27,9 +27,9 @@ class CreateSalaryItemTable extends Migration
         {
             $table->increments('id');
             $table->integer('pinfo_id');    //사원 id
-            $table->integer('payitem_id');  //법정수당 ID
-            $table->string('title');    //법정수당 명
-            $table->strign('input_pay');    //입력값
+            $table->integer('payitem_id')->nullable();  //법정수당 ID
+            $table->string('title')->nullable();    //법정수당 명
+            $table->string('input_pay')->nullable();    //입력값
             $table->timestamps();
 
         });
@@ -38,9 +38,9 @@ class CreateSalaryItemTable extends Migration
         {
             $table->increments('id');
             $table->integer('pinfo_id');    //사원 id
-            $table->integer('payitem_id');  //복리후생 ID
-            $table->string('title');    //복리후생 명
-            $table->strign('input_pay');    //입력값
+            $table->integer('payitem_id')->nullable();  //복리후생 ID
+            $table->string('title')->nullable();    //복리후생 명
+            $table->string('input_pay')->nullable();    //입력값
             $table->timestamps();
 
         });
@@ -49,9 +49,9 @@ class CreateSalaryItemTable extends Migration
         {
             $table->increments('id');
             $table->integer('pinfo_id');    //사원 id
-            $table->integer('payitem_id');  //약정수당 ID
-            $table->string('title');    //약정수당 명
-            $table->strign('input_pay');    //입력값
+            $table->integer('payitem_id')->nullable();  //약정수당 ID
+            $table->string('title')->nullable();    //약정수당 명
+            $table->string('input_pay')->nullable();    //입력값
             $table->timestamps();
 
         });*/
@@ -64,7 +64,7 @@ class CreateSalaryItemTable extends Migration
      */
     public function down()
     {
-/*        Schema::drop('salary_items1');
+      /*  Schema::drop('salary_items1');
         Schema::drop('salary_items2');
         Schema::drop('salary_items3');
         Schema::drop('salary_items4');*/

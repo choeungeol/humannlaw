@@ -154,36 +154,67 @@
                                     급여정보
                                 </h4>
                             </div>
-                            <div class="panel-body">
+                            <form class="panel-body" action="{{ route('insert/payinfo') }}" method="POST">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                @if($searchp)
+                                    <input type="hidden" name="id" value="{{ $searchp->id }}" />
+                                @endif
                                 <table class="table table-condensed table-bordered">
                                     <tr>
                                         <th>월급여액</th>
-                                        <td><input type="text" class="form-control input-sm" name="mpay"></td>
+                                        <td>
+                                            @if($payinfo)
+                                                <input type="text" class="form-control input-sm" name="mpay" value="{{ $payinfo->paymonth }}">
+                                            @else
+                                                <input type="text" class="form-control input-sm" name="mpay" value="">
+                                            @endif
+                                        </td>
                                         <th>급여유형</th>
                                         @if(!$searchp)
                                         <td><input type="text" class="form-control input-sm" readonly value=""></td>
                                         @else
-                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->paytype }}"></td>
+                                        <td><input type="text" name="paytype" class="form-control input-sm" readonly value="{{ $searchp->paytype }}"></td>
                                         @endif
                                         <th>근무유형</th>
                                         @if(!$searchp)
                                         <td><input type="text" class="form-control input-sm" readonly value=""></td>
                                         @else
-                                        <td><input type="text" class="form-control input-sm" readonly value="{{ $searchp->worktype }}"></td>
+                                        <td><input type="text" name="worktype" class="form-control input-sm" readonly value="{{ $searchp->worktype }}"></td>
                                         @endif
                                     </tr>
+                                    @if($payinfo)
                                     <tr>
                                         <th>생산직비과세 여부( Y , N )</th>
-                                        <td><input type="checkbox" name="my-checkbox" data-on-color="info" data-off-color="primary" data-animate></td>
+                                        <td><input class="switch" type="checkbox" name="non_taxable" data-on-color="info" data-off-color="primary" data-animate {!! ($payinfo->non_taxable === 'on') ? 'checked' : '' !!}></td>
                                         <th>일용직 세액공제 여부( Y , N )</th>
-                                        <td><input type="checkbox" name="my-checkbox" data-on-color="info" data-off-color="primary" data-animate></td>
+                                        <td><input class="switch" type="checkbox" name="tax_deduction" data-on-color="info" data-off-color="primary" data-animate {!! ($payinfo->tax_deduction === 'on') ? 'checked' : '' !!}></td>
                                         <th>국외 근로 비과세 여부</th>
                                         <td>
-                                            <select class="form-control input-sm">
-                                                <option>없음</option>
-                                                <option>국외근로</option>
-                                                <option>선원</option>
-                                                <option>해외건설근로</option>
+                                            <select class="form-control input-sm" name="overseas_taxable">
+                                                <option value="없음" {!! ($payinfo->overseas_taxable === '없음') ? 'selected' :'' !!}>없음</option>
+                                                <option value="국외근로" {!! ($payinfo->overseas_taxable === '국외근로') ? 'selected' :'' !!}>국외근로</option>
+                                                <option value="선원" {!! ($payinfo->overseas_taxable === '선원') ? 'selected' :'' !!}>선원</option>
+                                                <option value="해외건설근로" {!! ($payinfo->overseas_taxable === '해외건설근로') ? 'selected' :'' !!}>해외건설근로</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                        <tr>
+                                            <th>통상시급</th>
+                                            <td><input type="text" class="form-control input-sm" readonly value="{{ $payinfo->hour_pay }}"></td>
+                                        </tr>
+                                    @else
+                                    <tr>
+                                        <th>생산직비과세 여부( Y , N )</th>
+                                        <td><input class="switch" type="checkbox" name="non_taxable" data-on-color="info" data-off-color="primary" data-animate></td>
+                                        <th>일용직 세액공제 여부( Y , N )</th>
+                                        <td><input class="switch" type="checkbox" name="tax_deduction" data-on-color="info" data-off-color="primary" data-animate></td>
+                                        <th>국외 근로 비과세 여부</th>
+                                        <td>
+                                            <select class="form-control input-sm" name="overseas_taxable">
+                                                <option value="없음">없음</option>
+                                                <option value="국외근로">국외근로</option>
+                                                <option value="선원">선원</option>
+                                                <option value="해외건설근로">해외건설근로</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -191,9 +222,10 @@
                                         <th>통상시급</th>
                                         <td><input type="text" class="form-control input-sm" readonly></td>
                                     </tr>
+                                    @endif
                                 </table>
-                                <button class="btn btn-default col-lg-12">등 록</button>
-                            </div>
+                                <button class="btn btn-default col-lg-12" type="submit">등 록</button>
+                            </form>
                         </div>
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -205,55 +237,50 @@
                                 <table class="table table-condensed table-bordered">
                                     <tr>
                                         <th rowspan="2">통상임금</th>
-                                        <th>기본급</th>
-                                        <th>주휴수당</th>
-                                        <th>직책수당</th>
-                                        <th>근속수당</th>
-                                        <th>직무수당</th>
-                                        <th> - </th>
+                                        @foreach($payitem1 as $p1)
+                                            <th>{{  $p1->title }}</th>
+                                        @endforeach
                                     </tr>
                                     <tr>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td></td>
+                                        @foreach($payitem1 as $p1)
+                                            <td><input type="text" class="form-control input-sm" value="" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!}></td>
+                                        @endforeach
                                     </tr>
                                     <tr>
-                                        <th rowspan="2">법정수당</th><th>연장수당</th><th>야간수당</th><th>휴일수당</th><th>휴일연장</th><th>휴일야간</th><th>연차수당</th>
+                                        <th rowspan="2">법정수당</th>
+                                        @foreach($payitem2 as $p2)
+                                            <th>{{  $p2->title }}</th>
+                                        @endforeach
                                     </tr>
                                     <tr>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
+                                        @foreach($payitem2 as $p2)
+                                            <td><input type="text" class="form-control input-sm" value=""{!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? '' : 'readonly' !!}></td>
+                                        @endforeach
                                     </tr>
                                     <tr>
-                                        <th rowspan="2">복리후생</th><th>식대</th><th>차량유지비</th><th>육아수당</th><th>연구활동비</th><th>명절떡값</th><th> - </th>
+                                        <th rowspan="2">복리후생</th>
+                                        @foreach($payitem3 as $p3)
+                                            <th>{{  $p3->title }}</th>
+                                        @endforeach
                                     </tr>
                                     <tr>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td></td>
+                                        @foreach($payitem3 as $p3)
+                                            <td><input type="text" class="form-control input-sm" value="" readonly></td>
+                                        @endforeach
                                     </tr>
                                     <tr>
-                                        <th rowspan="2">약정수당</th><th>상여금</th><th>특별성과금</th><th>특근수당</th><th>특별수당</th><th> - </th><th> - </th>
+                                        <th rowspan="2">약정수당</th>
+                                        @foreach($payitem4 as $p4)
+                                            <th>{{  $p4->title }}</th>
+                                        @endforeach
                                     </tr>
                                     <tr>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td></td>
-                                        <td></td>
+                                        @foreach($payitem4 as $p4)
+                                            <td><input type="text" class="form-control input-sm" value="" readonly></td>
+                                        @endforeach
                                     </tr>
                                 </table>
+                                <button class="btn btn-default col-lg-12" type="submit">등 록</button>
                             </div>
                         </div>
                         <div class="panel panel-primary">
@@ -273,6 +300,7 @@
                                         <td><input type="text" class="form-control input-sm"></td>
                                     </tr>
                                 </table>
+                                <button class="btn btn-default col-lg-12" type="submit">등 록</button>
                             </div>
                         </div>
                     </div>
@@ -325,7 +353,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-                        <button class="btn btn-primary">등록</button>
+{{--                        <button class="btn btn-primary">등록</button>--}}
                     </div>
                 </div>
             </div>

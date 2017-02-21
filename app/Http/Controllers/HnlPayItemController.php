@@ -6,6 +6,7 @@ use App\Payitem1;
 use App\Payitem2;
 use App\Payitem3;
 use App\Payitem4;
+use App\Salary1;
 use App\TaxDeduction;
 use Illuminate\Http\Request;
 
@@ -73,7 +74,6 @@ class HnlPayItemController extends Controller
             'is_taxfree' => $request->get('i_is_taxfree'),
         ]);
 
-        $payitem1->save();
 
         return Redirect::to('hnl/basicinfo/payitem')->with('success');
 

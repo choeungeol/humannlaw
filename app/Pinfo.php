@@ -15,4 +15,9 @@ class Pinfo extends Model
         return $this->belongsTo('App\CompanyBasicinfo');
     }
 
+    public function payinfos()
+    {
+        return $this->hasOne('App\Payinfo');
+    }
+
 }

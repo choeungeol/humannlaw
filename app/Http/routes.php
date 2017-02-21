@@ -238,6 +238,7 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
 
             Route::get('/{payinfoId?}', array('as' => 'payinfo_view', 'uses' => 'HnlPayinfoController@show'));
+            Route::post('insert', array('as' => 'insert/payinfo', 'uses' => 'HnlPayinfoController@insert_month_pay'));
 
 
         });
