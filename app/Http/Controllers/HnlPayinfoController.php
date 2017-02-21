@@ -116,7 +116,11 @@ class HnlPayinfoController extends Controller
         }
 
         $salary1 = Salary1::where('pinfo_id', '===', $id);
-        $normalpay = $paymonth / $caltotal;
+        if($caltotal == 0){
+            $normalpay = '';
+        }else{
+            $normalpay = $paymonth / $caltotal;
+        }
 
         $pinfo = Pinfo::findOrFail($id)->payinfos;
         $pinfo->paymonth = $paymonth;
