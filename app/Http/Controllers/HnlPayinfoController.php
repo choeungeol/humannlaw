@@ -106,8 +106,14 @@ class HnlPayinfoController extends Controller
 
         $pinfos = Pinfo::find($id);
         $worktype = $pinfos->worktype;
+
         $calcs[$worktype] = Calctable::where('type','=',$worktype)->get();
-        $caltotal = $calcs[$worktype][0]->total;
+
+        if($calcs[$worktype][0]->total){
+            $caltotal = $calcs[$worktype][0]->total;
+        }else{
+            $calctotal = 0;
+        }
 
         $salary1 = Salary1::where('pinfo_id', '===', $id);
         $normalpay = $paymonth / $caltotal;
