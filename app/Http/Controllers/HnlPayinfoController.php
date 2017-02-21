@@ -112,7 +112,7 @@ class HnlPayinfoController extends Controller
         if($calcs[$worktype][0]->total){
             $caltotal = $calcs[$worktype][0]->total;
         }else{
-            $calctotal = 0;
+            $caltotal = 0;
         }
 
         $salary1 = Salary1::where('pinfo_id', '===', $id);
