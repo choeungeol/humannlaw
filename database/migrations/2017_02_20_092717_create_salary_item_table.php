@@ -12,7 +12,7 @@ class CreateSalaryItemTable extends Migration
      */
     public function up()
     {
-        /*Schema::create('salary_items1', function(Blueprint $table)
+        Schema::create('salary_items1', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('pinfo_id');    //사원 id
@@ -54,7 +54,7 @@ class CreateSalaryItemTable extends Migration
             $table->string('input_pay')->nullable();    //입력값
             $table->timestamps();
 
-        });*/
+        });
     }
 
     /**
@@ -64,9 +64,9 @@ class CreateSalaryItemTable extends Migration
      */
     public function down()
     {
-      /*  Schema::drop('salary_items1');
+        Schema::drop('salary_items1');
         Schema::drop('salary_items2');
         Schema::drop('salary_items3');
-        Schema::drop('salary_items4');*/
+        Schema::drop('salary_items4');
     }
 }
