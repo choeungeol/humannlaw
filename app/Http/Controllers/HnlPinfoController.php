@@ -196,28 +196,6 @@ class HnlPinfoController extends Controller
         ]);
         $payinfo->save();
 
-        $salary1 = new Salary1([
-            'pinfo_id' => $lastid,
-        ]);
-        $salary1->save();
-
-        $salary2 = new Salary2([
-            'pinfo_id' => $lastid,
-        ]);
-        $salary2->save();
-
-        $salary3 = new Salary3([
-            'pinfo_id' => $lastid,
-        ]);
-        $salary3->save();
-
-        $salary4 = new Salary4([
-            'pinfo_id' => $lastid,
-        ]);
-        $salary4->save();
-
-
-
         return Redirect::to('hnl/pinfo/pinfo/')->with('success', Lang::get('users/message.success.create'));
 
     }

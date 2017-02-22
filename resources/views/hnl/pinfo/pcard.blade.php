@@ -851,7 +851,7 @@
                                             <td></td>
                                         </tr>
                                     </table>
-                                    <p class="text-center"><span>위 기재 내용은 사실과 다름없으며 사실과 다를 경우 발생하는 어떠한 불이익도 감수하겠습니다.{{ $searchp->updated_at }}</span></p>
+                                    <p class="text-center"><span>위 기재 내용은 사실과 다름없으며 사실과 다를 경우 발생하는 어떠한 불이익도 감수하겠습니다.</span></p>
                                     <p><pre class="text-center">20{{ substr("$searchp->updated_at",2,2) }} 년  {{ substr("$searchp->updated_at",5,2) }}월  {{ substr("$searchp->updated_at",8,2) }}일     작성자: {{ $searchp->name }} (인)</pre></p>
                                     @endif
                             </div>

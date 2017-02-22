@@ -139,6 +139,7 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
             Route::post('insert2', array('as' => 'insert/payitem2', 'uses' => 'HnlPayItemController@store2'));
             Route::post('insert3', array('as' => 'insert/payitem3', 'uses' => 'HnlPayItemController@store3'));
             Route::post('insert4', array('as' => 'insert/payitem4', 'uses' => 'HnlPayItemController@store4'));
+            Route::post('inserttax', array('as' => 'insert/payitemtax', 'uses' => 'HnlPayItemController@storetax'));
 
             Route::get('{payitemId}/confirm-delete', array('as' => 'confirm-delete/payitem', 'uses' => 'HnlPayItemController@getModalDelete'));
             Route::get('{payitemId}/delete', array('as' => 'delete/payitem', 'uses' => 'HnlPayItemController@destroy'));
@@ -157,6 +158,9 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
             Route::post('{payitemId}/update4', array('as' => 'update/payitem4', 'uses' => 'HnlPayItemController@update4'));
 
             Route::post('{tdeductionId}/check', array('as' => 'check/tdeduction', 'uses' => 'HnlPayItemController@clickcheck'));
+
+            Route::get('{payitemId}/confirm-delete_tax', array('as' => 'confirm-delete/tdeduction', 'uses' => 'HnlPayItemController@getModalDeleteTax'));
+            Route::get('{payitemId}/deletetax', array('as' => 'delete/tdeduction', 'uses' => 'HnlPayItemController@destroyTax'));
 
 
         });

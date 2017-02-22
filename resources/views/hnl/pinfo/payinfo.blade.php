@@ -243,7 +243,7 @@
                                     </tr>
                                     <tr>
                                         @foreach($payitem1 as $p1)
-                                            <td><input type="text" class="form-control input-sm" value="" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!}></td>
+                                            <td><input type="text" class="form-control input-sm" value="" name="input1{{ $p1->id }}" value="" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!}></td>
                                         @endforeach
                                     </tr>
                                     <tr>
@@ -254,7 +254,7 @@
                                     </tr>
                                     <tr>
                                         @foreach($payitem2 as $p2)
-                                            <td><input type="text" class="form-control input-sm" value=""{!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? '' : 'readonly' !!}></td>
+                                            <td><input type="text" class="form-control input-sm" value=""  name="input2{{ $p2->id }}" value=""{!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? '' : 'readonly' !!}></td>
                                         @endforeach
                                     </tr>
                                     <tr>
@@ -265,7 +265,7 @@
                                     </tr>
                                     <tr>
                                         @foreach($payitem3 as $p3)
-                                            <td><input type="text" class="form-control input-sm" value="" readonly></td>
+                                            <td><input type="text" class="form-control input-sm" value=""  name="input3{{ $p3->id }}" value=""></td>
                                         @endforeach
                                     </tr>
                                     <tr>
@@ -276,7 +276,7 @@
                                     </tr>
                                     <tr>
                                         @foreach($payitem4 as $p4)
-                                            <td><input type="text" class="form-control input-sm" value="" readonly></td>
+                                            <td><input type="text" class="form-control input-sm" value=""  name="input4{{ $p4->id }}" value=""></td>
                                         @endforeach
                                     </tr>
                                 </table>
@@ -290,16 +290,98 @@
                                 </h4>
                             </div>
                             <div class="panel-body">
-                                <table class="table table-condensed table-bordered">
-                                    <tr>
-                                        <td>월 급여액</td>
-                                        <td><input type="text" class="form-control input-sm" readonly></td>
-                                        <td>비과세액</td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                        <td>보수총액</td>
-                                        <td><input type="text" class="form-control input-sm"></td>
-                                    </tr>
-                                </table>
+                                <div class="col-lg-6">
+                                    <table class="table table-condensed table-bordered col-lg-6">
+                                        <tr>
+                                            <td>월 급여액</td>
+                                            <td>
+                                                @if($payinfo)
+                                                    <input type="text" class="form-control input-sm" value="{{ $payinfo->paymonth }}" readonly>
+                                                @else
+                                                    <input type="text" class="form-control input-sm" value="">
+                                                @endif
+                                            </td>
+                                            <td>비과세액</td>
+                                            <td><input type="text" class="form-control input-sm"></td>
+                                            <td>보수총액</td>
+                                            <td><input type="text" class="form-control input-sm"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-lg-6">
+                                    <table class="table table-condensed table-bordered col-lg-6">
+                                        <tr>
+                                            <th>구분</th>
+                                            <th>국민연금</th>
+                                            <th>건강보험</th>
+                                            <th>고용보험</th>
+                                            <th>산재보험</th>
+                                        </tr>
+                                        <tr>
+                                            <td>소득기준</td>
+                                            <td>
+                                                <select class="form-control input-sm">
+                                                    <option>기존보수월액</option>
+                                                    <option>당월보수월액</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-control input-sm">
+                                                    <option>기존보수월액</option>
+                                                    <option>당월보수월액</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-control input-sm">
+                                                    <option>기존보수월액</option>
+                                                    <option>당월보수월액</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-control input-sm">
+                                                    <option>기존보수월액</option>
+                                                    <option>당월보수월액</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>입사일 2일이후</td>
+                                            <td>
+                                                <select class="form-control input-sm">
+                                                    <option>당월공제</option>
+                                                    <option>익월공제</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-control input-sm">
+                                                    <option>당월공제</option>
+                                                    <option>익월공제</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-control input-sm">
+                                                    <option>당월공제</option>
+                                                    <option>익월공제</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-control input-sm">
+                                                    <option>당월공제</option>
+                                                    <option>익월공제</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>공제대상여부</td>
+                                            <td>
+                                                <select class="form-control input-sm">
+                                                    <option>없음</option>
+                                                    <option>공제</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                                 <button class="btn btn-default col-lg-12" type="submit">등 록</button>
                             </div>
                         </div>

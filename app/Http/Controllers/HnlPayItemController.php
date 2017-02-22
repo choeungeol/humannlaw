@@ -55,7 +55,7 @@ class HnlPayItemController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -64,6 +64,17 @@ class HnlPayItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function storetax(Request $request)
+    {
+        $tax = new TaxDeduction([
+            'title' => $request->get('tdeduction'),
+        ]);
+        $tax->save();
+
+
+        return Redirect::to('hnl/basicinfo/payitem')->with('success');
+
+    }
     public function store1(Request $request)
     {
         $payitem1 = new Payitem1([
@@ -73,6 +84,7 @@ class HnlPayItemController extends Controller
             'is_severance_pay' => $request->get('i_is_severance_pay'),
             'is_taxfree' => $request->get('i_is_taxfree'),
         ]);
+        $payitem1->save();
 
 
         return Redirect::to('hnl/basicinfo/payitem')->with('success');
@@ -177,6 +189,25 @@ class HnlPayItemController extends Controller
     public function edit($id)
     {
         //
+    }
+    public function getModalDeleteTax($id = null)
+    {
+        $model = '공제항목';
+
+        $confirm_route = $error = null;
+
+        try {
+            // Get group information
+            $td = TaxDeduction::findOrFail($id);
+
+            $title = $td->title;
+            $confirm_route = route('delete/tdeduction', ['id' => $td->id]);
+            return view('hnl.layouts.modal_confirmation_payitem', compact('error', 'model','title', 'confirm_route'));
+        } catch (GroupNotFoundException $e) {
+
+            $error = Lang::get('admin/groups/message.group_not_found', compact('id'));
+            return view('hnl.layouts.modal_confirmation_payitem', compact('error', 'model' ,'title','confirm_route'));
+        }
     }
 
     public function getModalDelete($id = null)
@@ -437,6 +468,21 @@ class HnlPayItemController extends Controller
     {
         try {
             $pitem = Payitem4::findOrFail($id);
+
+            $pitem->delete();
+
+            // Redirect to the group management page
+            return Redirect::route('payitem')->with('success', Lang::get('groups/message.success.delete'));
+        } catch (GroupNotFoundException $e) {
+            // Redirect to the group management page
+            return Redirect::route('payitem')->with('error', Lang::get('groups/message.group_not_found', compact('id')));
+        }
+    }
+
+    public function destroyTax($id)
+    {
+        try {
+            $pitem = TaxDeduction::findOrFail($id);
 
             $pitem->delete();
 

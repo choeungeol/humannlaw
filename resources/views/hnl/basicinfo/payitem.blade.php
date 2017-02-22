@@ -36,7 +36,7 @@
 
     <section class="content" ng-app="payitem" ng-controller="payitemCtrl">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <div class="panel panel-success">
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
@@ -135,7 +135,7 @@
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('confirm-delete/payitem', $p1->id) }}" class="btn btn-warning btn-sm" data-toggle="modal"
-                                                           data-target="#delete_confirm" {!! (($p1->title === '기본급') || ($p1->title === '주휴수당') || ($p1->title === '직책수당')  || ($p1->title === '근속수당')  || ($p1->title === '직무수당')  ? 'disabled' : '') !!}>지우기</a>
+                                                           data-target="#delete_confirm" {!! ($p1->id < 6) ? 'disabled' : '' !!}>지우기</a>
                                                     </td>
                                                 </tr>
                                                 </form>
@@ -240,7 +240,7 @@
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('confirm-delete/payitem2', $p2->id) }}" class="btn btn-warning btn-sm" data-toggle="modal"
-                                                           data-target="#delete_confirm" {!! (($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당')  || ($p2->title === '휴일연장')  || ($p2->title === '휴일야간') || ($p2->title === '연차수당')  ? 'disabled' : '') !!}>지우기</a>
+                                                           data-target="#delete_confirm" {!! (($p2->id < 7) ? 'disabled' : '') !!}>지우기</a>
                                                     </td>
                                                 </tr>
                                                 </form>
@@ -343,7 +343,7 @@
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('confirm-delete/payitem3', $p3->id) }}" class="btn btn-warning btn-sm" data-toggle="modal"
-                                                           data-target="#delete_confirm" {!! (($p3->title === '식대') || ($p3->title === '차량유지비') || ($p3->title === '육아수당')  || ($p3->title === '연구활동비')  || ($p3->title === '명절떡값')  ? 'disabled' : '') !!}>지우기</a>
+                                                           data-target="#delete_confirm" {!! (($p3->id < 6) ? 'disabled' : '') !!}>지우기</a>
                                                     </td>
                                                 </tr>
                                                 </form>
@@ -446,7 +446,7 @@
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('confirm-delete/payitem4', $p4->id) }}" class="btn btn-warning btn-sm" data-toggle="modal"
-                                                           data-target="#delete_confirm" {!! (($p4->title === '상여금') || ($p4->title === '특별성과금') || ($p4->title === '특근수당')  || ($p4->title === '특별수당') ? 'disabled' : '') !!}>지우기</a>
+                                                           data-target="#delete_confirm" {!! (($p4->id < 5) ? 'disabled' : '') !!}>지우기</a>
                                                     </td>
                                                 </tr>
                                                 </form>
@@ -497,9 +497,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-4">
                 <div class="panel panel-success">
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
@@ -511,28 +509,37 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <div class="col-lg-2">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <tr>
-                                        <th>명 칭</th>
-                                        <th>사용 여부</th>
-                                    </tr>
-                                    @foreach($tdeduction as $td)
-                                    <tr>
-                                        <th>{{ $td->title }}</th>
-                                        <form class="checkbox{{$td->id}}" action="{{ route('check/tdeduction',$td->id) }}" method="POST">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                            <td>
-                                                <input type="checkbox" class="switch" data-on-color="info"
-                                                       data-off-color="primary" data-animate onchange="$('.checkbox{{ $td->id }}').submit();" value="{!! ($td->is_check == 0) ? 'false' : 'true' !!}" {!! ($td->is_check == 1) ? 'checked' : '' !!}>
-                                            </td>
-                                        </form>
-                                    </tr>
-                                    @endforeach
-                                </table>
-                            </div>
-                        </div>
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <th>명 칭</th>
+                                <th>사용 여부</th>
+                                <th>삭제</th>
+                            </tr>
+                            @foreach($tdeduction as $td)
+                                <tr>
+                                    <th>{{ $td->title }}</th>
+                                    <form class="checkbox{{$td->id}}" action="{{ route('check/tdeduction',$td->id) }}" method="POST">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <td>
+                                            <input type="checkbox" class="switch" data-on-color="info"
+                                                   data-off-color="primary" data-animate onchange="$('.checkbox{{ $td->id }}').submit();" value="{!! ($td->is_check == 0) ? 'false' : 'true' !!}" {!! ($td->is_check == 1) ? 'checked' : '' !!}>
+                                        </td>
+                                    </form>
+                                    <td>
+                                        <a href="{{ route('confirm-delete/tdeduction',$td->id) }}" class="btn btn-warning btn-sm" data-toggle="modal"
+                                           data-target="#delete_confirm" {!! ($td->id < 12)  ? 'disabled' : '' !!}>지우기</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            <form action="{{ route('insert/payitemtax') }}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                            <tr>
+                                <td><input type="text" class="form-control input-sm" name="tdeduction"></td>
+                                <td><button class="btn btn-primary btn-sm">추가</button></td>
+                                <td></td>
+                            </tr>
+                            </form>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -545,7 +552,6 @@
             </div>
         </div>
     </section>
-
 
 @stop
 
