@@ -41,10 +41,13 @@ class HnlPayinfoController extends Controller
         $payitem2 = Payitem2::All();
         $payitem3 = Payitem3::All();
         $payitem4 = Payitem4::All();
+        $mtotal = '';
+        $mbreak = '';
+        $id = '';
 
 
         if(Sentinel::check())
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id'));
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }
@@ -89,13 +92,24 @@ class HnlPayinfoController extends Controller
         $payitem3 = Payitem3::All();
         $payitem4 = Payitem4::All();
 
+        $getsession = (array)$GLOBALS['request']->session()->all();
+
+        if(count($getsession) > 5){
+            $mtotal = $getsession['mtotal'];
+            $mbreak = $getsession['mbreak'];
+
+        }else{
+            $mtotal = 0;
+            $mbreak = 0;
+        }
+
 /*        $deletedRows = Salary1::where('pinfo_id', 1)->delete();
         $deletedRows = Salary2::where('pinfo_id', 1)->delete();
         $deletedRows = Salary3::where('pinfo_id', 1)->delete();
         $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
         if(Sentinel::check())
 
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id'));
 
         else
 
@@ -137,6 +151,18 @@ class HnlPayinfoController extends Controller
 
         $calcs[$worktype] = Calctable::where('type', '=', $worktype)->get();
 
+        $calc = array();
+        for($i=0; $i < count($calcs); $i++){
+            $calc[] = $calcs[$worktype][0]->mtotal;
+            $calc[] = $calcs[$worktype][0]->mbreak;
+            $calc[] = $calcs[$worktype][0]->mover;
+            $calc[] = $calcs[$worktype][0]->mnight;
+            $calc[] = $calcs[$worktype][0]->mwwork;
+            $calc[] = $calcs[$worktype][0]->mwover;
+            $calc[] = $calcs[$worktype][0]->mwnight;
+            $calc[] = $calcs[$worktype][0]->mwbt;
+        }
+
         if ($calcs[$worktype][0]->total) {
             $caltotal = $calcs[$worktype][0]->total;
         } else {
@@ -149,14 +175,13 @@ class HnlPayinfoController extends Controller
             $normalpay = $paymonth / $caltotal;
         }//통상시급
 
-        if ($calcs[$worktype][0]->mtotal) {
-            $cal = $calcs[$worktype][0]->mtotal;
-        } else {
-            $cal = 0;
+        for($i=0; $i < count($calc); $i++){
+            $paycalc[] = $normalpay * $calc[$i];
         }
 
-        $normal = $normalpay * $cal; //rlqht
 
+        $mtotal = $normalpay * $calc[0]; //기본급
+        $mbreak = $normalpay * $calc[1]; //주휴수당
 
         $pinfo = Pinfo::findOrFail($id)->payinfos;
         $pinfo->paymonth = $paymonth;
@@ -166,57 +191,84 @@ class HnlPayinfoController extends Controller
         $pinfo->hour_pay = $normalpay;
         $pinfo->save();
 
-        $sal1 = Salary1::where('pinfo_id','=',$id)->get();
-
-
-        $test1 = $sal1[0]->title;
-        $test2 = '';
-
- /*           for ($i = 0; $i < count($payitem_id1); $i++) {
-                $salary1 = new Salary1([
-                    'pinfo_id' => $id,
-                    'payitem_id' => $payitem_id1[$i],
-                    'title' => $payitem_title1[$i],
-                ]);
-                $salary1->save();
-            }
-
-
-
-        for ($i = 0; $i < count($payitem_id2); $i++) {
-            $salary2 = new Salary2([
-                'pinfo_id' => $id,
-                'payitem_id' => $payitem_id2[$i],
-                'title' => $payitem_title2[$i],
-            ]);
-            $salary2->save();
-        }
-        for ($i = 0; $i < count($payitem_id3); $i++) {
-            $salary3 = new Salary3([
-                'pinfo_id' => $id,
-                'payitem_id' => $payitem_id3[$i],
-                'title' => $payitem_title3[$i],
-            ]);
-            $salary3->save();
-        }
-        for ($i = 0; $i < count($payitem_id4); $i++) {
-            $salary4 = new Salary4([
-                'pinfo_id' => $id,
-                'payitem_id' => $payitem_id4[$i],
-                'title' => $payitem_title4[$i],
-            ]);
-            $salary4->save();
-        }*/
-
             if (Sentinel::check())
 
-                return Redirect::route('payinfo_view', $id)->with('success', Lang::get('groups/message.success.update'));
+                return Redirect::route('payinfo_view', $id)
+                    ->with('mtotal',$mtotal)
+                    ->with('mbreak',$mbreak)
+                    ->with('id',$id);
 
             else
 
                 return Redirect::to('admin/signin')->with('error', 'You must be logged in!');
 
     }
+
+    public function insert_payitem(Request $request){
+
+        $id = $request->id;
+
+        $payitem1 = Payitem1::All();
+        $payitem2 = Payitem2::All();
+        $payitem3 = Payitem3::All();
+        $payitem4 = Payitem4::All();
+
+        $A = array(
+            $request->get('inputA0'),
+            $request->get('inputA1'),
+            $request->get('inputA2'),
+            $request->get('inputA3'),
+            $request->get('inputA4'),
+        );
+
+
+
+        for ($i = 0; $i < count($payitem1); $i++) {
+            $payitem_id1[] = $payitem1[$i]->id;
+            $payitem_title1[] = $payitem1[$i]->title;
+        }
+        for ($i = 0; $i < count($payitem2); $i++) {
+            $payitem_id2[] = $payitem2[$i]->id;
+            $payitem_title2[] = $payitem2[$i]->title;
+        }
+        for ($i = 0; $i < count($payitem3); $i++) {
+            $payitem_id3[] = $payitem3[$i]->id;
+            $payitem_title3[] = $payitem3[$i]->title;
+        }
+        for ($i = 0; $i < count($payitem4); $i++) {
+            $payitem_id4[] = $payitem4[$i]->id;
+            $payitem_title4[] = $payitem4[$i]->title;
+        }
+
+        $salary1 = array(
+            /*$payitem_title1 => $request->get(''),*/
+        );
+
+        $sal1 = new \stdClass();
+        $sal1->data = array(
+            '','',
+        );
+
+        $salary1 = new \stdClass();
+
+        for($i=0; $i< count($payitem1); $i++){
+            $salary1->id[] = $payitem1[$i]->id;
+            $salary1->title[] = $payitem1[$i]->title;
+        }
+
+        $sa = (array)$salary1;
+
+
+        if (Sentinel::check())
+
+            return Redirect::route('payinfo_view', $id);
+
+        else
+
+            return Redirect::to('admin/signin')->with('error', 'You must be logged in!');
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

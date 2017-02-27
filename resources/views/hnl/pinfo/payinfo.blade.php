@@ -233,17 +233,23 @@
                                     급여항목
                                 </h4>
                             </div>
-                            <div class="panel-body">
-                                <table class="table table-condensed table-bordered">
+                            <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                <input type="hidden" name="id" value="{{ $id }}">
+                                    <table class="table table-condensed table-bordered">
                                     <tr>
                                         <th rowspan="2">통상임금</th>
                                         @foreach($payitem1 as $p1)
-                                            <th>{{  $p1->title }}</th>
+                                            <th>{{ $p1->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach($payitem1 as $p1)
-                                            <td><input type="text" class="form-control input-sm" value="" name="input1{{ $p1->id }}" value="" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!}></td>
+                                        @foreach($payitem1 as $k => $p1)
+                                            @if(!$mtotal)
+                                            <td><input type="text" class="form-control input-sm" name="inputA{{ $k }}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
+                                            @else
+                                            <td><input type="text" class="form-control input-sm" name="inputA{{ $K }}" value="{!! ($p1->title === '기본급') ? $mtotal: '' !!}{!! ($p1->title === '주휴수당') ? $mbreak: '' !!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
+                                            @endif
                                         @endforeach
                                     </tr>
                                     <tr>
@@ -254,7 +260,7 @@
                                     </tr>
                                     <tr>
                                         @foreach($payitem2 as $p2)
-                                            <td><input type="text" class="form-control input-sm" value=""  name="input2{{ $p2->id }}" value=""{!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? '' : 'readonly' !!}></td>
+                                            <td><input type="text" class="form-control input-sm" name="inputB{{ $p2->id }}" value=""{!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? '' : 'readonly' !!}></td>
                                         @endforeach
                                     </tr>
                                     <tr>
@@ -265,7 +271,7 @@
                                     </tr>
                                     <tr>
                                         @foreach($payitem3 as $p3)
-                                            <td><input type="text" class="form-control input-sm" value=""  name="input3{{ $p3->id }}" value=""></td>
+                                            <td><input type="text" class="form-control input-sm" name="inputC{{ $p3->id }}" value=""></td>
                                         @endforeach
                                     </tr>
                                     <tr>
@@ -276,12 +282,12 @@
                                     </tr>
                                     <tr>
                                         @foreach($payitem4 as $p4)
-                                            <td><input type="text" class="form-control input-sm" value=""  name="input4{{ $p4->id }}" value=""></td>
+                                            <td><input type="text" class="form-control input-sm" name="inputD{{ $p4->id }}" value=""></td>
                                         @endforeach
                                     </tr>
                                 </table>
                                 <button class="btn btn-default col-lg-12" type="submit">등 록</button>
-                            </div>
+                            </form>
                         </div>
                         <div class="panel panel-primary">
                             <div class="panel-heading">
