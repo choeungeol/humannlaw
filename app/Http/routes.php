@@ -264,7 +264,20 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
 
     #근태관리
-    Route::get('work/addwork', array('as' => 'hnl', 'uses' => 'WorkController@showAddwork'));
+    Route::group(array('prefix'=> 'work'),function() {
+
+        Route::group(array('prefix'=> 'addwork'),function() {
+
+            Route::get('/', array('as' => 'hnl', 'uses' => 'HnlGeuntaeController@index'));
+
+            Route::get('/{addworkId?}', array('as' => 'addwork_view', 'uses' => 'HnlGeuntaeController@show'));
+
+            Route::post('insert', array('as' => 'insert/addwork', 'uses' => 'HnlGeuntaeController@store'));
+
+
+
+        });
+    });
 
     Route::get('work/workaday', array('as' => 'hnl', 'uses' => 'WorkController@showWorkADay'));
 

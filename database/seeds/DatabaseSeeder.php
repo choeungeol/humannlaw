@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call('PayitemsSeed');
         $this->call('TaxdeductionSeeder');
         $this->call('PayDayTimeSeeder');
+        $this->call('GeuntaeSeeder');
 
         Model::reguard();
     }
