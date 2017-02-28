@@ -39,7 +39,7 @@ calendars.byID("alt").config.onChange = function(obj, str){
 
 var disabledDays = [0, 6];
 
-$('#disabled-days').datepicker({
+$('.disabled-days').datepicker({
     language: 'en',
     onRenderCell: function (date, cellType) {
         if (cellType == 'day') {
