@@ -112,8 +112,8 @@ class HnlGeuntaeController extends Controller
 
         $searchp = Pinfo::findOrFail($id);
         $geuntaeadd = Geuntaeadd::where('pinfo_id','=',$id)->get();
-        $extraworkadd = Extraworkadd::where('pinfo_id','=',$id)->get();
-        $vacationadd = Vacation::where('pinfo_id','=',$id)->get();
+/*        $extraworkadd = Extraworkadd::where('pinfo_id','=',$id)->get();
+        $vacationadd = Vacation::where('pinfo_id','=',$id)->get();*/
 
         if(Sentinel::check())
             return view('hnl.work.addwork', compact('geuntae','addextrawork','vacation','geuntaeadd','extraworkadd','vacationadd','searchp','id','pinfo','jobtitle','position'));
