@@ -27,6 +27,6 @@ class CreateGeuntaeDeduct extends Migration
      */
     public function down()
     {
-        Schema::drop('geuntae_deduct');
+        Schema::drop('geuntae_deducts');
     }
 }

@@ -17,9 +17,9 @@ class CreateVacationAdd extends Migration
             $table->increments('id');
             $table->integer('pinfo_id');
             $table->string('vacation_title');
-            $table->string('use_date');
+            $table->string('use_date');   //적용일자
             $table->boolean('pay_apply')->default(0);
-            $table->string('use_dates');
+            $table->string('use_dates');  //반영일수
             $table->timestamps();
         });
     }

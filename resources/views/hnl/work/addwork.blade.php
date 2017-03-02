@@ -16,6 +16,7 @@
     <link href="{{ asset('assets/vendors/airDatepicker/css/datepicker.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/flatpickrCalendar/css/flatpickr.min.css') }}" rel="stylesheet" type="text/css"/>
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/all.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/line/line.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/bootstrap-switch/css/bootstrap-switch.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/switchery/css/switchery.css') }}"/>
@@ -67,7 +68,7 @@
                     <div class="panel-body">
                         <a class="btn btn-raised btn-info btn-large" data-toggle="modal" data-href="#searchmember" href="#searchmember">검색</a>
                         <table class="table table-bordered">
-                            <caption class="bg-primary">&nbsp;&nbsp;직원 정보&nbsp;&nbsp;</caption>
+                            <caption class="bg-primary">&nbsp;&nbsp;공제근태 내역&nbsp;&nbsp;</caption>
                             <tr>
                                 <th>공제 유형</th>
                                 <th>급여 반영</th>
@@ -92,6 +93,54 @@
                                 </td>
                             </tr>
                             @endforeach
+                        </table>
+                        <table class="table table-bordered">
+                            <caption class="bg-primary">&nbsp;&nbsp;추가근무 내역&nbsp;&nbsp;</caption>
+                            <tr>
+                                <th>공제 유형</th>
+                                <th>급여 반영</th>
+                                <th>공제 시간</th>
+                                <th>공제 금액</th>
+                                <th>적용 일자</th>
+                                <th>삭제</th>
+                            </tr>
+                            {{--@foreach($addextrawork as $aw)
+                                <tr>
+                                    <td>{{ $aw->extrawork_title }}</td>
+                                    <td>
+                                        {{ $aw->pay_apply == 0 ? '아니오':'예' }}
+                                    </td>
+                                    <td>{{ $aw->add_time }}</td>
+                                    <td>{{ $aw->add_pay }}</td>
+                                    <td>{{ $aw->use_date }}</td>
+                                    <td>
+                                        <a href="{{ $aw->id }}" class="btn btn-warning btn-sm">삭제</a>
+                                    </td>
+                                </tr>
+                            @endforeach--}}
+                        </table>
+                        <table class="table table-bordered">
+                            <caption class="bg-primary">&nbsp;&nbsp;휴가휴직 내역&nbsp;&nbsp;</caption>
+                            <tr>
+                                <th>공제 유형</th>
+                                <th>급여 반영</th>
+                                <th>적용 일자</th>
+                                <th>반영 일수</th>
+                                <th>삭제</th>
+                            </tr>
+                            {{--@foreach($vacationadd as $va)
+                                <tr>
+                                    <td>{{ $va->vacation_title }}</td>
+                                    <td>
+                                        {{ $va->pay_apply == 0 ? '아니오':'예' }}
+                                    </td>
+                                    <td>{{ $va->use_date }}</td>
+                                    <td>{{ $va->use_dates }}</td>
+                                    <td>
+                                        <a href="{{ $ga->id }}" class="btn btn-warning btn-sm">삭제</a>
+                                    </td>
+                                </tr>
+                            @endforeach--}}
                         </table>
                     </div>
                 </div>
@@ -129,7 +178,7 @@
                                     <input type="text" class="disabled-days form-control input-sm" name="udate"/>
                                 </td>
                                 <th class="success">급여반영</th>
-                                <td><input type="checkbox" class="switch" value="1" name="papply"></td>
+                                <td><input type="checkbox" class="switch" value="1" name="papply" data-size="small"></td>
                                 <th class="success">공제시급</th>
                                 <td><input type="text" class="form-control input-sm" name="mpaytime"></td>
                                 <th class="success">공제시간</th>
@@ -256,6 +305,7 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
 
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
     <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/bootstrap-switch/js/bootstrap-switch.js') }}"></script>
     <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/switchery/js/switchery.js') }}" ></script>
     <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"></script>
