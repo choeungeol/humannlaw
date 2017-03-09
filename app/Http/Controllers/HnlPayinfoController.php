@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Calctable;
 use App\Jobtitle;
+use App\Monthsalaryvalue;
 use App\Payinfo;
 use App\Payitem1;
 use App\Payitem2;
@@ -15,6 +16,7 @@ use App\Salary1;
 use App\Salary2;
 use App\Salary3;
 use App\Salary4;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
 use Sentinel;
@@ -44,10 +46,14 @@ class HnlPayinfoController extends Controller
         $mtotal = '';
         $mbreak = '';
         $id = '';
+        $nw = array();
+        $sa = array();
+        $bf = array();
+        $ca = array();
 
 
         if(Sentinel::check())
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca'));
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }
@@ -103,13 +109,20 @@ class HnlPayinfoController extends Controller
             $mbreak = 0;
         }
 
+        $getpitems = Monthsalaryvalue::where('pinfo_id','=', 1)->orderBy('created_at', 'desc')->first();
+        $nw = json_decode($getpitems->normal_wage);
+        $sa = json_decode($getpitems->statutory_allowance);
+        $bf = json_decode($getpitems->benefits);
+        $ca = json_decode($getpitems->commit_allowance);
+
+
 /*        $deletedRows = Salary1::where('pinfo_id', 1)->delete();
         $deletedRows = Salary2::where('pinfo_id', 1)->delete();
         $deletedRows = Salary3::where('pinfo_id', 1)->delete();
         $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
         if(Sentinel::check())
 
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca'));
 
         else
 
@@ -207,65 +220,96 @@ class HnlPayinfoController extends Controller
     public function insert_payitem(Request $request){
 
         $id = $request->id;
+        $pchange = $request->is_another;
 
         $payitem1 = Payitem1::All();
         $payitem2 = Payitem2::All();
         $payitem3 = Payitem3::All();
         $payitem4 = Payitem4::All();
 
-        $A = array(
-            $request->get('inputA0'),
-            $request->get('inputA1'),
-            $request->get('inputA2'),
-            $request->get('inputA3'),
-            $request->get('inputA4'),
-        );
+         for($i=0; $i < count($payitem1); $i++){
 
+            $atype[] = $request->get('inputA'.$i);
 
-
-        for ($i = 0; $i < count($payitem1); $i++) {
             $payitem_id1[] = $payitem1[$i]->id;
             $payitem_title1[] = $payitem1[$i]->title;
-        }
-        for ($i = 0; $i < count($payitem2); $i++) {
-            $payitem_id2[] = $payitem2[$i]->id;
-            $payitem_title2[] = $payitem2[$i]->title;
-        }
-        for ($i = 0; $i < count($payitem3); $i++) {
-            $payitem_id3[] = $payitem3[$i]->id;
-            $payitem_title3[] = $payitem3[$i]->title;
-        }
-        for ($i = 0; $i < count($payitem4); $i++) {
-            $payitem_id4[] = $payitem4[$i]->id;
-            $payitem_title4[] = $payitem4[$i]->title;
-        }
 
-        $salary1 = array(
-            /*$payitem_title1 => $request->get(''),*/
-        );
+            $arra[] = array('payitem_id' => $payitem_id1[$i] ,'title' => $payitem_title1[$i], 'price' => $atype[$i]);
 
-        $sal1 = new \stdClass();
-        $sal1->data = array(
-            '','',
-        );
+        };
 
-        $salary1 = new \stdClass();
+        $sal1 = json_encode($arra);
 
-        for($i=0; $i< count($payitem1); $i++){
-            $salary1->id[] = $payitem1[$i]->id;
-            $salary1->title[] = $payitem1[$i]->title;
+        for($i=0; $i < count($payitem2); $i++){
+        $btype[] = $request->get('inputB'.$i);
+
+        $payitem_id2[] = $payitem2[$i]->id;
+        $payitem_title2[] = $payitem2[$i]->title;
+
+        $arrb[] = array('payitem_id' => $payitem_id2[$i] ,'title' => $payitem_title2[$i], 'price' => $btype[$i]);
+
         }
 
-        $sa = (array)$salary1;
+        $sal2 = json_encode($arrb);
+
+        for($i=0; $i < count($payitem3); $i++){
+           $ctype[] = $request->get('inputC'.$i);
+
+           $payitem_id3[] = $payitem3[$i]->id;
+           $payitem_title3[] = $payitem3[$i]->title;
+
+           $arrc[] = array('payitem_id' => $payitem_id3[$i] ,'title' => $payitem_title3[$i], 'price' => $ctype[$i]);
+
+        }
+
+        $sal3 = json_encode($arrc);
+
+        for($i=0; $i < count($payitem4); $i++){
+           $dtype[] = $request->get('inputD'.$i);
+
+           $payitem_id4[] = $payitem4[$i]->id;
+           $payitem_title4[] = $payitem4[$i]->title;
+
+           $arrd[] = array('payitem_id' => $payitem_id4[$i] ,'title' => $payitem_title4[$i], 'price' => $dtype[$i]);
+
+        }
+
+        $sal4 = json_encode($arrd);
 
 
-        if (Sentinel::check())
+        $pitems1 = new Monthsalaryvalue([
+           'pinfo_id' => $id,
+           'normal_wage' => $sal1,
+           'statutory_allowance' => $sal2,
+           'benefits' => $sal3,
+           'commit_allowance' => $sal4,
+        ]);
+        $pitems1->save();
 
-            return Redirect::route('payinfo_view', $id);
 
-        else
+        if ($pchange === 'pchange'){
 
-            return Redirect::to('admin/signin')->with('error', 'You must be logged in!');
+            if (Sentinel::check())
+
+                return Redirect::route('pchange_view', $id);
+
+            else
+
+                return Redirect::to('admin/signin')->with('error', 'You must be logged in!');
+
+        }else{
+
+            if (Sentinel::check())
+
+                return Redirect::route('payinfo_view', $id);
+
+            else
+
+                return Redirect::to('admin/signin')->with('error', 'You must be logged in!');
+
+        }
+
+
 
     }
 

@@ -239,50 +239,50 @@
                                     <table class="table table-condensed table-bordered">
                                     <tr>
                                         <th rowspan="2">통상임금</th>
-                                        @foreach($payitem1 as $p1)
+                                        @foreach($nw as $p1)
                                             <th>{{ $p1->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach($payitem1 as $p1)
+                                        @foreach($nw as $k => $p1)
                                             @if(!$mtotal)
-                                            <td><input type="text" class="form-control input-sm" name="inputA" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
+                                            <td><input type="text" class="form-control input-sm" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} value="{{ $p1->price  }}"></td>
                                             @else
-                                            <td><input type="text" class="form-control input-sm" name="inputA" value="{!! ($p1->title === '기본급') ? $mtotal: '' !!}{!! ($p1->title === '주휴수당') ? $mbreak: '' !!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
+                                            <td><input type="text" class="form-control input-sm" name="inputA{{$k++}}" value="{!! ($p1->title === '기본급') ? $mtotal: '' !!}{!! ($p1->title === '주휴수당') ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
                                             @endif
                                         @endforeach
                                     </tr>
                                     <tr>
                                         <th rowspan="2">법정수당</th>
-                                        @foreach($payitem2 as $p2)
-                                            <th>{{  $p2->title }}</th>
+                                        @foreach($sa as $p2)
+                                            <th>{{ $p2->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach($payitem2 as $p2)
-                                            <td><input type="text" class="form-control input-sm" name="inputB{{ $p2->id }}" value=""{!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? '' : 'readonly' !!}></td>
+                                        @foreach($sa as $k => $p2)
+                                            <td><input type="text" class="form-control input-sm" value="{{ $p2->price }}" name="inputB{{ $k++ }}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
                                         @endforeach
                                     </tr>
                                     <tr>
                                         <th rowspan="2">복리후생</th>
-                                        @foreach($payitem3 as $p3)
+                                        @foreach($bf as $p3)
                                             <th>{{  $p3->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach($payitem3 as $p3)
-                                            <td><input type="text" class="form-control input-sm" name="inputC{{ $p3->id }}" value=""></td>
+                                        @foreach($bf as $k => $p3)
+                                            <td><input type="text" class="form-control input-sm" value="{{ $p3->price }}" name="inputC{{ $k++ }}" value=""></td>
                                         @endforeach
                                     </tr>
                                     <tr>
                                         <th rowspan="2">약정수당</th>
-                                        @foreach($payitem4 as $p4)
+                                        @foreach($ca as $p4)
                                             <th>{{  $p4->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach($payitem4 as $p4)
-                                            <td><input type="text" class="form-control input-sm" name="inputD{{ $p4->id }}" value=""></td>
+                                        @foreach($ca as $k => $p4)
+                                            <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{ $k++ }}" value=""></td>
                                         @endforeach
                                     </tr>
                                 </table>

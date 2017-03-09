@@ -28,7 +28,41 @@
     </section>
     <section class="content">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading border-light">
+                        <h4 class="panel-title">
+                            <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
+                               data-l="true"></i> 사원정보
+                        </h4>
+                            <span class="pull-right">
+                                <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
+                            </span>
+                    </div>
+                    <div class="panel-body">
+                        <a class="btn btn-raised btn-info btn-large" data-toggle="modal" data-href="#searchmember" href="#searchmember">검색</a>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>사번</th>
+                                <th>이름</th>
+                                <th>근무상태</th>
+                                <th>채용형태</th>
+                            </tr>
+                            <tr>
+                                @if($searchp)
+                                <td>{{ $searchp->employee_num }}</td>
+                                <td>{{ $searchp->name }}</td>
+                                <td>{{ $searchp->work_condition }}</td>
+                                <td>{{ $searchp->employee_type }}</td>
+                                @endif
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
@@ -54,165 +88,58 @@
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div class="tab-pane fade active in" id="basic">
-                                    <div class="row">
-                                        <table class="table table-condensed table-bordered">
-                                            <caption>
-                                                <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 지급항목
-                                            </caption>
-                                            <tr>
-                                                <th rowspan="2">통상임금</th><th>기본급</th><th>주휴수당</th><th>직책수당</th><th>근속수당</th><th>직무수당</th><th> - </th>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control input-sm" disabled></td>
-                                                <td><input type="text" class="form-control input-sm" disabled></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th rowspan="2">법정수당</th><th>연장수당</th><th>야간수당</th><th>휴일수당</th><th>휴일연장</th><th>휴일야간</th><th>연차수당</th>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control input-sm" disabled></td>
-                                                <td><input type="text" class="form-control input-sm" disabled></td>
-                                                <td><input type="text" class="form-control input-sm" disabled></td>
-                                                <td><input type="text" class="form-control input-sm" disabled></td>
-                                                <td><input type="text" class="form-control input-sm" disabled></td>
-                                                <td><input type="text" class="form-control input-sm" disabled></td>
-                                            </tr>
-                                            <tr>
-                                                <th rowspan="2">복리후생</th><th>식대</th><th>차량유지비</th><th>육아수당</th><th>연구활동비</th><th>명절떡값</th><th> - </th>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th rowspan="2">약정수당</th><th>상여금</th><th>특별성과금</th><th>특근수당</th><th>특별수당</th><th> - </th><th> - </th>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th>총액</th>
-                                                <td colspan="6"><input type="text" class="form-control input-sm" disabled></td>
-                                            </tr>
-                                        </table>
-                                        {{--<table class="table table-bordered">
-                                            <caption>
-                                                <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 공제항목
-                                            </caption>
-                                            <tr>
-                                                <th>소득세</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>지방소득세</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>국민연금</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>건강보험</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>고용보험</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>기타공제</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>상조회비</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>노인 장기요양 보험료</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>건강보험료 정산</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>정산 소득세</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>정산 주민세</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th></th>
-                                                <td></td>
-                                            </tr>
-                                        </table>
-                                        <table class="table table-condensed table-bordered">
-                                            <caption>
-                                                <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 근태항목
-                                            </caption>
-                                            <tr>
-                                                <th colspan="5">근태공제금액</th>
-                                                <th colspan="5">추가수당금액</th>
-                                                <th>휴가·휴직</th>
-                                            </tr>
-                                            <tr>
-                                                <th>지각 공제</th>
-                                                <th>조퇴 공제</th>
-                                                <th>외출 공제</th>
-                                                <th>결근 공제</th>
-                                                <th>총 공제금액</th>
-                                                <th>추가 연장</th>
-                                                <th>추가 야간</th>
-                                                <th>추가 휴일</th>
-                                                <th>특별 근로</th>
-                                                <th>총 추가금액</th>
-                                                <th>무급일수</th>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                            </tr>
-                                        </table>
+                                    <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="id" value="{{ $id }}">
+                                        <input type="hidden" name="is_another" value="pchange">
                                         <table class="table table-condensed table-bordered">
                                             <tr>
-                                                <th rowspan="3">근태공제금액</th>
-                                                <th>기타 비과세</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>생산직 비과세</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>국외 근로</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <th rowspan="2">통상임금</th>
+                                                @foreach($nw as $p1)
+                                                    <th>{{ $p1->title }}</th>
+                                                @endforeach
                                             </tr>
                                             <tr>
-                                                <th>비급여</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>소득세 미반영</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>미신고비 과세</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
+                                                @foreach($nw as $k => $p1)
+                                                        <td><input type="text" class="form-control input-sm" name="inputA{{$k++}}" value="{{ $p1->price }}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!}></td>
+                                                @endforeach
                                             </tr>
                                             <tr>
-                                                <th>육아 보육수당</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>연구 활동비</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
-                                                <th>학자금 비과세</th>
-                                                <td><input type="text" class="form-control input-sm"></td>
+                                                <th rowspan="2">법정수당</th>
+                                                @foreach($sa as $p2)
+                                                    <th>{{ $p2->title }}</th>
+                                                @endforeach
                                             </tr>
-                                        </table>--}}
-{{--                                        <div class="pull-right">
-                                        <a href="{{ URL::to('hnl/pay/pchangec') }}" class="btn btn-primary btn-sm">변동사항 확인</a>
-                                        <button class="btn btn-success btn-sm">급여계산</button>
-                                        <button class="btn btn-success btn-sm">급여저장</button>
-                                        <button class="btn btn-info btn-sm">급여대장</button>
-                                        </div>--}}
-                                    </div>
+                                            <tr>
+                                                @foreach($sa as $k => $p2)
+                                                    <td><input type="text" class="form-control input-sm" value="{{ $p2->price }}" name="inputB{{ $k++ }}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
+                                                @endforeach
+                                            </tr>
+                                            <tr>
+                                                <th rowspan="2">복리후생</th>
+                                                @foreach($bf as $p3)
+                                                    <th>{{  $p3->title }}</th>
+                                                @endforeach
+                                            </tr>
+                                            <tr>
+                                                @foreach($bf as $k => $p3)
+                                                    <td><input type="text" class="form-control input-sm" value="{{ $p3->price }}" name="inputC{{ $k++ }}" value=""></td>
+                                                @endforeach
+                                            </tr>
+                                            <tr>
+                                                <th rowspan="2">약정수당</th>
+                                                @foreach($ca as $p4)
+                                                    <th>{{  $p4->title }}</th>
+                                                @endforeach
+                                            </tr>
+                                            <tr>
+                                                @foreach($ca as $k => $p4)
+                                                    <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{ $k++ }}" value=""></td>
+                                                @endforeach
+                                            </tr>
+                                        </table>
+                                        <button class="btn btn-default col-lg-12" type="submit">등 록</button>
+                                    </form>
                                 </div>
                                 <div class="tab-pane fade" id="wday">
                                     <table class="table table-hover table-bordered">
@@ -322,32 +249,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading border-light">
-                        <h4 class="panel-title">
-                            <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
-                               data-l="true"></i> 사원목록
-                        </h4>
-                            <span class="pull-right">
-                                <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
-                            </span>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-hover table-bordered">
-                            <tr>
-                                <td>사번</td><td>이름</td><td>생년월일</td><td>수정</td>
-                            </tr>
-                            <tr>
-                                <td>0001</td>
-                                <td>홍길동</td>
-                                <td>1988-11-11</td>
-                                <td><button class="btn btn-sm btn-default" type="button">수정</button></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -443,37 +344,63 @@
                                 <th>가불금</th>
                                 <th>연말정산</th>
                             </tr>
-                            <tr>
-                                <th>1</th>
-                                <th>홍길동</th>
-                                <th>100,000</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <th>2</th>
-                                <th>고길동</th>
-                                <th>100,000</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- search member modal-->
+        <div class="modal fade in" id="searchmember" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">사원 검색</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-condensed table-bordered" id="table2">
+                            <thead>
+                            <tr>
+                                <th>순번</th>
+                                <th>사번</th>
+                                <th>이름</th>
+                                <th>부서</th>
+                                <th>직위</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($pinfo as $key=>$p)
+                                <tr>
+                                    <td>{{ ++$key }}</td>
+                                    <td>{{ $p->employee_num }}</td>
+                                    <td><a href="{{ route('pchange_view',$p->id) }}">{{ $p->name }}</a></td>
+                                    <td>
+                                        @foreach($jobtitle as $job)
+                                            @if($job->id == $p->job)
+                                                {{ $job->name }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach($position as $pos)
+                                            @if($pos->id == $p->position)
+                                                {{ $pos->pos_name }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                        {{--                        <button class="btn btn-primary">등록</button>--}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END modal-->
     </section>
 
 @stop

@@ -286,9 +286,28 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
     Route::get('work/yearoff', array('as' => 'hnl', 'uses' => 'WorkController@showYearOff'));
 
     #급여관리
-    Route::get('pay/pmanage', array('as' => 'hnl', 'uses' => 'PayController@showPayManager'));
+    Route::group(array('prefix' => 'pay'), function() {
 
-    Route::get('pay/pchange', array('as' => 'hnl','uses' => 'PayController@showPayChange'));
+        Route::group(array('prefix' => 'pmanage'), function() {
+
+            Route::get('/', array('as' => 'hnl', 'uses' => 'HnlPmanageController@index'));
+
+        });
+
+        Route::group(array('prefix' => 'pchange'), function() {
+
+            Route::get('/', array('as' => 'hnl','uses' => 'HnlPchangeController@index'));
+
+            Route::get('/{pchangeId?}', array('as' => 'pchange_view', 'uses' => 'HnlPchangeController@show'));
+
+            Route::post('insert_pchange', array('as' => 'insert/pchange', 'uses' => 'HnlPchangeController@insert_pchange'));
+
+        });
+
+    });
+
+
+
 
     Route::get('pay/plist', array('as' => 'hnl','uses' => 'PayController@showPayList'));
 
