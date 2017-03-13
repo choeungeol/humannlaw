@@ -121,7 +121,7 @@ class HnlPayinfoController extends Controller
             $mwbt = '';
         }
 
-        $getpitems = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
+/*        $getpitems = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
         if(!empty($getpitems)){
 
@@ -137,7 +137,7 @@ class HnlPayinfoController extends Controller
             $bf = array('');
             $ca = array('');
 
-        }
+        }*/
 
 /*        $deletedRows = Salary1::where('pinfo_id', 1)->delete();
         $deletedRows = Salary2::where('pinfo_id', 1)->delete();
