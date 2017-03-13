@@ -270,7 +270,7 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach((array)$sa as $p2)
+                                        @forelse((array)$sa as $p2)
                                             @if($mover)
                                             <td><input type="text" class="form-control input-sm"
                                                        value="{{ ($p2->title === '연장수당') ? $mover : '' }}{{ ($p2->title === '야간수당') ? $mnight : '' }}{{ ($p2->title === '휴일수당') ? $mwwork : '' }}{{ ($p2->title === '휴일연장') ? $mwover : '' }}{{ ($p2->title === '휴일야간') ? $mwnight : '' }}{{ ($p2->title === '연차수당') ? $mwbt : '' }}"
@@ -278,7 +278,13 @@
                                             @else
                                             <td><input type="text" class="form-control input-sm" value="{{ $p2->price }}" name="inputB{{$p2->payitem_id}}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
                                             @endif
-                                        @endforeach
+                                        @empty
+                                            @foreach($payitem2 as $p2)
+                                                <td>
+                                                    <input type="text" class="form-control input-sm" name="inputA{{$p2->id}}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!} >
+                                                </td>
+                                            @endforeach
+                                        @endforelse
                                     </tr>
                                     <tr>
                                         <th rowspan="2">복리후생</th>
@@ -287,9 +293,15 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach((array)$bf as $p3)
+                                        @forelse((array)$bf as $p3)
                                             <td><input type="text" class="form-control input-sm" value="{{ $p3->price }}" name="inputC{{$p3->payitem_id}}"></td>
-                                        @endforeach
+                                        @empty
+                                            @foreach($payitem3 as $p3)
+                                                <td>
+                                                    <input type="text" class="form-control input-sm" name="inputA{{$p3->id}}">
+                                                </td>
+                                            @endforeach
+                                        @endforelse
                                     </tr>
                                     <tr>
                                         <th rowspan="2">약정수당</th>
@@ -298,9 +310,15 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach((array)$ca as $p4)
+                                        @forelse((array)$ca as $p4)
                                             <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{$p4->payitem_id}}"></td>
-                                        @endforeach
+                                        @empty
+                                            @foreach($payitem4 as $p4)
+                                                <td>
+                                                    <input type="text" class="form-control input-sm" name="inputA{{$p4->id}}" >
+                                                </td>
+                                            @endforeach
+                                        @endforelse
                                     </tr>
                                 </table>
                                 <button class="btn btn-default col-lg-12" type="submit">등 록</button>
