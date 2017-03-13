@@ -127,7 +127,7 @@ class HnlPayinfoController extends Controller
             $sa = json_decode($getpitems->statutory_allowance);
             $bf = json_decode($getpitems->benefits);
             $ca = json_decode($getpitems->commit_allowance);
-        
+
 
 /*        $deletedRows = Salary1::where('pinfo_id', 1)->delete();
         $deletedRows = Salary2::where('pinfo_id', 1)->delete();
