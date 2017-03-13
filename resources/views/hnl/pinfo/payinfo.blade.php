@@ -244,13 +244,16 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach($nw as $p1)
+                                        @forelse($nw as $p1)
                                             @if($mtotal)
                                             <td><input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! ($p1->payitem_id === 1) ? $mtotal: '' !!}{!! ($p1->payitem_id === 2) ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
                                             @else
                                             <td><input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! $p1->price !!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
                                             @endif
-                                        @endforeach
+                                        @empty
+                                            a
+                                        @endforelse
+
                                     </tr>
                                     <tr>
                                         <th rowspan="2">법정수당</th>
