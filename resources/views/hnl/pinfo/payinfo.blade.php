@@ -234,6 +234,8 @@
                                 </h4>
                                 @forelse($nw as $n)
                                     {{ $n->payitem_id }}
+                                @empty
+                                    <p>no</p>
                                 @endforelse
                             </div>
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
