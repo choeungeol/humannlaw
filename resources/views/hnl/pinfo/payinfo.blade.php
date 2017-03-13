@@ -244,7 +244,7 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @forelse((array)$nw as $p1)
+                                        @forelse($nw as $p1)
                                             @if($mtotal)
                                             <td>
                                                 <input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! ($p1->payitem_id === 1) ? $mtotal: '' !!}{!! ($p1->payitem_id === 2) ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
