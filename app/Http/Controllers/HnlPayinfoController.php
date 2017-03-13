@@ -123,7 +123,7 @@ class HnlPayinfoController extends Controller
 
         $getpitems = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
-        if(is_array($getpitems) || is_object($getpitems)){
+        if(!empty($getpitems)){
 
             $nw = json_decode($getpitems->normal_wage);
             $sa = json_decode($getpitems->statutory_allowance);
