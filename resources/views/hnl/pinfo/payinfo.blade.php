@@ -233,7 +233,7 @@
                                     급여항목
                                 </h4>
                                 @forelse($nw as $n)
-                                    {{ $n->payitem_id }}
+                                    {{ $n->title }}
                                 @empty
                                     <p>no</p>
                                 @endforelse
