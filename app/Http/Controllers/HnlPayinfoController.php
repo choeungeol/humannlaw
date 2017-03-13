@@ -103,12 +103,25 @@ class HnlPayinfoController extends Controller
         if(count($getsession) > 5){
             $mtotal = $getsession['mtotal'];
             $mbreak = $getsession['mbreak'];
+            $mover = $getsession['mover'];
+            $mnight = $getsession['mnight'];
+            $mwwork = $getsession['mwwork'];
+            $mwover = $getsession['mwover'];
+            $mwnight = $getsession['mwnight'];
+            $mwbt = $getsession['mwbt'];
 
         }else{
-            $mtotal = 0;
-            $mbreak = 0;
+            $mtotal = '';
+            $mbreak = '';
+            $mover = '';
+            $mnight = '';
+            $mwwork = '';
+            $mwover = '';
+            $mwnight = '';
+            $mwbt = '';
         }
-        $getpitems = Monthsalaryvalue::where('pinfo_id','=', 1)->orderBy('created_at', 'desc')->first();
+
+        $getpitems = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
         $nw = json_decode($getpitems->normal_wage);
         $sa = json_decode($getpitems->statutory_allowance);
@@ -122,7 +135,7 @@ class HnlPayinfoController extends Controller
         $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
         if(Sentinel::check())
 
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt'));
 
         else
 
@@ -165,6 +178,7 @@ class HnlPayinfoController extends Controller
         $calcs[$worktype] = Calctable::where('type', '=', $worktype)->get();
 
         $calc = array();
+
         for($i=0; $i < count($calcs); $i++){
             $calc[] = $calcs[$worktype][0]->mtotal;
             $calc[] = $calcs[$worktype][0]->mbreak;
@@ -195,6 +209,12 @@ class HnlPayinfoController extends Controller
 
         $mtotal = $normalpay * $calc[0]; //기본급
         $mbreak = $normalpay * $calc[1]; //주휴수당
+        $mover = $normalpay * $calc[2]; // 연장수당
+        $mnight = $normalpay * $calc[3]; // 야간수당
+        $mwwork = $normalpay * $calc[4]; // 휴일수당
+        $mwover = $normalpay * $calc[5]; // 휴일연장
+        $mwnight = $normalpay * $calc[6]; // 휴일야간
+        $mwbt = $normalpay * $calc[7]; // 연차수당
 
         $pinfo = Pinfo::findOrFail($id)->payinfos;
         $pinfo->paymonth = $paymonth;
@@ -209,6 +229,12 @@ class HnlPayinfoController extends Controller
                 return Redirect::route('payinfo_view', $id)
                     ->with('mtotal',$mtotal)
                     ->with('mbreak',$mbreak)
+                    ->with('mover',$mover)
+                    ->with('mnight',$mnight)
+                    ->with('mwwork',$mwwork)
+                    ->with('mwover',$mwover)
+                    ->with('mwnight',$mwnight)
+                    ->with('mwbt',$mwbt)
                     ->with('id',$id);
 
             else
@@ -229,31 +255,33 @@ class HnlPayinfoController extends Controller
 
          for($i=0; $i < count($payitem1); $i++){
 
-            $atype[] = $request->get('inputA'.$i);
+             $atype[] = $request->get('inputA'.$payitem1[$i]->id);
 
-            $payitem_id1[] = $payitem1[$i]->id;
-            $payitem_title1[] = $payitem1[$i]->title;
+             $payitem_id1[] = $payitem1[$i]->id;
+             $payitem_title1[] = $payitem1[$i]->title;
 
-            $arra[] = array('payitem_id' => $payitem_id1[$i] ,'title' => $payitem_title1[$i], 'price' => $atype[$i]);
+             $arra[] = array('payitem_id' => $payitem_id1[$i] ,'title' => $payitem_title1[$i], 'price' => $atype[$i]);
 
         };
 
         $sal1 = json_encode($arra);
 
         for($i=0; $i < count($payitem2); $i++){
-        $btype[] = $request->get('inputB'.$i);
 
-        $payitem_id2[] = $payitem2[$i]->id;
-        $payitem_title2[] = $payitem2[$i]->title;
+            $btype[] = $request->get('inputB'.$payitem2[$i]->id);
 
-        $arrb[] = array('payitem_id' => $payitem_id2[$i] ,'title' => $payitem_title2[$i], 'price' => $btype[$i]);
+            $payitem_id2[] = $payitem2[$i]->id;
+            $payitem_title2[] = $payitem2[$i]->title;
+
+            $arrb[] = array('payitem_id' => $payitem_id2[$i] ,'title' => $payitem_title2[$i], 'price' => $btype[$i]);
 
         }
 
         $sal2 = json_encode($arrb);
 
         for($i=0; $i < count($payitem3); $i++){
-           $ctype[] = $request->get('inputC'.$i);
+
+           $ctype[] = $request->get('inputC'.$payitem3[$i]->id);
 
            $payitem_id3[] = $payitem3[$i]->id;
            $payitem_title3[] = $payitem3[$i]->title;
@@ -265,7 +293,8 @@ class HnlPayinfoController extends Controller
         $sal3 = json_encode($arrc);
 
         for($i=0; $i < count($payitem4); $i++){
-           $dtype[] = $request->get('inputD'.$i);
+
+           $dtype[] = $request->get('inputD'.$payitem4[$i]->id);
 
            $payitem_id4[] = $payitem4[$i]->id;
            $payitem_title4[] = $payitem4[$i]->title;

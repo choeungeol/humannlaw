@@ -105,8 +105,6 @@ class HnlPchangeController extends Controller
             $ca_array[] = $getpa[$i]->commit_allowance;
         }
 
-
-
         if(Sentinel::check())
 
             return view('hnl.pay.pchange', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','id','nw','sa','bf','ca','getp'));

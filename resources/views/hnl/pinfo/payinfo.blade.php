@@ -239,51 +239,81 @@
                                     <table class="table table-condensed table-bordered">
                                     <tr>
                                         <th rowspan="2">통상임금</th>
-                                        @foreach($nw as $p1)
+                                        @foreach($payitem1 as $p1)
                                             <th>{{ $p1->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach($nw as $k => $p1)
-                                            @if(!$mtotal)
-                                            <td><input type="text" class="form-control input-sm" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} value="{{ $p1->price  }}"></td>
+                                        @forelse($nw as $p1)
+                                            @if($mtotal)
+                                            <td><input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! ($p1->title === '기본급') ? $mtotal: '' !!}{!! ($p1->title === '주휴수당') ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
                                             @else
-                                            <td><input type="text" class="form-control input-sm" name="inputA{{$k++}}" value="{!! ($p1->title === '기본급') ? $mtotal: '' !!}{!! ($p1->title === '주휴수당') ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
+                                            <td><input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! $p1->price  !!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
                                             @endif
-                                        @endforeach
+                                        @empty
+                                            @for($i=0;$i<count($payitem1); $i++)
+                                            <td>
+                                                <input type="text" name="{{ $i }}" class="form-control input-sm">
+                                            </td>
+                                            @endfor
+                                        @endforelse
                                     </tr>
                                     <tr>
                                         <th rowspan="2">법정수당</th>
-                                        @foreach($sa as $p2)
+                                        @foreach($payitem2 as $p2)
                                             <th>{{ $p2->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach($sa as $k => $p2)
-                                            <td><input type="text" class="form-control input-sm" value="{{ $p2->price }}" name="inputB{{ $k++ }}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
-                                        @endforeach
+                                        @forelse($sa as $p2)
+                                            @if($mover)
+                                            <td><input type="text" class="form-control input-sm"
+                                                       value="{{ ($p2->title === '연장수당') ? $mover : '' }}{{ ($p2->title === '야간수당') ? $mnight : '' }}{{ ($p2->title === '휴일수당') ? $mwwork : '' }}{{ ($p2->title === '휴일연장') ? $mwover : '' }}{{ ($p2->title === '휴일야간') ? $mwnight : '' }}{{ ($p2->title === '연차수당') ? $mwbt : '' }}"
+                                                       name="inputB{{$p2->payitem_id}}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
+                                            @else
+                                            <td><input type="text" class="form-control input-sm" value="{{ $p2->price }}" name="inputB{{$p2->payitem_id}}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
+                                            @endif
+                                        @empty
+                                            @for($i=0;$i<count($payitem2); $i++)
+                                                <td>
+                                                    <input type="text" name="{{ $i }}" class="form-control input-sm" readonly>
+                                                </td>
+                                            @endfor
+                                        @endforelse
                                     </tr>
                                     <tr>
                                         <th rowspan="2">복리후생</th>
-                                        @foreach($bf as $p3)
+                                        @foreach($payitem3 as $p3)
                                             <th>{{  $p3->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach($bf as $k => $p3)
-                                            <td><input type="text" class="form-control input-sm" value="{{ $p3->price }}" name="inputC{{ $k++ }}" value=""></td>
-                                        @endforeach
+                                        @forelse($bf as $p3)
+                                            <td><input type="text" class="form-control input-sm" value="{{ $p3->price }}" name="inputC{{$p3->payitem_id}}"></td>
+                                        @empty
+                                            @for($i=0;$i<count($payitem3); $i++)
+                                                <td>
+                                                    <input type="text" name="{{ $i }}" class="form-control input-sm">
+                                                </td>
+                                            @endfor
+                                        @endforelse
                                     </tr>
                                     <tr>
                                         <th rowspan="2">약정수당</th>
-                                        @foreach($ca as $p4)
+                                        @foreach($payitem4 as $p4)
                                             <th>{{  $p4->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @foreach($ca as $k => $p4)
-                                            <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{ $k++ }}" value=""></td>
-                                        @endforeach
+                                        @forelse($ca as $p4)
+                                            <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{$p4->payitem_id}}"></td>
+                                        @empty
+                                            @for($i=0;$i<count($payitem4); $i++)
+                                                <td>
+                                                    <input type="text" name="{{ $i }}" class="form-control input-sm">
+                                                </td>
+                                            @endfor
+                                        @endforelse
                                     </tr>
                                 </table>
                                 <button class="btn btn-default col-lg-12" type="submit">등 록</button>
