@@ -233,7 +233,7 @@
                                     급여항목
                                 </h4>
                                 @foreach($nw as $n)
-                                    {{ $nw }}
+                                    {{ $n }}
                                 @endforeach
                             </div>
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
