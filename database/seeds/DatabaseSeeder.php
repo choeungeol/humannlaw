@@ -17,12 +17,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call('AdminSeeder');
 /*       $this->call('DatatablesSeeder');*/
-/*        $this->call('JobtitleSeeder');
+        $this->call('JobtitleSeeder');
         $this->call('PostitleSeeder');
         $this->call('WorktypeSeeder');
         $this->call('CalctableSeeder');
         $this->call('Worktype1234Seeder');
-        $this->call('Worktype1234CalcSeeder');*/
+        $this->call('Worktype1234CalcSeeder');
         $this->call('PayitemsSeed');
         $this->call('TaxdeductionSeeder');
         $this->call('PayDayTimeSeeder');
