@@ -45,6 +45,12 @@ class HnlPayinfoController extends Controller
         $payitem4 = Payitem4::All();
         $mtotal = '';
         $mbreak = '';
+        $mover = '';
+        $mnight = '';
+        $mwwork = '';
+        $mwover = '';
+        $mwnight = '';
+        $mwbt = '';
         $id = '';
         $nw = array();
         $sa = array();
@@ -53,7 +59,7 @@ class HnlPayinfoController extends Controller
 
 
         if(Sentinel::check())
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt'));
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }

@@ -232,9 +232,9 @@
                                 <h4 class="panel-title">
                                     급여항목
                                 </h4>
-                                @foreach($nw as $n)
+{{--                                @foreach((array)$nw as $n)
                                     {{ $n }}
-                                @endforeach
+                                @endforeach--}}
                             </div>
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
