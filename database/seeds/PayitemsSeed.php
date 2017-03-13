@@ -29,7 +29,7 @@ class PayitemsSeed extends Seeder
             'is_severance_pay'       => '3개월',
             'is_taxfree'       => 0,
             'in_basicpay'       => 0,
-            'use_this'       => 1,
+            'use_this'       => 0,
             'created_at'    => \Carbon\Carbon::now(),
             'updated_at'    => \Carbon\Carbon::now(),
         ]);
@@ -45,7 +45,7 @@ class PayitemsSeed extends Seeder
                 'probaion'       => '해당없음',
                 'is_severance_pay'       => '3개월',
                 'is_taxfree'       => 0,
-                'use_this'       => 1,
+                'use_this'       => 0,
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
@@ -61,7 +61,7 @@ class PayitemsSeed extends Seeder
                 'probaion'       => '해당없음',
                 'is_severance_pay'       => '3개월',
                 'is_taxfree'       => 0,
-                'use_this'       => 1,
+                'use_this'       => 0,
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);
@@ -77,7 +77,7 @@ class PayitemsSeed extends Seeder
                 'probaion'       => '해당없음',
                 'is_severance_pay'       => '3개월',
                 'is_taxfree'       => 0,
-                'use_this'       => 1,
+                'use_this'       => 0,
                 'created_at'    => \Carbon\Carbon::now(),
                 'updated_at'    => \Carbon\Carbon::now(),
             ]);

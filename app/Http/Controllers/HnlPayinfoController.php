@@ -123,11 +123,19 @@ class HnlPayinfoController extends Controller
 
         $getpitems = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
-        $nw = json_decode($getpitems->normal_wage);
-        $sa = json_decode($getpitems->statutory_allowance);
-        $bf = json_decode($getpitems->benefits);
-        $ca = json_decode($getpitems->commit_allowance);
+        if(!$getpitems){
 
+            $nw = array();
+            $sa = array();
+            $bf = array();
+            $ca = array();
+
+        }else{
+            $nw = json_decode($getpitems->normal_wage);
+            $sa = json_decode($getpitems->statutory_allowance);
+            $bf = json_decode($getpitems->benefits);
+            $ca = json_decode($getpitems->commit_allowance);
+        }
 
 /*        $deletedRows = Salary1::where('pinfo_id', 1)->delete();
         $deletedRows = Salary2::where('pinfo_id', 1)->delete();
@@ -259,6 +267,12 @@ class HnlPayinfoController extends Controller
 
              $payitem_id1[] = $payitem1[$i]->id;
              $payitem_title1[] = $payitem1[$i]->title;
+
+             if($payitem1[$i]->use_this === '0'){
+/*                 $a[] = $atype[$i] + ;*/
+             }else{
+
+             }
 
              $arra[] = array('payitem_id' => $payitem_id1[$i] ,'title' => $payitem_title1[$i], 'price' => $atype[$i]);
 
