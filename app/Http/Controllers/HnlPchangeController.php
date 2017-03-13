@@ -107,7 +107,7 @@ class HnlPchangeController extends Controller
 
         if(Sentinel::check())
 
-            return view('hnl.pay.pchange', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','id','nw','sa','bf','ca','getp'));
+            return view('hnl.pay.pchange', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','id','nw','sa','bf','ca','getpa'));
 
         else
 
