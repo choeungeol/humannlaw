@@ -257,7 +257,7 @@
                                         @empty
                                             @foreach($payitem1 as $p1)
                                             <td>
-                                                <input type="text" class="form-control input-sm" name="inputA{{$p1->id}}" value="{!! $mtotal !!}{!! $mbreak !!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
+                                                <input type="text" class="form-control input-sm" name="inputA{{$p1->id}}" value="{!! ($p1->title === '기본급') ? $mtotal: '' !!}{!! ($p1->title === '기본급') ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
                                             </td>
                                             @endforeach
                                         @endforelse
