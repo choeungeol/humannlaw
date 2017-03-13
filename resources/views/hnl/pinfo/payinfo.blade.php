@@ -251,7 +251,11 @@
                                             <td><input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! $p1->price !!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
                                             @endif
                                         @empty
-                                            <p>Nothing</p>
+                                            @for($i=0;$i<count($nw); $i++)
+                                            <td>
+                                                <input type="text" name="inputA{{ $nw->payitem_id }}" class="form-control input-sm">
+                                            </td>
+                                            @endfor
                                         @endforelse
                                     </tr>
                                     <tr>
