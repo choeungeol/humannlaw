@@ -232,9 +232,9 @@
                                 <h4 class="panel-title">
                                     급여항목
                                 </h4>
-{{--                                @foreach((array)$nw as $n)
-                                    {{ $n }}
-                                @endforeach--}}
+                                @forelse($nw as $n)
+                                    {{ $n->payitem_id }}
+                                @endforelse
                             </div>
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
