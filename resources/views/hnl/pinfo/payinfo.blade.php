@@ -244,7 +244,7 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @forelse($nw as $p1)
+                                        @forelse((array)$nw as $p1)
                                             @if($mtotal)
                                             <td><input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! ($p1->title === '기본급') ? $mtotal: '' !!}{!! ($p1->title === '주휴수당') ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} ></td>
                                             @else
@@ -265,7 +265,7 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @forelse($sa as $p2)
+                                        @forelse((array)$sa as $p2)
                                             @if($mover)
                                             <td><input type="text" class="form-control input-sm"
                                                        value="{{ ($p2->title === '연장수당') ? $mover : '' }}{{ ($p2->title === '야간수당') ? $mnight : '' }}{{ ($p2->title === '휴일수당') ? $mwwork : '' }}{{ ($p2->title === '휴일연장') ? $mwover : '' }}{{ ($p2->title === '휴일야간') ? $mwnight : '' }}{{ ($p2->title === '연차수당') ? $mwbt : '' }}"
@@ -288,7 +288,7 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @forelse($bf as $p3)
+                                        @forelse((array)$bf as $p3)
                                             <td><input type="text" class="form-control input-sm" value="{{ $p3->price }}" name="inputC{{$p3->payitem_id}}"></td>
                                         @empty
                                             @for($i=0;$i<count($payitem3); $i++)
@@ -305,7 +305,7 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @forelse($ca as $p4)
+                                        @forelse((array)$ca as $p4)
                                             <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{$p4->payitem_id}}"></td>
                                         @empty
                                             @for($i=0;$i<count($payitem4); $i++)
