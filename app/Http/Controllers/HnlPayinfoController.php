@@ -145,7 +145,7 @@ class HnlPayinfoController extends Controller
         $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
         if(Sentinel::check())
 
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','mover','mnight','mwwork','mwover','mwnight','mwbt'));
 
         else
 
