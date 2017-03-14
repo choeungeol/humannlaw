@@ -235,7 +235,7 @@
                                 @forelse($nw as $n)
                                     {{ $n->title }}
                                 @empty
-                                    <p>no</p>
+                                    <p>why no!</p>
                                 @endforelse
                             </div>
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
@@ -245,7 +245,7 @@
                                     <tr>
                                         <th rowspan="2">통상임금</th>
                                         @foreach($payitem1 as $p1)
-                                            <th>{{ $p1->title }}</th>
+                                            <th>{!! $p1->title !!}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
