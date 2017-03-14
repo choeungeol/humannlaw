@@ -130,15 +130,15 @@ class HnlPayinfoController extends Controller
         $getpitems = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
 
-        $nwz = json_decode($getpitems->normal_wage, true);
-        $saz = json_decode($getpitems->statutory_allowance, true);
-        $bfz = json_decode($getpitems->benefits, true);
-        $caz = json_decode($getpitems->commit_allowance, true);
+        $nwz = json_decode($getpitems->normal_wage, false);
+        $saz = json_decode($getpitems->statutory_allowance, false);
+        $bfz = json_decode($getpitems->benefits, false);
+        $caz = json_decode($getpitems->commit_allowance, false);
 
-        $nw = (array)$nwz;
-        $sa = (array)$saz;
-        $bf = (array)$bfz;
-        $ca = (array)$caz;
+        $nw = (object)$nwz;
+        $sa = (object)$saz;
+        $bf = (object)$bfz;
+        $ca = (object)$caz;
 
         /*        $deletedRows = Salary1::where('pinfo_id', 1)->delete();
                 $deletedRows = Salary2::where('pinfo_id', 1)->delete();
