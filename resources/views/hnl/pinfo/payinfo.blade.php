@@ -257,7 +257,7 @@
                                             @else
                                             <td>
                                                 <input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! $p1->price !!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
-                                            </td>
+                                            </td>dW
                                             @endif
                                         @empty
                                             @foreach($payitem1 as $p1)
