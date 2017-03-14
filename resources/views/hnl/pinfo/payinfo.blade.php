@@ -233,12 +233,12 @@
                                     급여항목
                                 </h4>
                                 @forelse($nw as $n)
-                                    {{ $n->title }}
+                                    {{ $n['title'] }}
                                 @empty
                                     <p>no</p>
                                 @endforelse
                             </div>
-                            <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
+                            {{--<form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="id" value="{{ $id }}">
                                     <table class="table table-condensed table-bordered">
@@ -327,7 +327,7 @@
                                     </tr>
                                 </table>
                                 <button class="btn btn-default col-lg-12" type="submit">등 록</button>
-                            </form>
+                            </form>--}}
                         </div>
                         <div class="panel panel-primary">
                             <div class="panel-heading">
