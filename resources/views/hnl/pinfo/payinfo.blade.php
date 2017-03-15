@@ -255,8 +255,8 @@
                                     <tr>
                                         @forelse($nw as $p1)
                                             <td>
-                                                <input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}"
-                                                       value="{{ $p1->price }}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
+                                                <input type="text" class="form-control input-sm" name="inputA{{$p1['payitem_id']}}"
+                                                       value="{{ $p1['price'] }}" {!! ($p1['title'] === '기본급') || ($p1['title'] === '주휴수당') ? 'readonly' : '' !!} >
                                             </td>
                                         @empty
                                             @foreach($payitem1 as $p1)
@@ -266,7 +266,6 @@
                                             </td>
                                             @endforeach
                                         @endforelse
-
                                     </tr>
                                     <tr>
                                         <th rowspan="2">법정수당</th>

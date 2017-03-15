@@ -134,7 +134,7 @@ class HnlPayinfoController extends Controller
 
 
         if($getpitemsa){
-            $nw = (object)json_decode($getpitemsa->normal_wage);
+            $nw = json_decode($getpitemsa->normal_wage ,true);
             $sa = (object)json_decode($getpitemsa->statutory_allowance);
             $error = json_last_error_msg();
             $bf = (object)json_decode($getpitemsa->benefits);
