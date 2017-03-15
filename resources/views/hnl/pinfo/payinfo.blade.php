@@ -234,6 +234,7 @@
                                 </h4>
                             </div>
                             {{ var_dump($nw) }}
+                            {{ $error }}
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="id" value="{{ $id }}">
