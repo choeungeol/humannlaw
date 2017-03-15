@@ -56,7 +56,7 @@ class HnlPayinfoController extends Controller
         $sa = array();
         $bf = array();
         $ca = array();
-        $test = '';
+        $error = '';
         $getpitems = array();
 
 
