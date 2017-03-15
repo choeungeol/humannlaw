@@ -131,7 +131,7 @@ class HnlPayinfoController extends Controller
 
         $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
-        $error = json_last_error_msg();
+
 
         if($getpitemsa){
             $nw = (object)json_decode($getpitemsa->normal_wage);
@@ -144,7 +144,7 @@ class HnlPayinfoController extends Controller
             $bf = array();
             $ca = array();
         }
-
+        $error = json_last_error_msg();
 
 
         /*  $deletedRows = Monthsalaryvalue::where('pinfo_id', $id)->delete();
