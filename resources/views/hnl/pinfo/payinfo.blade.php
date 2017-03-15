@@ -232,9 +232,10 @@
                                 <h4 class="panel-title">
                                     급여항목
                                 </h4>
-                                {{ var_dump((array)$nw) }}
-                                @forelse($nw as $n)
-
+                                {{ var_dump($nw) }}
+                                {{ var_dump($test) }}
+                                @forelse($test as $n)
+                                    {{ $n->title }}
                                 @empty
                                     <p>why no!</p>
                                 @endforelse
