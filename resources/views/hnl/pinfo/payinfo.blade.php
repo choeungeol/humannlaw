@@ -233,10 +233,6 @@
                                     급여항목
                                 </h4>
                             </div>
-                            {{ var_dump($nw) }}
-                            {{ var_dump($sa) }}
-                            {{ var_dump($bf) }}
-                            {{ var_dump($nw) }}
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="id" value="{{ $id }}">
@@ -249,15 +245,10 @@
                                     </tr>
                                     <tr>
                                         @forelse($nw as $p1)
-                                            @if($mtotal)
                                             <td>
-                                                <input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! ($p1->title === '기본급') ? $mtotal: '' !!}{!! ($p1->title === '주휴수당') ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
+                                                <input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}"
+                                                       value="{{ $p1->price }}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
                                             </td>
-                                            @else
-                                            <td>
-                                                <input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! $p1->price !!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
-                                            </td>
-                                            @endif
                                         @empty
                                             @foreach($payitem1 as $p1)
                                             <td>
@@ -275,13 +266,9 @@
                                     </tr>
                                     <tr>
                                         @forelse($sa as $p2)
-                                            @if($mover)
                                             <td><input type="text" class="form-control input-sm"
-                                                       value="{{ ($p2->title === '연장수당') ? $mover : '' }}{{ ($p2->title === '야간수당') ? $mnight : '' }}{{ ($p2->title === '휴일수당') ? $mwwork : '' }}{{ ($p2->title === '휴일연장') ? $mwover : '' }}{{ ($p2->title === '휴일야간') ? $mwnight : '' }}{{ ($p2->title === '연차수당') ? $mwbt : '' }}"
+                                                       value="{{ $p2->price }}"
                                                        name="inputB{{$p2->payitem_id}}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
-                                            @else
-                                            <td><input type="text" class="form-control input-sm" value="{{ $p2->price }}" name="inputB{{$p2->payitem_id}}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
-                                            @endif
                                         @empty
                                             @foreach($payitem2 as $p2)
                                                 <td>

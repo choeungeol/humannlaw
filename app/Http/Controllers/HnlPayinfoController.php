@@ -131,16 +131,24 @@ class HnlPayinfoController extends Controller
 
         $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
-        $nw = (object)json_decode($getpitemsa->normal_wage);
-        $sa = (object)json_decode($getpitemsa->statutory_allowance);
-        $bf = (object)json_decode($getpitemsa->benefits);
-        $ca = (object)json_decode($getpitemsa->commit_allowance);
+        if($getpitemsa){
+            $nw = (object)json_decode($getpitemsa->normal_wage);
+            $sa = (object)json_decode($getpitemsa->statutory_allowance);
+            $bf = (object)json_decode($getpitemsa->benefits);
+            $ca = (object)json_decode($getpitemsa->commit_allowance);
+        }else{
+            $nw = array();
+            $sa = array();
+            $bf = array();
+            $ca = array();
+        }
 
 
-        /*        $deletedRows = Salary1::where('pinfo_id', 1)->delete();
-                $deletedRows = Salary2::where('pinfo_id', 1)->delete();
-                $deletedRows = Salary3::where('pinfo_id', 1)->delete();
-                $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
+
+        /*  $deletedRows = Monthsalaryvalue::where('pinfo_id', $id)->delete();
+  $deletedRows = Salary2::where('pinfo_id', 1)->delete();
+  $deletedRows = Salary3::where('pinfo_id', 1)->delete();
+  $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
 
         if(Sentinel::check())
 
