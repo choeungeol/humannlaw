@@ -233,11 +233,11 @@
                                     급여항목
                                 </h4>
                                 {{ var_dump($test) }}
-                                @forelse($test as $n)
+{{--                                @forelse($test as $n)
                                     {{ $n['title'] }}
                                 @empty
                                     <p>why no!</p>
-                                @endforelse
+                                @endforelse--}}
                             </div>
                             {{--<form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
