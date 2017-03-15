@@ -277,7 +277,7 @@ class HnlPayinfoController extends Controller
 
              $atype[] = $request->get('inputA'.$payitem1[$i]->id);
 
-             $payitem_id1[] = $payitem1[$i]->id;
+             $payitem_id1[] = (string)$payitem1[$i]->id;
              $payitem_title1[] = $payitem1[$i]->title;
 
              if($payitem1[$i]->use_this === '0'){
@@ -296,7 +296,7 @@ class HnlPayinfoController extends Controller
 
             $btype[] = $request->get('inputB'.$payitem2[$i]->id);
 
-            $payitem_id2[] = $payitem2[$i]->id;
+            $payitem_id2[] = (string)$payitem2[$i]->id;
             $payitem_title2[] = $payitem2[$i]->title;
 
             $arrb[] = array('payitem_id' => $payitem_id2[$i] ,'title' => $payitem_title2[$i], 'price' => $btype[$i]);
@@ -309,7 +309,7 @@ class HnlPayinfoController extends Controller
 
            $ctype[] = $request->get('inputC'.$payitem3[$i]->id);
 
-           $payitem_id3[] = $payitem3[$i]->id;
+           $payitem_id3[] = (string)$payitem3[$i]->id;
            $payitem_title3[] = $payitem3[$i]->title;
 
            $arrc[] = array('payitem_id' => $payitem_id3[$i] ,'title' => $payitem_title3[$i], 'price' => $ctype[$i]);
@@ -322,7 +322,7 @@ class HnlPayinfoController extends Controller
 
            $dtype[] = $request->get('inputD'.$payitem4[$i]->id);
 
-           $payitem_id4[] = $payitem4[$i]->id;
+           $payitem_id4[] = (string)$payitem4[$i]->id;
            $payitem_title4[] = $payitem4[$i]->title;
 
            $arrd[] = array('payitem_id' => $payitem_id4[$i] ,'title' => $payitem_title4[$i], 'price' => $dtype[$i]);
