@@ -288,7 +288,7 @@ class HnlPayinfoController extends Controller
 
         };
 
-        $sal1 = json_encode($arra);
+        $sal1 = json_encode($arra, JSON_UNESCAPED_UNICODE);
 
         for($i=0; $i < count($payitem2); $i++){
 
@@ -301,7 +301,7 @@ class HnlPayinfoController extends Controller
 
         }
 
-        $sal2 = json_encode($arrb);
+        $sal2 = json_encode($arrb, JSON_UNESCAPED_UNICODE);
 
         for($i=0; $i < count($payitem3); $i++){
 
@@ -314,7 +314,7 @@ class HnlPayinfoController extends Controller
 
         }
 
-        $sal3 = json_encode($arrc);
+        $sal3 = json_encode($arrc, JSON_UNESCAPED_UNICODE);
 
         for($i=0; $i < count($payitem4); $i++){
 
@@ -327,7 +327,7 @@ class HnlPayinfoController extends Controller
 
         }
 
-        $sal4 = json_encode($arrd,JSON_UNESCAPED_SLASHES);
+        $sal4 = json_encode($arrd,JSON_UNESCAPED_UNICODE);
 
 
         $pitems1 = new Monthsalaryvalue([
