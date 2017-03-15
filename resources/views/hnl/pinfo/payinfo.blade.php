@@ -233,8 +233,11 @@
                                     급여항목
                                 </h4>
                             </div>
-                            {{ var_dump($nw) }}
-                            {{ $error }}
+                            <p>{{ var_dump($nw) }}</p>
+                            <p> {{ var_dump($sa) }}</p>
+                            <p>{{ var_dump($bf) }}</p>
+                            <p>{{ var_dump($ca) }}</p>
+                            <p>{{ $error }}</p>
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="id" value="{{ $id }}">
