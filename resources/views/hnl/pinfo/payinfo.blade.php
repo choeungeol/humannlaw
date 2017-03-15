@@ -239,11 +239,13 @@
                                     <p>why no!</p>
                                 @endforelse--}}
                             </div>
-                            {{--<form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
+                            {{ $test }}
+                            {{ $test1 }}
+                            <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="id" value="{{ $id }}">
                                     <table class="table table-condensed table-bordered">
-                                    <tr>
+                                    {{--<tr>
                                         <th rowspan="2">통상임금</th>
                                         @foreach($payitem1 as $p1)
                                             <th>{!! $p1->title !!}</th>
@@ -308,7 +310,7 @@
                                                 </td>
                                             @endforeach
                                         @endforelse
-                                    </tr>
+                                    </tr>--}}
                                     <tr>
                                         <th rowspan="2">약정수당</th>
                                         @foreach($payitem4 as $p4)
@@ -316,19 +318,19 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        @forelse($ca as $p4)
+{{--                                        @forelse($ca as $p4)
                                             <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{$p4->payitem_id}}"></td>
-                                        @empty
+                                        @empty--}}
                                             @foreach($payitem4 as $p4)
                                                 <td>
                                                     <input type="text" class="form-control input-sm" name="inputD{{$p4->id}}" >
                                                 </td>
                                             @endforeach
-                                        @endforelse
+{{--                                        @endforelse--}}
                                     </tr>
                                 </table>
                                 <button class="btn btn-default col-lg-12" type="submit">등 록</button>
-                            </form>--}}
+                            </form>
                         </div>
                         <div class="panel panel-primary">
                             <div class="panel-heading">

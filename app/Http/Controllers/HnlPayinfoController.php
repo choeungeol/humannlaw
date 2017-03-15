@@ -129,9 +129,13 @@ class HnlPayinfoController extends Controller
             $mwbt = '';
         }
 
-        $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', '*desc')->first();
+        $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
-        $getpitems = json_decode(utf8_encode($getpitemsa->normal_wage));
+        $getpitems = json_decode($getpitemsa->normal_wage, true);
+        $test =  json_last_error();
+        $test1 = json_last_error_msg();
+
+
 
 
         /*   $test = json_decode($getpitems->normal_wage,true);*/
@@ -149,7 +153,7 @@ class HnlPayinfoController extends Controller
 
         if(Sentinel::check())
 
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt','getpitems'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt','getpitems','test','test1'));
 
         else
 
@@ -323,7 +327,7 @@ class HnlPayinfoController extends Controller
 
         }
 
-        $sal4 = json_encode($arrd);
+        $sal4 = json_encode($arrd,JSON_UNESCAPED_SLASHES);
 
 
         $pitems1 = new Monthsalaryvalue([
