@@ -135,6 +135,7 @@ class HnlPayinfoController extends Controller
 
         if($getpitemsa){
             $nw = (object)json_decode($getpitemsa->normal_wage);
+            $error = json_last_error_msg();
             $sa = (object)json_decode($getpitemsa->statutory_allowance);
             $bf = (object)json_decode($getpitemsa->benefits);
             $ca = (object)json_decode($getpitemsa->commit_allowance);
@@ -144,7 +145,7 @@ class HnlPayinfoController extends Controller
             $bf = array();
             $ca = array();
         }
-        $error = json_last_error_msg();
+
 
 
         /*  $deletedRows = Monthsalaryvalue::where('pinfo_id', $id)->delete();
