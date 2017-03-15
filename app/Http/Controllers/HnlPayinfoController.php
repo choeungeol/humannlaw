@@ -57,7 +57,7 @@ class HnlPayinfoController extends Controller
         $bf = array();
         $ca = array();
         $test = '';
-        $getpitems = '';
+        $getpitems = array();
 
 
         if(Sentinel::check())
@@ -129,9 +129,9 @@ class HnlPayinfoController extends Controller
             $mwbt = '';
         }
 
-        $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
+        $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', '*desc')->first();
 
-        $getpitems = $getpitemsa->normal_wage;
+        $getpitems = json_decode($getpitemsa->normal_wage, true);
 
         /*   $test = json_decode($getpitems->normal_wage,true);*/
 
