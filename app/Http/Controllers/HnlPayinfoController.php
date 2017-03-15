@@ -148,10 +148,10 @@ class HnlPayinfoController extends Controller
 
 
 
-  $deletedRows = Monthsalaryvalue::where('pinfo_id', $id)->delete();
-        /* $deletedRows = Salary2::where('pinfo_id', 1)->delete();
- $deletedRows = Salary3::where('pinfo_id', 1)->delete();
- $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
+        /*  $deletedRows = Monthsalaryvalue::where('pinfo_id', $id)->delete();
+  $deletedRows = Salary2::where('pinfo_id', 1)->delete();
+  $deletedRows = Salary3::where('pinfo_id', 1)->delete();
+  $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
 
         if(Sentinel::check())
 
