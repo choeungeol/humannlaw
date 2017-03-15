@@ -234,8 +234,8 @@
                                 </h4>
                                 {{ var_dump($nw) }}
                                 {{ var_dump($test) }}
-                                @forelse($nw as $n)
-                                    {{ $n->title }}
+                                @forelse($test as $n)
+                                    {{ $n['title'] }}
                                 @empty
                                     <p>why no!</p>
                                 @endforelse

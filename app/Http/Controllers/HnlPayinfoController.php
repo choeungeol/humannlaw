@@ -130,9 +130,9 @@ class HnlPayinfoController extends Controller
 
         $getpitems = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
-        $test = json_decode($getpitems->normal_wage);
+        $test = json_decode($getpitems->normal_wage,true);
 
-        $nw = (object)json_decode($getpitems->normal_wage,true);
+        $nw = (object)json_decode($getpitems->normal_wage);
         $sa = (object)json_decode($getpitems->statutory_allowance);
         $bf = (object)json_decode($getpitems->benefits);
         $ca = (object)json_decode($getpitems->commit_allowance);
