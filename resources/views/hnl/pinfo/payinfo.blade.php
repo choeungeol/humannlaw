@@ -232,20 +232,12 @@
                                 <h4 class="panel-title">
                                     급여항목
                                 </h4>
-                                {{ var_dump($getpitems) }}
-{{--                                @forelse($getpitems as $n)
-                                    {{ $n['normal_wage'] }}
-                                @empty
-                                    <p>why no!</p>
-                                @endforelse--}}
                             </div>
-                            {{ $test }}
-                            {{ $test1 }}
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="id" value="{{ $id }}">
                                     <table class="table table-condensed table-bordered">
-                                    {{--<tr>
+                                    <tr>
                                         <th rowspan="2">통상임금</th>
                                         @foreach($payitem1 as $p1)
                                             <th>{!! $p1->title !!}</th>
@@ -255,7 +247,7 @@
                                         @forelse($nw as $p1)
                                             @if($mtotal)
                                             <td>
-                                                <input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! ($p1->payitem_id === 1) ? $mtotal: '' !!}{!! ($p1->payitem_id === 2) ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
+                                                <input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}" value="{!! ($p1->title === '기본급') ? $mtotal: '' !!}{!! ($p1->title === '주휴수당') ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
                                             </td>
                                             @else
                                             <td>
@@ -310,7 +302,7 @@
                                                 </td>
                                             @endforeach
                                         @endforelse
-                                    </tr>--}}
+                                    </tr>
                                     <tr>
                                         <th rowspan="2">약정수당</th>
                                         @foreach($payitem4 as $p4)
@@ -318,15 +310,15 @@
                                         @endforeach
                                     </tr>
                                     <tr>
-{{--                                        @forelse($ca as $p4)
+                                        @forelse($ca as $p4)
                                             <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{$p4->payitem_id}}"></td>
-                                        @empty--}}
+                                        @empty
                                             @foreach($payitem4 as $p4)
                                                 <td>
                                                     <input type="text" class="form-control input-sm" name="inputD{{$p4->id}}" >
                                                 </td>
                                             @endforeach
-{{--                                        @endforelse--}}
+                                        @endforelse
                                     </tr>
                                 </table>
                                 <button class="btn btn-default col-lg-12" type="submit">등 록</button>

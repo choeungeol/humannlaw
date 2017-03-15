@@ -131,19 +131,10 @@ class HnlPayinfoController extends Controller
 
         $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
-        $getpitems = json_decode(str_replace('&quot;', '"', $getpitemsa->normal_wage));
-        $test =  json_last_error();
-        $test1 = json_last_error_msg();
-
-
-
-
-        /*   $test = json_decode($getpitems->normal_wage,true);*/
-
-        $nw = '';
-        $sa = '';
-        $bf = '';
-        $ca = '';
+        $nw = json_decode($getpitemsa->normal_wage);
+        $sa = json_decode($getpitemsa->statutory_allowance);
+        $bf = json_decode($getpitemsa->benefits);
+        $ca = json_decode($getpitemsa->commit_allowance);
 
 
         /*        $deletedRows = Salary1::where('pinfo_id', 1)->delete();
@@ -153,7 +144,7 @@ class HnlPayinfoController extends Controller
 
         if(Sentinel::check())
 
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt','getpitems','test','test1'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt'));
 
         else
 
