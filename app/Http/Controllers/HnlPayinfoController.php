@@ -142,6 +142,7 @@ class HnlPayinfoController extends Controller
         }else{
             $nw = array();
             $sa = array();
+            $error = json_last_error_msg();
             $bf = array();
             $ca = array();
         }
