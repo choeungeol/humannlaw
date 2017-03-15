@@ -131,7 +131,7 @@ class HnlPayinfoController extends Controller
 
         $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
 
-        $getpitems = $getpitemsa->id;
+        $getpitems = $getpitemsa->normal_wage;
 
         /*   $test = json_decode($getpitems->normal_wage,true);*/
 
