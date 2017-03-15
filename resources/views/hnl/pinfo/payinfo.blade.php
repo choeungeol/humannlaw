@@ -232,7 +232,7 @@
                                 <h4 class="panel-title">
                                     급여항목
                                 </h4>
-                                {{ var_dump($test) }}
+                                {{ var_dump($getpitems) }}
 {{--                                @forelse($test as $n)
                                     {{ $n['title'] }}
                                 @empty

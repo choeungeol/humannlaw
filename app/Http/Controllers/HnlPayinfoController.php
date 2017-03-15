@@ -57,10 +57,11 @@ class HnlPayinfoController extends Controller
         $bf = array();
         $ca = array();
         $test = '';
+        $getpitems = array();
 
 
         if(Sentinel::check())
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt','test'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt','getpitems'));
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }
@@ -128,14 +129,19 @@ class HnlPayinfoController extends Controller
             $mwbt = '';
         }
 
-        $getpitems = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
+        $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->get();
 
-        $test = json_decode($getpitems->normal_wage,true);
+        for($i=0;$i<count($getpitemsa);$i++){
+            $getpitems[] = $getpitemsa[$i];
+        };
 
-        $nw = (object)json_decode($getpitems->normal_wage);
-        $sa = (object)json_decode($getpitems->statutory_allowance);
-        $bf = (object)json_decode($getpitems->benefits);
-        $ca = (object)json_decode($getpitems->commit_allowance);
+
+        /*   $test = json_decode($getpitems->normal_wage,true);*/
+
+        $nw = '';
+        $sa = '';
+        $bf = '';
+        $ca = '';
 
 
         /*        $deletedRows = Salary1::where('pinfo_id', 1)->delete();
@@ -145,7 +151,7 @@ class HnlPayinfoController extends Controller
 
         if(Sentinel::check())
 
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt','test'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt','getpitems'));
 
         else
 
