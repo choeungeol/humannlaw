@@ -132,7 +132,7 @@ class HnlPayinfoController extends Controller
 
         $test = json_decode($getpitems->normal_wage);
 
-        $nw = (object)json_decode($getpitems->normal_wage);
+        $nw = (object)json_decode($getpitems->normal_wage,true);
         $sa = (object)json_decode($getpitems->statutory_allowance);
         $bf = (object)json_decode($getpitems->benefits);
         $ca = (object)json_decode($getpitems->commit_allowance);
