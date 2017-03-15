@@ -129,7 +129,9 @@ class HnlPayinfoController extends Controller
             $mwbt = '';
         }
 
-        $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->get();
+        $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
+
+        $getpitems = $getpitemsa->id;
 
         for($i=0;$i<count($getpitemsa);$i++){
             $getpitems[] = $getpitemsa[$i];
