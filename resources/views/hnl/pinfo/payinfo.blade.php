@@ -237,6 +237,7 @@
                             <p> {{ var_dump($sa) }}</p>
                             <p>{{ var_dump($bf) }}</p>
                             <p>{{ var_dump($ca) }}</p>
+                            <p>{{ $err }}</p>
                             <p></p>
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
