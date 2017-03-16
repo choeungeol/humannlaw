@@ -56,12 +56,12 @@ class HnlPayinfoController extends Controller
         $sa = array();
         $bf = array();
         $ca = array();
-        $error = '';
+        $err = '';
         $getpitems = array();
 
 
         if(Sentinel::check())
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt','err'));
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }
@@ -141,17 +141,17 @@ class HnlPayinfoController extends Controller
             $ca = json_decode($getpitemsa->commit_allowance);
         }else{
 
-            $nw = '';
-            $sa = '';
-            $bf = '';
-            $ca = '';
+            $nw = array();
+            $sa = array();
+            $bf = array();
+            $ca = array();
             $err = '';
         }
 
 
 
-        /*  $deletedRows = Monthsalaryvalue::where('pinfo_id', $id)->delete();
-  $deletedRows = Salary2::where('pinfo_id', 1)->delete();
+  $deletedRows = Monthsalaryvalue::where('pinfo_id', $id)->delete();
+        /* $deletedRows = Salary2::where('pinfo_id', 1)->delete();
   $deletedRows = Salary3::where('pinfo_id', 1)->delete();
   $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
 
@@ -292,7 +292,7 @@ class HnlPayinfoController extends Controller
 
         };
 
-        $sal1 = json_encode($arra, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $sal1 = json_encode($arra, JSON_UNESCAPED_UNICODE);
 
         for($i=0; $i < count($payitem2); $i++){
 
@@ -301,11 +301,11 @@ class HnlPayinfoController extends Controller
             $payitem_id2[] = (string)$payitem2[$i]->id;
             $payitem_title2[] = $payitem2[$i]->title;
 
-            $arrb[] = array('payitem_id' => $payitem_id2[$i] ,'title' => $payitem_title2[$i], 'price' => $btype[$i]);
+            $arrb[] = array("payitem_id" => $payitem_id2[$i] ,"title" => $payitem_title2[$i], "price" => $btype[$i]);
 
         }
 
-        $sal2 = json_encode($arrb, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $sal2 = json_encode($arrb, JSON_UNESCAPED_UNICODE);
 
         for($i=0; $i < count($payitem3); $i++){
 
@@ -314,11 +314,11 @@ class HnlPayinfoController extends Controller
            $payitem_id3[] = (string)$payitem3[$i]->id;
            $payitem_title3[] = $payitem3[$i]->title;
 
-           $arrc[] = array('payitem_id' => $payitem_id3[$i] ,'title' => $payitem_title3[$i], 'price' => $ctype[$i]);
+           $arrc[] = array("payitem_id" => $payitem_id3[$i] ,"title" => $payitem_title3[$i], "price" => $ctype[$i]);
 
         }
 
-        $sal3 = json_encode($arrc, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $sal3 = json_encode($arrc, JSON_UNESCAPED_UNICODE);
 
         for($i=0; $i < count($payitem4); $i++){
 
@@ -327,11 +327,11 @@ class HnlPayinfoController extends Controller
            $payitem_id4[] = (string)$payitem4[$i]->id;
            $payitem_title4[] = $payitem4[$i]->title;
 
-           $arrd[] = array('payitem_id' => $payitem_id4[$i] ,'title' => $payitem_title4[$i], 'price' => $dtype[$i]);
+           $arrd[] = array("payitem_id" => $payitem_id4[$i] , "title" => $payitem_title4[$i], "price" => $dtype[$i]);
 
         }
 
-        $sal4 = json_encode($arrd,JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $sal4 = json_encode($arrd, JSON_UNESCAPED_UNICODE);
 
 
         $pitems1 = new Monthsalaryvalue([
