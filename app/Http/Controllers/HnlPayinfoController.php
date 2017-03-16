@@ -134,11 +134,11 @@ class HnlPayinfoController extends Controller
 
 
         if($getpitemsa){
-            $nw = collect(json_decode($getpitemsa->normal_wage));
+            $nw = collect(json_decode($getpitemsa->normal_wage))->all();
             $err = json_last_error();
-            $sa = collect(json_decode($getpitemsa->statutory_allowance));
-            $bf = collect(json_decode($getpitemsa->benefits));
-            $ca = collect(json_decode($getpitemsa->commit_allowance));
+            $sa = collect(json_decode($getpitemsa->statutory_allowance))->all();
+            $bf = collect(json_decode($getpitemsa->benefits))->all();
+            $ca = collect(json_decode($getpitemsa->commit_allowance))->all();
         }else{
 
             $nw = array();
