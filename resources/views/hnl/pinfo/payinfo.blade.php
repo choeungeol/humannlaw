@@ -243,7 +243,7 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="id" value="{{ $id }}">
                                     <table class="table table-condensed table-bordered">
-                                    <tr>
+                                    {{--<tr>
                                         <th rowspan="2">통상임금</th>
                                         @foreach($payitem1 as $p1)
                                             <th>{!! $p1->title !!}</th>
@@ -301,7 +301,7 @@
                                                 </td>
                                             @endforeach
                                         @endforelse
-                                    </tr>
+                                    </tr>--}}
                                     <tr>
                                         <th rowspan="2">약정수당</th>
                                         @foreach($payitem4 as $p4)
