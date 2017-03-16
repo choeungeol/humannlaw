@@ -288,11 +288,11 @@ class HnlPayinfoController extends Controller
 
              }
 
-             $arra[] = array('payitem_id' => $payitem_id1[$i] ,'title' => $payitem_title1[$i], 'price' => $atype[$i]);
+             $arra[] = array("payitem_id" => $payitem_id1[$i] ,"title" => $payitem_title1[$i], "price" => $atype[$i]);
 
         };
 
-        $sal1 = json_encode($arra, JSON_UNESCAPED_UNICODE);
+        $sal1 = json_encode($arra, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
         for($i=0; $i < count($payitem2); $i++){
 
@@ -305,7 +305,7 @@ class HnlPayinfoController extends Controller
 
         }
 
-        $sal2 = json_encode($arrb, JSON_UNESCAPED_UNICODE);
+        $sal2 = json_encode($arrb, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
         for($i=0; $i < count($payitem3); $i++){
 
@@ -318,7 +318,7 @@ class HnlPayinfoController extends Controller
 
         }
 
-        $sal3 = json_encode($arrc, JSON_UNESCAPED_UNICODE);
+        $sal3 = json_encode($arrc, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
         for($i=0; $i < count($payitem4); $i++){
 
@@ -331,7 +331,7 @@ class HnlPayinfoController extends Controller
 
         }
 
-        $sal4 = json_encode($arrd,JSON_UNESCAPED_UNICODE);
+        $sal4 = json_encode($arrd,JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
 
         $pitems1 = new Monthsalaryvalue([
