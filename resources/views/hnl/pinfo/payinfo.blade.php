@@ -302,7 +302,7 @@
                                             @endforeach
                                         @endforelse
                                     </tr>--}}
-                                    <tr>
+                                    {{--<tr>
                                         <th rowspan="2">약정수당</th>
                                         @foreach($payitem4 as $p4)
                                             <th>{{  $p4->title }}</th>
@@ -318,7 +318,7 @@
                                                 </td>
                                             @endforeach
                                         @endforelse
-                                    </tr>
+                                    </tr>--}}
                                 </table>
                                 <button class="btn btn-default col-lg-12" type="submit">등 록</button>
                             </form>
