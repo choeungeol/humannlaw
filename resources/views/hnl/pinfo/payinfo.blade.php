@@ -286,7 +286,7 @@
                                     </tr>
                                     <tr>
                                         <th rowspan="2">복리후생</th>
-                                        @foreach($payitem3 as $p3)
+                                        @foreach((array)$payitem3 as $p3)'
                                             <th>{{  $p3->title }}</th>
                                         @endforeach
                                     </tr>
@@ -303,7 +303,7 @@
                                     </tr>
                                     <tr>
                                         <th rowspan="2">약정수당</th>
-                                        @foreach($payitem4 as $p4)
+                                        @foreach((array)$payitem4 as $p4)
                                             <th>{{  $p4->title }}</th>
                                         @endforeach
                                     </tr>
