@@ -18,7 +18,6 @@ class PayitemsSeed extends Seeder
         DB::table('payitems2')->truncate();
         DB::table('payitems3')->truncate();
         DB::table('payitems4')->truncate();
-        DB::table('monthsalaryvalues')->truncate();
 
         $payitem1 = array('기본급','주휴수당','직책수당','근속수당','직무수당');
 
