@@ -11,6 +11,7 @@ class WorktypeSeeder extends Seeder
      */
     public function run()
     {
+
         DB::table('worktypes')->truncate();
         $days = array('월요일','화요일','수요일','목요일','금요일','토요일','일요일');
         $worknum = array('매주','매주','매주','매주','매주','없음','없음',);

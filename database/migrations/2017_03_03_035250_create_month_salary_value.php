@@ -16,10 +16,10 @@ class CreateMonthSalaryValue extends Migration
         {
             $table->increments('id');
             $table->integer('pinfo_id');
-            $table->string('normal_wage');
-            $table->string('statutory_allowance');
-            $table->string('benefits');
-            $table->string('commit_allowance');
+            $table->mediumText('normal_wage');
+            $table->mediumText('statutory_allowance');
+            $table->mediumText('benefits');
+            $table->mediumText('commit_allowance');
             $table->timestamps();
         });
     }
