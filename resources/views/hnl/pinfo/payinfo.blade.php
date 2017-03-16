@@ -251,8 +251,8 @@
                                     <tr>
                                         @forelse($nw as $p1)
                                             <td>
-                                                <input type="text" class="form-control input-sm" name="inputA{{$p1['payitem_id']}}"
-                                                       value="{{ $p1['price'] }}" {!! ($p1['title'] === '기본급') || ($p1['title'] === '주휴수당') ? 'readonly' : '' !!} >
+                                                <input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}"
+                                                       value="{{ $p1->price }}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
                                             </td>
                                         @empty
                                             @foreach($payitem1 as $p1)
@@ -272,9 +272,9 @@
                                     <tr>
                                         @forelse($sa as $p2)
                                             <td><input type="text" class="form-control input-sm"
-                                                       value="{{ $p2['price'] }}"
-                                                       name="inputB{{$p2['payitem_id']}}"
-                                                        {!! ($p2['title'] === '연장수당') || ($p2['title'] === '야간수당') || ($p2['title'] === '휴일수당') || ($p2['title'] === '휴일연장') || ($p2['title'] === '휴일야간') || ($p2['title'] === '연차수당') ? 'readonly' : '' !!}></td>
+                                                       value="{{ $p2->price }}"
+                                                       name="inputB{{$p2->payitem_id}}"
+                                                        {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
                                         @empty
                                             @foreach($payitem2 as $p2)
                                                 <td>
@@ -286,13 +286,13 @@
                                     </tr>
                                     <tr>
                                         <th rowspan="2">복리후생</th>
-                                        @foreach((array)$payitem3 as $p3)'
-                                            <th>{{  $p3->title }}</th>
+                                        @foreach($payitem3 as $p3)
+                                            <th>{{ $p3->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
                                         @forelse($bf as $p3)
-                                            <td><input type="text" class="form-control input-sm" value="{{ $p3['price'] }}" name="inputC{{$p3['payitem_id']}}"></td>
+                                            <td><input type="text" class="form-control input-sm" value="{{ $p3->price }}" name="inputC{{$p3->payitem_id}}"></td>
                                         @empty
                                             @foreach($payitem3 as $p3)
                                                 <td>
@@ -303,13 +303,13 @@
                                     </tr>
                                     <tr>
                                         <th rowspan="2">약정수당</th>
-                                        @foreach((array)$payitem4 as $p4)
+                                        @foreach($payitem4 as $p4)
                                             <th>{{  $p4->title }}</th>
                                         @endforeach
                                     </tr>
                                     <tr>
                                         @forelse($ca as $p4)
-                                            <td><input type="text" class="form-control input-sm" value="{{ $p4['price'] }}" name="inputD{{$p4['payitem_id']}}"></td>
+                                            <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{$p4->payitem_id}}"></td>
                                         @empty
                                             @foreach($payitem4 as $p4)
                                                 <td>
