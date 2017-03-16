@@ -150,10 +150,10 @@ class HnlPayinfoController extends Controller
 
 
 
-       /*  $deletedRows = Monthsalaryvalue::where('pinfo_id', $id)->delete();
-  $deletedRows = Salary2::where('pinfo_id', 1)->delete();
-  $deletedRows = Salary3::where('pinfo_id', 1)->delete();
-  $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
+       $deletedRows = Monthsalaryvalue::where('pinfo_id', $id)->delete();
+        /* $deletedRows = Salary2::where('pinfo_id', 1)->delete();
+       $deletedRows = Salary3::where('pinfo_id', 1)->delete();
+       $deletedRows = Salary4::where('pinfo_id', 1)->delete();*/
 
         if(Sentinel::check())
 
@@ -292,7 +292,7 @@ class HnlPayinfoController extends Controller
 
         };
 
-        $sal1 = json_encode($arra, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
+        $sal1 = json_encode($arra, JSON_UNESCAPED_UNICODE);
 
         for($i=0; $i < count($payitem2); $i++){
 
@@ -305,7 +305,7 @@ class HnlPayinfoController extends Controller
 
         }
 
-        $sal2 = json_encode($arrb, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
+        $sal2 = json_encode($arrb, JSON_UNESCAPED_UNICODE);
 
         for($i=0; $i < count($payitem3); $i++){
 
@@ -318,7 +318,7 @@ class HnlPayinfoController extends Controller
 
         }
 
-        $sal3 = json_encode($arrc, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
+        $sal3 = json_encode($arrc, JSON_UNESCAPED_UNICODE);
 
         for($i=0; $i < count($payitem4); $i++){
 
@@ -331,7 +331,7 @@ class HnlPayinfoController extends Controller
 
         }
 
-        $sal4 = json_encode($arrd, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
+        $sal4 = json_encode($arrd, JSON_UNESCAPED_UNICODE);
 
 
         $pitems1 = new Monthsalaryvalue([
