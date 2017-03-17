@@ -56,10 +56,11 @@ class HnlPayinfoController extends Controller
         $sa = array();
         $bf = array();
         $ca = array();
+        $getpitemsa = array();
 
         if(Sentinel::check())
 
-            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt'));
+            return view('hnl.pinfo.payinfo', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt','getpitemsa'));
 
         else
 
