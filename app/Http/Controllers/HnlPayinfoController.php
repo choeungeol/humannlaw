@@ -305,6 +305,8 @@ class HnlPayinfoController extends Controller
             $caltotal = 0;
         }
 
+        $paymontha = '';
+        $addpaya = '';
 
          for($i=0; $i < count($payitem1); $i++){
 
@@ -326,6 +328,7 @@ class HnlPayinfoController extends Controller
                  }
 
                  $paymontha[] = 0;
+
              }
 
              $payitem_id1[] = (string)$payitem1[$i]->id;
@@ -339,6 +342,9 @@ class HnlPayinfoController extends Controller
         $addpay1 = array_sum($addpaya);
 
         $sal1 = json_encode($arra, JSON_UNESCAPED_UNICODE);
+
+        $paymonthb = '';
+        $addpayb = '';
 
         for($i=0; $i < count($payitem2); $i++){
 
@@ -374,6 +380,10 @@ class HnlPayinfoController extends Controller
         $addpay2 = array_sum($addpayb);
         $sal2 = json_encode($arrb, JSON_UNESCAPED_UNICODE);
 
+
+        $paymonthc = '';
+        $addpayc = '';
+
         for($i=0; $i < count($payitem3); $i++){
 
             $ctype[] = $request->get('inputC'.$payitem3[$i]->id);
@@ -392,6 +402,8 @@ class HnlPayinfoController extends Controller
 
            $payitem_id3[] = (string)$payitem3[$i]->id;
            $payitem_title3[] = $payitem3[$i]->title;
+
+
 
             if($payitem3[$i]->title === '식대' || $payitem3[$i]->title === '차량유지비' || $payitem3[$i]->title === '육아수당' || $payitem3[$i]->title === '연구활동비'){
 
@@ -440,10 +452,13 @@ class HnlPayinfoController extends Controller
 
         $sal3 = json_encode($arrc, JSON_UNESCAPED_UNICODE);
 
+
+        $paymonthd = '';
+        $addpayd = '';
+
         for($i=0; $i < count($payitem4); $i++){
 
         $dtype[] = $request->get('inputD'.$payitem4[$i]->id);
-
 
             if($payitem4[$i]->use_this === '1'){
 
