@@ -385,6 +385,8 @@ class HnlPayinfoController extends Controller
         $paymonthc = array();
         $addpayc = array();
 
+        $nonetax = array();
+
         for($i=0; $i < count($payitem3); $i++){
 
             $ctype[] = $request->get('inputC'.$payitem3[$i]->id);
@@ -404,8 +406,6 @@ class HnlPayinfoController extends Controller
            $payitem_id3[] = (string)$payitem3[$i]->id;
            $payitem_title3[] = $payitem3[$i]->title;
 
-
-            $nonetax = array();
 
             if($payitem3[$i]->title === '식대' || $payitem3[$i]->title === '차량유지비' || $payitem3[$i]->title === '육아수당' || $payitem3[$i]->title === '연구활동비'){
 
