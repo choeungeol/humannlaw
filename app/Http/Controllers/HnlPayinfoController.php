@@ -305,8 +305,8 @@ class HnlPayinfoController extends Controller
             $caltotal = 0;
         }
 
-        $paymontha = '';
-        $addpaya = '';
+        $paymontha = array();
+        $addpaya = array();
 
          for($i=0; $i < count($payitem1); $i++){
 
@@ -343,8 +343,8 @@ class HnlPayinfoController extends Controller
 
         $sal1 = json_encode($arra, JSON_UNESCAPED_UNICODE);
 
-        $paymonthb = '';
-        $addpayb = '';
+        $paymonthb = array();
+        $addpayb = array();
 
         for($i=0; $i < count($payitem2); $i++){
 
@@ -381,8 +381,8 @@ class HnlPayinfoController extends Controller
         $sal2 = json_encode($arrb, JSON_UNESCAPED_UNICODE);
 
 
-        $paymonthc = '';
-        $addpayc = '';
+        $paymonthc = array();
+        $addpayc = array();
 
         for($i=0; $i < count($payitem3); $i++){
 
@@ -453,8 +453,8 @@ class HnlPayinfoController extends Controller
         $sal3 = json_encode($arrc, JSON_UNESCAPED_UNICODE);
 
 
-        $paymonthd = '';
-        $addpayd = '';
+        $paymonthd = array();
+        $addpayd = array();
 
         for($i=0; $i < count($payitem4); $i++){
 
