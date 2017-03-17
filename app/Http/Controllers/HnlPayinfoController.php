@@ -111,6 +111,7 @@ class HnlPayinfoController extends Controller
         $getsession = (array)$GLOBALS['request']->session()->all();
 
         if(count($getsession) > 5){
+
             $mtotal = $getsession['mtotal'];
             $mbreak = $getsession['mbreak'];
             $mover = $getsession['mover'];
@@ -134,8 +135,6 @@ class HnlPayinfoController extends Controller
         }
 
         $getpitemsa = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
-
-
 
         if($getpitemsa){
             $nw = json_decode($getpitemsa->normal_wage);
@@ -306,6 +305,7 @@ class HnlPayinfoController extends Controller
             $caltotal = 0;
         }
 
+
          for($i=0; $i < count($payitem1); $i++){
 
              $atype[] = $request->get('inputA'.$payitem1[$i]->id);
@@ -469,7 +469,6 @@ class HnlPayinfoController extends Controller
         $sal4 = json_encode($arrd, JSON_UNESCAPED_UNICODE);
 
         $sum_nonetax = array_sum($nonetax);
-
 
         $hourpay = ($paymonth - ($paymonth1 + $paymonth2 + $paymonth3 + $paymonth4)) / $caltotal;   //수정된 통상시급.
 
