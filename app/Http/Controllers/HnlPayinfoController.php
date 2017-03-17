@@ -325,6 +325,7 @@ class HnlPayinfoController extends Controller
                  }else{
 
                      $addpaya[] = $atype[$i];
+
                  }
 
                  $paymontha[] = 0;
@@ -404,38 +405,55 @@ class HnlPayinfoController extends Controller
            $payitem_title3[] = $payitem3[$i]->title;
 
 
+            $nonetax = array();
 
             if($payitem3[$i]->title === '식대' || $payitem3[$i]->title === '차량유지비' || $payitem3[$i]->title === '육아수당' || $payitem3[$i]->title === '연구활동비'){
 
                 if($payitem3[$i]->title === '식대'){
 
-                    if($ctype[$i] <= 100000){
+                    if($ctype[$i] >= 100000){
 
                         $nonetax[] = 100000;
+
+                    }else{
+
+                        $nonetax[] = 0;
 
                     }
 
                 }elseif($payitem3[$i]->title === '차량유지비'){
 
-                    if($ctype[$i] <= 200000){
+                    if($ctype[$i] >= 200000){
 
                         $nonetax[] = 200000;
+
+                    }else{
+
+                        $nonetax[] = 0;
 
                     }
 
                 }elseif($payitem3[$i]->title === '육아수당'){
 
-                    if($ctype[$i] <= 100000){
+                    if($ctype[$i] >= 100000){
 
                         $nonetax[] = 100000;
+
+                    }else{
+
+                        $nonetax[] = 0;
 
                     }
 
                 }elseif($payitem3[$i]->title === '연구활동비'){
 
-                    if($ctype[$i] <= 100000){
+                    if($ctype[$i] >= 100000){
 
                         $nonetax[] = 100000;
+
+                    }else{
+
+                        $nonetax[] = 0;
 
                     }
 
