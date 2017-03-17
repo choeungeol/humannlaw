@@ -329,16 +329,28 @@
                                         <tr>
                                             <td>월 급여액</td>
                                             <td>
-                                                @if($payinfo)
-                                                    <input type="text" class="form-control input-sm" value="{{ $payinfo->paymonth }}" readonly>
+                                                @if($getpitemsa)
+                                                    <input type="text" class="form-control input-sm" value="{{ $getpitemsa->month_price }}" readonly>
                                                 @else
-                                                    <input type="text" class="form-control input-sm" value="">
+                                                    <input type="text" class="form-control input-sm" value="" readonly>
                                                 @endif
                                             </td>
                                             <td>비과세액</td>
-                                            <td><input type="text" class="form-control input-sm"></td>
+                                            <td>
+                                                @if($getpitemsa)
+                                                    <input type="text" class="form-control input-sm" value="{{ $getpitemsa->none_tax_price }}" readonly>
+                                                @else
+                                                    <input type="text" class="form-control input-sm" value="" readonly>
+                                                @endif
+                                            </td>
                                             <td>보수총액</td>
-                                            <td><input type="text" class="form-control input-sm"></td>
+                                            <td>
+                                                @if($getpitemsa)
+                                                    <input type="text" class="form-control input-sm" value="{{ $getpitemsa->total_price }}" readonly>
+                                                @else
+                                                    <input type="text" class="form-control input-sm" value="" readonly>
+                                                @endif
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>
