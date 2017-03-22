@@ -274,7 +274,13 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
 
             Route::post('insert', array('as' => 'insert/addwork', 'uses' => 'HnlGeuntaeController@store'));
 
+            Route::get('/{addworkId}/confirm-delete1', array('as' => 'confirm-delete/ework1', 'uses' => 'HnlGeuntaeController@getModalDelete1'));
+            Route::get('/{addworkId}/confirm-delete2', array('as' => 'confirm-delete/ework2', 'uses' => 'HnlGeuntaeController@getModalDelete2'));
+            Route::get('/{addworkId}/confirm-delete3', array('as' => 'confirm-delete/ework3', 'uses' => 'HnlGeuntaeController@getModalDelete3'));
 
+            Route::get('/{addworkId}/delete1', array('as' => 'delete/ework1', 'uses' => 'HnlGeuntaeController@destroy1'));
+            Route::get('/{addworkId}/delete2', array('as' => 'delete/ework2', 'uses' => 'HnlGeuntaeController@destroy2'));
+            Route::get('/{addworkId}/delete3', array('as' => 'delete/ework3', 'uses' => 'HnlGeuntaeController@destroy3'));
 
         });
     });

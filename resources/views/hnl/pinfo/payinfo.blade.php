@@ -327,7 +327,7 @@
                                 <div class="col-lg-6">
                                     <table class="table table-condensed table-bordered col-lg-6">
                                         <tr>
-                                            <td>월 급여액</td>
+                                            <td>월 급여액(변동금액)</td>
                                             <td>
                                                 @if($getpitemsa)
                                                     <input type="text" class="form-control input-sm" value="{{ $getpitemsa->month_price }}" readonly>

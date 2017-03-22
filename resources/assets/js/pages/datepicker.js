@@ -42,7 +42,12 @@ $("#datetime2").datetimepicker({
 $("#datetime3").datetimepicker({
     viewMode: 'years'
 }).parent().css("position :relative");
+
 $("#datetime4").datetimepicker({
+    viewMode: 'years',
+    format: 'MM/YYYY'
+}).parent().css("position :relative");
+$(".datetime4").datetimepicker({
     viewMode: 'years',
     format: 'MM/YYYY'
 }).parent().css("position :relative");

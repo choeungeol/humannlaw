@@ -244,6 +244,7 @@ class HnlPayinfoController extends Controller
         $pinfo->tax_deduction = $tax_deduction;
         $pinfo->overseas_taxable = $request->get('overseas_taxable');
         $pinfo->hour_pay = $normalpay;
+        $pinfo->pre_month_price = $paymonth;
         $pinfo->save();
 
             if (Sentinel::check())
@@ -275,6 +276,7 @@ class HnlPayinfoController extends Controller
         $paymonth = $pinfo->paymonth;
         $non_taxable = $pinfo->non_taxable;
         $tax_deduction = $pinfo->tax_deduction;
+        $pre_paymonth = $pinfo->pre_month_price;
 
         $payitem1 = Payitem1::All();
         $payitem2 = Payitem2::All();
@@ -379,6 +381,7 @@ class HnlPayinfoController extends Controller
 
         $paymonth2 = array_sum($paymonthb);
         $addpay2 = array_sum($addpayb);
+
         $sal2 = json_encode($arrb, JSON_UNESCAPED_UNICODE);
 
 
@@ -409,7 +412,7 @@ class HnlPayinfoController extends Controller
 
             if($payitem3[$i]->title === '식대' || $payitem3[$i]->title === '차량유지비' || $payitem3[$i]->title === '육아수당' || $payitem3[$i]->title === '연구활동비'){
 
-                if($payitem3[$i]->title === '식대'){
+                if($payitem3[$i]->title === '식대'){      //식대 한도 100,000원
 
                     if($ctype[$i] >= 100000){
 
@@ -421,7 +424,7 @@ class HnlPayinfoController extends Controller
 
                     }
 
-                }elseif($payitem3[$i]->title === '차량유지비'){
+                }elseif($payitem3[$i]->title === '차량유지비'){      //차량유지비 한도 200,000원
 
                     if($ctype[$i] >= 200000){
 
@@ -433,7 +436,7 @@ class HnlPayinfoController extends Controller
 
                     }
 
-                }elseif($payitem3[$i]->title === '육아수당'){
+                }elseif($payitem3[$i]->title === '육아수당'){       //육아수당 한도 200,000원
 
                     if($ctype[$i] >= 100000){
 
@@ -445,7 +448,7 @@ class HnlPayinfoController extends Controller
 
                     }
 
-                }elseif($payitem3[$i]->title === '연구활동비'){
+                }elseif($payitem3[$i]->title === '연구활동비'){      //연구활동비 한도 200,000원
 
                     if($ctype[$i] >= 100000){
 
@@ -501,38 +504,45 @@ class HnlPayinfoController extends Controller
 
         $sal4 = json_encode($arrd, JSON_UNESCAPED_UNICODE);
 
-        $sum_nonetax = array_sum($nonetax);
-
-        $hourpay = ($paymonth - ($paymonth1 + $paymonth2 + $paymonth3 + $paymonth4)) / $caltotal;   //수정된 통상시급.
-
-        $monthpay = $paymonth + ($addpay1 + $addpay2 + $addpay3 + $addpay4);    //수정된 총 급여
-
-        $totalpay = $monthpay - $sum_nonetax;
-
-        if($addpay2 >= 200000){
 
 
+        if($non_taxable === 1 || $non_taxable === 'on'){
 
-        }else{
+            if($addpay2 >= 200000){
 
-
-
-        }
-
-        for($i=0; $i < count($nonetax); $i++){
-
-            if($non_taxable === 0 || $non_taxable === 'off'){
+                $nont = $addpay3 + 200000;
 
             }else{
 
-                $asd = "";
-
+                $nont = $addpay3 + $addpay2;
             }
 
-        }
+        }else{
+
+            $nont = $addpay2 ;
+
+        }       //생산직 여부 체크 됐을때
+
+        $sum_nonetax = array_sum($nonetax) + $addpay2;     //비과세 한도.
+
+        $hourpay = ($pre_paymonth - ($paymonth1 + $paymonth2 + $paymonth3 + $paymonth4)) / $caltotal;   //수정된 통상시급.
+
+        $monthpay = $pre_paymonth + ($addpay1 + $addpay2 + $addpay3 + $addpay4);    //수정된 총 급여
+
+        $totalpay = $monthpay - $sum_nonetax;   // 수정된 총급여 - 비과세 더한값
+
+
+
 
         $pinfo->hour_pay = $hourpay;
-        $pinfo->paymonth = $monthpay;
+        $pinfo->paymonth = $pre_paymonth;
+
+        if($pinfo->pre_month_price === $paymonth){
+            $pinfo->pre_month_price = $paymonth;
+        }else{
+            $pinfo->pre_month_price = $pre_paymonth;
+        }
+
         $pinfo->save();
 
         $pitems1 = new Monthsalaryvalue([
