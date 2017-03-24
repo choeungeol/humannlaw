@@ -36,6 +36,15 @@ class HnlPchangeController extends Controller
         $payitem3 = Payitem3::All();
         $payitem4 = Payitem4::All();
         $getp = array();
+        $mtotal = '';
+        $mbreak = '';
+        $mover = '';
+        $mnight = '';
+        $mwwork = '';
+        $mwover = '';
+        $mwnight = '';
+        $mwbt = '';
+        $nwarray = array();
         $id = '';
         $nw = array();
         $sa = array();
@@ -44,7 +53,7 @@ class HnlPchangeController extends Controller
 
 
         if(Sentinel::check())
-            return view('hnl.pay.pchange', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','id','nw','sa','bf','ca','getp'));
+            return view('hnl.pay.pchange', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','mtotal','mbreak','id','nw','sa','bf','ca','mover','mnight','mwwork','mwover','mwnight','mwbt','id','nw','sa','bf','ca','getp','nwarray'));
         else
             return Redirect::to('admin/signin')->with('error','You must be logged in!');
     }
@@ -89,25 +98,43 @@ class HnlPchangeController extends Controller
         $payitem3 = Payitem3::All();
         $payitem4 = Payitem4::All();
 
-
         $getpitems = Monthsalaryvalue::where('pinfo_id','=', $id)->orderBy('created_at', 'desc')->first();
         $nw = json_decode($getpitems->normal_wage);
         $sa = json_decode($getpitems->statutory_allowance);
         $bf = json_decode($getpitems->benefits);
         $ca = json_decode($getpitems->commit_allowance);
 
-        $getpa = Monthsalaryvalue::where('pinfo_id','=',$id)->get();
+        $getpa = Monthsalaryvalue::where('pinfo_id','=',$id)->orderBy('created_at', 'desc')->get();
 
-        for($i=0; $i<count($getpa); $i++){
-            $nw_array[] = $getpa[$i]->normal_wage;
-            $sa_array[] = $getpa[$i]->statutory_allowance;
-            $bf_array[] = $getpa[$i]->benefits;
-            $ca_array[] = $getpa[$i]->commit_allowance;
+
+        for($i=0; $i<count($getpa); $i++) {
+
+            $nws[] = json_decode($getpa[$i]->normal_wage);
+
+            for($j=0; $j < count($nws); $j++){
+                $na[] = $nws[$j][0]->title;
+            }
+
+            $obj = new \stdClass();
+            $obj->emp_no = $searchp->employee_num;
+            $obj->name = $searchp->name;
+
+            foreach($nws as $k => $na){
+                foreach($na as $n){
+                    $ntitle = $n->title;
+                    $obj->$ntitle = $n->price;
+                }
+            }
+
+            $ar[] = $obj;
+
         }
+
+        $nwarray = (object)$ar;
 
         if(Sentinel::check())
 
-            return view('hnl.pay.pchange', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','id','nw','sa','bf','ca','getpa'));
+            return view('hnl.pay.pchange', compact('pinfo','jobtitle','position','searchp','payinfo','payitem1','payitem2','payitem3','payitem4','id','nw','sa','bf','ca','getpa','nwarray'));
 
         else
 

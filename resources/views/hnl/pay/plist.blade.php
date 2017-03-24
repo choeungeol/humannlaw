@@ -44,59 +44,32 @@
                     <div class="panel-body">
                         <form class="form-inline" role="form">
                             <div class="col-xs-6">
-                                <label class="control-label">
-                                    급여년도 / 월
+                                <label class="control-label" style="margin-right:10px;">
+                                    급상여구분
                                     <select class="form-control input-sm">
-                                        <option>Year</option>
-                                        <option>1991</option>
-                                        <option>1992</option>
-                                        <option>1993</option>
-                                        <option>1994</option>
-                                        <option>1995</option>
-                                        <option>1996</option>
-                                        <option>1997</option>
-                                        <option>1998</option>
-                                        <option>1999</option>
-                                        <option>2000</option>
-                                        <option>2001</option>
-                                        <option>2002</option>
-                                        <option>2003</option>
-                                        <option>2004</option>
-                                        <option>2005</option>
-                                        <option>2006</option>
-                                        <option>2007</option>
-                                        <option>2008</option>
-                                        <option>2009</option>
-                                        <option>2000</option>
-                                        <option>2011</option>
-                                        <option>2012</option>
-                                        <option>2013</option>
-                                        <option>2014</option>
-                                        <option>2015</option>
-                                        <option>2016</option>
-                                        <option>2017</option>
-                                        <option>2018</option>
-                                    </select>년
+                                        <option>급여대장</option>
+                                        <option>상여대장</option>
+                                        <option>급/상여대장</option>
+                                    </select>
+                                </label>
+                                <label class="control-label" style="margin-right:10px;">
+                                    급여유형포함
                                     <select class="form-control input-sm">
-                                        <option>Month</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
-                                    </select>월
+                                        <option>연봉제</option>
+                                        <option>월급제</option>
+                                        <option>일당제</option>
+                                        <option>시급제</option>
+                                    </select>
                                 </label>
-                                <label>
-                                    <button type="button" class="btn btn-sm btn-default"> + </button>
-                                    <button type="button" class="btn btn-sm btn-default"> - </button>
+                                <label class="control-label" style="margin-right:10px;">
+                                    출력범위 선택
+                                    <input type="text" class="form-control input-sm" />
                                 </label>
+                                <label class="control-label" style="margin-right:10px;">
+                                    지급년월
+                                    <input type="text" class="form-control input-sm" />
+                                </label>
+                                <button class="btn btn-sm">검색</button>
                             </div>
                         </form>
                     </div>
@@ -121,13 +94,9 @@
                                 <th><input type="checkbox" class="custom-checkbox"></th>
                                 <th>연도</th>
                                 <th>월</th>
-                                <th>급여대장명</th>
-                                <th>등록일</th>
-                                <th>저장횟수</th>
-                                <th>부서명</th>
-                                <th>급여대장</th>
-                                <th>엑셀</th>
-                                <th>수정</th>
+                                <th>명칭</th>
+                                <th>미리보기</th>
+                                <th>출력선택</th>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="custom-checkbox"></td>
@@ -136,8 +105,6 @@
                                 <td>2016년 07월 급여대장</td>
                                 <td>2016-07-28</td>
                                 <td>2</td>
-                                <td>,</td>
-                                <td colspan="3"><- 급여대장명을 클릭하십시오.</td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="custom-checkbox"></td>
@@ -146,8 +113,6 @@
                                 <td>2016년 06월 급여대장</td>
                                 <td>2016-06-28</td>
                                 <td>2</td>
-                                <td>,</td>
-                                <td colspan="3"><- 급여대장명을 클릭하십시오.</td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="custom-checkbox"></td>
@@ -156,8 +121,6 @@
                                 <td>2016년 05월 급여대장</td>
                                 <td>2016-05-28</td>
                                 <td>2</td>
-                                <td>,</td>
-                                <td colspan="3"><- 급여대장명을 클릭하십시오.</td>
                             </tr>
                         </table>
                     </div>

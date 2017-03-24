@@ -43,6 +43,40 @@
                     <div class="panel-heading border-light">
                         <h4 class="panel-title">
                             <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
+                               data-l="true"></i> 사원정보
+                        </h4>
+                            <span class="pull-right">
+                                <i class="glyphicon glyphicon-chevron-up showhide clickable" title="Hide Panel content"></i>
+                            </span>
+                    </div>
+                    <div class="panel-body">
+                        <a class="btn btn-raised btn-info btn-large" data-toggle="modal" data-href="#searchmember" href="#searchmember">검색</a>
+                        <table class="table table-bordered table-middle">
+                            <tr>
+                                <th>사번</th>
+                                <th>이름</th>
+                                <th>근무상태</th>
+                                <th>채용형태</th>
+                            </tr>
+                            <tr>
+                                @if($searchp)
+                                    <td>{{ $searchp->employee_num }}</td>
+                                    <td>{{ $searchp->name }}</td>
+                                    <td>{{ $searchp->work_condition }}</td>
+                                    <td>{{ $searchp->employee_type }}</td>
+                                @endif
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading border-light">
+                        <h4 class="panel-title">
+                            <i class="livicon" data-name="doc-portrait" data-size="18" data-color="white" data-hc="white"
                                data-l="true"></i> 기본등록
                         </h4>
                         <span class="pull-right">
@@ -318,6 +352,57 @@
                                 @endfor
                             </tr>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- search member modal-->
+        <div class="modal fade in" id="searchmember" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">사원 검색</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-condensed table-bordered" id="table2">
+                            <thead>
+                            <tr>
+                                <th>순번</th>
+                                <th>사번</th>
+                                <th>이름</th>
+                                <th>부서</th>
+                                <th>직위</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($pinfo as $key=>$p)
+                                <tr>
+                                    <td>{{ ++$key }}</td>
+                                    <td>{{ $p->employee_num }}</td>
+                                    <td><a href="{{ route('addwork_view',$p->id) }}">{{ $p->name }}</a></td>
+                                    <td>
+                                        @foreach($jobtitle as $job)
+                                            @if($job->id == $p->job)
+                                                {{ $job->name }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach($position as $pos)
+                                            @if($pos->id == $p->position)
+                                                {{ $pos->pos_name }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                        {{--                        <button class="btn btn-primary">등록</button>--}}
                     </div>
                 </div>
             </div>

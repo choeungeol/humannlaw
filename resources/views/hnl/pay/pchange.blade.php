@@ -20,6 +20,15 @@
     <link href="{{ asset('assets/vendors/pickadate/css/default.time.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/airDatepicker/css/datepicker.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/buttons.bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/colReorder.bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/rowReorder.bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/buttons.bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/scroller.bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/tables.css') }}" />
+
 
 @stop
 
@@ -55,14 +64,30 @@
                             <tr>
                                 <th>사번</th>
                                 <th>이름</th>
+                                <th>주민번호</th>
+                                <th>주소</th>
                                 <th>근무상태</th>
+                                <th>근무유형</th>
+                                <th>급여유형</th>
+                                <th>급여액</th>
+                                <th>통상시급</th>
+                                <th>입사일</th>
+                                <th>퇴사일</th>
                                 <th>채용형태</th>
                             </tr>
                             <tr>
                                 @if($searchp)
                                 <td>{{ $searchp->employee_num }}</td>
                                 <td>{{ $searchp->name }}</td>
+                                <td>{{ $searchp->regi_no }}</td>
+                                <td>{{ $searchp->employee_post }}{{ $searchp->employee_addr1 }}{{ $searchp->employee_addr2 }}</td>
                                 <td>{{ $searchp->work_condition }}</td>
+                                <td>{{ $searchp->worktype }}</td>
+                                <td>{{ $searchp->paytype }}</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{ $searchp->join_day }}</td>
+                                <td>{{ $searchp->exit_day }}</td>
                                 <td>{{ $searchp->employee_type }}</td>
                                 @endif
                             </tr>
@@ -102,50 +127,82 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <input type="hidden" name="id" value="{{ $id }}">
                                         <input type="hidden" name="is_another" value="pchange">
-                                        <table class="table table-condensed table-bordered">
+                                        <table class="table table-bordered">
                                             <tr>
                                                 <th rowspan="2">통상임금</th>
-                                                @foreach($nw as $p1)
-                                                    <th>{{ $p1->title }}</th>
+                                                @foreach($payitem1 as $p1)
+                                                    <th>{!! $p1->title !!}</th>
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                @foreach($nw as $k => $p1)
-                                                        <td><input type="text" class="form-control input-sm" name="inputA{{$k++}}" value="{{ $p1->price }}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!}></td>
-                                                @endforeach
+                                                @forelse($nw as $p1)
+                                                    <td>
+                                                        <input type="text" class="form-control input-sm" name="inputA{{$p1->payitem_id}}"
+                                                               value="{{ $p1->price }}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
+                                                    </td>
+                                                @empty
+                                                    @foreach($payitem1 as $p1)
+                                                        <td>
+                                                            <input type="text" class="form-control input-sm" name="inputA{{$p1->id}}"
+                                                                   value="{!! ($p1->title === '기본급') ? $mtotal: '' !!}{!! ($p1->title === '주휴수당') ? $mbreak: ''!!}" {!! ($p1->title === '기본급') || ($p1->title === '주휴수당') ? 'readonly' : '' !!} >
+                                                        </td>
+                                                    @endforeach
+                                                @endforelse
                                             </tr>
                                             <tr>
                                                 <th rowspan="2">법정수당</th>
-                                                @foreach($sa as $p2)
+                                                @foreach($payitem2 as $p2)
                                                     <th>{{ $p2->title }}</th>
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                @foreach($sa as $k => $p2)
-                                                    <td><input type="text" class="form-control input-sm" value="{{ $p2->price }}" name="inputB{{ $k++ }}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
-                                                @endforeach
+                                                @forelse($sa as $p2)
+                                                    <td><input type="text" class="form-control input-sm"
+                                                               value="{{ $p2->price }}"
+                                                               name="inputB{{$p2->payitem_id}}"
+                                                                {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!}></td>
+                                                @empty
+                                                    @foreach($payitem2 as $p2)
+                                                        <td>
+                                                            <input type="text" class="form-control input-sm" name="inputB{{$p2->id}}"
+                                                                   value="{{ ($p2->title === '연장수당') ? $mover : '' }}{{ ($p2->title === '야간수당') ? $mnight : '' }}{{ ($p2->title === '휴일수당') ? $mwwork : '' }}{{ ($p2->title === '휴일연장') ? $mwover : '' }}{{ ($p2->title === '휴일야간') ? $mwnight : '' }}{{ ($p2->title === '연차수당') ? $mwbt : '' }}" {!! ($p2->title === '연장수당') || ($p2->title === '야간수당') || ($p2->title === '휴일수당') || ($p2->title === '휴일연장') || ($p2->title === '휴일야간') || ($p2->title === '연차수당') ? 'readonly' : '' !!} >
+                                                        </td>
+                                                    @endforeach
+                                                @endforelse
                                             </tr>
                                             <tr>
                                                 <th rowspan="2">복리후생</th>
-                                                @foreach($bf as $p3)
-                                                    <th>{{  $p3->title }}</th>
+                                                @foreach($payitem3 as $p3)
+                                                    <th>{{ $p3->title }}</th>
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                @foreach($bf as $k => $p3)
-                                                    <td><input type="text" class="form-control input-sm" value="{{ $p3->price }}" name="inputC{{ $k++ }}" value=""></td>
-                                                @endforeach
+                                                @forelse($bf as $p3)
+                                                    <td><input type="text" class="form-control input-sm" value="{{ $p3->price }}" name="inputC{{$p3->payitem_id}}"></td>
+                                                @empty
+                                                    @foreach($payitem3 as $p3)
+                                                        <td>
+                                                            <input type="text" class="form-control input-sm" name="inputC{{$p3->id}}">
+                                                        </td>
+                                                    @endforeach
+                                                @endforelse
                                             </tr>
                                             <tr>
                                                 <th rowspan="2">약정수당</th>
-                                                @foreach($ca as $p4)
+                                                @foreach($payitem4 as $p4)
                                                     <th>{{  $p4->title }}</th>
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                @foreach($ca as $k => $p4)
-                                                    <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{ $k++ }}" value=""></td>
-                                                @endforeach
+                                                @forelse($ca as $p4)
+                                                    <td><input type="text" class="form-control input-sm" value="{{ $p4->price }}" name="inputD{{$p4->payitem_id}}"></td>
+                                                @empty
+                                                    @foreach($payitem4 as $p4)
+                                                        <td>
+                                                            <input type="text" class="form-control input-sm" name="inputD{{$p4->id}}" >
+                                                        </td>
+                                                    @endforeach
+                                                @endforelse
                                             </tr>
                                         </table>
                                         <button class="btn btn-default col-lg-12" type="submit">등 록</button>
@@ -340,8 +397,10 @@
                     </span>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-hover table-bordered">
+                        <table class="table table-hover table-bordered table1">
+                            <thead>
                             <tr>
+                                <th>번호</th>
                                 <th>사번</th>
                                 <th>이름</th>
                                 <th>직책수당</th>
@@ -354,6 +413,30 @@
                                 <th>가불금</th>
                                 <th>연말정산</th>
                             </tr>
+                            </thead>
+                            <input type="hidden" value="{{ $nanum = 0 }}">
+                            <tbody>
+                            @forelse($nwarray as $na)
+                            <tr>
+                                <td>{{ $nanum++ }}</td>
+                                <td>{{ $na->emp_no }}</td>
+                                <td>{{ $na->name }}</td>
+                                <td>{{ $na->기본급 }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="12">No List</td>
+                            </tr>
+                            @endforelse
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -433,6 +516,22 @@
     <script src="{{ asset('assets/vendors/airDatepicker/js/datepicker.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/airDatepicker/js/datepicker.en.js') }}" type="text/javascript"></script>
 
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/jeditable/js/jquery.jeditable.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.buttons.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.colReorder.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.responsive.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.rowReorder.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.colVis.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.html5.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.print.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.bootstrap.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.print.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/pdfmake.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/vfs_fonts.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.scroller.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/js/pages/table-advanced.js') }}" ></script>
 
 
 @stop

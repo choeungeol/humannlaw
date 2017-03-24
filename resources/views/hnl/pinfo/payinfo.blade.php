@@ -236,7 +236,7 @@
                             <form class="panel-body" action="{{ route('insert/payitem') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="id" value="{{ $id }}">
-                                    <table class="table table-condensed table-bordered">
+                                <table class="table table-bordered">
                                     <tr>
                                         <th rowspan="2">통상임금</th>
                                         @foreach($payitem1 as $p1)

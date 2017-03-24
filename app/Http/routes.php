@@ -266,7 +266,7 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
     #근태관리
     Route::group(array('prefix'=> 'work'),function() {
 
-        Route::group(array('prefix'=> 'addwork'),function() {
+        Route::group(array('prefix' => 'addwork'), function () {
 
             Route::get('/', array('as' => 'hnl', 'uses' => 'HnlGeuntaeController@index'));
 
@@ -283,9 +283,15 @@ Route::group(array('prefix' => 'hnl', 'middleware' => 'SentinelUser'), function 
             Route::get('/{addworkId}/delete3', array('as' => 'delete/ework3', 'uses' => 'HnlGeuntaeController@destroy3'));
 
         });
-    });
 
-    Route::get('work/workaday', array('as' => 'hnl', 'uses' => 'WorkController@showWorkADay'));
+        Route::group(array('prefix' => 'workaday'), function () {
+
+            Route::get('/', array('as' => 'hnl', 'uses' => 'HnlWorkdayController@index'));
+
+
+        });
+
+    });
 
     Route::get('work/workatime', array('as' => 'hnl', 'uses' => 'WorkController@showWorkATime'));
 

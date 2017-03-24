@@ -54,7 +54,7 @@
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div class="tab-pane fade active in" id="basic">
-                                    <table class="table table-condensed table-bordered">
+                                    <table class="table table-bordered">
                                         <caption>
                                             <i class="livicon" data-name="adjust" data-size="12" data-c="#000" data-hc="#fff" data-loop="true"></i> 기본총괄표
                                         </caption>
@@ -78,21 +78,26 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @for ($i = 1; $i < 5; $i++)
+                                        <input type="hidden" value="{{$i = 1}}">
+                                        @forelse($getuserinfo as $u)
                                             <tr>
-                                                <td>{{ $i }}</td>
-                                                <td>홍길동</td>
-                                                <td>3,000,000</td>
-                                                <td>13,000</td>
-                                                <td>2,000,000</td>
-                                                <td>600,000</td>
-                                                <td>200,000</td>
-                                                <td>200,000</td>
-                                                <td>400,000</td>
-                                                <td>2,800,000</td>
-                                                <td>2,600,000</td>
+                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $u->name }}</td>
+                                                <td>{{ $u->paymonth }}</td>
+                                                <td>{{ $u->hour_pay }}</td>
+                                                <td>{{ $u->sum_nw }}</td>
+                                                <td>{{ $u->sum_sa }}</td>
+                                                <td>{{ $u->sum_bf }}</td>
+                                                <td>{{ $u->sum_ca }}</td>
+                                                <td>{{ $u->none_tax_price }}</td>
+                                                <td>{{ $u->month_price }}</td>
+                                                <td>{{ $u->total_price }}</td>
                                             </tr>
-                                        @endfor
+                                        @empty
+                                            <tr>
+                                                <td colspan="11">No List</td>
+                                            </tr>
+                                        @endforelse
                                         </tbody>
                                     </table>
                                 </div>
@@ -117,21 +122,26 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @for ($i = 1; $i < 5; $i++)
+                                        <input type="hidden" value="{{$i = 1}}">
+                                        @forelse($ucalc as $u)
+                                            <tr>
+                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $u->name }}</td>
+                                                <td>{{ $u->total }}</td>
+                                                <td>{{ $u->mtotal }}</td>
+                                                <td>{{ $u->mbreak }}</td>
+                                                <td>{{ $u->mover }}</td>
+                                                <td>{{ $u->mnight }}</td>
+                                                <td>{{ $u->mwwork }}</td>
+                                                <td>{{ $u->mwover }}</td>
+                                                <td>{{ $u->mwnight }}</td>
+                                                <td>{{ $u->mwbt }}</td>
+                                            </tr>
+                                        @empty
                                             <tr>
                                                 <td>{{ $i }}</td>
-                                                <td>홍길동</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
                                             </tr>
-                                        @endfor
+                                        @endforelse
                                         </tbody>
                                     </table>
                                 </div>
